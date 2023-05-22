@@ -1,11 +1,15 @@
 extends Node
 
+signal max_atoms_in_map_changed(max: int)
+signal current_atoms_set(amount: int)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var max_atoms_in_map: int = 0: 
+	set(value): 
+		max_atoms_in_map = value
+		max_atoms_in_map_changed.emit(max_atoms_in_map)
 
+var current_atoms: int = 0: 
+	set(value): 
+		current_atoms = value
+		current_atoms_set.emit(current_atoms)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -11,8 +11,23 @@ config_version=5
 [application]
 
 config/name="Chain Reaction"
+run/main_scene="res://scenes/game_world/game_world.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AtomTeamsManager="*res://scripts/globals/atom_teams_manager.gd"
+GameManager="*res://scripts/globals/game_manager.gd"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Wall"
+2d_physics/layer_2="Atom"
 
 [rendering]
 

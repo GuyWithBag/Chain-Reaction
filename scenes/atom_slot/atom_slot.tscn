@@ -1,0 +1,190 @@
+[gd_scene load_steps=18 format=3 uid="uid://u358asoupml"]
+
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
+[ext_resource type="Texture2D" uid="uid://bpg11u2pnuvi7" path="res://resources/tilesets/grid_slot.png" id="2_dxlg5"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_detector.gd" id="3_xclkg"]
+[ext_resource type="Texture2D" uid="uid://sa552rbcuqg5" path="res://scenes/atom_slot/atom.png" id="4_cd23m"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_stack.gd" id="4_qas13"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atoms_sprites.gd" id="5_3ujwk"]
+[ext_resource type="Script" path="res://scripts/classes/state_machine/state_machine.gd" id="5_c3o2o"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/empty.gd" id="6_g5cua"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/stacked.gd" id="8_6idha"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/ready_to_explode.gd" id="8_b32i3"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/explode.gd" id="9_r3vf0"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_positions.gd" id="12_4er3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjcr6"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lchgv"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_pkbpr"]
+resource_name = "ready_to_explode"
+
+[sub_resource type="Animation" id="Animation_1c2ow"]
+resource_name = "rest"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lhrp"]
+_data = {
+"ready_to_explode": SubResource("Animation_pkbpr"),
+"rest": SubResource("Animation_1c2ow")
+}
+
+[node name="AtomSlot" type="Node2D" groups=["AtomSlot"]]
+script = ExtResource("1_iyo6a")
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dxlg5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_mjcr6")
+
+[node name="AtomsDetector" type="Node2D" parent="."]
+script = ExtResource("3_xclkg")
+
+[node name="Down" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(0, 64)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Up" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(0, -64)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Right" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(64, 0)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Left" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(-64, 0)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
+script = ExtResource("4_qas13")
+stack_label = NodePath("../StackLabel")
+max_stack_label = NodePath("../MaxStackLabel")
+name_label = NodePath("../NameLabel")
+
+[node name="AtomsSprites" type="Node2D" parent="."]
+script = ExtResource("5_3ujwk")
+
+[node name="Atom1" type="Sprite2D" parent="AtomsSprites"]
+visible = false
+texture_filter = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_cd23m")
+
+[node name="Atom2" type="Sprite2D" parent="AtomsSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -14)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_cd23m")
+
+[node name="Atom3" type="Sprite2D" parent="AtomsSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(-1, 18)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_cd23m")
+
+[node name="Atom4" type="Sprite2D" parent="AtomsSprites"]
+visible = false
+texture_filter = 1
+position = Vector2(-1, 18)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_cd23m")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state_label")]
+script = ExtResource("5_c3o2o")
+starting_state = NodePath("Empty")
+current_state_label = NodePath("")
+
+[node name="Empty" type="Node" parent="StateMachine"]
+script = ExtResource("6_g5cua")
+
+[node name="Stacked" type="Node" parent="StateMachine"]
+script = ExtResource("8_6idha")
+
+[node name="ReadyToExplode" type="Node" parent="StateMachine"]
+script = ExtResource("8_b32i3")
+
+[node name="Explode" type="Node" parent="StateMachine"]
+script = ExtResource("9_r3vf0")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("RectangleShape2D_lchgv")
+
+[node name="StackLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -3.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxStackLabel" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 27.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -16.0
+offset_right = 25.0
+offset_bottom = 10.0
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5lhrp")
+}
+
+[node name="AtomPositions" type="Node2D" parent="."]
+script = ExtResource("12_4er3p")
+
+[node name="Single" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Single"]
+
+[node name="Double" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Double"]
+position = Vector2(0, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Double"]
+position = Vector2(0, -10)
+
+[node name="Triple" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(15, 6)
+
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(-14, 7)
+
+[node name="Marker2D3" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(0, -10)
+
+[node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
