@@ -5,14 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://cj0ctwbm83d0w" path="res://gui/touch_screen_gui/touch_screen_controls/touch_screen_controls.tscn" id="3_po3gc"]
 
 [node name="PlayerScreen" instance=ExtResource("1_4puyt")]
+mouse_filter = 2
 script = ExtResource("2_6awrr")
 gui_type = 4
 
+[node name="Mode" parent="." index="0"]
+mouse_filter = 2
+
 [node name="PC" parent="Mode" index="1"]
-visible = false
+mouse_filter = 2
 
 [node name="MOBILE" parent="Mode" index="2"]
-visible = true
+mouse_filter = 2
 
 [node name="TouchScreenControls" parent="Mode/MOBILE" index="0" instance=ExtResource("3_po3gc")]
 layout_mode = 1
+
+[node name="CONSOLE" parent="Mode" index="3"]
+mouse_filter = 2

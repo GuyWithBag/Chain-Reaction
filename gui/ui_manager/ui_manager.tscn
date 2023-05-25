@@ -42,6 +42,7 @@ mouse_filter = 2
 [node name="GUIDebugger" type="CanvasLayer" parent="."]
 layer = 2
 script = ExtResource("6_3xqmo")
+highlight_gui = true
 
 [node name="GUIHighlighter" type="Control" parent="GUIDebugger"]
 layout_mode = 3

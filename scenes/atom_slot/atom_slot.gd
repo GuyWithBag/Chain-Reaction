@@ -38,15 +38,9 @@ func _ready() -> void:
 	state_machine.init(self)
 	atom_detector.init(self)
 	state_machine.get_state("Explode").finished_exploding.connect(_on_finished_exploding)
-	var game_world: GameWorld = GameManager.game_world
-	var tilemap: TileMap = game_world.tilemap
-#	if tilemap.get_children().size() == game_world.total_atom_slots: 
-#		var children: Array[Node] = tilemap.get_children()
-#		for atom_slot in children: 
-#			atom_slot.init()
 
 
-func _process(delta): 
+func _process(_delta): 
 	if _initialized == false: 
 		init()
 
@@ -57,11 +51,12 @@ func init() -> void:
 
 
 func _on_finished_exploding() -> void: 
-	for _atom_team in AtomTeamsManager.atom_teams_in_play: 
-		var atom_count: int = AtomTeamsManager.get_total_atoms_count(_atom_team)
-		print("AtomSlot: Atom Team: %s, Atom Count: %s" % [_atom_team.team_number, atom_count])
+	for atom_team_in_play in AtomTeamsManager.atom_teams_in_play: 
+		var atom_count: int = AtomTeamsManager.get_total_atoms_count(atom_team_in_play)
+		print("AtomSlot: Atom Team: %s, Atom Count: %s" % [atom_team_in_play.team_number, atom_count])
 		if atom_count <= 0: 
-			AtomTeamsManager.elimnate_team(atom_team)
+			printerr("Eliminate team: ", atom_team_in_play.team_number)
+			AtomTeamsManager.elimnate_team(atom_team_in_play)
 
 
 func _on_touch_screen_button_pressed() -> void:

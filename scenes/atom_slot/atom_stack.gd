@@ -29,7 +29,11 @@ signal atoms_over_added
 #		atoms_sprites.hide_and_show_atoms_logic(atom_count, previous_count)
 		atoms_sprites.arrange_atoms()
 
-@export_range(1, 4) var max_atom_stack: int = 4
+@export_range(1, 4) var max_atom_stack: int = 4: 
+	set(value): 
+		if value <= 0: 
+			printerr("AtomStack (%s): max_atom_stack is set to 0. There is something wrong in the code. " % owner.name)
+		max_atom_stack = clamp(value, 1, 4)
 
 @export var stack_label: Label
 @export var max_stack_label: Label

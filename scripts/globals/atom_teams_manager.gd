@@ -71,15 +71,13 @@ func get_total_atoms_count_by_team_number(atom_team_number: int) -> int:
 func elimnate_team(atom_team: AtomTeam) -> void: 
 	# TODO: Wont erase third team for some reason
 #	printerr("AS: ", atom_teams_in_play.size())
-	for atom_team_in_play in atom_teams_in_play: 
 #		printerr(atom_team_in_play.team_number)
-		if atom_team.team_number == atom_team_in_play.team_number: 
-			atom_teams_in_play.erase(atom_team_in_play)
-			break
+	atom_teams_in_play.erase(atom_team)
 	team_has_been_eliminated.emit(atom_team, atom_teams_in_play)
 	var atom_teams_remaining: int = atom_teams_in_play.size()
 	print("AtomTeamsManager: Current teams remaining: %s" % atom_teams_remaining)
 	if atom_teams_remaining == 2: 
 		only_two_teams_left.emit(atom_teams_in_play[0], atom_teams_in_play[1])
 	elif atom_teams_remaining == 1: 
-		only_one_team_remaining.emit(atom_team)
+		only_one_team_remaining.emit(atom_teams_in_play[0])
+

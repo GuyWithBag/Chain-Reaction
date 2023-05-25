@@ -49,8 +49,8 @@ func init() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"): 
 		if GameManager.pausable == true: 
-			if !(GameManager.current_state == GameManager.State.PAUSED): 
-				UIManager.set_gui_active(UIManager.pause_menu, true)
+			GameManager.current_state = GameManager.State.PAUSED
+			UIManager.set_gui_active(UIManager.pause_menu, true)
 
 
 func deactivate_in_game_children() -> void:

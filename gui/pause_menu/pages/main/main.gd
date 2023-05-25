@@ -6,8 +6,9 @@ func _on_resume_pressed() -> void:
 
 
 func _on_exit_game_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://gui/main_menu/main_menu.tscn")
 
 
 func _on_exit_to_desktop_pressed() -> void:
 	GameManager.quit_game()
+

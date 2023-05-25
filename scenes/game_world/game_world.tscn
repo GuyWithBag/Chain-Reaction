@@ -17,6 +17,11 @@ scale = Vector2(1.5, 1.5)
 
 [node name="AtomParticles" type="Node2D" parent="."]
 
+[node name="Cameras" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Cameras"]
+position = Vector2(486, 864)
+
 [node name="MapScaler" type="Node" parent="."]
 script = ExtResource("3_eiys1")
 scale = 1.5

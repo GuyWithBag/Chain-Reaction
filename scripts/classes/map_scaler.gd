@@ -11,7 +11,6 @@ enum Size {
 @export var scale_by_size: Size: 
 	set(value): 
 		scale_by_size = value 
-		print("AS")
 		match scale_by_size: 
 			Size._64: 
 				scale = 1

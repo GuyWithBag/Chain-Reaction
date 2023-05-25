@@ -37,9 +37,7 @@ clip_tabs = false
 tabs_visible = false
 
 [node name="Main" parent="ColorRect/CenterContainer/TabContainer" instance=ExtResource("2_hyrrx")]
+custom_minimum_size = Vector2(700, 1000)
 layout_mode = 2
-
-[connection signal="pressed" from="ColorRect/CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Save Game" to="." method="_on_save_game_pressed"]
-[connection signal="pressed" from="ColorRect/CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
 
 [editable path="ColorRect/CenterContainer/TabContainer/Main"]

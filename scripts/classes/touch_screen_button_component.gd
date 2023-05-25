@@ -28,7 +28,9 @@ func _ready() -> void:
 	(owner as BaseButton).pressed.connect(_on_pressed)
 
 
+# In order for this to work, you must add an InputEvenActionKey "nothing" in the input map
 func _on_pressed() -> void:
+	print(event_action)
 	if event_action != "": 
 		var input_event_action: InputEventAction = InputEventAction.new()
 		input_event_action.action = "nothing"

@@ -61,7 +61,6 @@ func _add_atom_sprite(variable_to_initialize: String) -> void:
 
 
 func arrange_atoms() -> void: 
-	var children: Array[Node] = get_children()
 	match atom_stack.atom_count: 
 		1: 
 			up_atom.global_position = atom_positions.single.get_child(0).global_position

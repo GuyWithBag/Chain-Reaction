@@ -32,17 +32,6 @@ var game_start_data: GameStartData = GameStartData.new(
 	2
 )
 
-func start_game() -> void: 
-	if game_start_data == null: 
-		printerr("GameManager: Set game_start_data first before starting a game. ")
-		return
-	AtomTeamsManager.start_game(game_start_data.player_amount)
-	GameplayManager.current_gameplay_game_start_data = game_start_data
-	get_tree().change_scene_to_file(game_start_data.map_data.map_url)
-	game_started.emit()
-	game_start_data = null
-
-
 const UNIT_SIZE: int = 32
 
 var pausable: bool = true
@@ -57,6 +46,17 @@ var current_state: State = State.MENU:
 func _ready() -> void: 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	UIManager.init()
+
+
+func start_game() -> void: 
+	if game_start_data == null: 
+		printerr("GameManager: Set game_start_data first before starting a game. ")
+		return
+	AtomTeamsManager.start_game(game_start_data.player_amount)
+	GameplayManager.current_gameplay_game_start_data = game_start_data
+	get_tree().change_scene_to_file(game_start_data.map_data.map_url)
+	game_started.emit()
+	game_start_data = null
 
 
 func pause_game(value: bool) -> void: 
