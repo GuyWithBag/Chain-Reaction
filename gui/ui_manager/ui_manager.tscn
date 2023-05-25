@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5ts5013qlih0"]
+
+[ext_resource type="Script" path="res://gui/ui_manager/ui_manager.gd" id="1_45on3"]
+[ext_resource type="PackedScene" uid="uid://b6lw0o3geo6cm" path="res://gui/pause_menu/pause_menu.tscn" id="2_778fa"]
+[ext_resource type="PackedScene" uid="uid://cu8g1ieo6oi6n" path="res://gui/player_screen/player_screen.tscn" id="3_j6pv1"]
+[ext_resource type="PackedScene" uid="uid://c0dtp63gmnt6" path="res://gui/transitions_manager/transitions_manager.tscn" id="4_uh6xr"]
+[ext_resource type="Script" path="res://gui/ui_manager/debugger/debugger.gd" id="6_3xqmo"]
+[ext_resource type="Script" path="res://gui/ui_manager/debugger/gui_highlighter.gd" id="7_86fn6"]
+
+[node name="UIManager" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_45on3")
+
+[node name="InGame" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseMenu" parent="InGame" instance=ExtResource("2_778fa")]
+visible = false
+layout_mode = 1
+
+[node name="PlayerScreen" parent="InGame" instance=ExtResource("3_j6pv1")]
+layout_mode = 1
+
+[node name="InstancedUIs" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TransitionsManager" parent="." instance=ExtResource("4_uh6xr")]
+mouse_filter = 2
+
+[node name="GUIDebugger" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("6_3xqmo")
+
+[node name="GUIHighlighter" type="Control" parent="GUIDebugger"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_86fn6")
+
+[node name="GUIName" type="Label" parent="GUIDebugger/GUIHighlighter"]
+visible = false
+layout_mode = 1
+offset_left = 782.0
+offset_top = 17.0
+offset_right = 861.0
+offset_bottom = 43.0
+text = "GUIName"
+
+[node name="GUIHighlight" type="ColorRect" parent="GUIDebugger/GUIHighlighter"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0.196078)

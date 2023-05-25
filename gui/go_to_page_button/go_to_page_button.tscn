@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc4fgdt7ru6rk"]
+
+[ext_resource type="PackedScene" uid="uid://bmd0rbj0y1irq" path="res://gui/main_menu/widgets/menu_button/menu_button.tscn" id="1_ch7iv"]
+[ext_resource type="Script" path="res://gui/go_to_page_button/go_to_page_button.gd" id="2_qsjfs"]
+
+[node name="GoToPageButton" instance=ExtResource("1_ch7iv")]
+text = "Back"
+script = ExtResource("2_qsjfs")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -46,9 +46,9 @@ func find_and_change_state(new_state_name: String) -> void:
 	change_state(get_state(new_state_name))
 
 
-func change_state(new_state: BaseState, args: Array = []) -> void:
+func change_state(new_state: BaseState, _args: Array = []) -> void:
 	if disabled:
-		"StateMachine (%s): StateMachine is disabled" % [owner]
+		print("StateMachine (%s): StateMachine is disabled" % [owner])
 		return
 	if !is_instance_valid(new_state): 
 		printerr("StateMachine (%s): Change to new state is null. " % [owner])

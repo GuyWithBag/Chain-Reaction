@@ -11,14 +11,39 @@ config_version=5
 [application]
 
 config/name="Chain Reaction"
-run/main_scene="res://scenes/game_world/game_world.tscn"
+run/main_scene="res://gui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 AtomTeamsManager="*res://scripts/globals/atom_teams_manager.gd"
+AtomSlotsManager="*res://scripts/globals/atom_slots_manager.gd"
+ChainReactionSequenceManager="*res://scripts/globals/chain_reaction_sequence_manager.gd"
+AtomTeamTurnsManager="*res://scripts/globals/atom_team_turns_manager.gd"
+UIManager="*res://gui/ui_manager/ui_manager.tscn"
+PlatformManager="*res://scripts/globals/platform_manager.gd"
+GameplayManager="*res://scripts/globals/gameplay_manager.gd"
+MapsLoader="*res://scripts/globals/maps_loader.gd"
 GameManager="*res://scripts/globals/game_manager.gd"
+
+[display]
+
+window/size/viewport_width=972
+window/size/viewport_height=1728
+window/size/window_width_override=558
+window/size/window_height_override=995
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
+[input]
+
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -32,3 +57,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

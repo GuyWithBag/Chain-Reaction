@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lw0o3geo6cm"]
+
+[ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4sixj"]
+[ext_resource type="PackedScene" uid="uid://bgbielsopeojq" path="res://gui/pause_menu/pages/main/main.tscn" id="2_hyrrx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lms2w"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sixj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.352941, 0.352941, 0.352941, 0.243137)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lms2w")
+clip_tabs = false
+tabs_visible = false
+
+[node name="Main" parent="ColorRect/CenterContainer/TabContainer" instance=ExtResource("2_hyrrx")]
+layout_mode = 2
+
+[connection signal="pressed" from="ColorRect/CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Save Game" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
+
+[editable path="ColorRect/CenterContainer/TabContainer/Main"]

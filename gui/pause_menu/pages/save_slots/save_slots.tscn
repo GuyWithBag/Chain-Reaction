@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqixgtnfl6xca"]
+
+[ext_resource type="Script" path="res://ui/pause_menu/pages/save_slots/save_slots.gd" id="1_f6lib"]
+
+[node name="SaveSlots" type="GridContainer"]
+custom_minimum_size = Vector2(400, 400)
+script = ExtResource("1_f6lib")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu8g1ieo6oi6n"]
+
+[ext_resource type="PackedScene" uid="uid://2bbpxd8jc23o" path="res://gui/cross_platform_gui/cross_platform_gui_manager.tscn" id="1_4puyt"]
+[ext_resource type="Script" path="res://gui/player_screen/player_screen.gd" id="2_6awrr"]
+[ext_resource type="PackedScene" uid="uid://cj0ctwbm83d0w" path="res://gui/touch_screen_gui/touch_screen_controls/touch_screen_controls.tscn" id="3_po3gc"]
+
+[node name="PlayerScreen" instance=ExtResource("1_4puyt")]
+script = ExtResource("2_6awrr")
+gui_type = 4
+
+[node name="PC" parent="Mode" index="1"]
+visible = false
+
+[node name="MOBILE" parent="Mode" index="2"]
+visible = true
+
+[node name="TouchScreenControls" parent="Mode/MOBILE" index="0" instance=ExtResource("3_po3gc")]
+layout_mode = 1

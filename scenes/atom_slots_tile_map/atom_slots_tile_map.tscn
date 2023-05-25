@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cypx4bavgo4dv"]
+
+[ext_resource type="TileSet" uid="uid://b2bhten7orbtj" path="res://resources/tilesets/atom_slots_tile_set.tres" id="1_4l2s5"]
+
+[node name="AtomSlotsTileMap" type="TileMap"]
+tile_set = ExtResource("1_4l2s5")
+format = 2
+layer_0/name = "AtomSlots"

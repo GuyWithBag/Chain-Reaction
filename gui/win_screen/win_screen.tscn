@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://ldgbqe7mherb"]
+
+[ext_resource type="Script" path="res://gui/win_screen/win_screen.gd" id="1_evgoe"]
+[ext_resource type="PackedScene" uid="uid://cgpu7y8qeyhjm" path="res://gui/win_screen/widgets/win_screen_button.tscn" id="2_1r6rp"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evgoe")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WinningTeam" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 60
+text = "Team: %s"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Victory" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 120
+text = "has WON!"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Gap2" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="PlayAgain" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]
+layout_mode = 2
+
+[node name="Gap" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ReturnToMenu" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]
+layout_mode = 2
+text = "Return to Menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

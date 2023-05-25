@@ -1,38 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdjqifk4ujlnb"]
+[gd_scene load_steps=4 format=3 uid="uid://cdjqifk4ujlnb"]
 
-[ext_resource type="PackedScene" uid="uid://u358asoupml" path="res://scenes/atom_slot/atom_slot.tscn" id="1_4ro01"]
 [ext_resource type="Script" path="res://scenes/game_world/game_world.gd" id="1_68tt8"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vq0th"]
-resource_name = "AtomSlot"
-scenes/2/scene = ExtResource("1_4ro01")
-
-[sub_resource type="TileSet" id="TileSet_yr8rq"]
-tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetScenesCollectionSource_vq0th")
+[ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="2_75tpf"]
+[ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="3_eiys1"]
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_68tt8")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_yr8rq")
-format = 2
-layer_0/tile_data = PackedInt32Array(262151, 1, 131072, 196615, 1, 131072, 196616, 1, 131072, 196617, 1, 131072, 262153, 1, 131072, 327689, 1, 131072, 327688, 1, 131072, 327687, 1, 131072, 262152, 1, 131072, 196614, 1, 131072, 262150, 1, 131072, 327686, 1, 131072, 393222, 1, 131072, 393223, 1, 131072, 393224, 1, 131072, 393225, 1, 131072, 393226, 1, 131072, 327690, 1, 131072, 262154, 1, 131072, 196618, 1, 131072, 131082, 1, 131072, 131081, 1, 131072, 131080, 1, 131072, 131079, 1, 131072, 131078, 1, 131072, 65541, 1, 131072, 131077, 1, 131072, 196613, 1, 131072, 262149, 1, 131072, 327685, 1, 131072, 393221, 1, 131072, 458757, 1, 131072, 458758, 1, 131072, 458759, 1, 131072, 458760, 1, 131072, 458761, 1, 131072, 458762, 1, 131072, 458763, 1, 131072, 393227, 1, 131072, 327691, 1, 131072, 262155, 1, 131072, 196619, 1, 131072, 131083, 1, 131072, 65547, 1, 131072, 65546, 1, 131072, 65545, 1, 131072, 65544, 1, 131072, 65543, 1, 131072, 65542, 1, 131072, 262157, 1, 131072, 196621, 1, 131072, 196622, 1, 131072, 262158, 1, 131072, 196610, 1, 131072, 262146, 1, 131072, 327682, 1, 131072, 327681, 1, 131072, 262145, 1, 131072, 196609, 1, 131072, 458766, 1, 131072, 458767, 1, 131072, 458768, 1, 131072, 524304, 1, 131072, 589840, 1, 131072, 655376, 1, 131072, 655375, 1, 131072, 655374, 1, 131072, 655373, 1, 131072)
+[node name="TileMaps" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 65.0
-offset_right = 104.0
-offset_bottom = 88.0
-text = "AAAAAAA"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AtomSlotsTileMap" parent="TileMaps" instance=ExtResource("2_75tpf")]
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 94.0
-offset_right = 139.0
-offset_bottom = 120.0
-text = "AAAAAAA"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AtomSprites" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="AtomParticles" type="Node2D" parent="."]
+
+[node name="MapScaler" type="Node" parent="."]
+script = ExtResource("3_eiys1")
+scale = 1.5

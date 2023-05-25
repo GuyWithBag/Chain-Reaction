@@ -1,6 +1,29 @@
 extends Node2D
 class_name AtomSlot
 
+signal player_interacted 
+signal atom_added
+
+@export var atom_slot_group_label: Label 
+
+var atom_team: AtomTeam: 
+	set(value): 
+		previous_atom_team = atom_team
+		atom_team = value
+		atoms_sprites.change_team_color_to(atom_team)
+		if  atom_team != null:
+			if previous_atom_team != null:
+				remove_from_group(StringName(str(previous_atom_team.team_number)))
+			add_to_group(StringName(str(atom_team.team_number)))
+			atom_slot_group_label.text = str(atom_team.team_number)
+
+
+var previous_atom_team: AtomTeam
+
+var available_directions: Array[String] = [] 
+
+var _initialized: bool = false
+
 @onready var atoms_sprites: Node2D = get_node("AtomsSprites")
 @onready var atom_stack: AtomStack = get_node("AtomStack")
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer") 
@@ -8,39 +31,59 @@ class_name AtomSlot
 @onready var grid: Sprite2D = get_node("Grid")
 @onready var atom_detector: Node2D = get_node("AtomsDetector") 
 @onready var state_machine: StateMachine = get_node("StateMachine")
+@onready var sequence: ChainReactionSequence = ChainReactionSequence.new(self)
 
-var atom_team: AtomTeam = AtomTeam.new(
-		1, 
-		Color(0, 0, 0)
-	)
-
-var available_directions: Array[String] = []
-var to_explode: bool = false
 
 func _ready() -> void: 
 	state_machine.init(self)
 	atom_detector.init(self)
-	atom_stack.atoms_added.connect(_on_atom_added)
-	atom_stack.initialized.connect(_on_atom_stack_initialized)
+	state_machine.get_state("Explode").finished_exploding.connect(_on_finished_exploding)
+	var game_world: GameWorld = GameManager.game_world
+	var tilemap: TileMap = game_world.tilemap
+#	if tilemap.get_children().size() == game_world.total_atom_slots: 
+#		var children: Array[Node] = tilemap.get_children()
+#		for atom_slot in children: 
+#			atom_slot.init()
 
 
-func _on_atom_stack_initialized() -> void: 
-	pass
+func _process(delta): 
+	if _initialized == false: 
+		init()
+
+
+func init() -> void: 
+	atom_stack.init()
+	_initialized = true
+
+
+func _on_finished_exploding() -> void: 
+	for _atom_team in AtomTeamsManager.atom_teams_in_play: 
+		var atom_count: int = AtomTeamsManager.get_total_atoms_count(_atom_team)
+		print("AtomSlot: Atom Team: %s, Atom Count: %s" % [_atom_team.team_number, atom_count])
+		if atom_count <= 0: 
+			AtomTeamsManager.elimnate_team(atom_team)
 
 
 func _on_touch_screen_button_pressed() -> void:
-	interact()
+	player_interact()
 
 
-func interact() -> void: 
-	atom_stack.add_atom(1, atom_team)
-
-
-func _on_atom_added() -> void: 
-	change_sprites_modulation(atom_team.team_color)
-	
-	
-func change_sprites_modulation(new_modulate: Color) -> void: 
-	atoms_sprites.modulate = new_modulate
+func player_interact() -> void: 
+	player_interacted.emit()
+	if AtomTeamTurnsManager.is_chain_reacting(): 
+		print("AtomSlot (%s): NOT YET" % name)
+		return
+	var current_atom_team: AtomTeam = AtomTeamTurnsManager.current_atom_team_in_turn
+	if state_machine.current_state == state_machine.get_state("Empty"): 
+		atom_team = current_atom_team
+		print("AtomSlot (%s): Is indeed empty" % name)
+	elif atom_team != current_atom_team: 
+		print("AtomSlot (%s): WRONG TEAM" % name)
+		return
+	print("AtomSlot (%s): Placed atom here" % name)
+	atom_stack.add_atom(1, atom_team) 
+	atom_added.emit() 
+	if AtomTeamTurnsManager.is_awaiting_turn(): 
+		AtomTeamTurnsManager.next_turn()
 	
 	

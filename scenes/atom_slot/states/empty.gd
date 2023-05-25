@@ -4,6 +4,7 @@ extends AtomSlotBaseState
 func enter() -> void: 
 	atom_stack.atoms_added.connect(_on_atoms_added)
 	atom_stack.atoms_maxxed.connect(_on_atoms_maxxed)
+	
 
 func exit() -> void: 
 	atom_stack.atoms_added.disconnect(_on_atoms_added)

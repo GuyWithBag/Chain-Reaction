@@ -1,6 +1,13 @@
 extends Node2D
 class_name AtomsDetector
 
+enum Directions {
+	UP, 
+	LEFT, 
+	DOWN, 
+	RIGHT
+}
+
 @onready var raycasts: Array[Node] = get_children()
 
 func init(parent: Node2D) -> void: 
@@ -22,8 +29,8 @@ func get_slot_in_all_directions() -> Array[AtomSlot]:
 	return atom_slots
 
 
-func get_available_directions() -> Array[String]: 
-	var directions: Array[String] = []
+func get_available_directions() -> Array[int]: 
+	var directions: Array[int] = []
 	for raycast in raycasts: 
 		var collider: Node2D = raycast.get_collider()
 		if !is_instance_valid(collider): 
@@ -32,28 +39,6 @@ func get_available_directions() -> Array[String]:
 		if !(parent is AtomSlot): 
 			continue
 		if raycast.is_colliding(): 
-			directions.append(raycast.name.to_upper())
+			var direction: String = raycast.name.to_upper()
+			directions.append(Directions.get(direction))
 	return directions
-	
-	
-func is_tilemap_full() -> bool: 
-	for atom_slot in get_slot_in_all_directions(): 
-		if atom_slot.atom_stack.is_maxxed(): 
-			return false
-	return false
-			
-			
-func return_all_max_atom_stack() -> Array[int]: 
-	var max_atom_counts: Array[int] = [] 
-#	var exceptions: Array[AtomSlot] = []
-#	for atom_slot in get_slot_in_all_directions(): 
-#		print(exceptions)
-#		if atom_slot in exceptions: 
-#			continue
-#		var max_atom_stack: int = atom_slot.atom_stack.max_atom_stack
-#		max_atom_counts.append(max_atom_stack)
-#		max_atom_counts.append_array(atom_slot.atom_detector.return_all_max_atom_stack())
-#		exceptions.append(atom_slot)
-	return max_atom_counts
-	
-	
