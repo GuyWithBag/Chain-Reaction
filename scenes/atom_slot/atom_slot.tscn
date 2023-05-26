@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://u358asoupml"]
+[gd_scene load_steps=19 format=3 uid="uid://u358asoupml"]
 
+[ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="1_3tif2"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
 [ext_resource type="Texture2D" uid="uid://bpg11u2pnuvi7" path="res://resources/tilesets/grid_slot.png" id="2_dxlg5"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_detector.gd" id="3_xclkg"]
@@ -32,6 +33,7 @@ _data = {
 }
 
 [node name="AtomSlot" type="Node2D" node_paths=PackedStringArray("atom_slot_group_label") groups=["AtomSlot"]]
+material = ExtResource("1_3tif2")
 script = ExtResource("1_iyo6a")
 atom_slot_group_label = NodePath("AtomSlotGroupLabel")
 

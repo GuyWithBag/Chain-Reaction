@@ -10,6 +10,6 @@ layer_0/tile_data = PackedInt32Array(196616, 1, 65536, 262152, 1, 65536, 327688,
 [node name="AtomSprites" parent="." index="1"]
 scale = Vector2(1, 1)
 
-[node name="MapScaler" parent="." index="5"]
+[node name="MapScaler" parent="." index="4"]
 scale_by_size = 2
 scale = 2.0

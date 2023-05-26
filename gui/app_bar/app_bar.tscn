@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfc3rhc8eqxf6"]
+[gd_scene load_steps=6 format=3 uid="uid://cfc3rhc8eqxf6"]
 
 [ext_resource type="Script" path="res://gui/app_bar/app_bar.gd" id="1_tpnk2"]
+[ext_resource type="Theme" uid="uid://6ujpoecbuxn4" path="res://themes/main_theme.tres" id="2_d1h32"]
 [ext_resource type="PackedScene" uid="uid://y4iwnsyous8d" path="res://gui/touch_screen_gui/touch_screen_texture_button/touch_screen_texture_button.tscn" id="2_t8d8p"]
 [ext_resource type="Texture2D" uid="uid://ll6bwm56gywo" path="res://gui/material_icons/menu.svg" id="3_ml2jg"]
 [ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://gui/material_icons/undo.svg" id="4_r4npt"]
@@ -15,13 +16,13 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_tpnk2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 210)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-color = Color(0.376471, 0.376471, 0.376471, 1)
+theme = ExtResource("2_d1h32")
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1

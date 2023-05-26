@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvwqa3rt76c1g"]
+[gd_scene load_steps=8 format=3 uid="uid://bvwqa3rt76c1g"]
 
 [ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_hdem2"]
+[ext_resource type="Theme" uid="uid://6ujpoecbuxn4" path="res://themes/main_theme.tres" id="2_dhaie"]
 [ext_resource type="PackedScene" uid="uid://bmd0rbj0y1irq" path="res://gui/main_menu/widgets/menu_button/menu_button.tscn" id="3_5i3wu"]
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="4_1rbl0"]
 [ext_resource type="PackedScene" uid="uid://dywfhsj105pmo" path="res://gui/main_menu/widgets/player_amount_selector/player_amount_selector.tscn" id="4_ax4so"]
@@ -11,13 +12,13 @@
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_hdem2")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.160784, 0.160784, 0.160784, 1)
+theme = ExtResource("2_dhaie")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -60,6 +61,7 @@ autowrap_mode = 2
 [node name="Options" type="VBoxContainer" parent="CenterContainer/MainBody/Pages/MainPage"]
 layout_mode = 2
 theme_override_constants/separation = 50
+alignment = 1
 
 [node name="PlayGame" parent="CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2

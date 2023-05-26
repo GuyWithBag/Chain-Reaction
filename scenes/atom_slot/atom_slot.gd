@@ -1,6 +1,7 @@
 extends Node2D
 class_name AtomSlot
 
+signal initialized
 signal player_interacted 
 signal atom_added
 
@@ -40,7 +41,7 @@ func _ready() -> void:
 	state_machine.get_state("Explode").finished_exploding.connect(_on_finished_exploding)
 
 
-func _process(_delta): 
+func _physics_process(_delta): 
 	if _initialized == false: 
 		init()
 
@@ -48,6 +49,7 @@ func _process(_delta):
 func init() -> void: 
 	atom_stack.init()
 	_initialized = true
+	initialized.emit()
 
 
 func _on_finished_exploding() -> void: 
