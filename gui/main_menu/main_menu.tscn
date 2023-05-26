@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvwqa3rt76c1g"]
+[gd_scene load_steps=9 format=3 uid="uid://bvwqa3rt76c1g"]
 
 [ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_hdem2"]
-[ext_resource type="Theme" uid="uid://6ujpoecbuxn4" path="res://themes/main_theme.tres" id="2_dhaie"]
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_btats"]
 [ext_resource type="PackedScene" uid="uid://bmd0rbj0y1irq" path="res://gui/main_menu/widgets/menu_button/menu_button.tscn" id="3_5i3wu"]
+[ext_resource type="PackedScene" uid="uid://cdfkti70lo56a" path="res://gui/main_menu/widgets/menu_title/menu_title.tscn" id="3_essoa"]
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="4_1rbl0"]
 [ext_resource type="PackedScene" uid="uid://dywfhsj105pmo" path="res://gui/main_menu/widgets/player_amount_selector/player_amount_selector.tscn" id="4_ax4so"]
 [ext_resource type="PackedScene" uid="uid://ckqv3conn5rkn" path="res://gui/maps_option_button/maps_option_button.tscn" id="5_jkcx5"]
@@ -10,28 +11,40 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r060v"]
 
 [node name="MainMenu" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_hdem2")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_dhaie")
+theme = ExtResource("2_btats")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_btats")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainBody" type="Control" parent="CenterContainer"]
+[node name="MainBody" type="Control" parent="Control/CenterContainer"]
 custom_minimum_size = Vector2(700, 1300)
 layout_mode = 2
 
-[node name="Pages" type="TabContainer" parent="CenterContainer/MainBody"]
+[node name="Pages" type="TabContainer" parent="Control/CenterContainer/MainBody"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,52 +54,69 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_r060v")
 tabs_visible = false
 
-[node name="MainPage" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="MainPage" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Title" type="CenterContainer" parent="CenterContainer/MainBody/Pages/MainPage"]
+[node name="Title" type="ReferenceRect" parent="Control/CenterContainer/MainBody/Pages/MainPage"]
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
 
-[node name="PlaceholderTitle" type="Label" parent="CenterContainer/MainBody/Pages/MainPage/Title"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Chain Reaction"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="MenuTitle" parent="Control/CenterContainer/MainBody/Pages/MainPage/Title" instance=ExtResource("3_essoa")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0471429
+anchor_top = -0.058
+anchor_right = 0.952857
+anchor_bottom = 0.942
+offset_left = 45.0
+offset_top = 31.0
+offset_right = 45.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.98, 0.98)
+metadata/_edit_use_anchors_ = true
 
-[node name="Options" type="VBoxContainer" parent="CenterContainer/MainBody/Pages/MainPage"]
+[node name="Options" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages/MainPage"]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="PlayGame" parent="CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="PlayGame" parent="Control/CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 text = "Play Game"
 page_container = NodePath("../../..")
 go_to_page = NodePath("../../../GameModesPage")
 
-[node name="ExitGame" parent="CenterContainer/MainBody/Pages/MainPage/Options" instance=ExtResource("3_5i3wu")]
+[node name="Options" parent="Control/CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+layout_mode = 2
+text = "Options"
+page_container = NodePath("../../..")
+go_to_page = NodePath("../../../GameModesPage")
+
+[node name="ExitGame" parent="Control/CenterContainer/MainBody/Pages/MainPage/Options" instance=ExtResource("3_5i3wu")]
 layout_mode = 2
 text = "Exit Game"
 
-[node name="GameModesPage" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="Control" type="Control" parent="Control/CenterContainer/MainBody/Pages/MainPage"]
+layout_mode = 2
+
+[node name="GameModesPage" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="SinglePlayer2" parent="CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="SinglePlayer2" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 text = "Single Player
 "
 page_container = NodePath("../..")
 go_to_page = NodePath("../../SinglePlayerModePage")
 
-[node name="Multiplayer2" parent="CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Multiplayer2" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 disabled = true
 text = "Multiplayer
@@ -94,80 +124,83 @@ text = "Multiplayer
 page_container = NodePath("../..")
 go_to_page = NodePath("../../MultiplayerModePage2")
 
-[node name="Back" parent="CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Back" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 page_container = NodePath("../..")
 go_to_page = NodePath("../../MainPage")
 
-[node name="SinglePlayerModePage" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="SinglePlayerModePage" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="PlayerAmount" parent="CenterContainer/MainBody/Pages/SinglePlayerModePage" instance=ExtResource("4_ax4so")]
+[node name="PlayerAmount" parent="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" instance=ExtResource("4_ax4so")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VsPlayers" parent="CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="VsPlayers" parent="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 text = "Vs Players"
 page_container = NodePath("../..")
 go_to_page = NodePath("../../ChooseMapPage")
 
-[node name="VsAI" parent="CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="VsAI" parent="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
+disabled = true
 text = "Vs AI"
 page_container = NodePath("../..")
 go_to_page = NodePath("../../ChooseMapPage")
 
-[node name="Back" parent="CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Back" parent="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 page_container = NodePath("../..")
 go_to_page = NodePath("../../GameModesPage")
 
-[node name="MultiplayerModePage2" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="MultiplayerModePage2" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="OptionsPage" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="OptionsPage" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="ChooseMapPage" type="VBoxContainer" parent="CenterContainer/MainBody/Pages"]
+[node name="ChooseMapPage" type="VBoxContainer" parent="Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="MapImage" type="CenterContainer" parent="CenterContainer/MainBody/Pages/ChooseMapPage"]
+[node name="MapImage" type="CenterContainer" parent="Control/CenterContainer/MainBody/Pages/ChooseMapPage"]
 custom_minimum_size = Vector2(500, 888)
 layout_mode = 2
 
-[node name="ChooseMapLabel" type="Label" parent="CenterContainer/MainBody/Pages/ChooseMapPage"]
+[node name="ChooseMapLabel" type="Label" parent="Control/CenterContainer/MainBody/Pages/ChooseMapPage"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Choose A Map"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MapsOptionButton" parent="CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("5_jkcx5")]
+[node name="MapsOptionButton" parent="Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("5_jkcx5")]
 layout_mode = 2
 
-[node name="StartGame" parent="CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("3_5i3wu")]
+[node name="StartGame" parent="Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("3_5i3wu")]
 layout_mode = 2
 text = "Start Game"
 
-[node name="Back" parent="CenterContainer/MainBody/Pages/ChooseMapPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Back" parent="Control/CenterContainer/MainBody/Pages/ChooseMapPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 page_container = NodePath("../..")
 go_to_page = NodePath("../../SinglePlayerModePage")
 
-[connection signal="pressed" from="CenterContainer/MainBody/Pages/MainPage/Options/ExitGame" to="." method="_on_exit_game_pressed"]
-[connection signal="pressed" from="CenterContainer/MainBody/Pages/SinglePlayerModePage/VsPlayers" to="." method="_on_vs_players_pressed"]
-[connection signal="pressed" from="CenterContainer/MainBody/Pages/SinglePlayerModePage/VsAI" to="." method="_on_vs_ai_pressed"]
-[connection signal="pressed" from="CenterContainer/MainBody/Pages/ChooseMapPage/StartGame" to="." method="_on_start_game_pressed"]
+[node name="AtomSprites" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Control/CenterContainer/MainBody/Pages/MainPage/Options/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsPlayers" to="." method="_on_vs_players_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsAI" to="." method="_on_vs_ai_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/MainBody/Pages/ChooseMapPage/StartGame" to="." method="_on_start_game_pressed"]

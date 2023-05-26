@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AtomTeamsManager="*res://scripts/globals/atom_teams_manager.gd"
+AtomPlayersManager="*res://scripts/globals/atom_players_manager.gd"
 AtomSlotsManager="*res://scripts/globals/atom_slots_manager.gd"
 ChainReactionSequenceManager="*res://scripts/globals/chain_reaction_sequence_manager.gd"
-AtomTeamTurnsManager="*res://scripts/globals/atom_team_turns_manager.gd"
+AtomPlayerTurnsManager="*res://scripts/globals/atom_player_turns_manager.gd"
 UIManager="*res://gui/ui_manager/ui_manager.tscn"
 PlatformManager="*res://scripts/globals/platform_manager.gd"
 GameplayManager="*res://scripts/globals/gameplay_manager.gd"

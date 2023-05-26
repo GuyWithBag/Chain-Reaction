@@ -20,9 +20,9 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 	await atoms_sprites.explode_animation() 
 	for neighbor_atom_slot in neighbor_atom_slots: 
 		var _atom_stack: AtomStack = neighbor_atom_slot.atom_stack 
-		var previous_atom_team: AtomTeam = AtomTeamTurnsManager.get_previous_atom_team_turn()
+		var _previous_atom_player: AtomPlayer = AtomPlayerTurnsManager.get_previous_atom_player_turn()
 		_affect_rotation_direction(neighbor_atom_slot)
-		_atom_stack.add_atom(1, AtomTeamTurnsManager.current_atom_team_in_turn)
+		_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn)
 		ChainReactionSequenceManager.pop_back_sequences()
 	finished_exploding.emit()
 	

@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dpn3n1agwqjwx"
+path="res://.godot/imported/karma future.ttf-e833247120ddef7eb00e53e7d8d2a11e.fontdata"
+
+[deps]
+
+source_file="res://fonts/tt/karma future.ttf"
+dest_files=["res://.godot/imported/karma future.ttf-e833247120ddef7eb00e53e7d8d2a11e.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

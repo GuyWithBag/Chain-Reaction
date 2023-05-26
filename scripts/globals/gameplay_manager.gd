@@ -1,22 +1,22 @@
 extends Node
 
-signal game_started(players: Array[AtomTeam])
-signal game_ended(winner: AtomTeam, losers: Array[AtomTeam])
+signal game_started(players: Array[AtomPlayer])
+signal game_ended(winner: AtomPlayer, losers: Array[AtomPlayer])
 
 var win_screen: PackedScene = load("res://gui/win_screen/win_screen.tscn")
-var winning_atom_team: AtomTeam
+var winning_atom_player: AtomPlayer
 var current_gameplay_game_start_data: GameStartData
 
 func _ready() -> void: 
-	AtomTeamsManager.only_one_team_remaining.connect(_on_only_one_team_remaining)
+	AtomPlayersManager.only_one_team_remaining.connect(_on_only_one_team_remaining)
 
 
-func _on_only_one_team_remaining(last_remaining_atom_team: AtomTeam) -> void: 
-	end_game(last_remaining_atom_team)
+func _on_only_one_team_remaining(last_remaining_atom_player: AtomPlayer) -> void: 
+	end_game(last_remaining_atom_player)
 
 
-func end_game(winner: AtomTeam) -> void: 
-	winning_atom_team = winner
+func end_game(winner: AtomPlayer) -> void: 
+	winning_atom_player = winner
 	UIManager.add_gui(win_screen.instantiate()) 
 	game_ended.emit()
 	

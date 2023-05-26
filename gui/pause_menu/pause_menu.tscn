@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6lw0o3geo6cm"]
+[gd_scene load_steps=5 format=3 uid="uid://b6lw0o3geo6cm"]
 
 [ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4sixj"]
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_im5av"]
 [ext_resource type="PackedScene" uid="uid://bgbielsopeojq" path="res://gui/pause_menu/pages/main/main.tscn" id="2_hyrrx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lms2w"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_im5av")
 script = ExtResource("1_4sixj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -21,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.352941, 0.352941, 0.352941, 0.243137)
+color = Color(0.239216, 0.239216, 0.239216, 0.243137)
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
 layout_mode = 0
@@ -39,5 +41,7 @@ tabs_visible = false
 [node name="Main" parent="ColorRect/CenterContainer/TabContainer" instance=ExtResource("2_hyrrx")]
 custom_minimum_size = Vector2(700, 1000)
 layout_mode = 2
+
+[connection signal="pressed" from="ColorRect/CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/RestartGame" to="ColorRect/CenterContainer/TabContainer/Main" method="_on_restart_game_pressed"]
 
 [editable path="ColorRect/CenterContainer/TabContainer/Main"]

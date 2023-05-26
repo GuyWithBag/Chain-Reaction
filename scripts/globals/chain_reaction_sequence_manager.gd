@@ -1,6 +1,6 @@
 extends Node
 
-signal chain_reaction_sequence_started(atom_team_started: AtomTeam)
+signal chain_reaction_sequence_started(atom_player_started: AtomPlayer)
 signal chain_reaction_sequence_finished
 
 signal chain_reaction_sequence_was_reset
@@ -15,7 +15,7 @@ func reset() -> void:
 	
 func add_sequence(sequence: ChainReactionSequence) -> void: 
 	chain_reaction_sequences.append(sequence)
-	if chain_reaction_sequences.size() - 1 == 1 && AtomTeamTurnsManager.is_awaiting_turn(): 
+	if chain_reaction_sequences.size() - 1 == 1 && AtomPlayerTurnsManager.is_awaiting_turn(): 
 		start_chain_reaction(sequence)
 	
 	
@@ -48,16 +48,16 @@ func reset_sequence() -> void:
 	
 	
 func start_chain_reaction(sequence: ChainReactionSequence) -> void: 
-	chain_reaction_sequence_started.emit(sequence.atom_slot.atom_team)
+	chain_reaction_sequence_started.emit(sequence.atom_slot.atom_player)
 	printerr("STARTED_CHAIN_REACTION")
-	AtomTeamTurnsManager.current_state = AtomTeamTurnsManager.State.CHAIN_REACTION
+	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.CHAIN_REACTION
 	chain_reaction_just_finished = false
 	
 	
 func finish_chain_reaction() -> void: 
 	chain_reaction_sequence_finished.emit()
 	printerr("CHAIN_REACTION_FINISHED")
-	AtomTeamTurnsManager.current_state = AtomTeamTurnsManager.State.AWAITING_TURN
-	AtomTeamTurnsManager.turn_is_next.emit()
+	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.AWAITING_TURN
+	AtomPlayerTurnsManager.turn_is_next.emit()
 	chain_reaction_just_finished = true
 

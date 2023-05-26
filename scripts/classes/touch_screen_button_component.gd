@@ -30,12 +30,15 @@ func _ready() -> void:
 
 # In order for this to work, you must add an InputEvenActionKey "nothing" in the input map
 func _on_pressed() -> void:
-	print(event_action)
 	if event_action != "": 
+		print("TouchScreenButton: event_action: ", event_action)
 		var input_event_action: InputEventAction = InputEventAction.new()
 		input_event_action.action = "nothing"
 		input_event_action.pressed = true
 		Input.parse_input_event(input_event_action)
+#		var pause_event_action: InputEventAction = InputEventAction.new()
+#		pause_event_action.action = event_action
+#		pause_event_action.pressed = true
+#		Input.parse_input_event(pause_event_action)
 		Input.action_press(event_action, 1)
-
 

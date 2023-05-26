@@ -6,7 +6,7 @@ signal gui_removed(gui: GUI)
 
 @export var debug: bool = false
 
-#var alert: PackedScene = load("res://ui/alert_gui/alert_screen/alert_screen.tscn")
+var alert: PackedScene = load("res://gui/alert_gui/alert_screen/alert_screen.tscn")
 
 var player_gui_focused: GUI 
 var pause_menu_gui: GUI 
@@ -93,19 +93,22 @@ func remove_gui(gui: GUI) -> GUI:
 	return gui
 
 
-#func create_alert(alert_message: String, yes_func: Callable = func(): , 
-#	no_func: Callable = func(): , yes_text: String = "Yes", 
-#	no_text: String = "No") -> AlertScreen: 
-#	var alert_node: AlertScreen = alert.instantiate()
-#	var yes_button: Button = alert_node.yes
-#	var no_button: Button = alert_node.no
-#	UIManager.add_gui(alert_node)
-#	alert_node.alert_label.text = alert_message
-#	yes_button.text = yes_text
-#	no_button.text = no_text
-#	yes_button.pressed.connect(yes_func)
-#	no_button.pressed.connect(no_func)
-#	return alert_node
+func create_alert(alert_message: String, yes_func: Callable = func(): , 
+	no_func: Callable = func(): , yes_text: String = "Yes", 
+	no_text: String = "No") -> AlertScreen: 
+	
+	var alert_node: AlertScreen = alert.instantiate()
+	UIManager.add_gui(alert_node)
+	
+	var yes_button: Button = alert_node.yes
+	var no_button: Button = alert_node.no
+	alert_node.alert_label.text = alert_message
+	yes_button.text = yes_text
+	no_button.text = no_text
+	
+	yes_button.pressed.connect(yes_func, CONNECT_ONE_SHOT)
+	no_button.pressed.connect(no_func, CONNECT_ONE_SHOT)
+	return alert_node
 
 
 func _can_be_activated(gui: GUI) -> bool: 

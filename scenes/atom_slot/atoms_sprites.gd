@@ -2,6 +2,7 @@
 extends Node2D
 class_name AtomsSprites
 
+@export var atom_sprites_group_override_parent: Node2D
 @export var explode_travel_time: float = 0.5
 @export var shaking_speed: float = 0.1
 
@@ -36,7 +37,10 @@ func _ready() -> void:
 func _initiate_atom_sprites() -> void: 
 	var group: Node2D = Node2D.new()
 	atom_sprites_group = group
-	GameManager.game_world.atom_sprites.add_child(atom_sprites_group) 
+	if is_instance_valid(GameManager.game_world): 
+		GameManager.game_world.atom_sprites.add_child(atom_sprites_group) 
+	else: 
+		atom_sprites_group_override_parent.add_child(atom_sprites_group) 
 	atom_sprites_group.global_position = atom_positions.center_position.global_position
 	_add_atom_sprite("up_atom")
 	_add_atom_sprite("left_atom")
@@ -122,8 +126,8 @@ func shake_atoms() -> void:
 		var y_rand_pos: int = rng.randi_range(min_range, max_range) * y_rand_dir
 		
 		var new_position: Vector2 = Vector2(x_rand_pos, y_rand_pos)
-		tween.tween_property(atom_sprites_group, "position", atom_positions.center_position.global_position + new_position, shaking_speed)
-		tween.tween_property(atom_sprites_group, "position", atom_positions.center_position.global_position, shaking_speed)
+		tween.tween_property(atom_sprites_group, "global_position", atom_positions.center_position.global_position + new_position, shaking_speed)
+		tween.tween_property(atom_sprites_group, "global_position", atom_positions.center_position.global_position, shaking_speed)
 		tween.play()
 		await tween.finished
 		tween.stop()
@@ -153,7 +157,6 @@ func explode_animation() -> void:
 	var available_directions: Array[int] = atoms_detector.get_available_directions() 
 	var all_directions: Array = atoms_detector.Directions.keys()
 	var distance: float = 64 * tilemap_scale
-	var atom_sprites_group_children: Array[Node] = atom_sprites_group.get_children()
 	var tween: Tween = create_tween().set_parallel(true)
 	
 	var grow_duration: float = 0.1
@@ -164,7 +167,7 @@ func explode_animation() -> void:
 		tween.tween_method(_set_flash_shader_param, 0, 1, grow_duration)
 	tween.chain()
 	for atom_sprite in atom_sprites_group.get_children(): 
-		tween.tween_property(atom_sprite, "modulate", AtomTeamTurnsManager.current_atom_team_in_turn.team_color, 0.05)
+		tween.tween_property(atom_sprite, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.05)
 		grow_to_size(tween, atom_sprite, 0, 0.05)
 		tween.tween_method(_set_flash_shader_param, 1, 0, 0.05)
 	tween.chain() 
@@ -193,7 +196,7 @@ func explode_animation() -> void:
 
 #	for index in atom_sprites_group_children.size(): 
 #		atom_sprites_group_children[index].scale = atom_sprites_orig_values[index]["scale"]
-#		atom_sprites_group_children[index].modulate = owner.atom_team.team_color
+#		atom_sprites_group_children[index].modulate = owner.atom_player.team_color
 #	atom_sprites_group.material = null
 	
 #	tween.play()
@@ -209,8 +212,8 @@ func _set_flash_shader_param(value: float) -> void:
 	atom_sprites_group.material.set_shader_parameter("flash_modifier", value)
 	
 	
-func grow_to_size(tween: Tween, atom_sprite: Sprite2D, grow_to_size: float, grow_duration: float) -> void: 
-	var grow_to_scale: Vector2 = atom_sprite.scale + Vector2(grow_to_size, grow_to_size) 
+func grow_to_size(tween: Tween, atom_sprite: Sprite2D, to_size: float, grow_duration: float) -> void: 
+	var grow_to_scale: Vector2 = atom_sprite.scale + Vector2(to_size, to_size) 
 	tween.tween_property(atom_sprite, "scale", grow_to_scale, grow_duration)
 	
 	
@@ -222,9 +225,23 @@ func atom_transfer_tween(tween: Tween, atom: Sprite2D, to: Vector2) -> void:
 	tween.tween_property(atom, "global_position", to, explode_travel_time)
 
 
-func change_team_color_to(new_team: AtomTeam) -> void: 
+func change_team_color_to(new_team: AtomPlayer) -> void: 
 	up_atom.modulate = new_team.team_color
 	left_atom.modulate = new_team.team_color
 	down_atom.modulate = new_team.team_color
 	right_atom.modulate = new_team.team_color
 
+
+func flash_tween(flash_duration: int, loop: bool = false, loops: int = 0) -> Tween: 
+	var _flash_tween: Tween
+	if loop: 
+		_flash_tween = create_tween().set_loops(loops).set_parallel(true).set_ease(Tween.EASE_IN_OUT)
+	else: 
+		_flash_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
+	for atom_sprite in atom_sprites_group.get_children(): 
+		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
+		_flash_tween.tween_property(atom_sprite, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, flash_duration)
+	_flash_tween.tween_interval(0.5)
+	_flash_tween.play()
+	return _flash_tween
+	

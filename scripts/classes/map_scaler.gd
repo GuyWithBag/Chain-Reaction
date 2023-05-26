@@ -24,14 +24,14 @@ enum Size {
 		scale = value
 		vector2_scale = Vector2(scale, scale)
 		if Engine.is_editor_hint(): 
-			maps = get_node("../Maps")
-			atom_sprites = get_node("../AtomSprites")
+			maps = get_node("%TileMaps")
 			maps.scale = vector2_scale
 
 var vector2_scale: Vector2
 
-@onready var maps: Node2D = get_node("../TileMaps")
-@onready var atom_sprites: Node2D = get_node("../AtomSprites")
+@onready var maps: Node2D = get_node("%TileMaps")
+@onready var atom_sprites: Node2D = get_node("%AtomSprites")
+@onready var atom_particles: Node2D = get_node("%AtomParticles")
 
 
 func _ready() -> void: 
@@ -39,5 +39,11 @@ func _ready() -> void:
 	
 	
 func _on_child_entered_tree(child: Node) -> void: 
-	child.scale = vector2_scale
+	child.renamed.connect(
+		func(): 
+			child.scale *= vector2_scale
+	)
+	
+	
+	
 

@@ -7,19 +7,19 @@ signal atom_added
 
 @export var atom_slot_group_label: Label 
 
-var atom_team: AtomTeam: 
+var atom_player: AtomPlayer: 
 	set(value): 
-		previous_atom_team = atom_team
-		atom_team = value
-		atoms_sprites.change_team_color_to(atom_team)
-		if  atom_team != null:
-			if previous_atom_team != null:
-				remove_from_group(StringName(str(previous_atom_team.team_number)))
-			add_to_group(StringName(str(atom_team.team_number)))
-			atom_slot_group_label.text = str(atom_team.team_number)
+		previous_atom_player = atom_player
+		atom_player = value
+		atoms_sprites.change_team_color_to(atom_player)
+		if  atom_player != null:
+			if previous_atom_player != null:
+				remove_from_group(StringName(str(previous_atom_player.team_number)))
+			add_to_group(StringName(str(atom_player.team_number)))
+			atom_slot_group_label.text = str(atom_player.team_number)
 
 
-var previous_atom_team: AtomTeam
+var previous_atom_player: AtomPlayer
 
 var available_directions: Array[String] = [] 
 
@@ -53,12 +53,12 @@ func init() -> void:
 
 
 func _on_finished_exploding() -> void: 
-	for atom_team_in_play in AtomTeamsManager.atom_teams_in_play: 
-		var atom_count: int = AtomTeamsManager.get_total_atoms_count(atom_team_in_play)
-		print("AtomSlot: Atom Team: %s, Atom Count: %s" % [atom_team_in_play.team_number, atom_count])
+	for atom_player_in_play in AtomPlayersManager.atom_players_in_play: 
+		var atom_count: int = AtomPlayersManager.get_total_atoms_count(atom_player_in_play)
+		print("AtomSlot: Atom Team: %s, Atom Count: %s" % [atom_player_in_play.team_number, atom_count])
 		if atom_count <= 0: 
-			printerr("Eliminate team: ", atom_team_in_play.team_number)
-			AtomTeamsManager.elimnate_team(atom_team_in_play)
+			printerr("Eliminate team: ", atom_player_in_play.team_number)
+			AtomPlayersManager.elimnate_team(atom_player_in_play)
 
 
 func _on_touch_screen_button_pressed() -> void:
@@ -67,20 +67,20 @@ func _on_touch_screen_button_pressed() -> void:
 
 func player_interact() -> void: 
 	player_interacted.emit()
-	if AtomTeamTurnsManager.is_chain_reacting(): 
+	if AtomPlayerTurnsManager.is_chain_reacting(): 
 		print("AtomSlot (%s): NOT YET" % name)
 		return
-	var current_atom_team: AtomTeam = AtomTeamTurnsManager.current_atom_team_in_turn
+	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
 	if state_machine.current_state == state_machine.get_state("Empty"): 
-		atom_team = current_atom_team
+		atom_player = current_atom_player
 		print("AtomSlot (%s): Is indeed empty" % name)
-	elif atom_team != current_atom_team: 
+	elif atom_player != current_atom_player: 
 		print("AtomSlot (%s): WRONG TEAM" % name)
 		return
 	print("AtomSlot (%s): Placed atom here" % name)
-	atom_stack.add_atom(1, atom_team) 
+	atom_stack.add_atom(1, atom_player) 
 	atom_added.emit() 
-	if AtomTeamTurnsManager.is_awaiting_turn(): 
-		AtomTeamTurnsManager.next_turn()
+	if AtomPlayerTurnsManager.is_awaiting_turn(): 
+		AtomPlayerTurnsManager.next_turn()
 	
 	

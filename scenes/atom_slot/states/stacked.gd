@@ -12,7 +12,8 @@ func enter() -> void:
 func exit() -> void: 
 	atom_stack.atoms_maxxed.disconnect(_on_atoms_maxxed)
 	atom_stack.atoms_added.disconnect(_on_atoms_added)
-	rotate_tween_1.stop()
+	if rotate_tween_1: 
+		rotate_tween_1.stop()
 
 
 func _on_atoms_added() -> void: 
@@ -24,6 +25,7 @@ func _on_atoms_added() -> void:
 func _on_atoms_maxxed() -> void: 
 	if rotate_tween_1:
 		rotate_tween_1.stop()
-	rotate_tween_2.stop()
+	if rotate_tween_2:
+		rotate_tween_2.stop()
 	state_machine.change_state(ready_to_explode_state)
 

@@ -9,6 +9,7 @@
 
 [node name="UIManager" type="CanvasLayer"]
 process_mode = 3
+layer = 4
 script = ExtResource("1_45on3")
 
 [node name="InGame" type="Control" parent="."]
@@ -42,7 +43,6 @@ mouse_filter = 2
 [node name="GUIDebugger" type="CanvasLayer" parent="."]
 layer = 2
 script = ExtResource("6_3xqmo")
-highlight_gui = true
 
 [node name="GUIHighlighter" type="Control" parent="GUIDebugger"]
 layout_mode = 3

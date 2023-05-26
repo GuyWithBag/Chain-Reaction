@@ -3,6 +3,8 @@ extends Node
 signal max_atoms_in_map_changed(max: int)
 signal current_atoms_set(amount: int)
 
+signal quitted_to_main_menu
+
 signal game_started
 signal game_retried
 
@@ -52,7 +54,12 @@ func start_game() -> void:
 	if game_start_data == null: 
 		printerr("GameManager: Set game_start_data first before starting a game. ")
 		return
-	AtomTeamsManager.start_game(game_start_data.player_amount)
+	pause_game(false)
+	ChainReactionSequenceManager.reset()
+	AtomPlayerTurnsManager.reset()
+	AtomPlayersManager.reset()
+	
+	AtomPlayersManager.start_game(game_start_data.player_amount)
 	GameplayManager.current_gameplay_game_start_data = game_start_data
 	get_tree().change_scene_to_file(game_start_data.map_data.map_url)
 	game_started.emit()
@@ -72,9 +79,40 @@ func quit_game() -> void:
 
 func retry_game() -> void:
 	game_start_data = GameplayManager.current_gameplay_game_start_data
-	ChainReactionSequenceManager.reset()
-	AtomTeamTurnsManager.reset()
-	AtomTeamsManager.reset()
 	GameManager.start_game()
 	game_retried.emit()
 
+
+func quit_to_main_menu() -> void: 
+	retry_game()
+	get_tree().change_scene_to_file("res://gui/main_menu/main_menu.tscn")
+	quitted_to_main_menu.emit()
+	
+	
+func retry_game_prompt(yes_pressed: Callable = func() :, no_pressed: Callable = func() :) -> void: 
+	var alert: AlertScreen = UIManager.create_alert(
+		"Are you sure you want to retry the game?", 
+		retry_game
+	)
+	alert.yes.pressed.connect(yes_pressed)
+	alert.no.pressed.connect(no_pressed)
+	
+	
+func quit_to_main_menu_prompt(yes_pressed: Callable = func() :, no_pressed: Callable = func() :) -> void: 
+	var alert: AlertScreen = UIManager.create_alert(
+		"Are you sure you want to quit to the main menu?", 
+		quit_to_main_menu
+	)
+	alert.yes.pressed.connect(yes_pressed)
+	alert.no.pressed.connect(no_pressed)
+	
+	
+func quit_game_prompt(yes_pressed: Callable = func() :, no_pressed: Callable = func() :) -> void: 
+	var alert: AlertScreen = UIManager.create_alert(
+		"Are you sure you want to exit the game?", 
+		quit_game
+	)
+	alert.yes.pressed.connect(yes_pressed)
+	alert.no.pressed.connect(no_pressed)
+	
+	

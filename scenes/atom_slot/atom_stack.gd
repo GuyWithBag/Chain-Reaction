@@ -60,9 +60,16 @@ func init() -> void:
 	_initialized = true
 
 
-func add_atom(atom_amount: int, new_team: AtomTeam) -> void: 
+func add_atom(atom_amount: int, new_player: AtomPlayer) -> void: 
 	atom_count += atom_amount
-	owner.atom_team = new_team
+	var prev_player: AtomPlayer = owner.atom_player
+	owner.atom_player = new_player
+	if prev_player == null: 
+		return
+	if atom_count <= 0: 
+		prev_player.total_atoms -= max_atom_stack
+	else: 
+		prev_player.total_atoms += atom_amount
 
 
 func reset_atom_count() -> void: 

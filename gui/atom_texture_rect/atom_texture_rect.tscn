@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7bmyvtc4nti6"]
+
+[ext_resource type="Texture2D" uid="uid://sa552rbcuqg5" path="res://scenes/atom_slot/atom.png" id="1_krsov"]
+
+[node name="AtomTextureRect" type="TextureRect"]
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_krsov")
+expand_mode = 1

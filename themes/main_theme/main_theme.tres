@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://xl1ilkogtjb1"]
+
+[ext_resource type="StyleBox" uid="uid://bgu8isqrrg7fb" path="res://themes/main_theme/button_disabled_style_box_flat.tres" id="1_37bfi"]
+[ext_resource type="StyleBox" uid="uid://c055r3l3880jc" path="res://themes/main_theme/button_normal_style_box_flat.tres" id="1_mfd1h"]
+[ext_resource type="StyleBox" uid="uid://40cxok3bnjxw" path="res://themes/main_theme/button_pressed_style_box_flat.tres" id="2_amvi7"]
+[ext_resource type="StyleBox" uid="uid://blcad506d8vjq" path="res://themes/main_theme/button_hover_style_box_flat.tres" id="3_1trb8"]
+[ext_resource type="StyleBox" uid="uid://bx6s1d18visju" path="res://themes/main_theme/panel_style_box.tres" id="3_cnjnq"]
+[ext_resource type="StyleBox" uid="uid://bx8gq0506llqv" path="res://themes/main_theme/panel_container_style_box.tres" id="4_tq7hc"]
+
+[resource]
+Button/styles/disabled = ExtResource("1_37bfi")
+Button/styles/focus = ExtResource("1_mfd1h")
+Button/styles/hover = ExtResource("3_1trb8")
+Button/styles/normal = ExtResource("1_mfd1h")
+Button/styles/pressed = ExtResource("2_amvi7")
+MarginContainer/constants/margin_bottom = 40
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 40
+MarginContainer/constants/margin_top = 40
+OptionButton/styles/normal = ExtResource("1_mfd1h")
+OptionButton/styles/pressed = ExtResource("2_amvi7")
+Panel/styles/panel = ExtResource("3_cnjnq")
+PanelContainer/styles/panel = ExtResource("4_tq7hc")

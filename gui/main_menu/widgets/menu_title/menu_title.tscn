@@ -1,0 +1,182 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdfkti70lo56a"]
+
+[ext_resource type="FontFile" uid="uid://y0e23jq8l7xa" path="res://fonts/zerovelo.ttf" id="1_ahwv1"]
+[ext_resource type="PackedScene" uid="uid://7bmyvtc4nti6" path="res://gui/atom_texture_rect/atom_texture_rect.tscn" id="2_0ndip"]
+
+[sub_resource type="Animation" id="Animation_8dx5i"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mtrhc"]
+resource_name = "atoms_spinning"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7y4ru"]
+_data = {
+"RESET": SubResource("Animation_8dx5i"),
+"atoms_spinning": SubResource("Animation_mtrhc")
+}
+
+[node name="MenuTitle" type="Control"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Reaction" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reaction" type="Label" parent="Reaction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.65214
+anchor_top = -4.904
+anchor_right = -5.65214
+anchor_bottom = -4.904
+offset_left = 64.0857
+offset_top = 213.16
+offset_right = 65.0857
+offset_bottom = 335.16
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ahwv1")
+theme_override_font_sizes/font_size = 105
+text = "eaction"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="R" type="Label" parent="Reaction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.47714
+anchor_top = -5.304
+anchor_right = -9.47714
+anchor_bottom = -4.054
+offset_left = 64.0857
+offset_top = 213.16
+offset_right = 65.0857
+offset_bottom = 335.16
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.607843, 0.898039, 0.392157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahwv1")
+theme_override_font_sizes/font_size = 150
+text = "R
+"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Chain" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chain" type="Label" parent="Chain"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -253.0
+offset_right = -248.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ahwv1")
+theme_override_font_sizes/font_size = 105
+text = " hain "
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="C" type="Label" parent="Chain"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.115714
+anchor_top = -0.076
+anchor_right = 0.00428571
+anchor_bottom = 0.102
+offset_left = -28.0
+offset_top = 113.0
+offset_right = 149.0
+offset_bottom = 308.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahwv1")
+theme_override_font_sizes/font_size = 200
+text = "C"
+metadata/_edit_use_anchors_ = true
+
+[node name="AtomsSpinning" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 558.0
+offset_top = 180.0
+offset_right = 558.0
+offset_bottom = 180.0
+rotation = -1.74447
+metadata/_edit_use_anchors_ = true
+
+[node name="AtomTextureRect" parent="AtomsSpinning" instance=ExtResource("2_0ndip")]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_left = -51.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 102.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AtomTextureRect2" parent="AtomsSpinning" instance=ExtResource("2_0ndip")]
+modulate = Color(1, 0.301961, 0, 1)
+layout_mode = 0
+offset_left = -51.0
+offset_top = -103.0
+offset_right = 49.0
+offset_bottom = -3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AtomsSpinning"]
+autoplay = "atoms_spinning"
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_7y4ru")
+}
