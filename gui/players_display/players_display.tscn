@@ -14,4 +14,6 @@ script = ExtResource("1_2wnbf")
 [node name="GridContainer" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(892, 200)
 layout_mode = 2
-columns = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2

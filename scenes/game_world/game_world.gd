@@ -7,6 +7,7 @@ class_name GameWorld
 @onready var tilemaps: Node2D = get_node("%TileMaps")
 @onready var atom_sprites: Node2D = %AtomSprites
 @onready var atom_particles: Node2D = %AtomParticles
+@onready var cameras: Node2D = $Cameras
 
 @onready var tilemap: TileMap = tilemaps.get_node("AtomSlotsTileMap")
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 	AtomPlayerTurnsManager.changed_current_atom_player_in_turn.connect(_on_changed_current_atom_player_in_turn)
 	GameManager.current_state = GameManager.State.IN_GAME
 	UIManager.set_gui_active(UIManager.player_screen, true)
-	
+	CameraManager.current_camera = cameras.get_child(0)
 #	InGameStateManager.chain_reaction_sequence_finished.connect(
 #		func(): 
 #			tilemap.modulate = AtomPlayersManager.current_atom_player_in_turn.team_color

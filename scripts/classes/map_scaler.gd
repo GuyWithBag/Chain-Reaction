@@ -35,14 +35,8 @@ var vector2_scale: Vector2
 
 
 func _ready() -> void: 
-	atom_sprites.child_entered_tree.connect(_on_child_entered_tree)
-	
-	
-func _on_child_entered_tree(child: Node) -> void: 
-	child.renamed.connect(
-		func(): 
-			child.scale *= vector2_scale
-	)
+	GameManager.map_scaler = self
+
 	
 	
 	

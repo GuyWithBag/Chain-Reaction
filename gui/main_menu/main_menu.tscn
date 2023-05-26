@@ -116,13 +116,12 @@ text = "Single Player
 page_container = NodePath("../..")
 go_to_page = NodePath("../../SinglePlayerModePage")
 
-[node name="Multiplayer2" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Multiplayer2" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 disabled = true
 text = "Multiplayer
 "
 page_container = NodePath("../..")
-go_to_page = NodePath("../../MultiplayerModePage2")
 
 [node name="Back" parent="Control/CenterContainer/MainBody/Pages/GameModesPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2

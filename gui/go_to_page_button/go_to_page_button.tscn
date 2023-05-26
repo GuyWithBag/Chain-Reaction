@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://gui/go_to_page_button/go_to_page_button.gd" id="2_qsjfs"]
 
 [node name="GoToPageButton" instance=ExtResource("1_ch7iv")]
+theme_override_font_sizes/font_size = 0
 text = "Back"
 script = ExtResource("2_qsjfs")
 

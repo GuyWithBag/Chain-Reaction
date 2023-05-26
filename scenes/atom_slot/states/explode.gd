@@ -22,8 +22,11 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 		var _atom_stack: AtomStack = neighbor_atom_slot.atom_stack 
 		var _previous_atom_player: AtomPlayer = AtomPlayerTurnsManager.get_previous_atom_player_turn()
 		_affect_rotation_direction(neighbor_atom_slot)
-		_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn)
+		_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn) 
+#		AtomSlotsManager.data[state_machine_owner.name] = atom_stack.atom_count
+#		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()
+#	print(AtomSlotsManager.data)
 	finished_exploding.emit()
 	
 	

@@ -43,6 +43,8 @@ var current_state: State = State.MENU:
 	set(value): 
 		current_state_changed.emit(value, current_state)
 		current_state = value
+		
+var map_scaler: MapScaler
 
 
 func _ready() -> void: 

@@ -1,9 +1,9 @@
 extends GUI
 
-@onready var team_label: Label = get_node("CenterContainer/VBoxContainer/WinningTeam")
+@onready var team_label: Label = get_node("CenterContainer/VBoxContainer/WinningPlayer")
 @onready var victory_label: Label = get_node("CenterContainer/VBoxContainer/Victory")
 
-var team_labeL_text: String = "Team: %s"
+var team_labeL_text: String = "Player: %s"
 
 
 func _ready() -> void: 

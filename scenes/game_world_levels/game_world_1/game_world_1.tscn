@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="2_82i78"]
 
 [node name="GameWorld1" instance=ExtResource("1_fetwm")]
+follow_viewport_enabled = true
 
 [node name="TileMaps" parent="CenterContainer/Control" index="0"]
 scale = Vector2(2, 2)
@@ -15,6 +16,3 @@ layer_0/tile_data = PackedInt32Array(-393220, 1, 65536, -327684, 1, 65536, -2621
 [node name="MapScaler" parent="CenterContainer/Control" index="3"]
 scale_by_size = 2
 scale = 2.0
-
-[node name="ColorRect" parent="Background" index="0"]
-color = Color(0, 0.290196, 0.337255, 1)

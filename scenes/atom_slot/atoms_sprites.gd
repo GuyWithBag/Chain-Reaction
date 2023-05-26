@@ -2,7 +2,6 @@
 extends Node2D
 class_name AtomsSprites
 
-@export var atom_sprites_group_override_parent: Node2D
 @export var explode_travel_time: float = 0.5
 @export var shaking_speed: float = 0.1
 
@@ -28,25 +27,24 @@ var shaders: Dictionary = {
 
 
 func _ready() -> void: 
-	owner.initialized.connect(_initiate_atom_sprites)
 	rng.randomize()
 	rotation_direction = [-1, 1][rng.randi_range(0, 1)]
 	
 	
 # Adds it outside of the AtomSlot so that the modulate of it is seperate. 
-func _initiate_atom_sprites() -> void: 
+func init() -> void: 
 	var group: Node2D = Node2D.new()
 	atom_sprites_group = group
-	if is_instance_valid(GameManager.game_world): 
-		GameManager.game_world.atom_sprites.add_child(atom_sprites_group) 
-	else: 
-		atom_sprites_group_override_parent.add_child(atom_sprites_group) 
+	GameManager.game_world.atom_sprites.add_child(atom_sprites_group) 
 	atom_sprites_group.global_position = atom_positions.center_position.global_position
+	
 	_add_atom_sprite("up_atom")
 	_add_atom_sprite("left_atom")
 	_add_atom_sprite("down_atom")
 	_add_atom_sprite("right_atom")
+	
 	for atom_sprite in atom_sprites_group.get_children(): 
+		atom_sprite.scale *= GameManager.map_scaler.vector2_scale
 		var orig_values: Dictionary = {
 			"scale" : atom_sprite.scale, 
 			"global_position" : atom_sprite.global_position
@@ -60,7 +58,8 @@ func _add_atom_sprite(variable_to_initialize: String) -> void:
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
 	sprite.texture = load("res://scenes/atom_slot/atom.png")
-	sprite.scale = Vector2(0.2, 0.2)
+	var scale_size: float = 0.1
+	sprite.scale = Vector2(scale_size, scale_size)
 	
 #func hide_and_show_atoms_logic(new_atom_count: int, previous_atom_count: int) -> void: 
 #	var children: Array[Node] = get_children()
@@ -152,11 +151,9 @@ func rotate_atoms(full_rotation_duration: float = 9, override_rotation_direction
 func explode_animation() -> void: 
 	set_atoms_visible(false)
 	rotation_degrees = 0
-	var tilemap_scale: float = GameManager.game_world.tilemaps.scale.x 
-
 	var available_directions: Array[int] = atoms_detector.get_available_directions() 
 	var all_directions: Array = atoms_detector.Directions.keys()
-	var distance: float = 64 * tilemap_scale
+	var distance: float = 40 * GameManager.map_scaler.vector2_scale.x
 	var tween: Tween = create_tween().set_parallel(true)
 	
 	var grow_duration: float = 0.1
@@ -174,6 +171,9 @@ func explode_animation() -> void:
 	tween.tween_property(atom_sprites_group, "visible", false, 0.1)
 	tween.chain()
 	tween.tween_property(atom_sprites_group, "visible", true, 0.1)
+	tween.chain()
+	for atom_sprite in atom_sprites_group.get_children(): 
+		tween.tween_property(atom_sprite, "global_position", atom_positions.center_position.global_position, 0.1)
 	tween.chain()
 	for dir_index in available_directions: 
 		var direction: String = all_directions[dir_index]
@@ -218,7 +218,7 @@ func grow_to_size(tween: Tween, atom_sprite: Sprite2D, to_size: float, grow_dura
 	
 	
 func atom_explode_to(tween: Tween, atom: Sprite2D, distance: Vector2) -> void: 
-	atom_transfer_tween(tween, atom,  atom.global_position + distance)
+	atom_transfer_tween(tween, atom, atom.global_position + distance)
 	
 	
 func atom_transfer_tween(tween: Tween, atom: Sprite2D, to: Vector2) -> void: 
@@ -232,16 +232,18 @@ func change_team_color_to(new_team: AtomPlayer) -> void:
 	right_atom.modulate = new_team.team_color
 
 
-func flash_tween(flash_duration: int, loop: bool = false, loops: int = 0) -> Tween: 
-	var _flash_tween: Tween
+func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0) -> Tween: 
+	var _flash_tween: Tween = create_tween()
 	if loop: 
-		_flash_tween = create_tween().set_loops(loops).set_parallel(true).set_ease(Tween.EASE_IN_OUT)
-	else: 
-		_flash_tween = create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
+		_flash_tween.set_loops(loops)
+	_flash_tween.set_parallel(true).set_ease(Tween.EASE_IN).bind_node(self)
+	var orig_modulate: Color = owner.atom_player.team_color
 	for atom_sprite in atom_sprites_group.get_children(): 
 		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
-		_flash_tween.tween_property(atom_sprite, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, flash_duration)
-	_flash_tween.tween_interval(0.5)
+	_flash_tween.chain()
+	for atom_sprite in atom_sprites_group.get_children():
+		_flash_tween.tween_property(atom_sprite, "modulate", orig_modulate, flash_duration)
+	_flash_tween.tween_interval(1.6) 
 	_flash_tween.play()
 	return _flash_tween
-	
+

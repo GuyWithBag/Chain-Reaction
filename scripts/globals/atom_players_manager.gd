@@ -1,8 +1,10 @@
 extends Node
 
+signal resetted
 signal finished_getting_atom_players(atom_players: Array[AtomPlayer])
+
 signal only_one_team_remaining(last_remaining_atom_player: AtomPlayer)
-signal team_has_been_eliminated(eliminated_atom_player: AtomPlayer, alive_teams: Array[AtomPlayer])
+signal player_has_been_eliminated(eliminated_atom_player: AtomPlayer, alive_teams: Array[AtomPlayer])
 signal only_two_teams_left(atom_player_1: AtomPlayer, atom_player_2: AtomPlayer)
 
 var player_amount: int = 0
@@ -40,6 +42,7 @@ var atom_player_colors: Dictionary = {
 func reset() -> void: 
 	atom_players.clear()
 	atom_players_in_play.clear()
+	resetted.emit()
 	
 # Called by GameManager.start_game() 
 func start_game(_player_amount: int) -> void: 
@@ -74,7 +77,7 @@ func elimnate_team(atom_player: AtomPlayer) -> void:
 #	printerr("AS: ", atom_players_in_play.size())
 #		printerr(atom_player_in_play.team_number)
 	atom_players_in_play.erase(atom_player)
-	team_has_been_eliminated.emit(atom_player, atom_players_in_play)
+	player_has_been_eliminated.emit(atom_player, atom_players_in_play)
 	var atom_players_remaining: int = atom_players_in_play.size()
 	print("AtomPlayersManager: Current teams remaining: %s" % atom_players_remaining)
 	if atom_players_remaining == 2: 

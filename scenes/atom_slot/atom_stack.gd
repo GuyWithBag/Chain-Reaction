@@ -49,6 +49,7 @@ func _ready() -> void:
 		return
 	name_label.text = owner.name.split("@")[2]
 
+
 # Called from GameWorld and AtomSprite's child_entered_tree signal
 func init() -> void: 
 	var atom_slots: Array[AtomSlot] = atoms_detector.get_slot_in_all_directions()
@@ -60,16 +61,18 @@ func init() -> void:
 	_initialized = true
 
 
-func add_atom(atom_amount: int, new_player: AtomPlayer) -> void: 
-	atom_count += atom_amount
+func add_atom(added_atoms: int, new_player: AtomPlayer) -> void: 
+	var atom_count_to_minus: int = atom_count
+	atom_count += added_atoms
 	var prev_player: AtomPlayer = owner.atom_player
+	
+	# The colonizer will then receive their new atom amount
 	owner.atom_player = new_player
-	if prev_player == null: 
-		return
-	if atom_count <= 0: 
-		prev_player.total_atoms -= max_atom_stack
-	else: 
-		prev_player.total_atoms += atom_amount
+	# If the count becomes 0, it means that the current/previous atom player of this will lose some atoms
+	if prev_player != new_player && prev_player != null: 
+		prev_player.total_atoms -= atom_count_to_minus
+		
+	new_player.total_atoms += added_atoms
 
 
 func reset_atom_count() -> void: 

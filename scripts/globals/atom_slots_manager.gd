@@ -4,13 +4,8 @@ var tilemap: TileMap
 
 var initialized: bool = false
 
-func init() -> void: 
-	if initialized: 
-		return 
-	tilemap = get_tree().current_scene.tilemap
-	for atom_slot in tilemap.get_children(): 
-		atom_slot.atom_stack.init()
-	initialized = true
+# AtomSlotName : AtomCount 
+var data: Dictionary = {}
 
 
 #func get_total_max_atom_stack() -> int: 

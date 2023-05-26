@@ -48,6 +48,7 @@ func _physics_process(_delta):
 
 func init() -> void: 
 	atom_stack.init()
+	atoms_sprites.init()
 	_initialized = true
 	initialized.emit()
 
@@ -62,6 +63,11 @@ func _on_finished_exploding() -> void:
 
 
 func _on_touch_screen_button_pressed() -> void:
+	state_machine.get_state("Explode").started_exploding.connect(
+		func(): 
+			CameraManager.shake_camera(0.1, 6)
+	, CONNECT_ONE_SHOT
+	)
 	player_interact()
 
 
@@ -79,7 +85,7 @@ func player_interact() -> void:
 		return
 	print("AtomSlot (%s): Placed atom here" % name)
 	atom_stack.add_atom(1, atom_player) 
-	atom_added.emit() 
+	atom_added.emit()
 	if AtomPlayerTurnsManager.is_awaiting_turn(): 
 		AtomPlayerTurnsManager.next_turn()
 	

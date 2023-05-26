@@ -10,7 +10,7 @@ var current_camera: Camera2D:
 var original_position: Vector2
 
 
-func shake_camera(shaking_duration: float, loops: int) -> void: 
+func shake_camera(shaking_duration: float = 0.1, loops: int = 4) -> void: 
 	var shake_tween: Tween = create_tween().set_loops(loops) 
 	var min_range: int = 1 
 	var max_range: int = 7
@@ -27,7 +27,5 @@ func shake_camera(shaking_duration: float, loops: int) -> void:
 	shake_tween.tween_property(current_camera, "position", original_position + new_position, shaking_duration)
 	shake_tween.tween_property(current_camera, "position", original_position, shaking_duration)
 	shake_tween.play()
-	await shake_tween.finished
-	shake_tween.stop()
 	
 	
