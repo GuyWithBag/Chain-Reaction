@@ -13,7 +13,7 @@ func play_particle(particle_name: String, to_global_position: Vector2) -> void:
 		printerr("AtomsParticles: %s particle cannot be found" % particle_name) 
 		return
 	var particle: GPUParticles2D = load(particles[particle_id]).instantiate() 
-	var atom_particles: Node2D = game_world.atom_particles
+	var atom_particles: Node2D = get_tree().current_scene.get_node("%AtomParticles")
 	var atom_particles_group: Node2D = Node2D.new()
 	atom_particles.add_child(atom_particles_group)
 	atom_particles_group.add_child(particle)

@@ -22,6 +22,7 @@ func _ready() -> void:
 	GameManager.current_state = GameManager.State.IN_GAME
 	UIManager.set_gui_active(UIManager.player_screen, true)
 	CameraManager.current_camera = cameras.get_child(0)
+	GameplayManager.winnable = true
 #	InGameStateManager.chain_reaction_sequence_finished.connect(
 #		func(): 
 #			tilemap.modulate = AtomPlayersManager.current_atom_player_in_turn.team_color

@@ -24,6 +24,14 @@ var pause_menu_gui: GUI
 
 func _ready() -> void:
 	deactivate_in_game_children()
+	GameManager.current_state_changed.connect(
+		func(new_game_state, old_game_state): 
+			if new_game_state == GameManager.State.IN_GAME || new_game_state == GameManager.State.PAUSED: 
+				layer = 4 
+			else: 
+				layer = 2
+	)
+	GameplayManager.winnable = true
 	
 	
 func platform_init() -> void: 

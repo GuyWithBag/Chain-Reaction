@@ -28,11 +28,7 @@ var current_atoms: int = 0:
 
 var game_world: GameWorld
 
-var game_start_data: GameStartData = GameStartData.new(
-	MapsLoader.get_map("Game World 1"), 
-	GameMode.new(0), 
-	2
-)
+var game_start_data: GameStartData
 
 const UNIT_SIZE: int = 32
 

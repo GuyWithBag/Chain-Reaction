@@ -31,11 +31,12 @@ func _ready() -> void:
 	rotation_direction = [-1, 1][rng.randi_range(0, 1)]
 	
 	
+# This is initialzied after the first physics process frame of the atom slot
 # Adds it outside of the AtomSlot so that the modulate of it is seperate. 
 func init() -> void: 
 	var group: Node2D = Node2D.new()
 	atom_sprites_group = group
-	GameManager.game_world.atom_sprites.add_child(atom_sprites_group) 
+	get_tree().current_scene.get_node("%AtomSprites").add_child(atom_sprites_group) 
 	atom_sprites_group.global_position = atom_positions.center_position.global_position
 	
 	_add_atom_sprite("up_atom")
@@ -44,10 +45,10 @@ func init() -> void:
 	_add_atom_sprite("right_atom")
 	
 	for atom_sprite in atom_sprites_group.get_children(): 
-		atom_sprite.scale *= GameManager.map_scaler.vector2_scale
+		atom_sprite.scale *= get_tree().current_scene.get_node("%MapScaler").vector2_scale
 		var orig_values: Dictionary = {
 			"scale" : atom_sprite.scale, 
-			"global_position" : atom_sprite.global_position
+			"global_position" : atom_sprite.global_position 
 		}
 		atom_sprites_orig_values.append(orig_values)
 	set_atoms_visible(false)
@@ -58,7 +59,7 @@ func _add_atom_sprite(variable_to_initialize: String) -> void:
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
 	sprite.texture = load("res://scenes/atom_slot/atom.png")
-	var scale_size: float = 0.1
+	var scale_size: float = 0.2
 	sprite.scale = Vector2(scale_size, scale_size)
 	
 #func hide_and_show_atoms_logic(new_atom_count: int, previous_atom_count: int) -> void: 
@@ -242,8 +243,8 @@ func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0) -> T
 		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
 	_flash_tween.chain()
 	for atom_sprite in atom_sprites_group.get_children():
-		_flash_tween.tween_property(atom_sprite, "modulate", orig_modulate, flash_duration)
-	_flash_tween.tween_interval(1.6) 
+		_flash_tween.tween_property(atom_sprite, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, flash_duration)
+	_flash_tween.tween_interval(1.2) 
 	_flash_tween.play()
 	return _flash_tween
 

@@ -5,8 +5,8 @@ enum Pages {
 	MAIN, 
 }
 
-@onready var pages: TabContainer = get_node("ColorRect/CenterContainer/TabContainer") 
-@onready var main: ReferenceRect = get_node("ColorRect/CenterContainer/TabContainer/Main")
+@onready var pages: TabContainer = get_node("CenterContainer/TabContainer") 
+@onready var main: ReferenceRect = get_node("CenterContainer/TabContainer/Main")
 
 
 func _ready() -> void: 

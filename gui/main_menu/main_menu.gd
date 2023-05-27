@@ -5,6 +5,23 @@ extends MenuGUI
 var player_amount: int: 
 	get: 
 		return player_amount_selector.player_amount
+		
+
+func _ready(): 
+	GameManager.current_state = GameManager.State.MENU
+	CameraManager.current_camera = get_tree().current_scene.get_node("%Cameras/Camera2D")
+	UIManager.set_gui_active(UIManager.player_screen, false)
+	ChainReactionSequenceManager.reset()
+	AtomPlayerTurnsManager.reset()
+	AtomPlayersManager.reset()
+	var game_start_data: GameStartData = GameStartData.new(
+		MapsLoader.get_map("Game World 1"), 
+		GameMode.new(GameMode.VS_PLAYERS), 
+		3
+	)
+	AtomPlayersManager.start_game(game_start_data.player_amount)
+	GameplayManager.current_gameplay_game_start_data = game_start_data
+	GameplayManager.winnable = false
 
 
 func _on_exit_game_pressed() -> void:

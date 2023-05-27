@@ -13,7 +13,7 @@ func format_text(format: Array[String]) -> void:
 
 
 func change_panel_color(new_color: Color) -> void: 
-	var style_box: StyleBoxFlat = panel.theme.get_stylebox("panel", "ScoreboardPanelContainer").duplicate() 
+	var style_box: StyleBoxFlat = theme.get_stylebox("panel", "ScoreboardPanelContainer").duplicate() 
 	style_box.bg_color = new_color
 	panel.add_theme_stylebox_override("panel", style_box) 
 	

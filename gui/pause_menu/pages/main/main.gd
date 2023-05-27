@@ -1,10 +1,11 @@
 extends ReferenceRect
 
-@onready var pause_menu: GUI = $"../../../.."
+@onready var pause_menu: GUI = $"../../../"
 
 
 func _on_resume_pressed() -> void:
 	UIManager.set_gui_active(UIManager.pause_menu, false)
+
 
 
 func _on_exit_game_pressed() -> void:

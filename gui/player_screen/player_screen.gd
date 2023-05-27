@@ -7,3 +7,5 @@ func _on_platform_changed(new_platform, previous_platform) -> void:
 	touch_screen_controls = mobile.get_node("TouchScreenControls")
 
 
+func set_active(value: bool) -> void: 
+	super.set_active(value) 

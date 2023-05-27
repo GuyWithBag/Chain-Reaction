@@ -63,11 +63,9 @@ func _on_finished_exploding() -> void:
 
 
 func _on_touch_screen_button_pressed() -> void:
-	state_machine.get_state("Explode").started_exploding.connect(
-		func(): 
-			CameraManager.shake_camera(0.1, 6)
-	, CONNECT_ONE_SHOT
-	)
+	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && atom_player == current_atom_player: 
+		CameraManager.shake_camera(0.1, 3, 10, 25)
 	player_interact()
 
 

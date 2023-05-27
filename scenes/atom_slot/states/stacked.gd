@@ -16,7 +16,7 @@ func exit() -> void:
 		rotate_tween_1.stop()
 
 
-func _on_atoms_added() -> void: 
+func _on_atoms_added(_atom_amount_added: int, _new_team: AtomPlayer) -> void: 
 	if atom_stack.atom_count == 2: 
 		rotate_tween_1.stop()
 		rotate_tween_2 = atoms_sprites.rotate_atoms(1.7)

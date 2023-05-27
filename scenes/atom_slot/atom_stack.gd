@@ -1,35 +1,27 @@
-@tool
 extends Node
 class_name AtomStack
 
 signal initialized
 
-signal atoms_count_reseted
-signal atoms_added
+signal atoms_count_resetted(atom_amount_reseted: int)
+signal atoms_back_to_zero
+
+signal atoms_added(atom_amount_added: int, new_player: AtomPlayer)
+signal atoms_removed(atom_amount_removed: int)
+
 signal atoms_maxxed
-signal atoms_over_added
+signal atoms_overloaded
 
 @export var atom_count: int = 0: 
 	set(value): 
 		if Engine.is_editor_hint(): 
 			atoms_sprites = $"../AtomsSprites"
-		var _previous_count: int = atom_count
-		if value == max_atom_stack - 1: 
-			atoms_maxxed.emit()
-		if atom_count <= 0: 
-			atoms_count_reseted.emit()
-		atom_count = clamp(value, 0, max_atom_stack)
-		if atom_count > 0: 
-			atoms_added.emit()
-		if atom_count >= max_atom_stack: 
-			atom_count = 0
-			atoms_over_added.emit()
-		if stack_label:
-			stack_label.text = str(atom_count)
-#		atoms_sprites.hide_and_show_atoms_logic(atom_count, previous_count)
-		atoms_sprites.arrange_atoms()
+		var previous_count: int = atom_count
 
-@export_range(1, 4) var max_atom_stack: int = 4: 
+		atom_count = value
+		
+		
+@export_range(1, 4) var max_atom_stack: int = 3: 
 	set(value): 
 		if value <= 0: 
 			printerr("AtomStack (%s): max_atom_stack is set to 0. There is something wrong in the code. " % owner.name)
@@ -54,7 +46,7 @@ func _ready() -> void:
 func init() -> void: 
 	var atom_slots: Array[AtomSlot] = atoms_detector.get_slot_in_all_directions()
 	var atom_slots_count: int = atom_slots.size()
-	max_atom_stack = atom_slots_count
+	max_atom_stack = (atom_slots_count - 1)
 	if max_stack_label: 
 		max_stack_label.text = str(max_atom_stack)
 	initialized.emit()
@@ -62,22 +54,46 @@ func init() -> void:
 
 
 func add_atom(added_atoms: int, new_player: AtomPlayer) -> void: 
-	var atom_count_to_minus: int = atom_count
+	var previous_count: int = atom_count
 	atom_count += added_atoms
 	var prev_player: AtomPlayer = owner.atom_player
-	
+	if atom_count == max_atom_stack: 
+		atoms_maxxed.emit() 
+	if atom_count <= 0: 
+		atoms_back_to_zero.emit()
+	if atom_count > 0: 
+		atoms_added.emit(atom_count - previous_count, new_player)
+	if atom_count > max_atom_stack: 
+		atom_count = 0
+		atoms_overloaded.emit()
+	if stack_label:
+		stack_label.text = str(atom_count)
 	# The colonizer will then receive their new atom amount
 	owner.atom_player = new_player
 	# If the count becomes 0, it means that the current/previous atom player of this will lose some atoms
 	if prev_player != new_player && prev_player != null: 
-		prev_player.total_atoms -= atom_count_to_minus
-		
-	new_player.total_atoms += added_atoms
+		prev_player.total_atoms -= previous_count
+#		new_player.total_atoms -= previous_count
+		new_player.total_atoms -= previous_count
+		new_player.total_atoms += atom_count
+	else: 
+		new_player.total_atoms += added_atoms
+	atoms_sprites.arrange_atoms()
 
 
+func remove_atoms(atoms_amout_to_remove: int) -> void: 
+	atom_count -= atoms_amout_to_remove
+	atoms_removed.emit(atoms_amout_to_remove)
+	atoms_sprites.arrange_atoms()
+	
+	
 func reset_atom_count() -> void: 
+	owner.atom_player.total_atoms -= atom_count
+	print(atom_count)
+	var prev_count: int = atom_count
 	atom_count = 0
-	atoms_count_reseted.emit()
+	atoms_count_resetted.emit(prev_count)
+	atoms_sprites.arrange_atoms()
 	
 	
 func is_maxxed() -> bool: 

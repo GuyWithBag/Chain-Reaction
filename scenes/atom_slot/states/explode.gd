@@ -17,12 +17,23 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 	for neighbor_atom_slot in neighbor_atom_slots: 
 		ChainReactionSequenceManager.add_sequence(neighbor_atom_slot.sequence) 
 	started_exploding.emit()
+	var shake_cam_duration: float = 0.1
+	var shake_cam_loops: int = 3
+	if CameraManager.shaking: 
+		CameraManager.finished_shaking.connect(
+			func(): 
+				CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
+		, CONNECT_ONE_SHOT
+		)
+	else: 
+		CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
 	await atoms_sprites.explode_animation() 
 	for neighbor_atom_slot in neighbor_atom_slots: 
-		var _atom_stack: AtomStack = neighbor_atom_slot.atom_stack 
+		var neighbor_atom_stack: AtomStack = neighbor_atom_slot.atom_stack 
 		var _previous_atom_player: AtomPlayer = AtomPlayerTurnsManager.get_previous_atom_player_turn()
 		_affect_rotation_direction(neighbor_atom_slot)
-		_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn) 
+#		atom_stack.reset_atom_count()
+		neighbor_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn) 
 #		AtomSlotsManager.data[state_machine_owner.name] = atom_stack.atom_count
 #		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()

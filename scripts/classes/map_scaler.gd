@@ -30,8 +30,8 @@ enum Size {
 var vector2_scale: Vector2
 
 @onready var maps: Node2D = get_node("%TileMaps")
-@onready var atom_sprites: Node2D = get_node("%AtomSprites")
-@onready var atom_particles: Node2D = get_node("%AtomParticles")
+#@onready var atom_sprites: Node2D = get_node("%AtomSprites")
+#@onready var atom_particles: Node2D = get_node("%AtomParticles")
 
 
 func _ready() -> void: 
