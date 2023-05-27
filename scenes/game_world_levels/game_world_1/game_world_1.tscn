@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="2_82i78"]
 
 [node name="GameWorld1" instance=ExtResource("1_fetwm")]
-follow_viewport_enabled = true
 
 [node name="AtomSlotsTileMap" parent="CanvasLayer/CenterContainer/Control/TileMaps" index="0" instance=ExtResource("2_82i78")]
 scale = Vector2(0.75, 0.75)

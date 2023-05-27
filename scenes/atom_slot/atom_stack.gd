@@ -75,7 +75,8 @@ func add_atom(added_atoms: int, new_player: AtomPlayer) -> void:
 		prev_player.total_atoms -= previous_count
 #		new_player.total_atoms -= previous_count
 		new_player.total_atoms -= previous_count
-		new_player.total_atoms += atom_count
+	elif prev_player != null: 
+		new_player.total_atoms += previous_count + added_atoms
 	else: 
 		new_player.total_atoms += added_atoms
 	atoms_sprites.arrange_atoms()
