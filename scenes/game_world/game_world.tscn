@@ -5,11 +5,11 @@
 
 [node name="GameWorld" type="CanvasLayer"]
 layer = 3
+follow_viewport_enabled = true
 script = ExtResource("1_68tt8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
-follow_viewport_enabled = true
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15

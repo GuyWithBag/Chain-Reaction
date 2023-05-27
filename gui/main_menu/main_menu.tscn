@@ -15,11 +15,11 @@
 
 [node name="MainMenu" type="CanvasLayer"]
 layer = 3
+follow_viewport_enabled = true
 script = ExtResource("1_hdem2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
-follow_viewport_enabled = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -54,6 +54,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_r060v")
 tabs_visible = false
 
 [node name="MainPage" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -93,7 +94,7 @@ go_to_page = NodePath("../../../GameModesPage")
 layout_mode = 2
 text = "Options"
 page_container = NodePath("../../..")
-go_to_page = NodePath("../../../GameModesPage")
+go_to_page = NodePath("../../../OptionsPage")
 
 [node name="ExitGame" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options" instance=ExtResource("3_5i3wu")]
 layout_mode = 2
@@ -153,17 +154,46 @@ layout_mode = 2
 page_container = NodePath("../..")
 go_to_page = NodePath("../../GameModesPage")
 
-[node name="MultiplayerModePage2" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
+[node name="MultiplayerModePage" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="OptionsPage" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
-visible = false
+[node name="OptionsPage" type="PanelContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
-alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1159)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Options" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(0, 1159)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="GoToPageButton" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+custom_minimum_size = Vector2(370, 100)
+layout_mode = 2
+page_container = NodePath("../../../../..")
+go_to_page = NodePath("../../../../../MainPage")
 
 [node name="ChooseMapPage" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
 visible = false
