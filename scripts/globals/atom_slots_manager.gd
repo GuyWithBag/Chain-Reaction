@@ -1,5 +1,10 @@
 extends Node
 
+signal atom_slot_exploded(atom_slot: AtomSlot)
+
+signal atom_removed
+signal atom_added(atom_amount_added: int, new_player: AtomPlayer)
+
 var tilemap: TileMap 
 
 var initialized: bool = false
@@ -23,3 +28,13 @@ var data: Dictionary = {}
 #		return true
 #	return false
 
+
+func get_all_atom_slots() -> Dictionary: 
+	var atom_slots: Dictionary = {}
+	for atom_slot in get_tree().get_nodes_in_group("AtomSlot"): 
+		atom_slots[atom_slot.name] = atom_slot.atom_stack.atom_count 
+	return atom_slots
+	
+	
+func apply_undo_changes() -> void: 
+	pass

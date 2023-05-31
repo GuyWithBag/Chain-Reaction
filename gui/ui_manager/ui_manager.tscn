@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5ts5013qlih0"]
+[gd_scene load_steps=8 format=3 uid="uid://c5ts5013qlih0"]
 
 [ext_resource type="Script" path="res://gui/ui_manager/ui_manager.gd" id="1_45on3"]
 [ext_resource type="PackedScene" uid="uid://b6lw0o3geo6cm" path="res://gui/pause_menu/pause_menu.tscn" id="2_778fa"]
 [ext_resource type="PackedScene" uid="uid://cu8g1ieo6oi6n" path="res://gui/player_screen/player_screen.tscn" id="3_j6pv1"]
+[ext_resource type="PackedScene" uid="uid://duikn6k2caub1" path="res://gui/atom_counter_effect/atom_counter_effect.tscn" id="4_2c6n2"]
 [ext_resource type="PackedScene" uid="uid://c0dtp63gmnt6" path="res://gui/transitions_manager/transitions_manager.tscn" id="4_uh6xr"]
 [ext_resource type="Script" path="res://gui/ui_manager/debugger/debugger.gd" id="6_3xqmo"]
 [ext_resource type="Script" path="res://gui/ui_manager/debugger/gui_highlighter.gd" id="7_86fn6"]
@@ -27,6 +28,21 @@ layout_mode = 1
 
 [node name="PlayerScreen" parent="InGame" instance=ExtResource("3_j6pv1")]
 layout_mode = 1
+
+[node name="AtomCounterEffect" parent="InGame" instance=ExtResource("4_2c6n2")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.01749
+anchor_top = 1.0
+anchor_right = 1.01749
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -431.0
+offset_right = -215.0
+offset_bottom = -431.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="InstancedUIs" type="Control" parent="."]
 layout_mode = 3

@@ -33,12 +33,17 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 		var _previous_atom_player: AtomPlayer = AtomPlayerTurnsManager.get_previous_atom_player_turn()
 		_affect_rotation_direction(neighbor_atom_slot)
 #		atom_stack.reset_atom_count()
-		neighbor_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn) 
+		neighbor_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn)
+		
+		var shake_animation: ShakeAnimation = ShakeAnimation.new(neighbor_atom_slot, true, 1) 
+		var atom_sprites_group: Node2D = neighbor_atom_slot.atoms_sprites.atom_sprites_group
+		neighbor_atom_slot.atoms_sprites.add_child(shake_animation)
+		shake_animation.shake_object_randomly(atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atom_sprites_group.global_position, 0.05, 3, 15)
 #		AtomSlotsManager.data[state_machine_owner.name] = atom_stack.atom_count
 #		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()
 #	print(AtomSlotsManager.data)
-	finished_exploding.emit()
+	finished_exploding.emit() 
 	
 	
 func _affect_rotation_direction(affected_atom_slot: AtomSlot) -> void: 

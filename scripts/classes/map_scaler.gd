@@ -5,7 +5,8 @@ class_name MapScaler
 enum Size {
 	_64,
 	_96,
-	_128
+	_128, 
+	_160
 }
 
 @export var scale_by_size: Size: 
@@ -18,6 +19,8 @@ enum Size {
 				scale = 1.5
 			Size._128: 
 				scale = 2
+			Size._160: 
+				scale = 2.5
 					
 @export_range(1, 5, 0.1, "or_greater", "or_lesser") var scale: float = 0: 
 	set(value): 
@@ -28,6 +31,9 @@ enum Size {
 			maps.scale = vector2_scale
 
 var vector2_scale: Vector2
+var vector2_scale_relative_to_tilemap_size: Vector2: 
+	get: 
+		return 64 * vector2_scale
 
 @onready var maps: Node2D = get_node("%TileMaps")
 #@onready var atom_sprites: Node2D = get_node("%AtomSprites")

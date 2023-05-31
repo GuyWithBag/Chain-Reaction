@@ -1,8 +1,8 @@
 extends OptionButton
+class_name MapsOptionButton
 
 
 func _ready() -> void: 
-	for map_name in MapsLoader.all_maps.keys(): 
-		add_item(map_name)
-
+	for map_data in MapsLoader.get_all_maps(): 
+		add_item(map_data.map_name)
 

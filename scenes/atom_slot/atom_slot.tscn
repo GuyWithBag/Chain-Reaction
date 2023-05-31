@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="1_3tif2"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
-[ext_resource type="Texture2D" uid="uid://bpg11u2pnuvi7" path="res://resources/tilesets/grid_slot.png" id="2_dxlg5"]
+[ext_resource type="Texture2D" uid="uid://j5jm4583ud31" path="res://resources/tilesets/grid_slot.png" id="2_dxlg5"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_detector.gd" id="3_xclkg"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_stack.gd" id="4_qas13"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atoms_sprites.gd" id="5_3ujwk"]
@@ -35,7 +35,7 @@ _data = {
 [node name="AtomSlot" type="Node2D" node_paths=PackedStringArray("atom_slot_group_label") groups=["AtomSlot"]]
 material = ExtResource("1_3tif2")
 script = ExtResource("1_iyo6a")
-atom_slot_group_label = NodePath("AtomSlotGroupLabel")
+atom_slot_group_label = NodePath("Layer/AtomSlotGroupLabel")
 
 [node name="Grid" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -47,6 +47,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_mjcr6")
 
 [node name="AtomsDetector" type="Node2D" parent="."]
@@ -75,11 +76,12 @@ collide_with_areas = true
 [node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
 script = ExtResource("4_qas13")
 max_atom_stack = 4
-stack_label = NodePath("../StackLabel")
-max_stack_label = NodePath("../MaxStackLabel")
-name_label = NodePath("../NameLabel")
+stack_label = NodePath("../Layer/StackLabel")
+max_stack_label = NodePath("../Layer/MaxStackLabel")
+name_label = NodePath("../Layer/NameLabel")
 
 [node name="AtomPositions" type="Node2D" parent="."]
+visible = false
 script = ExtResource("12_4er3p")
 
 [node name="Single" type="Node2D" parent="AtomPositions"]
@@ -108,6 +110,7 @@ position = Vector2(0, -10)
 [node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
 
 [node name="AtomsSprites" type="Node2D" parent="."]
+visible = false
 script = ExtResource("5_3ujwk")
 
 [node name="AtomsParticles" type="Node2D" parent="."]
@@ -134,8 +137,11 @@ play_particle = "Retro Explosion"
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource("RectangleShape2D_lchgv")
 
-[node name="StackLabel" type="Label" parent="."]
+[node name="Layer" type="Node2D" parent="."]
 visible = false
+z_index = 2
+
+[node name="StackLabel" type="Label" parent="Layer"]
 offset_left = -20.0
 offset_top = -29.0
 offset_right = 20.0
@@ -144,8 +150,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MaxStackLabel" type="Label" parent="."]
-visible = false
+[node name="MaxStackLabel" type="Label" parent="Layer"]
 offset_left = -20.0
 offset_top = 1.0
 offset_right = 20.0
@@ -154,8 +159,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NameLabel" type="Label" parent="."]
-visible = false
+[node name="NameLabel" type="Label" parent="Layer"]
 offset_left = -22.0
 offset_top = -16.0
 offset_right = 25.0
@@ -164,8 +168,7 @@ text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AtomSlotGroupLabel" type="Label" parent="."]
-visible = false
+[node name="AtomSlotGroupLabel" type="Label" parent="Layer"]
 offset_left = 2.0
 offset_top = -15.0
 offset_right = 49.0

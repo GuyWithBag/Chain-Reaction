@@ -27,6 +27,7 @@ GameplayManager="*res://scripts/globals/gameplay_manager.gd"
 MapsLoader="*res://scripts/globals/maps_loader.gd"
 GameManager="*res://scripts/globals/game_manager.gd"
 CameraManager="*res://scripts/globals/camera_manager.gd"
+UndoHistoryManager="*res://scripts/globals/undo_history_manager.gd"
 
 [display]
 

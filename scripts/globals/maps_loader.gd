@@ -11,3 +11,10 @@ func get_map(map_name: String) -> MapData:
 	return all_maps[map_id]
 	
 	
+func get_all_maps() -> Array[MapData]: 
+	var maps: Array[MapData] = []
+	for map_data in MapsLoader.all_maps.values(): 
+		maps.append(map_data)
+	return maps
+	
+	

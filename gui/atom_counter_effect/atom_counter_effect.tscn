@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://duikn6k2caub1"]
+
+[ext_resource type="Script" path="res://gui/atom_counter_effect/atom_counter_effect.gd" id="1_nfn6h"]
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_iurpo"]
+
+[node name="AtomCounterEffect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nfn6h")
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -113.0
+offset_right = 21.0
+offset_bottom = 126.0
+theme = ExtResource("2_iurpo")
+theme_type_variation = &"WonLabel"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

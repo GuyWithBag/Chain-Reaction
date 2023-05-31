@@ -1,0 +1,562 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu67syd0d2oyr"]
+
+[ext_resource type="Script" path="res://gui/player_amount_display/player_amount_display.gd" id="1_trhyv"]
+[ext_resource type="PackedScene" uid="uid://7bmyvtc4nti6" path="res://gui/atom_texture_rect/atom_texture_rect.tscn" id="2_7k845"]
+[ext_resource type="Script" path="res://gui/player_amount_display/animations.gd" id="3_pn721"]
+[ext_resource type="Script" path="res://gui/player_amount_display/player_amount_display_animations.gd" id="4_h1u8f"]
+
+[node name="PlayerAmountDisplay" type="Control"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_bottom = 298.0
+script = ExtResource("1_trhyv")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Positions" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="OnePlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/OnePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TwoPlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/TwoPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -63.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="2" type="Control" parent="Positions/TwoPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = 37.0
+offset_right = -2.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ThreePlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/ThreePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="2" type="Control" parent="Positions/ThreePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 37.0
+offset_right = -50.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="3" type="Control" parent="Positions/ThreePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 37.0
+offset_right = 50.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="FourPlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/FourPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -34.0
+offset_right = -23.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="2" type="Control" parent="Positions/FourPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = 37.0
+offset_right = -73.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="3" type="Control" parent="Positions/FourPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 37.0
+offset_right = 25.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="4" type="Control" parent="Positions/FourPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -34.0
+offset_right = 75.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="FIvePlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/FIvePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -34.0
+offset_right = -48.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/FIvePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 37.0
+offset_right = -98.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/FIvePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 37.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/FIvePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -34.0
+offset_right = 50.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/FIvePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 37.0
+offset_right = 100.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SixPlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -12.0
+offset_right = -48.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 59.0
+offset_right = -98.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 59.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 59.0
+offset_right = 100.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/SixPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -87.0
+offset_right = 2.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SevenPlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -46.0
+offset_right = -98.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 49.0
+offset_right = -98.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -46.0
+offset_right = 100.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 49.0
+offset_right = 100.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -12.0
+offset_right = 38.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="7" type="Control" parent="Positions/SevenPlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.0
+offset_right = -50.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprites" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AtomTextureRect" parent="Sprites" instance=ExtResource("2_7k845")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -63.0
+offset_right = 0.0
+offset_bottom = -63.0
+
+[node name="AtomTextureRect2" parent="Sprites" instance=ExtResource("2_7k845")]
+layout_mode = 1
+offset_left = -2.0
+offset_top = 37.0
+offset_right = -2.0
+offset_bottom = 37.0
+
+[node name="AtomTextureRect3" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 50.0
+offset_top = 37.0
+offset_right = 50.0
+offset_bottom = 37.0
+
+[node name="AtomTextureRect4" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 75.0
+offset_top = -34.0
+offset_right = 75.0
+offset_bottom = -34.0
+
+[node name="AtomTextureRect5" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 100.0
+offset_top = 37.0
+offset_right = 100.0
+offset_bottom = 37.0
+
+[node name="AtomTextureRect6" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 2.0
+offset_top = -87.0
+offset_right = 2.0
+offset_bottom = -87.0
+
+[node name="AtomTextureRect7" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = -50.0
+offset_top = -12.0
+offset_right = -50.0
+offset_bottom = -12.0
+
+[node name="TweenAnimations" type="Node" parent="."]
+script = ExtResource("3_pn721")
+
+[node name="PlayerAmountDisplayAnimations" type="Node" parent="."]
+script = ExtResource("4_h1u8f")

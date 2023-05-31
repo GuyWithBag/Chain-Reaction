@@ -15,17 +15,14 @@ func _ready() -> void:
 
 func set_active(value: bool): 
 	super.set_active(value)
-	pause(value) 
+	GameManager.pause_game(value) 
 	set_process_unhandled_input(value)
 	if value: 
 		GameManager.current_state = GameManager.State.PAUSED
 		UIManager.set_process_input(false)
 	else: 
 		GameManager.current_state = GameManager.State.IN_GAME
-
-
-func pause(value: bool):
-	GameManager.pause_game(value)
+		UIManager.set_process_input(true)
 
 
 func _input(_event: InputEvent) -> void: 

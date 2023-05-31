@@ -35,7 +35,14 @@ func _ready() -> void:
 func _on_changed_current_atom_player_in_turn(_previous_atom_player: AtomPlayer, _current_atom_player: AtomPlayer) -> void: 
 	if AtomPlayerTurnsManager.is_chain_reacting(): 
 		await ChainReactionSequenceManager.chain_reaction_sequence_finished
-	change_grid_modulate_to_current_team_in_turn()
+	animate_change_grid_modulate_to_current_team_in_turn() 
+	
+	
+func animate_change_grid_modulate_to_current_team_in_turn() -> void: 
+	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
+		return
+	var tween: Tween = create_tween() 
+	tween.tween_property(tilemap, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.3)
 	
 	
 func change_grid_modulate_to_current_team_in_turn() -> void: 

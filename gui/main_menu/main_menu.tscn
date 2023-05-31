@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvwqa3rt76c1g"]
+[gd_scene load_steps=14 format=3 uid="uid://bvwqa3rt76c1g"]
 
 [ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_hdem2"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_btats"]
@@ -7,7 +7,9 @@
 [ext_resource type="Material" uid="uid://bwc8hu0g0ay2i" path="res://shaders/gaussian_blur/gaussian_blur.tres" id="3_u1j3o"]
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="4_1rbl0"]
 [ext_resource type="PackedScene" uid="uid://dywfhsj105pmo" path="res://gui/main_menu/widgets/player_amount_selector/player_amount_selector.tscn" id="4_ax4so"]
-[ext_resource type="PackedScene" uid="uid://ckqv3conn5rkn" path="res://gui/maps_option_button/maps_option_button.tscn" id="5_jkcx5"]
+[ext_resource type="PackedScene" uid="uid://bu67syd0d2oyr" path="res://gui/player_amount_display/player_amount_display.tscn" id="6_jtawn"]
+[ext_resource type="PackedScene" uid="uid://dpg5sen3yxuwn" path="res://gui/choose_map_display/choose_map_display.tscn" id="8_8bwo4"]
+[ext_resource type="PackedScene" uid="uid://c6nrqjx1lvng7" path="res://gui/options_menu/options_menu.tscn" id="8_1205d"]
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="8_ha82a"]
 [ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="9_1lura"]
 
@@ -85,11 +87,13 @@ alignment = 1
 
 [node name="PlayGame" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
+theme_type_variation = &"PlayGameButton"
 text = "Play Game"
 page_container = NodePath("../../..")
 go_to_page = NodePath("../../../GameModesPage")
 
 [node name="Options" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+visible = false
 layout_mode = 2
 text = "Options"
 page_container = NodePath("../../..")
@@ -131,6 +135,9 @@ layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
+[node name="PlayerAmountDIsplay" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" instance=ExtResource("6_jtawn")]
+layout_mode = 2
+
 [node name="PlayerAmount" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage" instance=ExtResource("4_ax4so")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -159,70 +166,29 @@ layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="OptionsPage" type="PanelContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1159)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="Options" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 1159)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 2
-
-[node name="GoToPageButton" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsPage/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
-custom_minimum_size = Vector2(370, 100)
-layout_mode = 2
-page_container = NodePath("../../../../..")
-go_to_page = NodePath("../../../../../MainPage")
-
 [node name="ChooseMapPage" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="MapImage" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage"]
-custom_minimum_size = Vector2(500, 888)
-layout_mode = 2
-
-[node name="ChooseMapLabel" type="Label" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Choose A Map"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MapsOptionButton" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("5_jkcx5")]
+[node name="ChooseMapDisplay" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("8_8bwo4")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="StartGame" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("3_5i3wu")]
 layout_mode = 2
+theme_type_variation = &"PlayGameButton"
 text = "Start Game"
 
 [node name="Back" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 page_container = NodePath("../..")
 go_to_page = NodePath("../../SinglePlayerModePage")
+
+[node name="OptionsPage" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages" instance=ExtResource("8_1205d")]
+visible = false
+layout_mode = 2
 
 [node name="Background" type="Control" parent="CanvasLayer/Control"]
 material = ExtResource("3_u1j3o")
@@ -272,7 +238,7 @@ mouse_filter = 2
 
 [node name="TileMaps" type="Node2D" parent="CanvasLayer/Control/Background/Background2/Control"]
 unique_name_in_owner = true
-modulate = Color(0, 0.243137, 0.282353, 1)
+modulate = Color(0, 0.705882, 0.807843, 1)
 position = Vector2(-510, -891)
 scale = Vector2(2, 2)
 
@@ -300,6 +266,9 @@ unique_name_in_owner = true
 position = Vector2(486, 864)
 
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="player_amount_changed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/PlayerAmount" to="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/PlayerAmountDIsplay" method="_on_player_amount_player_amount_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsPlayers" to="." method="_on_vs_players_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsAI" to="." method="_on_vs_ai_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/StartGame" to="." method="_on_start_game_pressed"]
+
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/ChooseMapDisplay"]

@@ -49,6 +49,10 @@ func init() -> void:
 	max_atom_stack = (atom_slots_count - 1)
 	if max_stack_label: 
 		max_stack_label.text = str(max_atom_stack)
+	atoms_added.connect(
+		func(atom_amount_added: int, new_player: AtomPlayer): 
+			AtomSlotsManager.atom_added.emit(atom_amount_added, new_player)
+	)
 	initialized.emit()
 	_initialized = true
 
@@ -68,17 +72,24 @@ func add_atom(added_atoms: int, new_player: AtomPlayer) -> void:
 		atoms_overloaded.emit()
 	if stack_label:
 		stack_label.text = str(atom_count)
+	if prev_player:
+		owner.remove_from_group(prev_player.group_name)
+	owner.add_to_group(new_player.group_name)
+#	new_player.total_atoms = AtomPlayersManager.get_total_atoms_count(new_player)
 	# The colonizer will then receive their new atom amount
 	owner.atom_player = new_player
+	for atom_player in AtomPlayersManager.atom_players_in_play: 
+		var atom_count: int = AtomPlayersManager.get_total_atoms_count(atom_player)
+		atom_player.total_atoms = atom_count
 	# If the count becomes 0, it means that the current/previous atom player of this will lose some atoms
-	if prev_player != new_player && prev_player != null: 
-		prev_player.total_atoms -= previous_count
-#		new_player.total_atoms -= previous_count
-		new_player.total_atoms -= previous_count
-	elif prev_player != null: 
-		new_player.total_atoms += previous_count + added_atoms
-	else: 
-		new_player.total_atoms += added_atoms
+#	if prev_player != new_player && prev_player != null: 
+#		prev_player.total_atoms -= previous_count
+#		new_player.total_atoms += previous_count
+##		new_player.total_atoms -= previous_count
+#	elif prev_player == null: 
+#		pass
+#	else: 
+#		new_player.total_atoms += added_atoms
 	atoms_sprites.arrange_atoms()
 
 
@@ -90,7 +101,6 @@ func remove_atoms(atoms_amout_to_remove: int) -> void:
 	
 func reset_atom_count() -> void: 
 	owner.atom_player.total_atoms -= atom_count
-	print(atom_count)
 	var prev_count: int = atom_count
 	atom_count = 0
 	atoms_count_resetted.emit(prev_count)

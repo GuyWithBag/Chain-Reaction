@@ -1,16 +1,26 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://xl1ilkogtjb1"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://xl1ilkogtjb1"]
 
 [ext_resource type="StyleBox" uid="uid://bgu8isqrrg7fb" path="res://themes/main_theme/button_disabled_style_box_flat.tres" id="1_37bfi"]
+[ext_resource type="StyleBox" uid="uid://5473psn62ja3" path="res://themes/main_theme/alert_box_panel_container_style_box.tres" id="1_ck0yl"]
 [ext_resource type="StyleBox" uid="uid://c055r3l3880jc" path="res://themes/main_theme/button_normal_style_box_flat.tres" id="1_mfd1h"]
 [ext_resource type="StyleBox" uid="uid://40cxok3bnjxw" path="res://themes/main_theme/button_pressed_style_box_flat.tres" id="2_amvi7"]
+[ext_resource type="StyleBox" uid="uid://6ihaaeltpmad" path="res://themes/main_theme/appbar_panel_container_style_box.tres" id="2_b8aqp"]
 [ext_resource type="StyleBox" uid="uid://blcad506d8vjq" path="res://themes/main_theme/button_hover_style_box_flat.tres" id="3_1trb8"]
 [ext_resource type="StyleBox" uid="uid://bx6s1d18visju" path="res://themes/main_theme/panel_style_box.tres" id="3_cnjnq"]
 [ext_resource type="StyleBox" uid="uid://bx8gq0506llqv" path="res://themes/main_theme/panel_container_style_box.tres" id="4_tq7hc"]
 [ext_resource type="FontFile" uid="uid://y0e23jq8l7xa" path="res://fonts/zerovelo.ttf" id="5_qkwt5"]
+[ext_resource type="StyleBox" uid="uid://ci5xfdpts3jff" path="res://themes/main_theme/map_image_panel_style_box.tres" id="6_qpmll"]
+[ext_resource type="StyleBox" uid="uid://xxd8vjjiktdf" path="res://themes/main_theme/map_image_panel_inner_style_box.tres" id="7_1asdt"]
 [ext_resource type="StyleBox" uid="uid://hpxg2l3kuxry" path="res://themes/main_theme/vscroll_grabber_style_box_flat.tres" id="7_issv5"]
 [ext_resource type="FontFile" uid="uid://blm7bw7c7nwar" path="res://fonts/tt/zrnic rg.ttf" id="7_mb3jg"]
+[ext_resource type="StyleBox" uid="uid://nfs5vjl1hqya" path="res://themes/main_theme/option_button_focus_style_box.tres" id="8_adgu0"]
+[ext_resource type="StyleBox" uid="uid://bxbrl3u8l3yu3" path="res://themes/main_theme/option_button_pressed_style_box.tres" id="8_ee3jf"]
+[ext_resource type="StyleBox" uid="uid://dsrdkvl3oprmw" path="res://themes/main_theme/option_button_normal_style_box.tres" id="8_mvjel"]
 [ext_resource type="StyleBox" uid="uid://deg4xftesuy16" path="res://themes/main_theme/vscroll_normal_style_box_flat.tres" id="8_nely8"]
 [ext_resource type="StyleBox" uid="uid://cw6kwsgxiel3r" path="res://themes/main_theme/vscroll_grabber_pressed_style_box_flat.tres" id="8_q36gd"]
+[ext_resource type="StyleBox" uid="uid://bwhdncatudsqq" path="res://themes/main_theme/play_game_button_normal_style_box_flat.tres" id="13_jhf1u"]
+[ext_resource type="StyleBox" uid="uid://c62phek07tqle" path="res://themes/main_theme/play_game_button_hover_style_box_flat.tres" id="13_pf31f"]
+[ext_resource type="StyleBox" uid="uid://b4u352puqtyky" path="res://themes/main_theme/play_game_button_pressed_style_box_flat.tres" id="14_0upvw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr5w6"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 0.270588)
@@ -42,6 +52,11 @@ shadow_offset = Vector2(0, 3)
 [resource]
 default_font = ExtResource("7_mb3jg")
 default_font_size = 70
+AlertBoxButton/base_type = &"Button"
+AlertBoxPanelContainer/base_type = &"PanelContainer"
+AlertBoxPanelContainer/styles/panel = ExtResource("1_ck0yl")
+AppBarPanelContainer/base_type = &"PanelContainer"
+AppBarPanelContainer/styles/panel = ExtResource("2_b8aqp")
 Button/styles/disabled = ExtResource("1_37bfi")
 Button/styles/focus = ExtResource("1_mfd1h")
 Button/styles/hover = ExtResource("3_1trb8")
@@ -49,6 +64,7 @@ Button/styles/normal = ExtResource("1_mfd1h")
 Button/styles/pressed = ExtResource("2_amvi7")
 DarkPanel/base_type = &"Panel"
 DarkPanel/styles/panel = SubResource("StyleBoxFlat_mr5w6")
+HeaderMedium/font_sizes/font_size = 100
 MainMenuTitle/base_type = &"Label"
 MainMenuTitle/colors/font_outline_color = Color(0, 0, 0, 1)
 MainMenuTitle/colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -57,14 +73,26 @@ MainMenuTitle/constants/shadow_offset_x = 20
 MainMenuTitle/constants/shadow_offset_y = 20
 MainMenuTitle/constants/shadow_outline_size = 20
 MainMenuTitle/fonts/font = ExtResource("5_qkwt5")
+MapImagePanel/base_type = &"Panel"
+MapImagePanel/styles/panel = ExtResource("6_qpmll")
+MapImagePanelInner/base_type = &"MapImagePanel"
+MapImagePanelInner/styles/panel = ExtResource("7_1asdt")
 MarginContainer/constants/margin_bottom = 40
 MarginContainer/constants/margin_left = 40
 MarginContainer/constants/margin_right = 40
 MarginContainer/constants/margin_top = 40
-OptionButton/styles/normal = ExtResource("1_mfd1h")
-OptionButton/styles/pressed = ExtResource("2_amvi7")
+OptionButton/font_sizes/font_size = 50
+OptionButton/styles/focus = ExtResource("8_adgu0")
+OptionButton/styles/hover = ExtResource("8_ee3jf")
+OptionButton/styles/normal = ExtResource("8_mvjel")
+OptionButton/styles/pressed = ExtResource("8_ee3jf")
 Panel/styles/panel = ExtResource("3_cnjnq")
 PanelContainer/styles/panel = ExtResource("4_tq7hc")
+PlayGameButton/base_type = &"Button"
+PlayGameButton/styles/focus = ExtResource("13_pf31f")
+PlayGameButton/styles/hover = ExtResource("13_pf31f")
+PlayGameButton/styles/normal = ExtResource("13_jhf1u")
+PlayGameButton/styles/pressed = ExtResource("14_0upvw")
 PlayerDisplayLabel/base_type = &"Label"
 PlayerDisplayLabel/colors/font_outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 PlayerDisplayLabel/constants/outline_size = 15
@@ -74,3 +102,12 @@ VScrollBar/styles/grabber = ExtResource("7_issv5")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nt7ag")
 VScrollBar/styles/grabber_pressed = ExtResource("8_q36gd")
 VScrollBar/styles/scroll = ExtResource("8_nely8")
+WonLabel/base_type = &"Label"
+WonLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+WonLabel/constants/outline_size = 40
+WonLabel/font_sizes/font_size = 150
+WonSubTitleLabel/base_type = &"Label"
+WonSubTitleLabel/colors/font_color = Color(0.239216, 0.192157, 0.356863, 1)
+WonSubTitleLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+WonSubTitleLabel/constants/outline_size = 15
+WonSubTitleLabel/font_sizes/font_size = 60

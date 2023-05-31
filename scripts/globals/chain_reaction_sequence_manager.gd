@@ -49,15 +49,15 @@ func reset_sequence() -> void:
 	
 func start_chain_reaction(sequence: ChainReactionSequence) -> void: 
 	chain_reaction_sequence_started.emit(sequence.atom_slot.atom_player)
-	printerr("STARTED_CHAIN_REACTION")
+	print("\nChainReactionSequenceManager: STARTED_CHAIN_REACTION\n")
 	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.CHAIN_REACTION
 	chain_reaction_just_finished = false
 	
 	
 func finish_chain_reaction() -> void: 
 	chain_reaction_sequence_finished.emit()
-	printerr("CHAIN_REACTION_FINISHED")
+	print("\nChainReactionSequenceManager: CHAIN_REACTION_FINISHED\n")
 	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.AWAITING_TURN
-	AtomPlayerTurnsManager.turn_is_next.emit()
+	AtomPlayerTurnsManager.next_turn()
 	chain_reaction_just_finished = true
 

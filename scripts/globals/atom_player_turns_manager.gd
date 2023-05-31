@@ -7,7 +7,7 @@ signal changed_current_atom_player_in_turn(previous_atom_player: AtomPlayer, new
 
 enum State {
 	AWAITING_TURN, 
-	CHAIN_REACTION
+	CHAIN_REACTION 
 }
 
 var current_state: State = State.AWAITING_TURN: 
@@ -15,8 +15,9 @@ var current_state: State = State.AWAITING_TURN:
 		current_state = value
 		printerr("AtomPlayerTurnsManager: current_state: ", State.keys()[current_state])
 
+var take_turns_looping: bool = false
 
-var atom_player_turns: Array[AtomPlayer] = []
+var turn_index: int = 0
 
 var current_atom_player_in_turn: AtomPlayer: 
 	set(value): 
@@ -26,29 +27,29 @@ var current_atom_player_in_turn: AtomPlayer:
 	
 	
 func reset() -> void: 
-	atom_player_turns.clear()
+	turn_index = 0
+	take_turns_looping = false
+	next_turn()
 	current_atom_player_in_turn = null
 	
 	
 func start_game() -> void: 
-	initialize_team_turns()
+	take_turns_looping = true
 	take_turns_loop()
 	
 	
 func take_turns_loop() -> void: 
-	var index: int = 0 
-	while true: 
-		current_atom_player_in_turn = atom_player_turns[index]
-		print("AtomPlayerTurnsManager: Current team: ", atom_player_turns[index].team_number)
+	while take_turns_looping:  
+		var atom_players_in_play: Array[AtomPlayer] = AtomPlayersManager.atom_players_in_play
+		if turn_index >= atom_players_in_play.size(): 
+			return
+		current_atom_player_in_turn = atom_players_in_play[turn_index]
+		print("AtomPlayerTurnsManager: Current team: ", atom_players_in_play[turn_index].team_number)
 		turn_started.emit()
-		index += 1 
-		if index >= atom_player_turns.size(): 
-			index = 0
+		turn_index += 1 
+		if turn_index >= atom_players_in_play.size(): 
+			turn_index = 0
 		await turn_is_next
-		
-		
-func initialize_team_turns() -> void: 
-	atom_player_turns.append_array(AtomPlayersManager.atom_players)
 	
 	
 func is_chain_reacting() -> bool: 
@@ -64,8 +65,9 @@ func is_awaiting_turn() -> bool:
 	
 	
 func get_previous_atom_player_turn() -> AtomPlayer: 
-	var previous_atom_player_index: int = atom_player_turns.find(current_atom_player_in_turn) - 1
-	var previous_atom_player: AtomPlayer = atom_player_turns[previous_atom_player_index]
+	var atom_players_in_play: Array[AtomPlayer] = AtomPlayersManager.atom_players_in_play
+	var previous_atom_player_index: int = atom_players_in_play.find(current_atom_player_in_turn) - 1
+	var previous_atom_player: AtomPlayer = atom_players_in_play[previous_atom_player_index]
 	return previous_atom_player
 	
 	
