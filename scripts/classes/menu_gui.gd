@@ -6,3 +6,8 @@ func _ready() -> void:
 	UIManager.set_gui_active(UIManager.player_screen, false)
 	
 	
+func _notification(what: int) -> void: 
+	if what == NOTIFICATION_PREDELETE: 
+		BackgroundAudioManager.stop_music(BackgroundAudioManager.SoundTransition.FADE_OUT, 0.7) 
+		pass
+

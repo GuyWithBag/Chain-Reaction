@@ -3,7 +3,9 @@ class_name AtomSlot
 
 signal initialized
 signal player_interacted 
-signal atom_added
+
+signal player_interacted_wrong_team
+signal atom_placed
 
 @export var atom_slot_group_label: Label 
 
@@ -34,7 +36,6 @@ var _initialized: bool = false
 @onready var state_machine: StateMachine = get_node("StateMachine")
 @onready var sequence: ChainReactionSequence = ChainReactionSequence.new(self)
 @onready var atoms_positions: AtomPositions = get_node("AtomPositions")
-
 
 func _ready() -> void: 
 	state_machine.init(self)
@@ -71,6 +72,7 @@ func player_interact() -> void:
 		print("AtomSlot (%s): NOT YET" % name)
 		return
 	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+	# This is for when it is empty, it will do the placed atom animation
 	if atom_player == current_atom_player || state_machine.current_state == state_machine.get_state("Empty"): 
 		atom_player = current_atom_player
 		var tween: Tween = create_tween() 
@@ -83,17 +85,18 @@ func player_interact() -> void:
 		print("AtomSlot (%s): Is indeed empty" % name)
 	elif atom_player != current_atom_player: 
 		print("AtomSlot (%s): WRONG TEAM" % name)
-		var shake_animation: ShakeAnimation = ShakeAnimation.new(self, 1, 3) 
-		var map_scale: Vector2 = GameManager.map_scaler.vector2_scale_relative_to_tilemap_size
-		var from: Vector2 = global_position + Vector2(map_scale.x, 0) 
-		var to: Vector2 = global_position + Vector2(0, map_scale.y) 
+		var shake_animation: ShakeAnimation = ShakeAnimation.new(self, true, 1, 1) 
+		var map_scale: Vector2 = GameManager.map_scaler.vector2_scale_relative_to_tilemap_size - Vector2(120, 120) 
+		var center_global_position: Vector2 = atoms_positions.center_position.global_position
+		var from: Vector2 = Vector2(map_scale.x, 0) 
+		var to: Vector2 = Vector2(-map_scale.x, 0) 
 		add_child(shake_animation)
-		shake_animation.shake_object_from_two_points(atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atoms_positions.center_position.global_position, from, to, 0.1)
+		shake_animation.shake_object_from_two_points(atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, center_global_position, from, to, 0.03)
+		player_interacted_wrong_team.emit()
 		return
-#	flash_tween()
 	print("AtomSlot (%s): Placed atom here" % name)
 	atom_stack.add_atom(1, atom_player) 
-	atom_added.emit()
+	atom_placed.emit()
 	if AtomPlayerTurnsManager.is_awaiting_turn(): 
 		AtomPlayerTurnsManager.next_turn()
 	
@@ -106,8 +109,11 @@ func player_interact() -> void:
 
 
 func apply_undo_changes(atom_slot_data: AtomSlotData) -> void: 
-	print("%s : %s" % [name, atom_slot_data.atom_count])
 	atom_stack.atom_count = atom_slot_data.atom_count 
 	atom_player = atom_slot_data.atom_player
+	
+	
+	
+	
 	
 	

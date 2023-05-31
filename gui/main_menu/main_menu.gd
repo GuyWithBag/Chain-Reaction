@@ -13,6 +13,14 @@ func _ready():
 	GameManager.current_state = GameManager.State.MENU
 	CameraManager.current_camera = get_tree().current_scene.get_node("%Cameras/Camera2D")
 	UIManager.set_gui_active(UIManager.player_screen, false)
+	simulate_game_world_in_background() 
+	GameManager.pause_game(false)
+	BackgroundAudioManager.play_music(AudioEffectsLoader.get_music("Angel Eyes")) 
+	TranslationServer.set_locale("jp")
+
+
+func simulate_game_world_in_background() -> void: 
+	UndoHistoryManager.reset() 
 	ChainReactionSequenceManager.reset()
 	AtomPlayerTurnsManager.reset()
 	AtomPlayersManager.reset()
@@ -24,7 +32,7 @@ func _ready():
 	AtomPlayersManager.start_game(game_start_data.player_amount)
 	GameplayManager.current_gameplay_game_start_data = game_start_data
 	GameplayManager.winnable = false
-	GameManager.pause_game(false)
+	GameManager.current_state = GameManager.State.MENU
 
 
 func _on_exit_game_pressed() -> void:

@@ -4,6 +4,7 @@ signal game_started(players: Array[AtomPlayer])
 signal game_ended(winner: AtomPlayer, losers: Array[AtomPlayer])
 
 var winnable: bool = true
+var just_undoed: bool = false
 var first_atom_in_game_placed: bool = false
 
 var win_screen: PackedScene = load("res://gui/win_screen/win_screen.tscn")
@@ -19,6 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if GameManager.current_state != GameManager.State.IN_GAME: 
 		return
 	if Input.is_action_just_pressed("undo"): 
+		just_undoed = true
 		UndoHistoryManager.apply_undo_changes() 
 		
 		

@@ -24,3 +24,10 @@ var total_atoms: int:
 func _init(_team_number: int, _team_color: Color) -> void: 
 	team_number = _team_number
 	team_color = _team_color
+
+
+func reset() -> void: 
+	first_atom_has_been_placed = false 
+	total_atoms = 0 
+	
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://u358asoupml"]
+[gd_scene load_steps=34 format=3 uid="uid://u358asoupml"]
 
 [ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="1_3tif2"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
@@ -13,6 +13,21 @@
 [ext_resource type="Script" path="res://scenes/atom_slot/states/ready_to_explode.gd" id="8_b32i3"]
 [ext_resource type="Script" path="res://scenes/atom_slot/states/explode.gd" id="9_r3vf0"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_positions.gd" id="12_4er3p"]
+[ext_resource type="AudioStream" uid="uid://b1euwuhhwp8bw" path="res://audio/explosion1.wav" id="14_d3ltn"]
+[ext_resource type="AudioStream" uid="uid://cytae0iiatma6" path="res://audio/explosion2.wav" id="14_feniu"]
+[ext_resource type="Script" path="res://scenes/atom_slot/sound_effects.gd" id="15_0aewo"]
+[ext_resource type="AudioStream" uid="uid://dojucmt7hbwl8" path="res://audio/wrong_team.wav" id="16_itwhw"]
+[ext_resource type="AudioStream" uid="uid://bdbacbd63vp2b" path="res://audio/placed_atom.wav" id="17_dxuxw"]
+[ext_resource type="AudioStream" uid="uid://bmt0x5hrvvpnx" path="res://audio/explosion4.wav" id="18_6jecj"]
+[ext_resource type="AudioStream" uid="uid://cj2esidu1lwgf" path="res://audio/placed_atom2.wav" id="18_74scf"]
+[ext_resource type="AudioStream" uid="uid://wkkafv35fox0" path="res://audio/atom_added.wav" id="19_g47bk"]
+[ext_resource type="AudioStream" uid="uid://c55ewj6m65ymx" path="res://audio/placed_atom3.wav" id="19_naw1r"]
+[ext_resource type="AudioStream" uid="uid://bwo70nv00b7g2" path="res://audio/placed_atom4.wav" id="20_crifu"]
+[ext_resource type="AudioStream" uid="uid://c45t2y4j6pjhw" path="res://audio/atom_added2.wav" id="20_gghpg"]
+[ext_resource type="AudioStream" uid="uid://btjlgt2ivpggn" path="res://audio/atom_added3.wav" id="21_dx67p"]
+[ext_resource type="AudioStream" uid="uid://dlmrgtnvsqfob" path="res://audio/explosion3.wav" id="22_15ub1"]
+[ext_resource type="AudioStream" uid="uid://dd216pi4ewo0n" path="res://audio/atom_added4.wav" id="22_c3ds4"]
+[ext_resource type="AudioStream" uid="uid://d0fe8smdg66ru" path="res://audio/lost1.wav" id="28_40e6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjcr6"]
 size = Vector2(32, 32)
@@ -110,7 +125,6 @@ position = Vector2(0, -10)
 [node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
 
 [node name="AtomsSprites" type="Node2D" parent="."]
-visible = false
 script = ExtResource("5_3ujwk")
 
 [node name="AtomsParticles" type="Node2D" parent="."]
@@ -121,18 +135,23 @@ script = ExtResource("5_c3o2o")
 starting_state = NodePath("Empty")
 current_state_label = NodePath("")
 
-[node name="Empty" type="Node" parent="StateMachine"]
+[node name="Empty" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("6_g5cua")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="Stacked" type="Node" parent="StateMachine"]
+[node name="Stacked" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("8_6idha")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="ReadyToExplode" type="Node" parent="StateMachine"]
+[node name="ReadyToExplode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("8_b32i3")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="Explode" type="Node" parent="StateMachine"]
+[node name="Explode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("9_r3vf0")
 play_particle = "Retro Explosion"
+sound_effect = ExtResource("14_feniu")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource("RectangleShape2D_lchgv")
@@ -182,4 +201,21 @@ libraries = {
 "": SubResource("AnimationLibrary_5lhrp")
 }
 
+[node name="SoundEffects" type="Node" parent="."]
+script = ExtResource("15_0aewo")
+atom_slot_player_interacted_wrong_team = ExtResource("16_itwhw")
+atom_slot_placed = Array[AudioStream]([ExtResource("17_dxuxw"), ExtResource("18_74scf"), ExtResource("19_naw1r"), ExtResource("20_crifu")])
+started_exploding = Array[AudioStream]([ExtResource("14_d3ltn"), ExtResource("14_feniu"), ExtResource("22_15ub1"), ExtResource("18_6jecj")])
+atoms_added = Array[AudioStream]([ExtResource("19_g47bk"), ExtResource("20_gghpg"), ExtResource("21_dx67p"), ExtResource("22_c3ds4")])
+player_has_been_eliminated = ExtResource("28_40e6u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundEffects"]
+process_mode = 3
+max_polyphony = 6
+bus = &"AtomsSFX"
+
+[connection signal="atom_placed" from="." to="SoundEffects" method="_on_atom_slot_atom_placed"]
+[connection signal="player_interacted_wrong_team" from="." to="SoundEffects" method="_on_atom_slot_player_interacted_wrong_team"]
+[connection signal="atoms_added" from="AtomStack" to="SoundEffects" method="_on_atom_stack_atoms_added"]
+[connection signal="started_exploding" from="StateMachine/Explode" to="SoundEffects" method="_on_explode_started_exploding"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

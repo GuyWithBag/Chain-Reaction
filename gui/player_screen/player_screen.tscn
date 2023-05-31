@@ -7,7 +7,7 @@
 [node name="PlayerScreen" instance=ExtResource("1_4puyt")]
 mouse_filter = 2
 script = ExtResource("2_6awrr")
-gui_type = 4
+gui_type = 1
 
 [node name="Mode" parent="." index="0"]
 mouse_filter = 2

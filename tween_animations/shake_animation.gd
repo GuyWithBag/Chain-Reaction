@@ -53,7 +53,7 @@ func shake_object_randomly(object: Object, position_type: PositionType, center_p
 		queue_free()
 		
 		
-func shake_object_from_two_points(object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float, min_range: int = 1) -> void: 
+func shake_object_from_two_points(object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float) -> void: 
 	var property: String
 	match position_type: 
 		PositionType.GLOBAL: 
@@ -68,28 +68,19 @@ func shake_object_from_two_points(object: Object, position_type: PositionType, c
 			if loop_count > loops: 
 				tween.tween_property(object, property, center_position, shaking_duration)
 				break
-		rng.randomize()
-		var x_rand_from: int = rng.randi_range(min_range, from.x)
 		
-		rng.randomize()
-		var y_rand_from: int = rng.randi_range(min_range, from.y)
-		var rand_from: Vector2 = Vector2(x_rand_from, y_rand_from) 
-		
-		rng.randomize()
-		var x_rand_to: int = rng.randi_range(min_range, to.x)
-		
-		rng.randomize()
-		var y_rand_to: int = rng.randi_range(min_range, to.y)
-		var rand_to: Vector2 = Vector2(x_rand_to, y_rand_to)
-		
-		tween.tween_property(object, property, center_position + rand_from, shaking_duration)
+		tween.tween_property(object, property, center_position + from, shaking_duration)
 		tween.chain()
-		tween.tween_property(object, property, center_position + rand_to, shaking_duration)
+		tween.tween_property(object, property, center_position + to, shaking_duration)
 		tween.play()
 		
 		await tween.finished
 		tween.stop()
 		loop_count += 1
+	var tween: Tween = bind.create_tween().bind_node(self)
+	tween.tween_property(object, property, center_position, shaking_duration)
+	tween.play()
+	await tween.finished
 	queue_free_after_shake_count -= 1 
 	if queue_free_after_shake_count == 0: 
 		queue_free()

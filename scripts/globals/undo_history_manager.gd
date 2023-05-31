@@ -1,6 +1,6 @@
 extends Node
 
-signal history_resetted()
+signal history_cleared()
 
 signal turn_data_removed(turn_data: TurnData)
 signal turn_data_added(turn_data: TurnData)
@@ -8,9 +8,13 @@ signal turn_data_added(turn_data: TurnData)
 var history: Array[TurnData] = [] 
 
 
-func reset_history() -> void: 
+func reset() -> void: 
+	clear_history() 
+
+
+func clear_history() -> void: 
 	history.clear()
-	history_resetted.emit()
+	history_cleared.emit()
 
 
 func save_current_data(atom_slot: AtomSlot) -> void: 
@@ -26,11 +30,19 @@ func save_current_data(atom_slot: AtomSlot) -> void:
 	AtomSlotsManager.atom_slot_saved_data[atom_slot.name] = atom_slot_data
 	
 	var turn_data: TurnData = create_turn_data()
+#	if GameplayManager.just_undoed == true: 
+#		add_turn_data(turn_data)
+#		GameplayManager.just_undoed = false
+#		return 
 	await AtomSlotsManager.atom_added
-	for key in turn_data.atom_slots.keys(): 
-		printerr("%s : %s" % [key, turn_data.atom_slots[key].atom_count])
-	add_turn_data(turn_data) 
-	printerr(history[history.size() - 1].atom_slots)
+#	for key in turn_data.atom_slots.keys(): 
+#		printerr("%s : %s" % [key, turn_data.atom_slots[key].atom_count])
+#	if GameplayManager.just_undoed == true: 
+#		GameplayManager.just_undoed = false
+#		return 
+	add_turn_data(turn_data)
+	turn_data.show_details()
+#	printerr(history[history.size() - 1].atom_slots)
 	
 	
 func create_turn_data() -> TurnData: 
@@ -53,13 +65,18 @@ func pop_back_turn_data() -> TurnData:
 
 
 func apply_undo_changes() -> void: 
-	var turn_data: TurnData
-#	if history.is_empty(): 
-#		turn_data = create_turn_data()
-#	else: 
-	printerr("taken this: ", history)
-	turn_data = pop_back_turn_data() 
-	printerr("taken this: ", turn_data.atom_slots)
+	var turn_data: TurnData = pop_back_turn_data() 
+	if !is_instance_valid(turn_data): 
+		turn_data = TurnData.new(
+			{},  
+			AtomPlayersManager.atom_players_in_play.duplicate(), 
+			AtomPlayerTurnsManager.turn_index
+		)
+		for atom_player in AtomPlayersManager.atom_players_in_play: 
+			atom_player.reset()
 	AtomSlotsManager.apply_undo_changes(turn_data)
 	AtomPlayerTurnsManager.apply_undo_changes(turn_data)
 	AtomPlayersManager.apply_undo_changes(turn_data)
+	for atom_player in AtomPlayersManager.atom_players_in_play: 
+		var atom_count: int = AtomPlayersManager.get_total_atoms_count(atom_player)
+		atom_player.total_atoms = atom_count

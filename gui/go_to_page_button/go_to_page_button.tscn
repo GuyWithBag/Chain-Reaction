@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc4fgdt7ru6rk"]
+[gd_scene load_steps=4 format=3 uid="uid://cc4fgdt7ru6rk"]
 
 [ext_resource type="PackedScene" uid="uid://bmd0rbj0y1irq" path="res://gui/main_menu/widgets/menu_button/menu_button.tscn" id="1_ch7iv"]
 [ext_resource type="Script" path="res://gui/go_to_page_button/go_to_page_button.gd" id="2_qsjfs"]
+[ext_resource type="AudioStream" uid="uid://d1h2tn03fpkwy" path="res://audio/pressed.wav" id="3_bjc7x"]
 
 [node name="GoToPageButton" instance=ExtResource("1_ch7iv")]
 theme_override_font_sizes/font_size = 0
 text = "Back"
 script = ExtResource("2_qsjfs")
+
+[node name="ButtonSFXComponent" parent="." index="0"]
+sound_effect = ExtResource("3_bjc7x")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

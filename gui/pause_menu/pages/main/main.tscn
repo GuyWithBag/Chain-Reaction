@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgbielsopeojq"]
 
 [ext_resource type="Script" path="res://gui/pause_menu/pages/main/main.gd" id="1_ux51c"]
-[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_i0r74"]
+[ext_resource type="PackedScene" uid="uid://ci5tes1x0giaq" path="res://gui/pause_menu/widgets/pause_menu_button/pause_menu_button.tscn" id="2_hfm73"]
 
 [node name="Main" type="ReferenceRect"]
 custom_minimum_size = Vector2(600, 1000)
@@ -21,32 +21,22 @@ layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Resume" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_hfm73")]
 layout_mode = 2
-theme = ExtResource("2_i0r74")
-text = "Resume"
 
-[node name="RestartGame" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="RestartGame" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_hfm73")]
 layout_mode = 2
-theme = ExtResource("2_i0r74")
 text = "Restart Game"
 
-[node name="Exit Game" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="ExitGame" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_hfm73")]
 layout_mode = 2
-theme = ExtResource("2_i0r74")
-text = "Exit Game
-"
+text = "Exit Game"
 
-[node name="Exit to Desktop" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="ExitToDesktop" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_hfm73")]
 layout_mode = 2
-theme = ExtResource("2_i0r74")
-text = "Exit to Desktop"
+text = "Exit To Desktop"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/RestartGame" to="." method="_on_exit_game_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit to Desktop" to="." method="_on_exit_to_desktop_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RestartGame" to="." method="_on_restart_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitToDesktop" to="." method="_on_exit_to_desktop_pressed"]

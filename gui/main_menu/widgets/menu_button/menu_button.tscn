@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmd0rbj0y1irq"]
+[gd_scene load_steps=4 format=3 uid="uid://bmd0rbj0y1irq"]
 
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_8w008"]
+[ext_resource type="PackedScene" uid="uid://duidbl4hiu1wc" path="res://scenes/button_sfx_component/button_sfx_component.tscn" id="2_l6hd6"]
+[ext_resource type="AudioStream" uid="uid://pekcktg2nfev" path="res://audio/pressed2.wav" id="3_gpjwo"]
 
 [node name="MenuButton" type="Button"]
 custom_minimum_size = Vector2(0, 100)
 theme = ExtResource("1_8w008")
 text = "Play Game"
+
+[node name="ButtonSFXComponent" parent="." instance=ExtResource("2_l6hd6")]
+sound_effect = ExtResource("3_gpjwo")

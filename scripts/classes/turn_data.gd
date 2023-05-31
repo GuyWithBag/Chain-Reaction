@@ -11,3 +11,11 @@ func _init(_atom_slots: Dictionary, _atom_players_in_play: Array[AtomPlayer], _t
 	atom_players_in_play = _atom_players_in_play
 	turn_index = _turn_index
 
+
+func show_details() -> void: 
+	print("
+		Atom Players in play: %s, 
+		Turn Index: %s, 
+		Atom Slots: %s, 
+		
+	" % [atom_players_in_play, turn_index, atom_slots])

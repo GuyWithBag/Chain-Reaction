@@ -2,7 +2,8 @@ class_name BaseState
 extends Node
 
 @export var animation_name: String
-@export var sound_effect: AudioStreamPlayer2D
+@export var sound_effect: AudioStream
+@export var audio_stream_player: AudioStreamPlayer
 
 # Pass in a reference to the state_machine_owner's character body so that it can be used by the state
 @onready var state_machine: StateMachine
@@ -16,6 +17,8 @@ func init(_state_machine_owner: Node2D) -> void:
 
 func enter() -> void:
 #	state_machine_owner.animations.play(animation_name)
+	audio_stream_player.stream = sound_effect
+	audio_stream_player.play()
 	pass
 
 func exit() -> void:

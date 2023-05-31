@@ -56,6 +56,4 @@ tabs_visible = false
 custom_minimum_size = Vector2(700, 1000)
 layout_mode = 2
 
-[connection signal="pressed" from="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/RestartGame" to="CenterContainer/TabContainer/Main" method="_on_restart_game_pressed"]
-
 [editable path="CenterContainer/TabContainer/Main"]

@@ -3,7 +3,7 @@ class_name AtomStack
 
 signal initialized
 
-signal atoms_count_resetted(atom_amount_reseted: int)
+signal atom_count_resetted(atom_amount_reseted: int)
 signal atoms_back_to_zero
 
 signal atoms_added(atom_amount_added: int)
@@ -21,6 +21,9 @@ signal atoms_overloaded
 		if atom_count == max_atom_stack: 
 			atoms_maxxed.emit() 
 		if atom_count <= 0: 
+			var state_machine: StateMachine = owner.state_machine
+			state_machine.change_state(state_machine.get_state("Empty"))
+			atoms_sprites.set_atoms_visible(false)
 			atoms_back_to_zero.emit()
 		if atom_count > 0: 
 			atoms_added.emit(atom_count - previous_count)
@@ -103,7 +106,7 @@ func save_atom_slot_data() -> void:
 				UndoHistoryManager.save_current_data(owner) 
 				
 		, CONNECT_ONE_SHOT
-		)
+		) 
 	else: 
 		UndoHistoryManager.save_current_data(owner) 
 
@@ -118,7 +121,7 @@ func reset_atom_count() -> void:
 	owner.atom_player.total_atoms -= atom_count
 	var prev_count: int = atom_count
 	atom_count = 0
-	atoms_count_resetted.emit(prev_count)
+	atom_count_resetted.emit(prev_count)
 	atoms_sprites.arrange_atoms()
 	
 	

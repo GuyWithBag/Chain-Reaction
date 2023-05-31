@@ -10,6 +10,7 @@ var team_labeL_text: String = "Player: %s"
 func _ready() -> void: 
 	team_label.text = team_labeL_text % GameplayManager.winning_atom_player.team_number
 	UIManager.set_gui_active(self, false)
+	BackgroundAudioManager.play_temporary_sound(AudioEffectsLoader.get_sfx("Victory"))
 	animation_player.play("come_up")
 	GameManager.pause_game(true)
 

@@ -44,5 +44,5 @@ func apply_undo_changes(turn_data: TurnData) -> void:
 				0, 
 				null
 			))
-		
+
 

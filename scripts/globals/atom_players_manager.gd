@@ -38,14 +38,15 @@ func _on_atom_player_total_atoms_changed(prev_amount: int, new_amount: int, atom
 	
 	
 func detect_which_team_is_eliminated(atom_player: AtomPlayer) -> void: 
-#	for atom_player in atom_players_in_play: 
-		await get_tree().create_timer(0.5, false).timeout
-		var atom_count: int = get_total_atoms_count(atom_player)
-		print("AtomPlayersManager: %s: Atom Count: %s" % [atom_player.group_name, atom_count])
-		if atom_count <= 0: 
-			AtomPlayersManager.elimnate_team(atom_player)
-#			detect_which_team_is_eliminated()
-#			break
+	await get_tree().create_timer(1, false).timeout
+	var atom_count: int = get_total_atoms_count(atom_player)
+	print("AtomPlayersManager: %s: Atom Count: %s" % [atom_player.group_name, atom_count])
+	if atom_count <= 0: 
+		if AtomPlayerTurnsManager.is_chain_reacting(): 
+			await AtomSlotsManager.atom_slot_exploded
+		if atom_players_in_play.find(atom_player) == 0: 
+			return
+		AtomPlayersManager.elimnate_team(atom_player)
 
 
 func reset() -> void: 

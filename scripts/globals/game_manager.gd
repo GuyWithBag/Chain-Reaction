@@ -11,7 +11,7 @@ signal game_retried
 signal current_state_changed(new_game_state: State, old_game_state: State)
 
 enum State {
-	MENU,
+	MENU, 
 	PAUSED, 
 	IN_GAME, 
 }
@@ -53,6 +53,7 @@ func start_game() -> void:
 		printerr("GameManager: Set game_start_data first before starting a game. ")
 		return
 	pause_game(false)
+	UndoHistoryManager.reset() 
 	ChainReactionSequenceManager.reset()
 	AtomPlayerTurnsManager.reset()
 	AtomPlayersManager.reset()

@@ -77,7 +77,7 @@ func next_turn() -> void:
 
 # Called from UndoHistorymanager
 func apply_undo_changes(turn_data: TurnData) -> void:  
-	next_turn() 
+#	next_turn() 
 	turn_index = turn_data.turn_index 
-	
+	next_turn()
 	

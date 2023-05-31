@@ -193,7 +193,7 @@ func explode_animation() -> void:
 				
 	tween.play()
 	await tween.finished
-
+	set_atoms_visible(false)
 #	for index in atom_sprites_group_children.size(): 
 #		atom_sprites_group_children[index].scale = atom_sprites_orig_values[index]["scale"]
 #		atom_sprites_group_children[index].modulate = owner.atom_player.team_color
@@ -204,7 +204,6 @@ func explode_animation() -> void:
 #
 	for atom_sprite in atom_sprites_group.get_children(): 
 		atom_sprite.global_position = atom_positions.center_position.global_position
-	set_atoms_visible(false)
 	arrange_atoms()
 	
 	
@@ -242,7 +241,7 @@ func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0, from
 	if loop: 
 		_flash_tween.set_loops(loops)
 	_flash_tween.set_parallel(true).set_ease(Tween.EASE_IN).bind_node(self)
-	var orig_modulate: Color = owner.atom_player.team_color
+	var orig_modulate: Color = get_parent().atom_player.team_color
 	for atom_sprite in atom_sprites_group.get_children(): 
 		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
 	_flash_tween.chain()

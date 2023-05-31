@@ -35,6 +35,7 @@ func init(_state_machine_owner: Node2D) -> void:
 
 
 func enter() -> void: 
+	super.enter()
 	if !play_particle.is_empty(): 
 		atoms_particles.play_particle(play_particle, atom_positions.center_position.global_position)
 	
