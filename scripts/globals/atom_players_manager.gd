@@ -113,3 +113,7 @@ func elimnate_team(atom_player: AtomPlayer) -> void:
 	elif atom_players_remaining == 1: 
 		only_one_team_remaining.emit(atom_players_in_play[0])
 
+
+# Called from UndoHistorymanager
+func apply_undo_changes(turn_data: TurnData) -> void: 
+	atom_players_in_play = turn_data.atom_players_in_play

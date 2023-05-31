@@ -6,7 +6,7 @@ signal initialized
 signal atoms_count_resetted(atom_amount_reseted: int)
 signal atoms_back_to_zero
 
-signal atoms_added(atom_amount_added: int, new_player: AtomPlayer)
+signal atoms_added(atom_amount_added: int)
 signal atoms_removed(atom_amount_removed: int)
 
 signal atoms_maxxed
@@ -17,8 +17,20 @@ signal atoms_overloaded
 		if Engine.is_editor_hint(): 
 			atoms_sprites = $"../AtomsSprites"
 		var previous_count: int = atom_count
-
 		atom_count = value
+		if atom_count == max_atom_stack: 
+			atoms_maxxed.emit() 
+		if atom_count <= 0: 
+			atoms_back_to_zero.emit()
+		if atom_count > 0: 
+			atoms_added.emit(atom_count - previous_count)
+			AtomSlotsManager.atom_added.emit(atom_count - previous_count)
+		if atom_count > max_atom_stack: 
+			atom_count = 0
+			atoms_overloaded.emit()
+		if stack_label: 
+			stack_label.text = str(atom_count)
+		atoms_sprites.arrange_atoms()
 		
 		
 @export_range(1, 4) var max_atom_stack: int = 3: 
@@ -49,35 +61,25 @@ func init() -> void:
 	max_atom_stack = (atom_slots_count - 1)
 	if max_stack_label: 
 		max_stack_label.text = str(max_atom_stack)
-	atoms_added.connect(
-		func(atom_amount_added: int, new_player: AtomPlayer): 
-			AtomSlotsManager.atom_added.emit(atom_amount_added, new_player)
-	)
 	initialized.emit()
 	_initialized = true
 
+
+func set_atoms(atom_count: int) -> void: 
+	pass
+	
 
 func add_atom(added_atoms: int, new_player: AtomPlayer) -> void: 
 	var previous_count: int = atom_count
 	atom_count += added_atoms
 	var prev_player: AtomPlayer = owner.atom_player
-	if atom_count == max_atom_stack: 
-		atoms_maxxed.emit() 
-	if atom_count <= 0: 
-		atoms_back_to_zero.emit()
-	if atom_count > 0: 
-		atoms_added.emit(atom_count - previous_count, new_player)
-	if atom_count > max_atom_stack: 
-		atom_count = 0
-		atoms_overloaded.emit()
-	if stack_label:
-		stack_label.text = str(atom_count)
+
 	if prev_player:
 		owner.remove_from_group(prev_player.group_name)
 	owner.add_to_group(new_player.group_name)
 #	new_player.total_atoms = AtomPlayersManager.get_total_atoms_count(new_player)
 	# The colonizer will then receive their new atom amount
-	owner.atom_player = new_player
+	owner.atom_player = new_player 
 	for atom_player in AtomPlayersManager.atom_players_in_play: 
 		var atom_count: int = AtomPlayersManager.get_total_atoms_count(atom_player)
 		atom_player.total_atoms = atom_count
@@ -91,6 +93,19 @@ func add_atom(added_atoms: int, new_player: AtomPlayer) -> void:
 #	else: 
 #		new_player.total_atoms += added_atoms
 	atoms_sprites.arrange_atoms()
+	save_atom_slot_data()
+	
+	
+func save_atom_slot_data() -> void: 
+	if ChainReactionSequenceManager.is_chain_reacting: 
+		ChainReactionSequenceManager.chain_reaction_sequence_finished.connect(
+			func(): 
+				UndoHistoryManager.save_current_data(owner) 
+				
+		, CONNECT_ONE_SHOT
+		)
+	else: 
+		UndoHistoryManager.save_current_data(owner) 
 
 
 func remove_atoms(atoms_amout_to_remove: int) -> void: 

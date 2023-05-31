@@ -49,6 +49,7 @@ func _physics_process(_delta):
 func init() -> void: 
 	atom_stack.init()
 	atoms_sprites.init()
+	AtomSlotsManager.all_atom_slots[name] = self
 	state_machine.get_state("Explode").finished_exploding.connect(
 		func(): 
 			AtomSlotsManager.atom_slot_exploded.emit(self)
@@ -62,8 +63,6 @@ func _on_touch_screen_button_pressed() -> void:
 	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && atom_player == current_atom_player: 
 		CameraManager.shake_camera(0.1, 3, 10, 25)
 	player_interact()
-	if GameplayManager.first_atom_in_game_placed == false:
-		GameplayManager.first_atom_in_game_placed = true
 
 
 func player_interact() -> void: 
@@ -92,12 +91,6 @@ func player_interact() -> void:
 		shake_animation.shake_object_from_two_points(atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atoms_positions.center_position.global_position, from, to, 0.1)
 		return
 #	flash_tween()
-	var turn_data: TurnData = TurnData.new(
-		AtomSlotsManager.get_all_atom_slots(),  
-		AtomPlayersManager.atom_players_in_play, 
-		AtomPlayerTurnsManager.turn_index
-	)
-	UndoHistoryManager.add_turn_data(turn_data)
 	print("AtomSlot (%s): Placed atom here" % name)
 	atom_stack.add_atom(1, atom_player) 
 	atom_added.emit()
@@ -110,3 +103,11 @@ func player_interact() -> void:
 #	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
 #	tween.tween_property(self, "modulate", atom_player.team_color, 0.1)
 #	tween.play()
+
+
+func apply_undo_changes(atom_slot_data: AtomSlotData) -> void: 
+	print("%s : %s" % [name, atom_slot_data.atom_count])
+	atom_stack.atom_count = atom_slot_data.atom_count 
+	atom_player = atom_slot_data.atom_player
+	
+	

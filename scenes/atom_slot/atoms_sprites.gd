@@ -226,10 +226,15 @@ func atom_transfer_tween(tween: Tween, atom: Sprite2D, to: Vector2) -> void:
 
 
 func change_team_color_to(new_team: AtomPlayer) -> void: 
-	up_atom.modulate = new_team.team_color
-	left_atom.modulate = new_team.team_color
-	down_atom.modulate = new_team.team_color
-	right_atom.modulate = new_team.team_color
+	var team_color: Color 
+	if new_team == null: 
+		team_color = Color.DIM_GRAY
+	else: 
+		team_color = new_team.team_color
+	up_atom.modulate = team_color
+	left_atom.modulate = team_color
+	down_atom.modulate = team_color
+	right_atom.modulate = team_color
 
 
 func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0, from_color: Color = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color) -> Tween: 

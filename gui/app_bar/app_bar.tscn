@@ -51,7 +51,7 @@ texture_normal = ExtResource("4_r4npt")
 
 [node name="TouchScreenButtonComponent" parent="PanelContainer/MarginContainer/HBoxContainer/Undo" index="0"]
 material_icon = "undo"
-event_action = "ui_undo"
+event_action = "undo"
 
 [node name="Menu" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
 custom_minimum_size = Vector2(100, 100)

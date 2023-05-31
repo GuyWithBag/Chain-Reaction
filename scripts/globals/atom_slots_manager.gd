@@ -1,16 +1,20 @@
 extends Node
 
+signal atom_slot_finished_saving_data(atom_slot: AtomSlotData)
+
 signal atom_slot_exploded(atom_slot: AtomSlot)
 
 signal atom_removed
-signal atom_added(atom_amount_added: int, new_player: AtomPlayer)
+signal atom_added(atom_amount_added: int)
 
 var tilemap: TileMap 
 
 var initialized: bool = false
 
-# AtomSlotName : AtomCount 
-var data: Dictionary = {}
+
+var all_atom_slots: Dictionary = {}
+# AtomSlotName : AtomSlotData
+var atom_slot_saved_data: Dictionary = {}
 
 
 #func get_total_max_atom_stack() -> int: 
@@ -27,14 +31,18 @@ var data: Dictionary = {}
 #	if total_atom_count >= get_total_max_atom_stack(): 
 #		return true
 #	return false
-
-
-func get_all_atom_slots() -> Dictionary: 
-	var atom_slots: Dictionary = {}
-	for atom_slot in get_tree().get_nodes_in_group("AtomSlot"): 
-		atom_slots[atom_slot.name] = atom_slot.atom_stack.atom_count 
-	return atom_slots
 	
 	
-func apply_undo_changes() -> void: 
-	pass
+# Called from UndoHistorymanager
+func apply_undo_changes(turn_data: TurnData) -> void: 
+	var atom_slots: Array[Node] = get_tree().get_nodes_in_group("AtomSlot")
+	for atom_slot in atom_slots: 
+		if turn_data.atom_slots.has(atom_slot.name): 
+			atom_slot.apply_undo_changes(turn_data.atom_slots[atom_slot.name])
+		else: 
+			atom_slot.apply_undo_changes(AtomSlotData.new(
+				0, 
+				null
+			))
+		
+

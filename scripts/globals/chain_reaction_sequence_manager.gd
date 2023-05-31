@@ -7,7 +7,7 @@ signal chain_reaction_sequence_was_reset
 
 var chain_reaction_sequences: Array[ChainReactionSequence] = []
 var chain_reaction_just_finished: bool = false
-
+var is_chain_reacting: bool = false
 
 func reset() -> void: 
 	reset_sequence()
@@ -49,12 +49,14 @@ func reset_sequence() -> void:
 	
 func start_chain_reaction(sequence: ChainReactionSequence) -> void: 
 	chain_reaction_sequence_started.emit(sequence.atom_slot.atom_player)
+	is_chain_reacting = true
 	print("\nChainReactionSequenceManager: STARTED_CHAIN_REACTION\n")
 	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.CHAIN_REACTION
 	chain_reaction_just_finished = false
 	
 	
 func finish_chain_reaction() -> void: 
+	is_chain_reacting = false 
 	chain_reaction_sequence_finished.emit()
 	print("\nChainReactionSequenceManager: CHAIN_REACTION_FINISHED\n")
 	AtomPlayerTurnsManager.current_state = AtomPlayerTurnsManager.State.AWAITING_TURN
