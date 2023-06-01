@@ -65,7 +65,7 @@ pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations/translations..translation")
+locale/translations=PackedStringArray("res://translations/translations.en.translation", "res://translations/translations.ja.translation")
 
 [layer_names]
 

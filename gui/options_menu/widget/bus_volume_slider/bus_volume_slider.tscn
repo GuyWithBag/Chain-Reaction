@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2sdjsple422e"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_g7oh8"]
+[ext_resource type="Script" path="res://gui/options_menu/widget/bus_volume_slider/bus_volume_slider.gd" id="2_v12mo"]
+
+[node name="BusVolumeSlider" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_g7oh8")
+script = ExtResource("2_v12mo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BusName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "BusName"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Volume" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 2

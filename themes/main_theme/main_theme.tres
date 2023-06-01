@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=3 uid="uid://xl1ilkogtjb1"]
+[gd_resource type="Theme" load_steps=27 format=3 uid="uid://xl1ilkogtjb1"]
 
 [ext_resource type="StyleBox" uid="uid://bgu8isqrrg7fb" path="res://themes/main_theme/button_disabled_style_box_flat.tres" id="1_37bfi"]
 [ext_resource type="StyleBox" uid="uid://5473psn62ja3" path="res://themes/main_theme/alert_box_panel_container_style_box.tres" id="1_ck0yl"]
@@ -18,9 +18,11 @@
 [ext_resource type="StyleBox" uid="uid://dsrdkvl3oprmw" path="res://themes/main_theme/option_button_normal_style_box.tres" id="8_mvjel"]
 [ext_resource type="StyleBox" uid="uid://deg4xftesuy16" path="res://themes/main_theme/vscroll_normal_style_box_flat.tres" id="8_nely8"]
 [ext_resource type="StyleBox" uid="uid://cw6kwsgxiel3r" path="res://themes/main_theme/vscroll_grabber_pressed_style_box_flat.tres" id="8_q36gd"]
+[ext_resource type="StyleBox" uid="uid://ccqenxrctbq3b" path="res://themes/main_theme/slider_style_box_flat.tres" id="9_iesjo"]
 [ext_resource type="StyleBox" uid="uid://bwhdncatudsqq" path="res://themes/main_theme/play_game_button_normal_style_box_flat.tres" id="13_jhf1u"]
 [ext_resource type="StyleBox" uid="uid://c62phek07tqle" path="res://themes/main_theme/play_game_button_hover_style_box_flat.tres" id="13_pf31f"]
 [ext_resource type="StyleBox" uid="uid://b4u352puqtyky" path="res://themes/main_theme/play_game_button_pressed_style_box_flat.tres" id="14_0upvw"]
+[ext_resource type="StyleBox" uid="uid://bd0dg4idoeylq" path="res://themes/main_theme/text_edit_normal.tres" id="18_ycc0q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr5w6"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 0.270588)
@@ -64,6 +66,9 @@ Button/styles/normal = ExtResource("1_mfd1h")
 Button/styles/pressed = ExtResource("2_amvi7")
 DarkPanel/base_type = &"Panel"
 DarkPanel/styles/panel = SubResource("StyleBoxFlat_mr5w6")
+HSlider/styles/grabber_area = ExtResource("7_issv5")
+HSlider/styles/grabber_area_highlight = ExtResource("8_q36gd")
+HSlider/styles/slider = ExtResource("9_iesjo")
 HeaderMedium/font_sizes/font_size = 100
 MainMenuTitle/base_type = &"Label"
 MainMenuTitle/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -98,6 +103,7 @@ PlayerDisplayLabel/colors/font_outline_color = Color(0.184314, 0.184314, 0.18431
 PlayerDisplayLabel/constants/outline_size = 15
 ScoreboardPanelContainer/base_type = &"PanelContainer"
 ScoreboardPanelContainer/styles/panel = SubResource("StyleBoxFlat_i66a2")
+TextEdit/styles/normal = ExtResource("18_ycc0q")
 VScrollBar/styles/grabber = ExtResource("7_issv5")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nt7ag")
 VScrollBar/styles/grabber_pressed = ExtResource("8_q36gd")

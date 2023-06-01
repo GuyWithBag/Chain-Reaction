@@ -62,7 +62,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Reaction" type="Label" parent="Reaction"]
+[node name="eaction" type="Label" parent="Reaction"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -5.65214
@@ -118,7 +118,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Chain" type="Label" parent="Chain"]
+[node name="hain" type="Label" parent="Chain"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

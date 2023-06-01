@@ -16,7 +16,6 @@ func _ready():
 	simulate_game_world_in_background() 
 	GameManager.pause_game(false)
 	BackgroundAudioManager.play_music(AudioEffectsLoader.get_music("Angel Eyes")) 
-	TranslationServer.set_locale("jp")
 
 
 func simulate_game_world_in_background() -> void: 

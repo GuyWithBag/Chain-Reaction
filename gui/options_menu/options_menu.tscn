@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6nrqjx1lvng7"]
+[gd_scene load_steps=5 format=3 uid="uid://c6nrqjx1lvng7"]
 
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="1_l7462"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_wkkch"]
 [ext_resource type="PackedScene" uid="uid://bvrsoj58irelk" path="res://gui/options_menu/widget/option_list_tile/option_list_tile.tscn" id="2_dvpqs"]
+[ext_resource type="Script" path="res://gui/options_menu/widget/option_list_tile/option_list_tile_audio.gd" id="3_7ecgv"]
 
 [node name="OptionsMenu" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_wkkch")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -23,33 +30,32 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Options"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(0, 1000)
 layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="Options" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 1159)
+[node name="Options" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer"]
+custom_minimum_size = Vector2(600, 1159)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OptionListGroup" type="PanelContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Options"]
+[node name="Audio" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options" instance=ExtResource("2_dvpqs")]
 layout_mode = 2
+script = ExtResource("3_7ecgv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/OptionListGroup"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/OptionListGroup/VBoxContainer"]
-layout_mode = 2
-text = "Audio"
-
-[node name="OptionListTile" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/OptionListGroup/VBoxContainer" instance=ExtResource("2_dvpqs")]
-layout_mode = 2
+[node name="Title" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options/Audio/Panel/VBoxContainer" index="0"]
+text = "Audio
+"
 
 [node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 alignment = 2
 
 [node name="GoToPageButton" parent="MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("1_l7462")]
@@ -57,3 +63,5 @@ custom_minimum_size = Vector2(370, 100)
 layout_mode = 2
 page_container = NodePath("../../../../..")
 go_to_page = NodePath("../../../../../MainPage")
+
+[editable path="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options/Audio"]
