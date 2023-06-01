@@ -99,7 +99,7 @@ func player_interact() -> void:
 	atom_placed.emit()
 	if AtomPlayerTurnsManager.is_awaiting_turn(): 
 		AtomPlayerTurnsManager.next_turn()
-	
+	atom_player.total_atoms_added += 1
 	
 #func flash_tween() -> void: 
 #	var tween: Tween = create_tween() 

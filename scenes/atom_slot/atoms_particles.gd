@@ -17,7 +17,11 @@ func play_particle(particle_name: String, to_global_position: Vector2) -> void:
 	var atom_particles_group: Node2D = Node2D.new()
 	atom_particles.add_child(atom_particles_group)
 	atom_particles_group.add_child(particle)
-	var team_color: Color = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color
+	var current_team_color: Color = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color
+	var team_color: Color = current_team_color
+	if owner.previous_atom_player: 
+		if owner.previous_atom_player.team_color != current_team_color: 
+			team_color = owner.previous_atom_player.team_color
 	team_color.s = 0.5
 	atom_particles_group.modulate = team_color
 	atom_particles_group.global_position = to_global_position 

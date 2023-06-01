@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://civv8ovy4dtr5"]
+
+[ext_resource type="Texture2D" uid="uid://dwwgcp5m1hhim" path="res://gui/in_game_bottom_app_bar/triangle.png" id="1_em0uk"]
+
+[resource]
+texture = ExtResource("1_em0uk")
+texture_margin_top = 20.0
+modulate_color = Color(0.929412, 0.607843, 0.290196, 1)

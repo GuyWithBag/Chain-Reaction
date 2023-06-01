@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://duikn6k2caub1"]
+[gd_scene load_steps=4 format=3 uid="uid://duikn6k2caub1"]
 
+[ext_resource type="Material" uid="uid://cxe78a5b0htp8" path="res://shaders/rainbow_gradient/rainbow_gradient.tres" id="1_n1jc4"]
 [ext_resource type="Script" path="res://gui/atom_counter_effect/atom_counter_effect.gd" id="1_nfn6h"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_iurpo"]
 
 [node name="AtomCounterEffect" type="Control"]
+material = ExtResource("1_n1jc4")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nfn6h")

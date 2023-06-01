@@ -5,9 +5,21 @@ signal history_cleared()
 signal turn_data_removed(turn_data: TurnData)
 signal turn_data_added(turn_data: TurnData)
 
+# This is undone 
+var max_undos: int = 1
+var undo_count: int = 0
+
 var history: Array[TurnData] = [] 
 
 
+func _ready() -> void: 
+	AtomSlotsManager.atom_added.connect(_on_atom_added)
+
+
+func _on_atom_added(atom_amount_added: int) -> void: 
+	reset_undo_count()
+	
+	
 func reset() -> void: 
 	clear_history() 
 
@@ -65,6 +77,10 @@ func pop_back_turn_data() -> TurnData:
 
 
 func apply_undo_changes() -> void: 
+	# This is undone
+	if undo_count > max_undos: 
+		print("UndoHistoryManager: You hit the max undos") 
+		return
 	var turn_data: TurnData = pop_back_turn_data() 
 	if !is_instance_valid(turn_data): 
 		turn_data = TurnData.new(
@@ -78,5 +94,10 @@ func apply_undo_changes() -> void:
 	AtomPlayerTurnsManager.apply_undo_changes(turn_data)
 	AtomPlayersManager.apply_undo_changes(turn_data)
 	for atom_player in AtomPlayersManager.atom_players_in_play: 
-		var atom_count: int = AtomPlayersManager.get_total_atoms_count(atom_player)
-		atom_player.total_atoms = atom_count
+		var atom_count: int = AtomPlayersManager.get_current_total_atoms_count(atom_player)
+		atom_player.current_total_atoms = atom_count
+	undo_count += 1
+
+
+func reset_undo_count() -> void: 
+	undo_count = 0

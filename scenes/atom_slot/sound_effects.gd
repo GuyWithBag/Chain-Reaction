@@ -17,21 +17,16 @@ func _ready() -> void:
 	
 	
 func _on_player_has_been_eliminated(_atom_player: AtomPlayer, _atom_players_in_turn: Array[AtomPlayer]) -> void: 
-	if !is_instance_valid(_atom_player): 
+	if (owner.atom_player in AtomPlayersManager.atom_players) == false: 
 		return
 	BackgroundAudioManager.play_temporary_sound(player_has_been_eliminated)
-
-
-func play_sound(sound: AudioStream) -> void: 
-	audio_stream_player.stream = sound     
-	audio_stream_player.play()
 
 
 func _on_atom_slot_player_interacted_wrong_team() -> void: 
 	if GameManager.current_state != GameManager.State.IN_GAME: 
 		return
 	is_player_interacted = true
-	play_sound(atom_slot_player_interacted_wrong_team)
+	BackgroundAudioManager.play_temporary_sound(atom_slot_player_interacted_wrong_team)
 
 
 func _on_atom_slot_atom_placed() -> void: 
@@ -49,6 +44,6 @@ func _on_atom_stack_atoms_added(atom_amount_added) -> void:
 func play_random_sound(range: Array[AudioStream]) -> void: 
 	rng.randomize()
 	var rand: int = randi_range(0, range.size() - 1)
-	play_sound(range[rand])
+	BackgroundAudioManager.play_temporary_sound(range[rand])
 	
 	

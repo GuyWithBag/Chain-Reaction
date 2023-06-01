@@ -16,6 +16,8 @@ enum State {
 	IN_GAME, 
 }
 
+const UNIT_SIZE: int = 32
+
 var max_atoms_in_map: int = 0: 
 	set(value): 
 		max_atoms_in_map = value
@@ -30,7 +32,6 @@ var game_world: GameWorld
 
 var game_start_data: GameStartData
 
-const UNIT_SIZE: int = 32
 
 var pausable: bool = true
 var first_time_launched: bool
@@ -42,6 +43,7 @@ var current_state: State = State.MENU:
 		
 var map_scaler: MapScaler
 
+var extend_map: bool = false
 
 func _ready() -> void: 
 	process_mode = Node.PROCESS_MODE_ALWAYS

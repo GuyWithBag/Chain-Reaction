@@ -20,7 +20,7 @@ var pause_menu_gui: GUI
 @onready var touch_screen_controls: GUI
 @onready var app_bar: AppBar
 @onready var gui_debugger: GUIDebugger = get_node("GUIDebugger")
-
+@onready var scoreboard: Scoreboard
 
 func _ready() -> void:
 	deactivate_in_game_children()
@@ -31,7 +31,6 @@ func _ready() -> void:
 			else: 
 				layer = 2
 	)
-	GameplayManager.winnable = true
 	
 	
 func platform_init() -> void: 
@@ -47,6 +46,7 @@ func appropriate_gui_platform(_new_platform: String, _previous_platform: String)
 	if PlatformManager.is_mobile(): 
 		touch_screen_controls = player_screen.get_gui_from_current_platform("TouchScreenControls")
 		app_bar = touch_screen_controls.app_bar
+		scoreboard = player_screen.get_gui_from_current_platform("Scoreboard")
 		
 		
 func init() -> void:

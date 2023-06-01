@@ -41,6 +41,20 @@ func animate_atoms_from_atom_count() -> void:
 		7: 
 			shake_animations.append_array(shake_all_atoms_individually(0.05, 3, 20))
 			rotate_animations.append(rotate_all_sprites_randomly())
+		8: 
+			shake_animations.append_array(shake_all_atoms_individually(0.05, 3, 20))
+			rotate_animations.append(rotate_all_sprites_randomly())
+		9: 
+			shake_animations.append_array(shake_all_atoms_individually(0.05, 3, 20))
+			rotate_animations.append(rotate_all_sprites_randomly())
+		10: 
+			shake_animations.append_array(shake_all_atoms_individually(0.05, 3, 20))
+			rotate_animations.append(rotate_all_sprites_randomly())
+	if owner.atom_count >= owner.max_atoms_can_display:
+		shake_animations.append_array(shake_all_atoms_individually(0.05, 3, 20))
+		rotate_animations.append(rotate_all_sprites_randomly())
+			
+			
 func _stop_shake_animations() -> void: 
 	for animation in shake_animations: 
 		animation.playing = false
@@ -62,7 +76,9 @@ func shake_all_atoms(shake_duration: float, min_range: int, max_range: int) -> S
 	
 func shake_all_atoms_individually(shake_duration: float, min_range: int, max_range: int) -> Array: 
 	var shake_animations: Array = []
-	for i in owner.atom_count:
+	for i in owner.atom_count: 
+		if owner.atom_count >= owner.max_atoms_can_display:
+			i = 10
 		var sprite: Control = sprites_children[i]
 		var shake_animation: ShakeAnimation = ShakeAnimation.new(self) 
 		add_child(shake_animation)

@@ -18,6 +18,7 @@ extends Control
 		arrange_atoms()
 		pad_animations.animate_atoms_from_atom_count()
 		
+var max_atoms_can_display: int = 11
 		
 var sprites_children: Array[Node] = []: 
 	get: 
@@ -35,9 +36,19 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var pad_animations: PlayerAmountDisplayAnimations = get_node("PlayerAmountDisplayAnimations")
 
 func _ready(): 
+	init() 
+	visibility_changed.connect(_on_visibility_changed)
+
+
+func _on_visibility_changed() -> void: 
+	init()
+
+
+func init() -> void: 
 	if Engine.is_editor_hint(): 
 		positions = get_node("Positions")
 		sprites = get_node("Sprites")
+		pad_animations = get_node("PlayerAmountDisplayAnimations")
 	atom_count = 2
 	arrange_atoms()
 	set_all_atom_colors()
@@ -57,25 +68,11 @@ func set_all_atoms_visible(value: bool) -> void:
 
 
 func arrange_atoms() -> void: 
-	match atom_count: 
-		1: 
-			arrange_atoms_to_position_group(0)
-		2: 
-			arrange_atoms_to_position_group(1)
-		3: 
-			arrange_atoms_to_position_group(2)
-		4: 
-			arrange_atoms_to_position_group(3)
-		5: 
-			arrange_atoms_to_position_group(4)
-		6: 
-			arrange_atoms_to_position_group(5)
-		7: 
-			arrange_atoms_to_position_group(6)
+	if atom_count >= max_atoms_can_display: 
+		arrange_atoms_to_position_group(max_atoms_can_display, max_atoms_can_display - 1)
+		return
+	arrange_atoms_to_position_group(atom_count, atom_count - 1)
 
-
-
-	
 
 func arrange_atom_in_random(atom: Control) -> void: 
 	var snap: int = 40
@@ -83,8 +80,8 @@ func arrange_atom_in_random(atom: Control) -> void:
 	atom.global_position = rand_position
 	
 	
-func arrange_atoms_to_position_group(position_group: int) -> void: 
-	for index in atom_count: 
+func arrange_atoms_to_position_group(count: int, position_group: int) -> void: 
+	for index in count: 
 		sprites_children[index].show()
 		sprites_children[index].global_position = positions_children[position_group].get_children()[index].global_position
 
@@ -99,7 +96,10 @@ func set_all_atom_colors() -> void:
 
 
 func change_atom_color_to_player(player_num: int) -> void: 
-	if player_num + 1 > 5: 
+	if Engine.is_editor_hint(): 
+		return
+	if player_num > AtomPlayersManager.atom_player_colors.size() - 1: 
+		sprites_children[player_num].modulate = AtomPlayersManager.get_random_color() 
 		return
 	sprites_children[player_num].modulate = AtomPlayersManager.atom_player_colors[player_num + 1]
 	

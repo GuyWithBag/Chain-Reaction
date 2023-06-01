@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://coupr6mo0ju45"]
+
+[ext_resource type="Script" path="res://gui/players_display/players_display.gd" id="1_c4ols"]
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_pjn8f"]
+[ext_resource type="Script" path="res://gui/scoreboard/widgets/scoreboard_panel_container/scoreboard_panel_container.gd" id="2_4iffg"]
+[ext_resource type="PackedScene" uid="uid://ci5tes1x0giaq" path="res://gui/pause_menu/widgets/pause_menu_button/pause_menu_button.tscn" id="2_t66ub"]
+
+[node name="ScoreboardPanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(700, 1000)
+theme = ExtResource("1_pjn8f")
+script = ExtResource("2_4iffg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Players:"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayersDisplay" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("player_displays")]
+layout_mode = 2
+script = ExtResource("1_c4ols")
+player_displays = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/PlayersDisplay"]
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Back" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_t66ub")]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+text = "Back"

@@ -1,19 +1,9 @@
-extends Control
+extends GUI
+
+@onready var animation_player: AnimationPlayer = get_node("AnimationPlayer") 
 
 
-func _ready() -> void:
-	AtomPlayersManager.player_has_been_eliminated.connect(_on_player_has_been_eliminated)
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	UIManager.remove_gui(self)
 
 
-func _on_player_has_been_eliminated(atom_player: AtomPlayer, atom_players_in_play: Array[AtomPlayer]) -> void: 
-	pass
-
-
-func _set_vignette_rgb(rgb: Color) -> void: 
-	pass
-	
-	
-func _set_vignette_opacity(opacity: float) -> void: 
-	pass
-	
-	

@@ -9,10 +9,6 @@ class_name GameWorld
 @onready var atom_particles: Node2D = %AtomParticles
 @onready var cameras: Node2D = $Cameras
 
-@onready var tilemap: TileMap = tilemaps.get_node("AtomSlotsTileMap")
-
-@onready var total_atom_slots: int = tilemap.get_used_cells(0).size()
-
 #var atom_slot_groups: Array[AtomSlotGroup] = []
 
 func _ready() -> void: 
@@ -22,7 +18,6 @@ func _ready() -> void:
 	GameManager.current_state = GameManager.State.IN_GAME
 	UIManager.set_gui_active(UIManager.player_screen, true)
 	CameraManager.current_camera = cameras.get_child(0)
-	GameplayManager.winnable = true
 #	InGameStateManager.chain_reaction_sequence_finished.connect(
 #		func(): 
 #			tilemap.modulate = AtomPlayersManager.current_atom_player_in_turn.team_color
@@ -42,13 +37,13 @@ func animate_change_grid_modulate_to_current_team_in_turn() -> void:
 	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
 		return
 	var tween: Tween = create_tween() 
-	tween.tween_property(tilemap, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.3)
+	tween.tween_property(tilemaps, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.3)
 	
 	
 func change_grid_modulate_to_current_team_in_turn() -> void: 
 	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
 		return
-	tilemap.modulate = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color
+	tilemaps.modulate = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color
 	
 	
 #func get_all_neighboring_cells(atom_slot_group: AtomSlotGroup, coords: Vector2) -> void: 

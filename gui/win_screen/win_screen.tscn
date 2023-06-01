@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ldgbqe7mherb"]
+[gd_scene load_steps=11 format=3 uid="uid://ldgbqe7mherb"]
 
 [ext_resource type="Script" path="res://gui/win_screen/win_screen.gd" id="1_evgoe"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_k65ge"]
 [ext_resource type="PackedScene" uid="uid://cgpu7y8qeyhjm" path="res://gui/win_screen/widgets/win_screen_button.tscn" id="2_1r6rp"]
 [ext_resource type="Shader" path="res://shaders/gaussian_blur/gaussian_blur.gdshader" id="3_ied0p"]
+[ext_resource type="PackedScene" uid="uid://coupr6mo0ju45" path="res://gui/scoreboard/widgets/scoreboard_panel_container/scoreboard_panel_container.tscn" id="4_3lbfw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2mqum"]
 shader = ExtResource("3_ied0p")
@@ -143,8 +144,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3888.0
-offset_bottom = 6912.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_k65ge")
@@ -173,8 +172,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 9720.0
-offset_bottom = 17280.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -219,6 +216,16 @@ text = " WON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ScoreboardPanelContainer" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_3lbfw")]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+
+[node name="PlayersDisplay" parent="CenterContainer/VBoxContainer/ScoreboardPanelContainer/MarginContainer/VBoxContainer/PanelContainer" index="0"]
+mode = 1
+
+[node name="HBoxContainer" parent="CenterContainer/VBoxContainer/ScoreboardPanelContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
 [node name="Gap2" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
@@ -235,9 +242,13 @@ layout_mode = 2
 text = "Return to Menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "come_up"
 libraries = {
 "": SubResource("AnimationLibrary_lc6gs")
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="CenterContainer/VBoxContainer/ScoreboardPanelContainer"]

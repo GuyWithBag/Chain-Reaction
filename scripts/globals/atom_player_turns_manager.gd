@@ -13,7 +13,7 @@ enum State {
 var current_state: State = State.AWAITING_TURN: 
 	set(value): 
 		current_state = value
-		printerr("AtomPlayerTurnsManager: current_state: ", State.keys()[current_state])
+		print("AtomPlayerTurnsManager: current_state: ", State.keys()[current_state])
 
 var take_turns_looping: bool = false
 
@@ -40,15 +40,13 @@ func start_game() -> void:
 	
 func take_turns_loop() -> void: 
 	while take_turns_looping:  
-		var atom_players_in_play: Array[AtomPlayer] = AtomPlayersManager.atom_players_in_play
+		var atom_players_in_play: Array[AtomPlayer] = AtomPlayersManager.atom_players_in_play 
 		if turn_index >= atom_players_in_play.size(): 
-			return
+			turn_index = 0
 		current_atom_player_in_turn = atom_players_in_play[turn_index]
 		print("AtomPlayerTurnsManager: Current team: ", atom_players_in_play[turn_index].team_number)
 		turn_started.emit()
 		turn_index += 1 
-		if turn_index >= atom_players_in_play.size(): 
-			turn_index = 0
 		await turn_is_next
 	
 	

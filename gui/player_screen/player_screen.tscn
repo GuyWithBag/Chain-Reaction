@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu8g1ieo6oi6n"]
+[gd_scene load_steps=5 format=3 uid="uid://cu8g1ieo6oi6n"]
 
 [ext_resource type="PackedScene" uid="uid://2bbpxd8jc23o" path="res://gui/cross_platform_gui/cross_platform_gui_manager.tscn" id="1_4puyt"]
 [ext_resource type="Script" path="res://gui/player_screen/player_screen.gd" id="2_6awrr"]
+[ext_resource type="PackedScene" uid="uid://cjowp1wvm8jg" path="res://gui/scoreboard/scoreboard.tscn" id="3_6n3fi"]
 [ext_resource type="PackedScene" uid="uid://cj0ctwbm83d0w" path="res://gui/touch_screen_gui/touch_screen_controls/touch_screen_controls.tscn" id="3_po3gc"]
 
 [node name="PlayerScreen" instance=ExtResource("1_4puyt")]
@@ -18,7 +19,11 @@ mouse_filter = 2
 [node name="MOBILE" parent="Mode" index="2"]
 mouse_filter = 2
 
-[node name="TouchScreenControls" parent="Mode/MOBILE" index="0" instance=ExtResource("3_po3gc")]
+[node name="Scoreboard" parent="Mode/MOBILE" index="0" instance=ExtResource("3_6n3fi")]
+visible = false
+layout_mode = 1
+
+[node name="TouchScreenControls" parent="Mode/MOBILE" index="1" instance=ExtResource("3_po3gc")]
 layout_mode = 1
 
 [node name="CONSOLE" parent="Mode" index="3"]

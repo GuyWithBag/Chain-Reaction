@@ -1,7 +1,7 @@
 extends Resource
 class_name AtomPlayer
 
-signal total_atoms_changed(previous_count: int, new_count: int)
+signal current_total_atoms_changed(previous_count: int, new_count: int)
 
 @export var group_name: String: 
 	get: 
@@ -12,14 +12,16 @@ signal total_atoms_changed(previous_count: int, new_count: int)
 
 var first_atom_has_been_placed: bool = false
 
-var total_atoms: int: 
+var current_total_atoms: int = 0: 
 	set(value): 
-		var prev_value: int = total_atoms
-		total_atoms = value
-		if first_atom_has_been_placed == false && total_atoms == 1: 
+		var prev_value: int = current_total_atoms
+		current_total_atoms = value
+		if first_atom_has_been_placed == false && current_total_atoms == 1: 
 			first_atom_has_been_placed = true 
 			return
-		total_atoms_changed.emit(prev_value, total_atoms)
+		current_total_atoms_changed.emit(prev_value, current_total_atoms)
+		
+var total_atoms_added: int = 0
 
 func _init(_team_number: int, _team_color: Color) -> void: 
 	team_number = _team_number
@@ -28,6 +30,6 @@ func _init(_team_number: int, _team_color: Color) -> void:
 
 func reset() -> void: 
 	first_atom_has_been_placed = false 
-	total_atoms = 0 
+	current_total_atoms = 0 
 	
 	

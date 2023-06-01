@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6nrqjx1lvng7"]
+[gd_scene load_steps=8 format=3 uid="uid://c6nrqjx1lvng7"]
 
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="1_l7462"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_wkkch"]
 [ext_resource type="PackedScene" uid="uid://bvrsoj58irelk" path="res://gui/options_menu/widget/option_list_tile/option_list_tile.tscn" id="2_dvpqs"]
 [ext_resource type="Script" path="res://gui/options_menu/widget/option_list_tile/option_list_tile_audio.gd" id="3_7ecgv"]
+[ext_resource type="Script" path="res://gui/options_menu/widget/option_list_tile/option_list_tile_gameplay.gd" id="4_1iupp"]
+[ext_resource type="PackedScene" uid="uid://epfl84tdh7bw" path="res://gui/options_menu/widget/spin_box_option/spin_box_option.tscn" id="5_8agoa"]
+[ext_resource type="PackedScene" uid="uid://cr1xd7ecb2bec" path="res://gui/options_menu/widget/player_color_picker/player_color_picker.tscn" id="5_ywbxs"]
 
 [node name="OptionsMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -30,38 +33,87 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Options"
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(0, 1000)
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
 
-[node name="Options" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer"]
-custom_minimum_size = Vector2(600, 1159)
+[node name="Options" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Audio" parent="MarginContainer/VBoxContainer/ScrollContainer/Options" instance=ExtResource("2_dvpqs")]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_vertical = 1
+script = ExtResource("3_7ecgv")
+
+[node name="Title" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/Audio/VBoxContainer" index="0"]
+text = "Audio"
+
+[node name="GameRules" parent="MarginContainer/VBoxContainer/ScrollContainer/Options" instance=ExtResource("2_dvpqs")]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+size_flags_vertical = 1
+script = ExtResource("4_1iupp")
+
+[node name="Title" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer" index="0"]
+text = "Game Rules"
+metadata/_edit_group_ = true
+
+[node name="MaxUndos" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer" index="0" instance=ExtResource("5_8agoa")]
+layout_mode = 2
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/MaxUndos" index="0"]
+text = "Max Undos"
+
+[node name="Players" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Audio" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options" instance=ExtResource("2_dvpqs")]
+[node name="PlayersList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players"]
+unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("3_7ecgv")
+size_flags_vertical = 3
+theme_override_constants/separation = 25
 
-[node name="Title" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options/Audio/Panel/VBoxContainer" index="0"]
-text = "Audio
-"
+[node name="PlayerColorPicker" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players/PlayersList" instance=ExtResource("5_ywbxs")]
+layout_mode = 2
+
+[node name="PlayerColorPicker2" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players/PlayersList" instance=ExtResource("5_ywbxs")]
+layout_mode = 2
+player_number = 2
+
+[node name="PlayerColorPicker3" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players/PlayersList" instance=ExtResource("5_ywbxs")]
+layout_mode = 2
+player_number = 3
+
+[node name="PlayerColorPicker4" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players/PlayersList" instance=ExtResource("5_ywbxs")]
+layout_mode = 2
+player_number = 4
+
+[node name="PlayerColorPicker5" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/Players/PlayersList" instance=ExtResource("5_ywbxs")]
+layout_mode = 2
+player_number = 5
+
+[node name="AddMorePlayers" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "Add More Players"
 
 [node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 2
 
-[node name="GoToPageButton" parent="MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("1_l7462")]
+[node name="Back" parent="MarginContainer/VBoxContainer/Buttons" instance=ExtResource("1_l7462")]
 custom_minimum_size = Vector2(370, 100)
 layout_mode = 2
-page_container = NodePath("../../../../..")
-go_to_page = NodePath("../../../../../MainPage")
 
-[editable path="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/Options/Audio"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/MaxUndos/SpinBox" to="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules" method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/AddMorePlayers" to="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules" method="_on_add_more_players_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Options/Audio"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/MaxUndos"]

@@ -211,8 +211,6 @@ player_has_been_eliminated = ExtResource("28_40e6u")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundEffects"]
 process_mode = 3
-max_polyphony = 6
-bus = &"AtomsSFX"
 
 [connection signal="atom_placed" from="." to="SoundEffects" method="_on_atom_slot_atom_placed"]
 [connection signal="player_interacted_wrong_team" from="." to="SoundEffects" method="_on_atom_slot_player_interacted_wrong_team"]

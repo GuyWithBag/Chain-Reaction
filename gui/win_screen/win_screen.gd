@@ -12,7 +12,6 @@ func _ready() -> void:
 	UIManager.set_gui_active(self, false)
 	BackgroundAudioManager.play_temporary_sound(AudioEffectsLoader.get_sfx("Victory"))
 	animation_player.play("come_up")
-	GameManager.pause_game(true)
 
 
 func _on_play_again_pressed() -> void:
@@ -27,3 +26,5 @@ func close() -> void:
 	UIManager.remove_gui(self)
 
 
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	GameManager.pause_game(true)

@@ -2,7 +2,8 @@ extends Node
 
 
 var all_maps: Dictionary = {
-	"game_world_1" : MapData.new("Game World 1", "res://scenes/game_world_levels/game_world_1/game_world_1.tscn")
+	"standard_world" : MapData.new("Standard World", "res://scenes/game_world_levels/standard_world/standard_world.tscn"), 
+	"standard_world_extended" : MapData.new("Standard World", "res://scenes/game_world_levels/standard_world/standard_world_extended.tscn"), 
 }
 
 
@@ -14,6 +15,8 @@ func get_map(map_name: String) -> MapData:
 func get_all_maps() -> Array[MapData]: 
 	var maps: Array[MapData] = []
 	for map_data in MapsLoader.all_maps.values(): 
+		if map_data.map_name.ends_with("Extended"): 
+			continue 
 		maps.append(map_data)
 	return maps
 	

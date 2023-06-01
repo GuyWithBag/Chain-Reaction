@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="OnePlayers" type="Control" parent="Positions"]
+[node name="1Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,7 +42,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/OnePlayers"]
+[node name="1" type="Control" parent="Positions/1Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TwoPlayers" type="Control" parent="Positions"]
+[node name="2Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,7 +63,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/TwoPlayers"]
+[node name="1" type="Control" parent="Positions/2Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="2" type="Control" parent="Positions/TwoPlayers"]
+[node name="2" type="Control" parent="Positions/2Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ThreePlayers" type="Control" parent="Positions"]
+[node name="3Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,7 +101,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/ThreePlayers"]
+[node name="1" type="Control" parent="Positions/3Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,7 +114,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="2" type="Control" parent="Positions/ThreePlayers"]
+[node name="2" type="Control" parent="Positions/3Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,7 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="3" type="Control" parent="Positions/ThreePlayers"]
+[node name="3" type="Control" parent="Positions/3Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,7 +144,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="FourPlayers" type="Control" parent="Positions"]
+[node name="4Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,7 +154,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/FourPlayers"]
+[node name="1" type="Control" parent="Positions/4Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -169,7 +169,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="2" type="Control" parent="Positions/FourPlayers"]
+[node name="2" type="Control" parent="Positions/4Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -184,7 +184,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="3" type="Control" parent="Positions/FourPlayers"]
+[node name="3" type="Control" parent="Positions/4Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="4" type="Control" parent="Positions/FourPlayers"]
+[node name="4" type="Control" parent="Positions/4Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -214,7 +214,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="FIvePlayers" type="Control" parent="Positions"]
+[node name="5Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -224,7 +224,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/FIvePlayers"]
+[node name="1" type="Control" parent="Positions/5Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,7 +238,7 @@ offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="2" type="Control" parent="Positions/FIvePlayers"]
+[node name="2" type="Control" parent="Positions/5Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,7 +252,7 @@ offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="3" type="Control" parent="Positions/FIvePlayers"]
+[node name="3" type="Control" parent="Positions/5Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -264,7 +264,7 @@ offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="4" type="Control" parent="Positions/FIvePlayers"]
+[node name="4" type="Control" parent="Positions/5Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,7 +278,7 @@ offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="5" type="Control" parent="Positions/FIvePlayers"]
+[node name="5" type="Control" parent="Positions/5Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -292,7 +292,7 @@ offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SixPlayers" type="Control" parent="Positions"]
+[node name="6Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -302,7 +302,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/SixPlayers"]
+[node name="1" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -316,7 +316,7 @@ offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="2" type="Control" parent="Positions/SixPlayers"]
+[node name="2" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -330,7 +330,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="3" type="Control" parent="Positions/SixPlayers"]
+[node name="3" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -342,7 +342,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="4" type="Control" parent="Positions/SixPlayers"]
+[node name="4" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -356,7 +356,7 @@ offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="5" type="Control" parent="Positions/SixPlayers"]
+[node name="5" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -370,7 +370,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="6" type="Control" parent="Positions/SixPlayers"]
+[node name="6" type="Control" parent="Positions/6Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -384,7 +384,7 @@ offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SevenPlayers" type="Control" parent="Positions"]
+[node name="7Players" type="Control" parent="Positions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -394,7 +394,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="Positions/SevenPlayers"]
+[node name="1" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -408,7 +408,7 @@ offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="2" type="Control" parent="Positions/SevenPlayers"]
+[node name="2" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -422,7 +422,7 @@ offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="3" type="Control" parent="Positions/SevenPlayers"]
+[node name="3" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -434,7 +434,7 @@ offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="4" type="Control" parent="Positions/SevenPlayers"]
+[node name="4" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -448,7 +448,7 @@ offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="5" type="Control" parent="Positions/SevenPlayers"]
+[node name="5" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -462,7 +462,7 @@ offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="6" type="Control" parent="Positions/SevenPlayers"]
+[node name="6" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -476,7 +476,7 @@ offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="7" type="Control" parent="Positions/SevenPlayers"]
+[node name="7" type="Control" parent="Positions/7Players"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -487,6 +487,570 @@ offset_left = -50.0
 offset_top = -12.0
 offset_right = -50.0
 offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="8Players" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -46.0
+offset_right = -98.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 49.0
+offset_right = -98.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -46.0
+offset_right = 100.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 49.0
+offset_right = 100.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -62.0
+offset_right = -2.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="7" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 48.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="8" type="Control" parent="Positions/8Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -13.0
+offset_right = -48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="9Players" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -46.0
+offset_right = -98.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 49.0
+offset_right = -98.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -46.0
+offset_right = 100.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 49.0
+offset_right = 100.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -62.0
+offset_right = -2.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="7" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 48.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="8" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -13.0
+offset_right = -48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="9" type="Control" parent="Positions/9Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = -12.0
+offset_right = 150.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="10Players" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -46.0
+offset_right = -98.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 49.0
+offset_right = -98.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -46.0
+offset_right = 100.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 49.0
+offset_right = 100.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -62.0
+offset_right = -2.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="7" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -12.0
+offset_right = 48.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="8" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -13.0
+offset_right = -48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="9" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -1.0
+offset_right = -148.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="10" type="Control" parent="Positions/10Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = 4.0
+offset_right = 150.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="11OrMorePlayers" type="Control" parent="Positions"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -87.0
+offset_right = -98.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = 99.0
+offset_right = -109.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 106.0
+offset_right = 100.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -103.0
+offset_right = 100.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = 99.0
+offset_right = 9.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="6" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -27.0
+offset_right = 129.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="7" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -53.0
+offset_right = 38.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="8" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 59.0
+offset_right = -48.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="9" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_right = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="10" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = 23.0
+offset_right = 59.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="11" type="Control" parent="Positions/11OrMorePlayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -34.0
+offset_right = -41.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -554,6 +1118,38 @@ offset_left = -50.0
 offset_top = -12.0
 offset_right = -50.0
 offset_bottom = -12.0
+
+[node name="AtomTextureRect8" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = -48.0
+offset_top = -13.0
+offset_right = -48.0
+offset_bottom = -13.0
+
+[node name="AtomTextureRect9" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 150.0
+offset_top = -12.0
+offset_right = 150.0
+offset_bottom = -12.0
+
+[node name="AtomTextureRect10" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = 150.0
+offset_top = 4.0
+offset_right = 150.0
+offset_bottom = 4.0
+
+[node name="AtomTextureRect11" parent="Sprites" instance=ExtResource("2_7k845")]
+visible = false
+layout_mode = 1
+offset_left = -41.0
+offset_top = -34.0
+offset_right = -41.0
+offset_bottom = -34.0
 
 [node name="TweenAnimations" type="Node" parent="."]
 script = ExtResource("3_pn721")

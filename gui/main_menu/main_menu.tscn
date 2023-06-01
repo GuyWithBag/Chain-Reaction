@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvwqa3rt76c1g"]
+[gd_scene load_steps=17 format=3 uid="uid://bvwqa3rt76c1g"]
 
 [ext_resource type="Script" path="res://gui/main_menu/main_menu.gd" id="1_hdem2"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_btats"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6nrqjx1lvng7" path="res://gui/options_menu/options_menu.tscn" id="8_1205d"]
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="8_ha82a"]
 [ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="9_1lura"]
+[ext_resource type="PackedScene" uid="uid://dkgqdj2e2erdk" path="res://gui/options_menu/widget/check_box_option/check_box_option.tscn" id="10_64ckx"]
 [ext_resource type="PackedScene" uid="uid://0srpeviqrq2w" path="res://gui/languages_options/languages_options.tscn" id="11_qd2pl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r060v"]
@@ -94,24 +95,25 @@ text = "Play Game"
 page_container = NodePath("../../..")
 go_to_page = NodePath("../../../GameModesPage")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options"]
+[node name="Settigns" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Options" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/HBoxContainer" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Options" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/Settigns" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Options"
 page_container = NodePath("../../../..")
 go_to_page = NodePath("../../../../OptionsMenu")
 
-[node name="Languages" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/HBoxContainer" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
+[node name="Languages" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/Settigns" node_paths=PackedStringArray("page_container", "go_to_page") instance=ExtResource("4_1rbl0")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = ""
 page_container = NodePath("../../../..")
 go_to_page = NodePath("../../../../LanguagesOptions")
 
-[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/HBoxContainer/Languages"]
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/MainPage/Options/Settigns/Languages"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,6 +200,14 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="ExtendMapToggle" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("10_64ckx")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/ExtendMapToggle" index="0"]
+theme_override_font_sizes/font_size = 35
+text = "Extend map based on device screen?"
+
 [node name="StartGame" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage" instance=ExtResource("3_5i3wu")]
 layout_mode = 2
 theme_type_variation = &"PlayGameButton"
@@ -211,6 +221,10 @@ go_to_page = NodePath("../../SinglePlayerModePage")
 [node name="OptionsMenu" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages" instance=ExtResource("8_1205d")]
 visible = false
 layout_mode = 2
+
+[node name="Back" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/Buttons" index="0" node_paths=PackedStringArray("page_container", "go_to_page")]
+page_container = NodePath("../../../../..")
+go_to_page = NodePath("../../../../../MainPage")
 
 [node name="LanguagesOptions" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages" instance=ExtResource("11_qd2pl")]
 visible = false
@@ -304,6 +318,12 @@ position = Vector2(486, 864)
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsPlayers" to="." method="_on_vs_players_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/SinglePlayerModePage/VsAI" to="." method="_on_vs_ai_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/MaxUndos/SpinBox" to="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules" method="_on_spin_box_value_changed" flags=18]
 
 [editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/ChooseMapDisplay"]
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/ExtendMapToggle"]
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu"]
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/ScrollContainer/Options/Audio"]
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules"]
+[editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/OptionsMenu/MarginContainer/VBoxContainer/ScrollContainer/Options/GameRules/VBoxContainer/MarginContainer/VBoxContainer/MaxUndos"]
 [editable path="CanvasLayer/Control/CenterContainer/MainBody/Pages/LanguagesOptions"]
