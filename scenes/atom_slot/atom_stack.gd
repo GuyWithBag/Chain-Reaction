@@ -48,6 +48,7 @@ signal atoms_overloaded
 
 @onready var atoms_sprites: Node2D = $"../AtomsSprites"
 @onready var atoms_detector: AtomsDetector = get_node("../AtomsDetector")
+@onready var state_machine: StateMachine = get_node("../StateMachine")
 
 var _initialized: bool = false
 
@@ -84,8 +85,8 @@ func add_atom(added_atoms: int, new_player: AtomPlayer) -> void:
 	# The colonizer will then receive their new atom amount
 	owner.atom_player = new_player 
 	for atom_player in AtomPlayersManager.atom_players_in_play: 
-		var atom_count: int = AtomPlayersManager.get_current_total_atoms_count(atom_player)
-		atom_player.current_total_atoms = atom_count
+		var _atom_count: int = AtomPlayersManager.get_current_total_atoms_count(atom_player)
+		atom_player.current_total_atoms = _atom_count
 	# If the count becomes 0, it means that the current/previous atom player of this will lose some atoms
 #	if prev_player != new_player && prev_player != null: 
 #		prev_player.current_total_atoms -= previous_count
@@ -97,18 +98,28 @@ func add_atom(added_atoms: int, new_player: AtomPlayer) -> void:
 #		new_player.current_total_atoms += added_atoms
 	atoms_sprites.arrange_atoms()
 	save_atom_slot_data()
+	if GameManager.current_state == GameManager.State.IN_GAME: 
+		Input.vibrate_handheld(50)
 	
 	
 func save_atom_slot_data() -> void: 
+	var save_slot_data: Callable = func():
+		var atom_slot_data: AtomSlotData = AtomSlotData.new(
+			atom_count, 
+			owner.atom_player, 
+			state_machine.current_state
+		)
+		AtomSlotsManager.atom_slots_saved_data[owner.name] = atom_slot_data
+
 	if ChainReactionSequenceManager.is_chain_reacting: 
 		ChainReactionSequenceManager.chain_reaction_sequence_finished.connect(
 			func(): 
-				UndoHistoryManager.save_current_data(owner) 
+				save_slot_data.call()
 				
 		, CONNECT_ONE_SHOT
 		) 
 	else: 
-		UndoHistoryManager.save_current_data(owner) 
+		save_slot_data.call() 
 
 
 func remove_atoms(atoms_amout_to_remove: int) -> void: 

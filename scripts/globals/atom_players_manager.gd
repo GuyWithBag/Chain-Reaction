@@ -13,6 +13,7 @@ var player_amount: int = 0
 
 var atom_players: Array[AtomPlayer] = [] 
 
+var eliminated_atom_players: Array[AtomPlayer] = []
 var previous_atoms_in_play: Array[AtomPlayer] = []
 var atom_players_in_play: Array[AtomPlayer] = []
 
@@ -25,7 +26,6 @@ var default_atom_player_colors: Dictionary = {
 }
 
 var atom_player_colors: Dictionary = default_atom_player_colors.duplicate() 
-
 
 func _ready() -> void: 
 #	ChainReactionSequenceManager.chain_reaction_sequence_finished.connect(_on_chain_reaction_sequence_finished)
@@ -103,6 +103,7 @@ func get_random_color() -> Color:
 	
 	
 func elimnate_team(atom_player: AtomPlayer) -> void: 
+	eliminated_atom_players.append(atom_player)
 	atom_players_in_play.erase(atom_player)
 	player_has_been_eliminated.emit(atom_player, atom_players_in_play)
 	var atom_players_remaining: int = atom_players_in_play.size()

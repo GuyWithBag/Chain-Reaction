@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=35 format=3 uid="uid://xl1ilkogtjb1"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://xl1ilkogtjb1"]
 
 [ext_resource type="StyleBox" uid="uid://bgu8isqrrg7fb" path="res://themes/main_theme/button_disabled_style_box_flat.tres" id="1_37bfi"]
 [ext_resource type="StyleBox" uid="uid://5473psn62ja3" path="res://themes/main_theme/alert_box_panel_container_style_box.tres" id="1_ck0yl"]
@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://6ihaaeltpmad" path="res://themes/main_theme/appbar_panel_container_style_box.tres" id="2_b8aqp"]
 [ext_resource type="StyleBox" uid="uid://blcad506d8vjq" path="res://themes/main_theme/button_hover_style_box_flat.tres" id="3_1trb8"]
 [ext_resource type="StyleBox" uid="uid://bx6s1d18visju" path="res://themes/main_theme/panel_style_box.tres" id="3_cnjnq"]
+[ext_resource type="StyleBox" uid="uid://behvkkpsm1lkn" path="res://themes/main_theme/button_focused_style_box_flat.tres" id="4_b0y0p"]
 [ext_resource type="StyleBox" uid="uid://bx8gq0506llqv" path="res://themes/main_theme/panel_container_style_box.tres" id="4_tq7hc"]
 [ext_resource type="FontFile" uid="uid://y0e23jq8l7xa" path="res://fonts/zerovelo.ttf" id="5_qkwt5"]
 [ext_resource type="StyleBox" uid="uid://ci5xfdpts3jff" path="res://themes/main_theme/map_image_panel_style_box.tres" id="6_qpmll"]
@@ -14,9 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://ds678w4n37uxt" path="res://gui/material_icons/check_box_checked.svg" id="7_buprw"]
 [ext_resource type="StyleBox" uid="uid://hpxg2l3kuxry" path="res://themes/main_theme/vscroll_grabber_style_box_flat.tres" id="7_issv5"]
 [ext_resource type="FontFile" uid="uid://blm7bw7c7nwar" path="res://fonts/tt/zrnic rg.ttf" id="7_mb3jg"]
+[ext_resource type="StyleBox" uid="uid://4e0kk4d3dih1" path="res://themes/main_theme/check_box_normal_style_box.tres" id="7_sb7mp"]
 [ext_resource type="StyleBox" uid="uid://nfs5vjl1hqya" path="res://themes/main_theme/option_button_focus_style_box.tres" id="8_adgu0"]
 [ext_resource type="Texture2D" uid="uid://b22r5cp5b3g8h" path="res://gui/material_icons/check_box_unchecked.svg" id="8_bm3jw"]
 [ext_resource type="StyleBox" uid="uid://bxbrl3u8l3yu3" path="res://themes/main_theme/option_button_pressed_style_box.tres" id="8_ee3jf"]
+[ext_resource type="StyleBox" uid="uid://4yxptoptaul2" path="res://themes/main_theme/check_box_pressed_style_box.tres" id="8_hq0kr"]
 [ext_resource type="StyleBox" uid="uid://dsrdkvl3oprmw" path="res://themes/main_theme/option_button_normal_style_box.tres" id="8_mvjel"]
 [ext_resource type="StyleBox" uid="uid://deg4xftesuy16" path="res://themes/main_theme/vscroll_normal_style_box_flat.tres" id="8_nely8"]
 [ext_resource type="StyleBox" uid="uid://cw6kwsgxiel3r" path="res://themes/main_theme/vscroll_grabber_pressed_style_box_flat.tres" id="8_q36gd"]
@@ -30,14 +33,15 @@
 [ext_resource type="Texture2D" uid="uid://daj7wqtmixwf6" path="res://gui/material_icons/arrow_up_down.svg" id="23_smh1b"]
 [ext_resource type="StyleBox" uid="uid://civv8ovy4dtr5" path="res://themes/main_theme/triangle_button_pressed_style_box.tres" id="27_86p4n"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e53j6"]
-texture = ExtResource("8_bm3jw")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qw3nb"]
-texture = ExtResource("7_buprw")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mr5w6"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 0.270588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86fnt"]
+bg_color = Color(0, 0.364706, 0.419608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i66a2"]
 bg_color = Color(0.929412, 0.682353, 0.286275, 1)
@@ -65,22 +69,26 @@ shadow_offset = Vector2(0, 3)
 
 [resource]
 default_font = ExtResource("7_mb3jg")
-default_font_size = 70
+default_font_size = 90
 AlertBoxButton/base_type = &"Button"
 AlertBoxPanelContainer/base_type = &"PanelContainer"
 AlertBoxPanelContainer/styles/panel = ExtResource("1_ck0yl")
 AppBarPanelContainer/base_type = &"PanelContainer"
 AppBarPanelContainer/styles/panel = ExtResource("2_b8aqp")
 Button/styles/disabled = ExtResource("1_37bfi")
-Button/styles/focus = ExtResource("1_mfd1h")
+Button/styles/focus = ExtResource("4_b0y0p")
 Button/styles/hover = ExtResource("3_1trb8")
 Button/styles/normal = ExtResource("1_mfd1h")
 Button/styles/pressed = ExtResource("2_amvi7")
 ButtonCheckBox/base_type = &"Button"
-ButtonCheckBox/styles/normal = SubResource("StyleBoxTexture_e53j6")
-ButtonCheckBox/styles/pressed = SubResource("StyleBoxTexture_qw3nb")
+ButtonCheckBox/styles/disabled = ExtResource("7_sb7mp")
+ButtonCheckBox/styles/focus = ExtResource("8_hq0kr")
+ButtonCheckBox/styles/hover = ExtResource("7_sb7mp")
+ButtonCheckBox/styles/normal = ExtResource("7_sb7mp")
+ButtonCheckBox/styles/pressed = ExtResource("8_hq0kr")
 CheckBox/icons/checked = ExtResource("8_bm3jw")
 CheckBox/icons/unchecked = ExtResource("7_buprw")
+ColorPicker/constants/label_width = 30
 DarkPanel/base_type = &"Panel"
 DarkPanel/styles/panel = SubResource("StyleBoxFlat_mr5w6")
 HSlider/icons/grabber = ExtResource("9_ahk57")
@@ -111,6 +119,8 @@ OptionButton/styles/normal = ExtResource("8_mvjel")
 OptionButton/styles/pressed = ExtResource("8_ee3jf")
 Panel/styles/panel = ExtResource("3_cnjnq")
 PanelContainer/styles/panel = ExtResource("4_tq7hc")
+PanelContainerInner/base_type = &"PanelContainer"
+PanelContainerInner/styles/panel = SubResource("StyleBoxFlat_86fnt")
 PlayGameButton/base_type = &"Button"
 PlayGameButton/styles/focus = ExtResource("13_pf31f")
 PlayGameButton/styles/hover = ExtResource("13_pf31f")

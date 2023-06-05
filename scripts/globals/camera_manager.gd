@@ -25,8 +25,8 @@ func shake_camera(shaking_duration: float = 0.1, loops: int = 4, min_range: int 
 	var y_rand_pos: int = rng.randi_range(min_range, max_range) * y_rand_dir
 	
 	var new_position: Vector2 = Vector2(x_rand_pos, y_rand_pos)
-	shake_tween.tween_property(current_camera, "position", original_position + new_position, shaking_duration)
-	shake_tween.tween_property(current_camera, "position", original_position, shaking_duration)
+	shake_tween.tween_property(current_camera, "global_position", original_position + new_position, shaking_duration)
+	shake_tween.tween_property(current_camera, "global_position", original_position, shaking_duration)
 	shake_tween.finished.connect(
 		func(): 
 			finished_shaking.emit()

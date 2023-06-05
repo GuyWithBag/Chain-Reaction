@@ -59,6 +59,7 @@ func start_game() -> void:
 	ChainReactionSequenceManager.reset()
 	AtomPlayerTurnsManager.reset()
 	AtomPlayersManager.reset()
+	GameplayManager.reset()
 	
 	AtomPlayersManager.start_game(game_start_data.player_amount)
 	GameplayManager.current_gameplay_game_start_data = game_start_data

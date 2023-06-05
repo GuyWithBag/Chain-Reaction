@@ -17,16 +17,19 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 	for neighbor_atom_slot in neighbor_atom_slots: 
 		ChainReactionSequenceManager.add_sequence(neighbor_atom_slot.sequence) 
 	started_exploding.emit()
-	var shake_cam_duration: float = 0.1
-	var shake_cam_loops: int = 3
-	if CameraManager.shaking: 
-		CameraManager.finished_shaking.connect(
-			func(): 
-				CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
-		, CONNECT_ONE_SHOT
-		)
-	else: 
-		CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
+	if get_tree().current_scene.has_node("%Root"): 
+		var root: Control = get_tree().current_scene.get_node("%Root")
+		var cam_shake: ShakeAnimation = ShakeAnimation.new(self, true, 1, 1)
+		root.add_child(cam_shake)
+		cam_shake.shake_object_randomly(root, cam_shake.PositionType.GLOBAL, root.global_position, 0.08, 1, 7)
+#	if CameraManager.shaking: 
+#		CameraManager.finished_shaking.connect(
+#			func(): 
+#				CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
+#		, CONNECT_ONE_SHOT
+#		)
+#	else: 
+#		CameraManager.shake_camera(shake_cam_duration, shake_cam_loops)
 	await atoms_sprites.explode_animation() 
 	for neighbor_atom_slot in neighbor_atom_slots: 
 		var neighbor_atom_stack: AtomStack = neighbor_atom_slot.atom_stack 
@@ -43,6 +46,8 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 #		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()
 #	print(AtomSlotsManager.data)
+	
+	Input.vibrate_handheld(500)
 	finished_exploding.emit() 
 	
 	

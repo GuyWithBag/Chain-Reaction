@@ -227,14 +227,14 @@ mode = 1
 visible = false
 
 [node name="Gap2" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="PlayAgain" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]
 layout_mode = 2
 
 [node name="Gap" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="ReturnToMenu" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]

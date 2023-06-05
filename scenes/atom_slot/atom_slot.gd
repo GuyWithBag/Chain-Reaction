@@ -15,9 +15,10 @@ var atom_player: AtomPlayer:
 		atom_player = value
 		atoms_sprites.change_team_color_to(atom_player)
 		if atom_player != null:
-			if previous_atom_player != null: 
-				remove_from_group(StringName(str(previous_atom_player.team_number)))
+			if !get_groups().is_empty(): 
+				remove_from_group(get_groups()[0])
 			add_to_group(StringName(str(atom_player.team_number)))
+			
 			atom_slot_group_label.text = str(atom_player.team_number)
 
 
@@ -50,7 +51,6 @@ func _physics_process(_delta):
 func init() -> void: 
 	atom_stack.init()
 	atoms_sprites.init()
-	AtomSlotsManager.all_atom_slots[name] = self
 	state_machine.get_state("Explode").finished_exploding.connect(
 		func(): 
 			AtomSlotsManager.atom_slot_exploded.emit(self)
@@ -62,7 +62,11 @@ func init() -> void:
 func _on_touch_screen_button_pressed() -> void:
 	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
 	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && atom_player == current_atom_player: 
-		CameraManager.shake_camera(0.1, 3, 10, 25)
+		if get_tree().current_scene.has_node("%Root"): 
+			var root: Control = get_tree().current_scene.get_node("%Root")
+			var shake_animation: ShakeAnimation = ShakeAnimation.new(self, true, 1, 2)
+			root.add_child(shake_animation)
+			shake_animation.shake_object_randomly(root, shake_animation.PositionType.GLOBAL, Vector2.ZERO, 0.07, 3, 25)
 	player_interact()
 
 
@@ -109,8 +113,15 @@ func player_interact() -> void:
 
 
 func apply_undo_changes(atom_slot_data: AtomSlotData) -> void: 
+	if atom_slot_data == null: 
+		atom_stack.atom_count = 0
+		atom_player = null
+		state_machine.change_state(state_machine.get_state("Empty"))
+		return
+#	print(atom_slot.atom_stack.atom_count)
 	atom_stack.atom_count = atom_slot_data.atom_count 
 	atom_player = atom_slot_data.atom_player
+	state_machine.change_state(atom_slot_data.current_state) 
 	
 	
 	

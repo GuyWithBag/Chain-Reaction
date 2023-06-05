@@ -14,6 +14,7 @@ var original_screen_size: Vector2 = Vector2(ProjectSettings.get_setting("display
 @onready var maps_option_button: MapsOptionButton = choose_map_display.get_node("%MapsOptionButton")
 @onready var extend_map_toggle: Control = %ExtendMapToggle
 
+
 func _ready(): 
 	GameManager.current_state = GameManager.State.MENU
 	CameraManager.current_camera = get_tree().current_scene.get_node("%Cameras/Camera2D")
@@ -64,13 +65,16 @@ func _on_start_game_pressed() -> void:
 	var map_selected: String = maps_option_button.get_item_text(maps_option_button.selected)
 	if GameManager.game_start_data.extend_map: 
 		if display_screen_size.y > original_screen_size.y: 
-			GameManager.game_start_data.map_data = MapsLoader.get_map(map_selected + " Extended")
-			GameManager.start_game() 
-			return
+			var extended_map: MapData = MapsLoader.get_map(map_selected + " Extended")
+			if extended_map != null: 
+				GameManager.game_start_data.map_data = extended_map
+				GameManager.start_game() 
+				return
 	GameManager.game_start_data.map_data = MapsLoader.get_map(map_selected) 
 	GameManager.start_game() 
 
 
 func _on_extend_map_check_box_toggled(button_pressed: bool) -> void:
 	extend_map = button_pressed
+#	$CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/StartGame.grab_focus()
 

@@ -9,14 +9,16 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="2"]
-offsets = PackedFloat32Array(0, 0.389423, 0.413462, 0.548077, 0.567308, 0.701923, 0.745192, 1)
-colors = PackedColorArray(1, 0.917647, 0, 1, 1, 0.917647, 0, 1, 1, 0.635294, 0.054902, 1, 1, 0.635294, 0.054902, 1, 1, 0.215686, 0.133333, 1, 1, 0.215686, 0.133333, 1, 0.168627, 0.168627, 0.168627, 1, 0.168627, 0.168627, 0.168627, 1)
+offsets = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.635294, 0.054902, 1, 1, 0.635294, 0.054902, 1, 1, 0.215686, 0.133333, 1, 1, 0.215686, 0.133333, 1, 0.168627, 0.168627, 0.168627, 1, 0.168627, 0.168627, 0.168627, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="3"]
+resource_local_to_scene = true
 gradient = SubResource("2")
 
 [sub_resource type="ParticleProcessMaterial" id="4"]
-lifetime_randomness = 0.46
+resource_local_to_scene = true
+lifetime_randomness = 0.6
 emission_shape = 1
 emission_sphere_radius = 55.48
 gravity = Vector3(0, -200, 0)

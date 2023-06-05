@@ -4,5 +4,6 @@
 
 [node name="AtomSlotsTileMap" type="TileMap"]
 tile_set = ExtResource("1_4l2s5")
+cell_quadrant_size = 64
 format = 2
 layer_0/name = "AtomSlots"

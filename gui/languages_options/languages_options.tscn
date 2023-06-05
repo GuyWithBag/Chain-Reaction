@@ -50,7 +50,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="List" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer"]
-custom_minimum_size = Vector2(892, 0)
+custom_minimum_size = Vector2(682, 0)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]

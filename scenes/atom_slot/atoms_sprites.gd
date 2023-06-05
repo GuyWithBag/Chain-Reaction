@@ -59,7 +59,7 @@ func _add_atom_sprite(variable_to_initialize: String) -> void:
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
 	sprite.texture = load("res://scenes/atom_slot/atom.png")
-	var scale_size: float = 0.2
+	var scale_size: float = 0.17
 	sprite.scale = Vector2(scale_size, scale_size)
 	
 #func hide_and_show_atoms_logic(new_atom_count: int, previous_atom_count: int) -> void: 

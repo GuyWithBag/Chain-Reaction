@@ -44,7 +44,8 @@ func pop_back_sequences() -> void:
 func reset_sequence() -> void: 
 	chain_reaction_sequences.clear()
 	chain_reaction_sequence_was_reset.emit()
-	finish_chain_reaction()
+	if AtomPlayerTurnsManager.is_chain_reacting(): 
+		finish_chain_reaction()
 	
 	
 func start_chain_reaction(sequence: ChainReactionSequence) -> void: 

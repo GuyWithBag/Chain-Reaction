@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c88h5y7oshg4m"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_txtbf"]
+[ext_resource type="Script" path="res://scripts/classes/gui.gd" id="2_sq2oy"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_txtbf")
+script = ExtResource("2_sq2oy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

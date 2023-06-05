@@ -11,10 +11,11 @@ var tilemap: TileMap
 
 var initialized: bool = false
 
-
-var all_atom_slots: Dictionary = {}
-# AtomSlotName : AtomSlotData
-var atom_slot_saved_data: Dictionary = {}
+var all_atom_slots: Array[Node] = []: 
+	get: 
+		return get_tree().get_nodes_in_group("AtomSlot")
+# AtomSlotName : AtomSlot
+var atom_slots_saved_data: Dictionary = {}
 
 
 #func get_total_max_atom_stack() -> int: 
@@ -35,14 +36,13 @@ var atom_slot_saved_data: Dictionary = {}
 	
 # Called from UndoHistorymanager
 func apply_undo_changes(turn_data: TurnData) -> void: 
-	var atom_slots: Array[Node] = get_tree().get_nodes_in_group("AtomSlot")
-	for atom_slot in atom_slots: 
+	for atom_slot in all_atom_slots: 
 		if turn_data.atom_slots.has(atom_slot.name): 
 			atom_slot.apply_undo_changes(turn_data.atom_slots[atom_slot.name])
 		else: 
-			atom_slot.apply_undo_changes(AtomSlotData.new(
-				0, 
-				null
-			))
+			atom_slot.apply_undo_changes(null)
+	atom_slots_saved_data = turn_data.atom_slots 
+	
+	
 
 

@@ -6,13 +6,14 @@ var particles: Dictionary = {
 }
 
 
-func play_particle(particle_name: String, to_global_position: Vector2) -> void: 
+func play_particle(particle_name: String, to_global_position: Vector2, lifetime_duration: float = 0.6) -> void: 
 	var game_world: GameWorld = GameManager.game_world 
 	var particle_id: String = particle_name.to_snake_case() 
 	if !particles.has(particle_id): 
 		printerr("AtomsParticles: %s particle cannot be found" % particle_name) 
 		return
 	var particle: GPUParticles2D = particles[particle_id].instantiate() 
+	particle.process_material.lifetime_randomness = lifetime_duration
 	var atom_particles: Node2D = get_tree().current_scene.get_node("%AtomParticles")
 	var atom_particles_group: Node2D = Node2D.new()
 	atom_particles.add_child(atom_particles_group)

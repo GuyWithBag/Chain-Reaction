@@ -3,7 +3,7 @@ class_name AppBar
 
 @onready var player_turn_label: Label = get_node("PanelContainer/MarginContainer/HBoxContainer/PlayerTurn")
 
-var player_turn_text: String = "Team %s Turn"
+var player_turn_text: String = "Player %s Turn"
 
 
 func _ready() -> void:

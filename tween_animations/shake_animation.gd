@@ -1,6 +1,9 @@
 extends Node
 class_name ShakeAnimation
 	
+signal animation_started
+signal animation_finished
+	
 enum PositionType {
 	GLOBAL, 
 	LOCAL
@@ -29,6 +32,7 @@ func shake_object_randomly(object: Object, position_type: PositionType, center_p
 		PositionType.LOCAL: 
 			property = "position"
 	var loop_count: int = 0
+	animation_started.emit()
 	while playing == true: 
 		if loops > 0: 
 			if loop_count > loops: 
@@ -48,11 +52,12 @@ func shake_object_randomly(object: Object, position_type: PositionType, center_p
 		await tween.finished
 		tween.stop()
 		loop_count += 1
+	animation_finished.emit()
 	queue_free_after_shake_count -= 1 
 	if queue_free_after_shake_count == 0: 
 		queue_free()
-		
-		
+	
+	
 func shake_object_from_two_points(object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float) -> void: 
 	var property: String
 	match position_type: 

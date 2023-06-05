@@ -56,4 +56,10 @@ tabs_visible = false
 custom_minimum_size = Vector2(700, 1000)
 layout_mode = 2
 
+[node name="VBoxContainer" parent="CenterContainer/TabContainer/Main/CenterContainer" index="0"]
+custom_minimum_size = Vector2(570, 900)
+
+[node name="ExitToDesktop" parent="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer" index="3"]
+visible = false
+
 [editable path="CenterContainer/TabContainer/Main"]

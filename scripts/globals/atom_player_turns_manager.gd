@@ -2,6 +2,7 @@ extends Node
 
 # Emitted by CHainReactionSequenceManager
 signal turn_started
+signal turn_ended
 signal turn_is_next
 signal changed_current_atom_player_in_turn(previous_atom_player: AtomPlayer, new_atom_player: AtomPlayer)
 
@@ -27,9 +28,9 @@ var current_atom_player_in_turn: AtomPlayer:
 	
 	
 func reset() -> void: 
-	turn_index = 0
 	take_turns_looping = false
 	next_turn()
+	turn_index = 0
 	current_atom_player_in_turn = null
 	
 	
@@ -38,16 +39,22 @@ func start_game() -> void:
 	take_turns_loop()
 	
 	
+# Turn and round counting starts at 0 
 func take_turns_loop() -> void: 
 	while take_turns_looping:  
 		var atom_players_in_play: Array[AtomPlayer] = AtomPlayersManager.atom_players_in_play 
 		if turn_index >= atom_players_in_play.size(): 
 			turn_index = 0
 		current_atom_player_in_turn = atom_players_in_play[turn_index]
-		print("AtomPlayerTurnsManager: Current team: ", atom_players_in_play[turn_index].team_number)
 		turn_started.emit()
-		turn_index += 1 
+		print("AtomPlayerTurnsManager: Current team: ", atom_players_in_play[turn_index].team_number)
+		UndoHistoryManager.save_current_data()
+		
 		await turn_is_next
+		turn_ended.emit()
+		# This is next round
+		turn_index += 1
+		GameplayManager.game_round += 1
 	
 	
 func is_chain_reacting() -> bool: 
@@ -73,9 +80,12 @@ func next_turn() -> void:
 	turn_is_next.emit()
 
 
+# To do: turn index not applying properly
 # Called from UndoHistorymanager
 func apply_undo_changes(turn_data: TurnData) -> void:  
 #	next_turn() 
-	turn_index = turn_data.turn_index 
+	# Terminate current loop then initiate another loop
 	next_turn()
-	
+	turn_index = turn_data.turn_index 
+#	take_turns_loop()
+

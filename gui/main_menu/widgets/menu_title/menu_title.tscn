@@ -165,6 +165,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Atom" type="Label" parent="AtomSupremePro"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.505714
@@ -185,6 +186,7 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Supreme" type="Label" parent="AtomSupremePro"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.667143
@@ -201,12 +203,69 @@ theme_override_font_sizes/font_size = 45
 text = "SUPREME"
 metadata/_edit_use_anchors_ = true
 
+[node name="Atom2" type="Label" parent="AtomSupremePro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.537141
+anchor_top = -0.138
+anchor_right = 0.537141
+anchor_bottom = -0.138
+offset_left = -103.0
+offset_top = 44.0
+offset_right = -102.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainMenuTitle"
+theme_override_font_sizes/font_size = 45
+text = "ATOM"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Revamped" type="Label" parent="AtomSupremePro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.334284
+anchor_top = 0.52
+anchor_right = 0.334284
+anchor_bottom = 0.52
+offset_left = -103.0
+offset_top = 44.0
+offset_right = -102.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MainMenuTitle"
+theme_override_font_sizes/font_size = 45
+text = "Revamped"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Supreme2" type="Label" parent="AtomSupremePro"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.68
+anchor_top = 0.578
+anchor_right = 0.888571
+anchor_bottom = 0.756
+offset_left = -25.0
+offset_top = 113.0
+offset_right = 152.0
+offset_bottom = 308.0
+theme_type_variation = &"MainMenuTitle"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "SUPREME"
+metadata/_edit_use_anchors_ = true
+
 [node name="AtomsSpinning" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.0271429
-anchor_top = -0.006
-anchor_right = 0.0271429
-anchor_bottom = -0.006
+anchor_left = 0.0385715
+anchor_top = 0.01
+anchor_right = 0.0385715
+anchor_bottom = 0.01
 offset_left = 558.0
 offset_top = 180.0
 offset_right = 558.0

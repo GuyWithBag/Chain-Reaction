@@ -12,4 +12,4 @@ func _on_add_more_players_pressed() -> void:
 
 
 func _on_spin_box_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	UndoHistoryManager.max_undos = value

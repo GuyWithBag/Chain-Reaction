@@ -19,6 +19,7 @@ class_name TouchScreenButtonComponent
 				
 @export var event_action: String
 
+
 var material_icons_url: Dictionary = {
 	"menu" : "res://gui/material_icons/menu.svg", 
 	"undo" : "res://gui/material_icons/undo.svg"
@@ -41,4 +42,5 @@ func _on_pressed() -> void:
 #		pause_event_action.pressed = true
 #		Input.parse_input_event(pause_event_action)
 		Input.action_press(event_action, 1)
+
 

@@ -8,34 +8,30 @@ layer = 3
 follow_viewport_enabled = true
 script = ExtResource("1_68tt8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="Root" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+[node name="Control" type="Control" parent="Root"]
 layout_mode = 2
 
-[node name="TileMaps" type="Node2D" parent="CanvasLayer/CenterContainer/Control"]
-unique_name_in_owner = true
-scale = Vector2(2, 2)
-
-[node name="AtomSprites" type="Node2D" parent="CanvasLayer/CenterContainer/Control"]
+[node name="TileMaps" type="Node2D" parent="Root/Control"]
 unique_name_in_owner = true
 
-[node name="AtomParticles" type="Node2D" parent="CanvasLayer/CenterContainer/Control"]
+[node name="AtomSprites" type="Node2D" parent="Root/Control"]
 unique_name_in_owner = true
 
-[node name="MapScaler" type="Node" parent="CanvasLayer/CenterContainer/Control"]
+[node name="AtomParticles" type="Node2D" parent="Root/Control"]
+unique_name_in_owner = true
+
+[node name="MapScaler" type="Node" parent="Root/Control"]
 unique_name_in_owner = true
 script = ExtResource("3_eiys1")
-scale_by_size = 2
-scale = 2.0
+scale = 1.0
 
 [node name="Cameras" type="Node2D" parent="."]
 

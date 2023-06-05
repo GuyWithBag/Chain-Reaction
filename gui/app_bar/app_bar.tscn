@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfc3rhc8eqxf6"]
+[gd_scene load_steps=7 format=3 uid="uid://cfc3rhc8eqxf6"]
 
 [ext_resource type="Script" path="res://gui/app_bar/app_bar.gd" id="1_tpnk2"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_i35u5"]
 [ext_resource type="PackedScene" uid="uid://y4iwnsyous8d" path="res://gui/touch_screen_gui/touch_screen_texture_button/touch_screen_texture_button.tscn" id="2_t8d8p"]
 [ext_resource type="Texture2D" uid="uid://ll6bwm56gywo" path="res://gui/material_icons/menu.svg" id="3_ml2jg"]
 [ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://gui/material_icons/undo.svg" id="4_r4npt"]
+[ext_resource type="Script" path="res://scripts/classes/android_notification_component.gd" id="6_yk8bb"]
 
 [node name="AppBar" type="Control"]
 layout_mode = 3
@@ -41,7 +42,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
-text = "Team 0 Turn"
+text = "Player 0 Turn"
 vertical_alignment = 1
 
 [node name="Undo" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
@@ -63,6 +64,9 @@ texture_normal = ExtResource("3_ml2jg")
 [node name="TouchScreenButtonComponent" parent="PanelContainer/MarginContainer/HBoxContainer/Menu" index="0"]
 material_icon = "menu"
 event_action = "pause"
+
+[node name="AndroidNotificationComponent" type="Node" parent="PanelContainer/MarginContainer/HBoxContainer/Menu"]
+script = ExtResource("6_yk8bb")
 
 [editable path="PanelContainer/MarginContainer/HBoxContainer/Undo"]
 [editable path="PanelContainer/MarginContainer/HBoxContainer/Menu"]

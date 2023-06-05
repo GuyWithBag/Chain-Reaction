@@ -6,6 +6,8 @@ signal game_ended(winner: AtomPlayer, losers: Array[AtomPlayer])
 var just_undoed: bool = false
 var first_atom_in_game_placed: bool = false
 
+var game_round: int = 0; 
+
 var win_screen: PackedScene = load("res://gui/win_screen/win_screen.tscn")
 var winning_atom_player: AtomPlayer
 var current_gameplay_game_start_data: GameStartData
@@ -16,13 +18,17 @@ func _ready() -> void:
 	AtomPlayersManager.player_has_been_eliminated.connect(_on_player_has_been_eliminated)
 
 
+func reset() -> void: 
+	game_round = 0
+	
+
 func _on_player_has_been_eliminated(eliminated_atom_player: AtomPlayer, _alive_teams: Array[AtomPlayer]) -> void: 
 	var flash_screen: GUI = player_eliminated_flash_screen.instantiate() 
 	flash_screen.modulate = eliminated_atom_player.team_color 
 	UIManager.add_gui(flash_screen) 
 
 
-func _unhandled_input(event: InputEvent) -> void: 
+func _unhandled_input(_event: InputEvent) -> void: 
 	if GameManager.current_state != GameManager.State.IN_GAME: 
 		return
 	if Input.is_action_just_pressed("undo"): 

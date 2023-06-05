@@ -1,15 +1,16 @@
-"id","en","ja"
-"Play Game","Play Game","ゲームしよう"
-"Options","Options","設定"
-"Exit Game","Exit Game","ゲームを終了する"
-"Resume","Resume","再開"
-"Retry Game","Retry Game","ゲームを再開する"
-"Exit To Desktop","Exit To Desktop","デスクトップに戻る"
-"Chain Reaction Atom Supreme","Chain Reaction Atom Supreme","チェーンリアクション アトム スプリーム"
-"Start Game","Start Game","ゲームを開始する"
-"Choose a Map","Choose a Map","マップを選択する"
-"Vs Players","Vs Players","プレイヤー対戦"
-"Vs AI","Vs AI","AI対戦"
-"Online Game","Online Game","オンラインゲーム"
-"Offline Game","Offline Game","オフラインゲーム"
-"Back","Back","戻る"
+id,en,ja
+Play Game,Play Game,ゲームしよう
+Options,Options,設定
+Exit Game,Exit Game,ゲームを終了する
+Resume,Resume,再開
+Retry Game,Retry Game,ゲームを再開する
+Exit To Desktop,Exit To Desktop,デスクトップに戻る
+Chain Reaction Atom Supreme,Chain Reaction Atom Supreme,チェーンリアクション アトム スプリーム
+Start Game,Start Game,ゲームを開始する
+Choose A Map,Choose a Map,マップを選択する
+Vs Players,Vs Players,プレイヤー対戦
+Vs AI,Vs AI,AI対戦
+Online Game,Online Game,オンラインゲーム
+Offline Game,Offline Game,オフラインゲーム
+Back,Back,戻る
+Accept,Accept,受け入れる
