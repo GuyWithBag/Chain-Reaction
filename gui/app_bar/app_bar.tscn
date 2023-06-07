@@ -1,11 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfc3rhc8eqxf6"]
+[gd_scene load_steps=10 format=3 uid="uid://cfc3rhc8eqxf6"]
 
 [ext_resource type="Script" path="res://gui/app_bar/app_bar.gd" id="1_tpnk2"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="2_i35u5"]
 [ext_resource type="PackedScene" uid="uid://y4iwnsyous8d" path="res://gui/touch_screen_gui/touch_screen_texture_button/touch_screen_texture_button.tscn" id="2_t8d8p"]
-[ext_resource type="Texture2D" uid="uid://ll6bwm56gywo" path="res://gui/material_icons/menu.svg" id="3_ml2jg"]
-[ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://gui/material_icons/undo.svg" id="4_r4npt"]
+[ext_resource type="Texture2D" uid="uid://ll6bwm56gywo" path="res://material_icons/menu.svg" id="3_ml2jg"]
+[ext_resource type="Shader" path="res://shaders/flash/flash.gdshader" id="4_70jup"]
+[ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://material_icons/undo.svg" id="4_r4npt"]
 [ext_resource type="Script" path="res://scripts/classes/android_notification_component.gd" id="6_yk8bb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riure"]
+resource_local_to_scene = true
+shader = ExtResource("4_70jup")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge2vv"]
+resource_local_to_scene = true
+shader = ExtResource("4_70jup")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
 
 [node name="AppBar" type="Control"]
 layout_mode = 3
@@ -49,6 +62,7 @@ text = "Player 0 Turn"
 vertical_alignment = 1
 
 [node name="Undo" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
+material = SubResource("ShaderMaterial_riure")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 4
@@ -59,6 +73,7 @@ material_icon = "undo"
 event_action = "undo"
 
 [node name="Menu" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
+material = SubResource("ShaderMaterial_ge2vv")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 4

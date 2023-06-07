@@ -1,14 +1,29 @@
-[gd_scene load_steps=11 format=3 uid="uid://ldgbqe7mherb"]
+[gd_scene load_steps=16 format=3 uid="uid://ldgbqe7mherb"]
 
 [ext_resource type="Script" path="res://gui/win_screen/win_screen.gd" id="1_evgoe"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_k65ge"]
 [ext_resource type="PackedScene" uid="uid://cgpu7y8qeyhjm" path="res://gui/win_screen/widgets/win_screen_button.tscn" id="2_1r6rp"]
 [ext_resource type="Shader" path="res://shaders/gaussian_blur/gaussian_blur.gdshader" id="3_ied0p"]
 [ext_resource type="PackedScene" uid="uid://coupr6mo0ju45" path="res://gui/scoreboard/widgets/scoreboard_panel_container/scoreboard_panel_container.tscn" id="4_3lbfw"]
+[ext_resource type="Shader" path="res://shaders/flash/flash.gdshader" id="6_sw2a4"]
+[ext_resource type="Texture2D" uid="uid://i7e2040tc1qn" path="res://material_icons/videogame_asset.svg" id="7_6ful5"]
+[ext_resource type="Texture2D" uid="uid://b3je0obr0mft8" path="res://material_icons/arrow_back_thick.svg" id="8_pi008"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2mqum"]
 shader = ExtResource("3_ied0p")
 shader_parameter/lod = 1.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb48m"]
+resource_local_to_scene = true
+shader = ExtResource("6_sw2a4")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5mw1"]
+resource_local_to_scene = true
+shader = ExtResource("6_sw2a4")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
 
 [sub_resource type="Animation" id="Animation_8qfi5"]
 length = 0.001
@@ -223,6 +238,9 @@ layout_mode = 2
 [node name="PlayersDisplay" parent="CenterContainer/VBoxContainer/ScoreboardPanelContainer/MarginContainer/VBoxContainer/PanelContainer" index="0"]
 mode = 1
 
+[node name="VBoxContainer" parent="CenterContainer/VBoxContainer/ScoreboardPanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersDisplay" index="0"]
+custom_minimum_size = Vector2(730, 0)
+
 [node name="HBoxContainer" parent="CenterContainer/VBoxContainer/ScoreboardPanelContainer/MarginContainer/VBoxContainer" index="2"]
 visible = false
 
@@ -233,13 +251,22 @@ layout_mode = 2
 [node name="PlayAgain" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]
 layout_mode = 2
 
+[node name="Icon" parent="CenterContainer/VBoxContainer/PlayAgain/IconContainers/HBoxContainer" index="0"]
+material = SubResource("ShaderMaterial_lb48m")
+texture = ExtResource("7_6ful5")
+
 [node name="Gap" type="ReferenceRect" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="ReturnToMenu" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1r6rp")]
+custom_minimum_size = Vector2(810, 0)
 layout_mode = 2
 text = "Return to Menu"
+
+[node name="Icon" parent="CenterContainer/VBoxContainer/ReturnToMenu/IconContainers/HBoxContainer" index="0"]
+material = SubResource("ShaderMaterial_q5mw1")
+texture = ExtResource("8_pi008")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "come_up"
@@ -252,3 +279,5 @@ libraries = {
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="CenterContainer/VBoxContainer/ScoreboardPanelContainer"]
+[editable path="CenterContainer/VBoxContainer/PlayAgain"]
+[editable path="CenterContainer/VBoxContainer/ReturnToMenu"]

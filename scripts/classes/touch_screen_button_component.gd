@@ -21,8 +21,8 @@ class_name TouchScreenButtonComponent
 
 
 var material_icons_url: Dictionary = {
-	"menu" : "res://gui/material_icons/menu.svg", 
-	"undo" : "res://gui/material_icons/undo.svg"
+	"menu" : "res://material_icons/menu.svg", 
+	"undo" : "res://material_icons/undo.svg"
 }
 
 func _ready() -> void: 

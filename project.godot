@@ -97,8 +97,12 @@ BackgroundAudioManager="*res://scripts/globals/background_sounds_manager/backgro
 window/size/viewport_width=972
 window/size/viewport_height=1728
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [input]
 

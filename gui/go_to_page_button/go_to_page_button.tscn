@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc4fgdt7ru6rk"]
+[gd_scene load_steps=6 format=3 uid="uid://cc4fgdt7ru6rk"]
 
 [ext_resource type="PackedScene" uid="uid://bmd0rbj0y1irq" path="res://gui/main_menu/widgets/menu_button/menu_button.tscn" id="1_ch7iv"]
 [ext_resource type="Script" path="res://gui/go_to_page_button/go_to_page_button.gd" id="2_qsjfs"]
 [ext_resource type="AudioStream" uid="uid://d1h2tn03fpkwy" path="res://audio/pressed.wav" id="3_bjc7x"]
+[ext_resource type="Shader" path="res://shaders/flash/flash.gdshader" id="4_bvlr7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n02oy"]
+resource_local_to_scene = true
+shader = ExtResource("4_bvlr7")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
 
 [node name="GoToPageButton" instance=ExtResource("1_ch7iv")]
 theme_override_font_sizes/font_size = 0
@@ -11,5 +18,8 @@ script = ExtResource("2_qsjfs")
 
 [node name="ButtonSFXComponent" parent="." index="0"]
 sound_effect = ExtResource("3_bjc7x")
+
+[node name="Icon" parent="IconContainers/HBoxContainer" index="0"]
+material = SubResource("ShaderMaterial_n02oy")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

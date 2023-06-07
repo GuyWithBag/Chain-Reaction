@@ -6,7 +6,7 @@ var path: String = "res://scenes/game_world_levels/"
 
 var all_maps: Dictionary = {} 
 
-func _ready() -> void: 
+func _init() -> void: 
 	_load_maps()
 	
 	
@@ -14,11 +14,16 @@ func _load_maps() -> void:
 	var levels: PackedStringArray = DirAccess.get_directories_at(path)
 	for level in levels: 
 		var level_path: String = path + level + "/"
+		printerr(level_path)
 		var files: PackedStringArray = DirAccess.get_files_at(level_path) 
 		for file in files: 
 			var file_path: String = level_path + file
+			printerr(file_path)
+			if file == "map_data.tres.remap": 
+				file = file.trim_suffix(".remap")
 			if file == "map_data.tres": 
 				var map_data: MapData = load(file_path)
+				printerr("file2: ", file)
 				all_maps[map_data.map_name.to_snake_case()] = map_data 
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://u358asoupml"]
+[gd_scene load_steps=34 format=3 uid="uid://u358asoupml"]
 
 [ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="1_3tif2"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/atom_slot/atoms_sprites.gd" id="5_3ujwk"]
 [ext_resource type="Script" path="res://scripts/classes/state_machine/state_machine.gd" id="5_c3o2o"]
 [ext_resource type="Script" path="res://scenes/atom_slot/states/empty.gd" id="6_g5cua"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_stack.gd" id="6_jfsh5"]
 [ext_resource type="Script" path="res://scenes/atom_slot/atoms_particles.gd" id="7_0ecf5"]
 [ext_resource type="Script" path="res://scenes/atom_slot/states/stacked.gd" id="8_6idha"]
 [ext_resource type="Script" path="res://scenes/atom_slot/states/ready_to_explode.gd" id="8_b32i3"]
@@ -115,6 +116,12 @@ position = Vector2(-12, 8)
 position = Vector2(0, -10)
 
 [node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
+
+[node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
+script = ExtResource("6_jfsh5")
+stack_label = NodePath("../Layer/StackLabel")
+max_stack_label = NodePath("../Layer/MaxStackLabel")
+name_label = NodePath("../Layer/NameLabel")
 
 [node name="AtomsSprites" type="Node2D" parent="."]
 script = ExtResource("5_3ujwk")

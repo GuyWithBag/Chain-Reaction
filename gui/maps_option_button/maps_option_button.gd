@@ -3,6 +3,7 @@ class_name MapsOptionButton
 
 @onready var all_maps: Array[MapData] = MapsLoader.get_all_maps()
 
+
 func _ready() -> void: 
 	rearrange_listing() 
 	for map_data in all_maps: 
