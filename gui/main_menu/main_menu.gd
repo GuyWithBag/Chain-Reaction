@@ -6,9 +6,6 @@ var player_amount: int:
 		return player_amount_selector.player_amount
 var extend_map: bool = false
 
-var display_screen_size: Vector2 = DisplayServer.window_get_size()
-var original_screen_size: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
-
 @onready var player_amount_selector: Control = %PlayerAmount
 @onready var choose_map_display: Control = %ChooseMapDisplay
 @onready var maps_option_button: MapsOptionButton = choose_map_display.get_node("%MapsOptionButton")
@@ -63,14 +60,9 @@ func _on_vs_ai_pressed() -> void:
 func _on_start_game_pressed() -> void:
 	GameManager.game_start_data.extend_map = extend_map
 	var map_selected: String = maps_option_button.get_item_text(maps_option_button.selected)
-	if GameManager.game_start_data.extend_map: 
-		if display_screen_size.y > original_screen_size.y: 
-			var extended_map: MapData = MapsLoader.get_map(map_selected + " Extended")
-			if extended_map != null: 
-				GameManager.game_start_data.map_data = extended_map
-				GameManager.start_game() 
-				return
-	GameManager.game_start_data.map_data = MapsLoader.get_map(map_selected) 
+	var map_data: MapData = MapsLoader.get_map(map_selected) 
+
+	GameManager.game_start_data.map_data = map_data
 	GameManager.start_game() 
 
 

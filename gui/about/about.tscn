@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cc4fgdt7ru6rk" path="res://gui/go_to_page_button/go_to_page_button.tscn" id="3_d40t0"]
 
 [node name="About" type="Control"]
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,7 +48,17 @@ text = "[font_size=120][center]About[/center][/font_size]
 
 [font_size=50][center]This is one of the first games that we  have published in the an app store, please support us by donating to our patreon if you want more of our games!
 
-If you want more content like this, please support our streams in @BagWithAGuy at twitch![/center][/font_size]
+If you want more content like this, please support our streams in @BagWithAGuy at twitch![/center]
+
+Socials: 
+[indent]Vtuber Account:[/indent] 
+[indent][indent]-Twitter: [color=SKY_BLUE][url= ]@GuyWithABag[/url][/color][/indent][/indent] 
+[indent][indent]-Email: guywithabag123@gmail.com[/indent][/indent] 
+
+[indent]General Account: [/indent] 
+[indent][indent]-Facebook: [color=SKY_BLUE][url= ]Macchi抹茶Matcha[/url][/color][/indent] [/indent] 
+
+[/font_size]
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]

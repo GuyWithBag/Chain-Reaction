@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cniutbvbqycv1"]
+
+[ext_resource type="PackedScene" uid="uid://cdjqifk4ujlnb" path="res://scenes/game_world/game_world.tscn" id="1_vunl0"]
+[ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="2_8qngb"]
+
+[node name="SmallWorld" instance=ExtResource("1_vunl0")]
+
+[node name="TileMaps" parent="Root/Control" index="0"]
+scale = Vector2(2, 2)
+
+[node name="AtomSlotsTileMap" parent="Root/Control/TileMaps" index="0" instance=ExtResource("2_8qngb")]
+layer_0/tile_data = PackedInt32Array(-2, 1, 65536, 65534, 1, 65536, 131070, 1, 65536, -1, 1, 65536, 65535, 1, 65536, 131071, 1, 65536, -65536, 1, 65536, 0, 1, 65536, 65536, 1, 65536, -65535, 1, 65536, 1, 1, 65536, 65537, 1, 65536, -65538, 1, 65536, -65537, 1, 65536, -131072, 1, 65536, -131071, 1, 65536, -131075, 1, 65536, -65539, 1, 65536, -3, 1, 65536, 65533, 1, 65536, 131069, 1, 65536, 196605, 1, 65536, -131074, 1, 65536, 196606, 1, 65536, -131073, 1, 65536, 196607, 1, 65536, -196608, 1, 65536, 131072, 1, 65536, -196607, 1, 65536, 131073, 1, 65536, -196606, 1, 65536, -131070, 1, 65536, -65534, 1, 65536, 2, 1, 65536, 65538, 1, 65536, 131074, 1, 65536)
+
+[node name="AtomSprites" parent="Root/Control" index="1"]
+scale = Vector2(2, 2)
+
+[node name="AtomParticles" parent="Root/Control" index="2"]
+scale = Vector2(2, 2)
+
+[node name="MapScaler" parent="Root/Control" index="3"]
+scale_by_size = 2
+scale = 2.0
+
+[node name="ColorRect" parent="Background" index="0"]
+color = Color(0.74902, 0.564706, 0.321569, 1)

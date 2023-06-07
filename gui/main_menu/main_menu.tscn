@@ -279,6 +279,10 @@ go_to_page = NodePath("../../../../../../../../MainPage")
 visible = false
 layout_mode = 2
 
+[node name="Back" parent="CanvasLayer/Control/CenterContainer/MainBody/Pages/Credits/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0" node_paths=PackedStringArray("page_container", "go_to_page")]
+page_container = NodePath("../../../../../..")
+go_to_page = NodePath("../../../../../../MainPage")
+
 [node name="Background" type="Control" parent="CanvasLayer/Control"]
 material = ExtResource("3_u1j3o")
 layout_mode = 1

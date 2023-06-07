@@ -5,7 +5,6 @@
 
 [node name="GameWorld" type="CanvasLayer"]
 layer = 3
-follow_viewport_enabled = true
 script = ExtResource("1_68tt8")
 
 [node name="Root" type="CenterContainer" parent="."]
