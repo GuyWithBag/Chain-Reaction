@@ -11,8 +11,6 @@ func _ready() -> void:
 func _on_button_pressed() -> void: 
 	if destroy_banner: 
 		MobileAds.destroy_banner()
-	printerr("AAAAAAAAAAAA")
 	MobileAds.load_interstitial(interstitial_ad_id)
 	MobileAds.show_interstitial() 
-
 

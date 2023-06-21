@@ -38,6 +38,8 @@ var _initialized: bool = false
 @onready var sequence: ChainReactionSequence = ChainReactionSequence.new(self)
 @onready var atoms_positions: AtomPositions = get_node("AtomPositions")
 
+
+
 func _ready() -> void: 
 	state_machine.init(self)
 	atom_detector.init(self)
@@ -114,6 +116,7 @@ func player_interact() -> void:
 	if AtomPlayerTurnsManager.is_awaiting_turn(): 
 		AtomPlayerTurnsManager.next_turn()
 	atom_player.total_atoms_added += 1
+	
 	
 #func flash_tween() -> void: 
 #	var tween: Tween = create_tween() 

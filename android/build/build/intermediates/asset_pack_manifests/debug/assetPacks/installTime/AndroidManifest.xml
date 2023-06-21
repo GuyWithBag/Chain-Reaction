@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dist="http://schemas.android.com/apk/distribution" package="org.BagGamesCo.ChainReactionAtomRevampedSupreme" split="installTime">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dist="http://schemas.android.com/apk/distribution" package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme" split="installTime">
   <dist:module dist:type="asset-pack">
     <dist:fusing dist:include="true" />    <dist:delivery>
       <dist:install-time/>

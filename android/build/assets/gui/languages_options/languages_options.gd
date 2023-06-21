@@ -26,6 +26,16 @@ func _on_button_pressed(button: LanguagesButton) -> void:
 
 func _on_accept_pressed() -> void:
 	TranslationServer.set_locale(selected_button.locale) 
+	match selected_button.locale: 
+		"ja": 
+			pass
 	LocalDatabase.save_settings() 
 	LocalDatabase.save_settings_to_file() 
 
+
+#func se_theme_default_font(font_Size: int) -> void: 
+#	var _theme = load("res://themes/main_theme/main_theme.tres")
+#	_theme.default_font_size = font_Size
+	
+	
+	

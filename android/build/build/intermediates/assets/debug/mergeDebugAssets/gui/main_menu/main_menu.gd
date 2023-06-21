@@ -72,3 +72,10 @@ func _on_extend_map_check_box_toggled(button_pressed: bool) -> void:
 	extend_map = button_pressed
 #	$CanvasLayer/Control/CenterContainer/MainBody/Pages/ChooseMapPage/StartGame.grab_focus()
 
+
+func _on_rate_us_pressed() -> void:
+	if OS.get_name() == "iOS":
+		OS.shell_open("https://itunes.apple.com/app/idYOUR_APP_ID?action=write-review")
+	else:
+		OS.shell_open("https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME")
+
