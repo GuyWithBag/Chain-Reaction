@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpg5sen3yxuwn"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_7tagh"]
+[ext_resource type="PackedScene" uid="uid://ckqv3conn5rkn" path="res://gui/maps_option_button/maps_option_button.tscn" id="1_jlggo"]
+[ext_resource type="Script" path="res://gui/choose_map_display/choose_map_display.gd" id="2_ljj3g"]
+
+[node name="ChooseMapDisplay" type="PanelContainer"]
+theme = ExtResource("1_7tagh")
+script = ExtResource("2_ljj3g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 888)
+layout_mode = 2
+theme_type_variation = &"MapImagePanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Panel/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_type_variation = &"MapImagePanelInner"
+
+[node name="MapImage" type="TextureRect" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChooseMapLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Choose A Map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapsOptionButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_jlggo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/MapsOptionButton" to="." method="_on_maps_option_button_item_selected"]

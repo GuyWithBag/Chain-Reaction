@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr1xd7ecb2bec"]
+
+[ext_resource type="Script" path="res://gui/options_menu/widget/player_color_picker/player_color_picker.gd" id="1_8a4qe"]
+[ext_resource type="Texture2D" uid="uid://cgd3rafw4u8qg" path="res://gui/material_icons/reset.svg" id="2_pxccw"]
+
+[node name="PlayerColorPicker" type="HBoxContainer"]
+mouse_filter = 2
+script = ExtResource("1_8a4qe")
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 2
+text = "Player 1"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ResetColor" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("2_pxccw")
+stretch_mode = 3
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="ResetColor" to="." method="_on_reset_color_pressed"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

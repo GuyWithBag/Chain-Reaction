@@ -75,7 +75,7 @@ func shake_all_atoms(shake_duration: float, min_range: int, max_range: int) -> S
 	
 	
 func shake_all_atoms_individually(shake_duration: float, min_range: int, max_range: int) -> Array: 
-	var shake_animations: Array = []
+	var _shake_animations: Array = []
 	for i in owner.atom_count: 
 		if owner.atom_count >= owner.max_atoms_can_display:
 			i = 10
@@ -83,8 +83,8 @@ func shake_all_atoms_individually(shake_duration: float, min_range: int, max_ran
 		var shake_animation: ShakeAnimation = ShakeAnimation.new(self) 
 		add_child(shake_animation)
 		shake_animation.shake_object_randomly(sprite, shake_animation.PositionType.LOCAL, sprite.position, shake_duration, min_range, max_range) 
-		shake_animations.append(shake_animation)
-	return shake_animations
+		_shake_animations.append(shake_animation)
+	return _shake_animations
 	
 	
 func rotate_all_sprites_randomly(rotate_duration: float = 9) -> Tween: 

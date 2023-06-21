@@ -14,10 +14,10 @@ var atom_player: AtomPlayer:
 		previous_atom_player = atom_player
 		atom_player = value
 		atoms_sprites.change_team_color_to(atom_player)
-		if atom_player != null:
+		if atom_player != null: 
 			if !get_groups().is_empty(): 
 				remove_from_group(get_groups()[0])
-			add_to_group(StringName(str(atom_player.team_number)))
+			add_to_group(atom_player.group_name)
 			
 			atom_slot_group_label.text = str(atom_player.team_number)
 
@@ -60,7 +60,7 @@ func init() -> void:
 
 
 func _on_touch_screen_button_pressed() -> void:
-	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+#	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
 	#shake_grid()
 	player_interact()
 
@@ -132,9 +132,11 @@ func apply_undo_changes(atom_slot_data: AtomSlotData) -> void:
 	atom_stack.atom_count = atom_slot_data.atom_count 
 	atom_player = atom_slot_data.atom_player
 	state_machine.change_state(atom_slot_data.current_state) 
-	
-	
-	
-	
-	
-	
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	visible = false

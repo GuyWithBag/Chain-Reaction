@@ -38,6 +38,8 @@ var _initialized: bool = false
 @onready var sequence: ChainReactionSequence = ChainReactionSequence.new(self)
 @onready var atoms_positions: AtomPositions = get_node("AtomPositions")
 
+
+
 func _ready() -> void: 
 	state_machine.init(self)
 	atom_detector.init(self)
@@ -60,7 +62,7 @@ func init() -> void:
 
 
 func _on_touch_screen_button_pressed() -> void:
-	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+#	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
 	#shake_grid()
 	player_interact()
 
@@ -115,6 +117,7 @@ func player_interact() -> void:
 		AtomPlayerTurnsManager.next_turn()
 	atom_player.total_atoms_added += 1
 	
+	
 #func flash_tween() -> void: 
 #	var tween: Tween = create_tween() 
 #	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
@@ -132,9 +135,11 @@ func apply_undo_changes(atom_slot_data: AtomSlotData) -> void:
 	atom_stack.atom_count = atom_slot_data.atom_count 
 	atom_player = atom_slot_data.atom_player
 	state_machine.change_state(atom_slot_data.current_state) 
-	
-	
-	
-	
-	
-	
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	visible = false

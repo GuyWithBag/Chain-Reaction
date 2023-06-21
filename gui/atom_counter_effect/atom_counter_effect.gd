@@ -1,4 +1,5 @@
 extends GUI
+class_name AtomCounterEffect
 
 var count: int = 0: 
 	set(value): 
@@ -20,7 +21,7 @@ func _on_atom_slot_exploded(atom_slot: AtomSlot) -> void:
 	count += 1
 	self.modulate.a = 1
 	var new_color: Color
-	var shader: ShaderMaterial 
+#	var shader: ShaderMaterial 
 	# Shader has not been implemented yet
 	if count > 12: 
 		new_color = Color.WHITE 

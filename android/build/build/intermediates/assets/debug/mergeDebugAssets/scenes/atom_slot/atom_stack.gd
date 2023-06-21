@@ -16,12 +16,12 @@ signal atoms_overloaded
 	set(value): 
 		if Engine.is_editor_hint(): 
 			atoms_sprites = $"../AtomsSprites"
+			state_machine = owner.state_machine
 		var previous_count: int = atom_count
 		atom_count = value
 		if atom_count == max_atom_stack: 
 			atoms_maxxed.emit() 
 		if atom_count <= 0: 
-			var state_machine: StateMachine = owner.state_machine
 			state_machine.change_state(state_machine.get_state("Empty"))
 			atoms_sprites.set_atoms_visible(false)
 			atoms_back_to_zero.emit()
@@ -69,14 +69,14 @@ func init() -> void:
 	_initialized = true
 
 
-func set_atoms(atom_count: int) -> void: 
-	pass
+#func set_atoms(_atom_count: int) -> void: 
+#	pass
 	
 
 func add_atom(added_atoms: int, new_player: AtomPlayer) -> void: 
-	var previous_count: int = atom_count
+	var _previous_count: int = atom_count
 	atom_count += added_atoms
-	var prev_player: AtomPlayer = owner.atom_player
+	var _prev_player: AtomPlayer = owner.atom_player
 
 #	new_player.current_total_atoms = AtomPlayersManager.get_current_total_atoms_count(new_player)
 	# The colonizer will then receive their new atom amount

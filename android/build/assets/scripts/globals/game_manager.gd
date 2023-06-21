@@ -45,18 +45,19 @@ var map_scaler: MapScaler
 
 var extend_map: bool = false
 
+var display_screen_size: Vector2 = DisplayServer.window_get_size()
+var original_screen_size: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height"))
+
 func _ready() -> void: 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	UIManager.init()
 
 
-func _input(event: InputEvent) -> void: 
+func _input(_event: InputEvent) -> void: 
 	if Input.is_action_just_pressed("screenshot"): 
 		var image: Image = get_viewport().get_texture().get_image() 
 		var path: String = "D:/Folders/Assets/Chain Reaction Assets/assets/playstore graphics/screenshots/" 
-		var dir: PackedStringArray = DirAccess.get_files_at(path) 
-		var count: int = dir.size() 
-		image.save_png("%s/screenshot_%s.png" % [path, count])
+		image.save_png("%s/screenshot_%s.png" % [path, Time.get_ticks_usec()])
 	
 	
 func start_game() -> void: 
@@ -67,7 +68,13 @@ func start_game() -> void:
 	reset_global_datas() 
 	AtomPlayersManager.start_game(game_start_data.player_amount)
 	GameplayManager.current_gameplay_game_start_data = game_start_data
-	get_tree().change_scene_to_file(game_start_data.map_data.map_url)
+	
+	var map_url: String = game_start_data.map_data.map_url
+	if game_start_data.extend_map: 
+		if display_screen_size.y > original_screen_size.y: 
+			if !game_start_data.map_data.extended_map_url.is_empty(): 
+				map_url = game_start_data.map_data.extended_map_url
+	get_tree().change_scene_to_file(map_url)
 	game_started.emit()
 	game_start_data = null
 

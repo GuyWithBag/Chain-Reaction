@@ -237,11 +237,13 @@ func change_team_color_to(new_team: AtomPlayer) -> void:
 
 
 func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0, from_color: Color = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color) -> Tween: 
+	if !get_parent().atom_player: 
+		return null
 	var _flash_tween: Tween = create_tween()
 	if loop: 
 		_flash_tween.set_loops(loops)
 	_flash_tween.set_parallel(true).set_ease(Tween.EASE_IN).bind_node(self)
-	var orig_modulate: Color = get_parent().atom_player.team_color
+#	var orig_modulate: Color = get_parent().atom_player.team_color
 	for atom_sprite in atom_sprites_group.get_children(): 
 		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
 	_flash_tween.chain()

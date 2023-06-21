@@ -32,7 +32,7 @@ func _on_finished_getting_atom_players(atom_players: Array[AtomPlayer]) -> void:
 	initiate_player_displays(atom_players)
 
 
-func _on_player_has_been_eliminated(atom_player: AtomPlayer, atom_players_in_play: Array[AtomPlayer]) -> void: 
+func _on_player_has_been_eliminated(atom_player: AtomPlayer, _atom_players_in_play: Array[AtomPlayer]) -> void: 
 	for display in player_displays.get_children(): 
 		if display.atom_player == atom_player: 
 			display.display.text = "Player %s : Eliminated! |" % atom_player.team_number
@@ -41,7 +41,7 @@ func _on_player_has_been_eliminated(atom_player: AtomPlayer, atom_players_in_pla
 #			tween.tween_property(display, )
 
 
-func _on_atom_player_current_total_atoms_changed(prev_count: int, new_count: int, display: PlayerDisplay) -> void: 
+func _on_atom_player_current_total_atoms_changed(_prev_count: int, new_count: int, display: PlayerDisplay) -> void: 
 	display.format_text([str(display.atom_player.team_number), str(new_count)])
 	
 	

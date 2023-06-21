@@ -53,7 +53,7 @@ func _ready() -> void:
 	UIManager.init()
 
 
-func _input(event: InputEvent) -> void: 
+func _input(_event: InputEvent) -> void: 
 	if Input.is_action_just_pressed("screenshot"): 
 		var image: Image = get_viewport().get_texture().get_image() 
 		var path: String = "D:/Folders/Assets/Chain Reaction Assets/assets/playstore graphics/screenshots/" 

@@ -1,5 +1,8 @@
 extends Node
 
+signal saved_settings(save_data: Dictionary) 
+signal loaded_settings(loaded_settings: Dictionary) 
+
 signal history_cleared()
 
 signal turn_data_removed(turn_data: TurnData)
@@ -105,3 +108,18 @@ func apply_undo_changes() -> void:
 
 func reset_undo_count() -> void: 
 	undo_count = 0
+
+
+func save_settings() -> Dictionary: 
+	var data: Dictionary = {
+		"max_undos" : max_undos 
+	} 
+	saved_settings.emit(data)
+	return data
+	
+	
+func load_settings(data: Dictionary) -> void: 
+	max_undos = data["max_undos"]
+	loaded_settings.emit(data) 
+	
+	

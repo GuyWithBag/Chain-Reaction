@@ -34,3 +34,7 @@ func set_active(value: bool) -> void:
 		deactivated.emit()
 	
 	
+func set_disabled(value: bool) -> void: 
+	disabled = value
+	
+	

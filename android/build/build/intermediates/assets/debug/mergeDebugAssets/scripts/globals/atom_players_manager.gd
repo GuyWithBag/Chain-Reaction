@@ -1,5 +1,8 @@
 extends Node
 
+signal saved_settings(save_data: Dictionary) 
+signal loaded_settings(loaded_settings: Dictionary) 
+
 signal resetted
 signal finished_getting_atom_players(atom_players: Array[AtomPlayer])
 
@@ -18,11 +21,11 @@ var previous_atoms_in_play: Array[AtomPlayer] = []
 var atom_players_in_play: Array[AtomPlayer] = []
 
 var default_atom_player_colors: Dictionary = {
-	1 : Color.RED, 
-	2 : Color.YELLOW, 
-	3 : Color.BLUE, 
-	4 : Color.GREEN, 
-	5 : Color.PURPLE,  
+	"1" : Color.RED, 
+	"2" : Color.YELLOW, 
+	"3" : Color.BLUE, 
+	"4" : Color.GREEN, 
+	"5" : Color.PURPLE,  
 }
 
 var atom_player_colors: Dictionary = default_atom_player_colors.duplicate() 
@@ -33,7 +36,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
-func _on_atom_player_current_total_atoms_changed(prev_amount: int, new_amount: int, atom_player: AtomPlayer) -> void: 
+func _on_atom_player_current_total_atoms_changed(_prev_amount: int, _new_amount: int, atom_player: AtomPlayer) -> void: 
 	if atom_player.first_atom_has_been_placed == false: 
 		return
 	detect_which_team_is_eliminated(atom_player)
@@ -61,13 +64,13 @@ func reset() -> void:
 func start_game(_player_amount: int) -> void: 
 	player_amount = _player_amount
 	for amount in player_amount: 
-		var team_number: int = amount + 1 
+		var player_number: int = amount + 1 
 		var team_color: Color
-		if team_number > atom_player_colors.size(): 
+		if player_number > atom_player_colors.size(): 
 			team_color = get_random_color() 
 		else: 
-			team_color = atom_player_colors[team_number]
-		var atom_player: AtomPlayer = AtomPlayer.new(team_number, team_color)
+			team_color = atom_player_colors[str(player_number)]
+		var atom_player: AtomPlayer = AtomPlayer.new(player_number, team_color)
 		atom_players.append(atom_player)
 		atom_players_in_play.append(atom_player)
 	finished_getting_atom_players.emit(atom_players_in_play)
@@ -84,7 +87,7 @@ func get_current_total_atoms_count(atom_player: AtomPlayer) -> int:
 	return current_total_atoms
 	
 	
-#func get_current_total_atoms_count_by_team_number(atom_player_number: int) -> int: 
+#func get_current_total_atoms_count_by_player_number(atom_player_number: int) -> int: 
 #	var current_total_atoms: int = 0
 #	var atom_slots: Array = get_tree().get_nodes_in_group(str(atom_player_number))
 #	for atom_slot in atom_slots: 
@@ -119,3 +122,30 @@ func elimnate_team(atom_player: AtomPlayer) -> void:
 # Called from UndoHistorymanager
 func apply_undo_changes(turn_data: TurnData) -> void: 
 	atom_players_in_play = turn_data.atom_players_in_play
+
+
+func save_settings() -> Dictionary: 
+	var data: Dictionary = {
+		"atom_player_colors" : atom_player_colors 
+	}
+	saved_settings.emit(data) 
+	return data
+
+
+func load_settings(load_data: Dictionary) -> void: 
+	var duplicate_data: Dictionary = load_data["atom_player_colors"].duplicate() 
+	var load_data_to_colors: Dictionary = {}
+	for key in duplicate_data.keys(): 
+		var color_name: String = duplicate_data[key] 
+		color_name = color_name.trim_prefix("(")
+		color_name = color_name.trim_suffix(")") 
+		var split: PackedStringArray = color_name.split(", ") 
+		var r: float = float(split[0])
+		var g: float = float(split[1])
+		var b: float = float(split[2])
+		var a: float = float(split[3]) 
+		load_data_to_colors[key] = Color(r, g, b ,a) 
+	atom_player_colors = load_data_to_colors 
+	loaded_settings.emit(load_data) 
+	
+	

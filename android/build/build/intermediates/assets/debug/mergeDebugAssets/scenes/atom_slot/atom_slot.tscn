@@ -1,0 +1,223 @@
+[gd_scene load_steps=34 format=3 uid="uid://u358asoupml"]
+
+[ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="1_3tif2"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_slot.gd" id="1_iyo6a"]
+[ext_resource type="Texture2D" uid="uid://j5jm4583ud31" path="res://resources/tilesets/grid_slot.png" id="2_dxlg5"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_detector.gd" id="3_xclkg"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atoms_sprites.gd" id="5_3ujwk"]
+[ext_resource type="Script" path="res://scripts/classes/state_machine/state_machine.gd" id="5_c3o2o"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/empty.gd" id="6_g5cua"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_stack.gd" id="6_jfsh5"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atoms_particles.gd" id="7_0ecf5"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/stacked.gd" id="8_6idha"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/ready_to_explode.gd" id="8_b32i3"]
+[ext_resource type="Script" path="res://scenes/atom_slot/states/explode.gd" id="9_r3vf0"]
+[ext_resource type="Script" path="res://scenes/atom_slot/atom_positions.gd" id="12_4er3p"]
+[ext_resource type="AudioStream" uid="uid://b1euwuhhwp8bw" path="res://audio/explosion1.wav" id="14_d3ltn"]
+[ext_resource type="AudioStream" uid="uid://cytae0iiatma6" path="res://audio/explosion2.wav" id="14_feniu"]
+[ext_resource type="Script" path="res://scenes/atom_slot/sound_effects.gd" id="15_0aewo"]
+[ext_resource type="AudioStream" uid="uid://dojucmt7hbwl8" path="res://audio/wrong_team.wav" id="16_itwhw"]
+[ext_resource type="AudioStream" uid="uid://bdbacbd63vp2b" path="res://audio/placed_atom.wav" id="17_dxuxw"]
+[ext_resource type="AudioStream" uid="uid://bmt0x5hrvvpnx" path="res://audio/explosion4.wav" id="18_6jecj"]
+[ext_resource type="AudioStream" uid="uid://cj2esidu1lwgf" path="res://audio/placed_atom2.wav" id="18_74scf"]
+[ext_resource type="AudioStream" uid="uid://wkkafv35fox0" path="res://audio/atom_added.wav" id="19_g47bk"]
+[ext_resource type="AudioStream" uid="uid://c55ewj6m65ymx" path="res://audio/placed_atom3.wav" id="19_naw1r"]
+[ext_resource type="AudioStream" uid="uid://bwo70nv00b7g2" path="res://audio/placed_atom4.wav" id="20_crifu"]
+[ext_resource type="AudioStream" uid="uid://c45t2y4j6pjhw" path="res://audio/atom_added2.wav" id="20_gghpg"]
+[ext_resource type="AudioStream" uid="uid://btjlgt2ivpggn" path="res://audio/atom_added3.wav" id="21_dx67p"]
+[ext_resource type="AudioStream" uid="uid://dlmrgtnvsqfob" path="res://audio/explosion3.wav" id="22_15ub1"]
+[ext_resource type="AudioStream" uid="uid://dd216pi4ewo0n" path="res://audio/atom_added4.wav" id="22_c3ds4"]
+[ext_resource type="AudioStream" uid="uid://d0fe8smdg66ru" path="res://audio/lost1.wav" id="28_40e6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjcr6"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lchgv"]
+size = Vector2(63, 63)
+
+[sub_resource type="Animation" id="Animation_pkbpr"]
+resource_name = "ready_to_explode"
+
+[sub_resource type="Animation" id="Animation_1c2ow"]
+resource_name = "rest"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lhrp"]
+_data = {
+"ready_to_explode": SubResource("Animation_pkbpr"),
+"rest": SubResource("Animation_1c2ow")
+}
+
+[node name="AtomSlot" type="Node2D" node_paths=PackedStringArray("atom_slot_group_label") groups=["AtomSlot"]]
+material = ExtResource("1_3tif2")
+script = ExtResource("1_iyo6a")
+atom_slot_group_label = NodePath("Layer/AtomSlotGroupLabel")
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dxlg5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_mjcr6")
+
+[node name="AtomsDetector" type="Node2D" parent="."]
+script = ExtResource("3_xclkg")
+
+[node name="Down" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(0, 64)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Up" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(0, -64)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Right" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(64, 0)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Left" type="RayCast2D" parent="AtomsDetector"]
+target_position = Vector2(-64, 0)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="AtomPositions" type="Node2D" parent="."]
+visible = false
+script = ExtResource("12_4er3p")
+
+[node name="Single" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Single"]
+
+[node name="Double" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Double"]
+position = Vector2(0, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Double"]
+position = Vector2(0, -10)
+
+[node name="Triple" type="Node2D" parent="AtomPositions"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(13, 8)
+
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(-12, 8)
+
+[node name="Marker2D3" type="Marker2D" parent="AtomPositions/Triple"]
+position = Vector2(0, -10)
+
+[node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
+
+[node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
+script = ExtResource("6_jfsh5")
+stack_label = NodePath("../Layer/StackLabel")
+max_stack_label = NodePath("../Layer/MaxStackLabel")
+name_label = NodePath("../Layer/NameLabel")
+
+[node name="AtomsSprites" type="Node2D" parent="."]
+script = ExtResource("5_3ujwk")
+
+[node name="AtomsParticles" type="Node2D" parent="."]
+script = ExtResource("7_0ecf5")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state_label")]
+script = ExtResource("5_c3o2o")
+starting_state = NodePath("Empty")
+current_state_label = NodePath("")
+
+[node name="Empty" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("6_g5cua")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
+
+[node name="Stacked" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("8_6idha")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
+
+[node name="ReadyToExplode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("8_b32i3")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
+
+[node name="Explode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("9_r3vf0")
+play_particle = "Retro Explosion"
+sound_effect = ExtResource("14_feniu")
+audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("RectangleShape2D_lchgv")
+
+[node name="Layer" type="Node2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="StackLabel" type="Label" parent="Layer"]
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -3.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxStackLabel" type="Label" parent="Layer"]
+offset_left = -20.0
+offset_top = 1.0
+offset_right = 20.0
+offset_bottom = 27.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="Layer"]
+offset_left = -22.0
+offset_top = -16.0
+offset_right = 25.0
+offset_bottom = 10.0
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AtomSlotGroupLabel" type="Label" parent="Layer"]
+offset_left = 2.0
+offset_top = -15.0
+offset_right = 49.0
+offset_bottom = 11.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5lhrp")
+}
+
+[node name="SoundEffects" type="Node" parent="."]
+script = ExtResource("15_0aewo")
+atom_slot_player_interacted_wrong_team = ExtResource("16_itwhw")
+atom_slot_placed = Array[AudioStream]([ExtResource("17_dxuxw"), ExtResource("18_74scf"), ExtResource("19_naw1r"), ExtResource("20_crifu")])
+started_exploding = Array[AudioStream]([ExtResource("14_d3ltn"), ExtResource("14_feniu"), ExtResource("22_15ub1"), ExtResource("18_6jecj")])
+atoms_added = Array[AudioStream]([ExtResource("19_g47bk"), ExtResource("20_gghpg"), ExtResource("21_dx67p"), ExtResource("22_c3ds4")])
+player_has_been_eliminated = ExtResource("28_40e6u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundEffects"]
+process_mode = 3
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
+[connection signal="atom_placed" from="." to="SoundEffects" method="_on_atom_slot_atom_placed"]
+[connection signal="player_interacted_wrong_team" from="." to="SoundEffects" method="_on_atom_slot_player_interacted_wrong_team"]
+[connection signal="started_exploding" from="StateMachine/Explode" to="SoundEffects" method="_on_explode_started_exploding"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

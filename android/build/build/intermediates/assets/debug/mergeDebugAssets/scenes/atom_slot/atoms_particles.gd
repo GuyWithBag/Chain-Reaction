@@ -1,17 +1,11 @@
 extends Node2D
 class_name AtomsParticles 
 
-var particles: Dictionary = {
-	"retro_explosion" : load("res://particles/retro_explosion/retro_explosion.tscn")
-}
 
 func play_particle(particle_name: String, to_global_position: Vector2, lifetime_duration: float = 0.6) -> void: 
-	var game_world: GameWorld = GameManager.game_world 
-	var particle_id: String = particle_name.to_snake_case() 
-	if !particles.has(particle_id): 
-		printerr("AtomsParticles: %s particle cannot be found" % particle_name) 
-		return
-	var particle: GPUParticles2D = particles[particle_id].instantiate() 
+#	var game_world: GameWorld = GameManager.game_world 
+#	var particle_id: String = particle_name.to_snake_case() 
+	var particle: GPUParticles2D = ParticleEffectsLoader.get_particle(particle_name).instantiate() 
 	particle.process_material.lifetime_randomness = lifetime_duration
 	var atom_particles: Node2D = get_tree().current_scene.get_node("%AtomParticles")
 	var atom_particles_group: Node2D = Node2D.new()
@@ -22,7 +16,6 @@ func play_particle(particle_name: String, to_global_position: Vector2, lifetime_
 	if owner.previous_atom_player: 
 		if owner.previous_atom_player.team_color != current_team_color: 
 			team_color = owner.previous_atom_player.team_color
-	team_color.s = 0.5
 	atom_particles_group.modulate = team_color
 	atom_particles_group.global_position = to_global_position 
 	particle.emitting = true

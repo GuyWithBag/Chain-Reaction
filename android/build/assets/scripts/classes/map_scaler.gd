@@ -27,9 +27,10 @@ enum Size {
 		scale = value
 		vector2_scale = Vector2(scale, scale)
 		if Engine.is_editor_hint(): 
-			owner.get_node("%TileMaps").scale = vector2_scale
-			owner.get_node("%AtomSprites").scale = vector2_scale
-			owner.get_node("%AtomParticles").scale = vector2_scale
+			get_node("%TileMaps").scale = vector2_scale
+			get_node("%AtomSprites").scale = vector2_scale
+			get_node("%AtomParticles").scale = vector2_scale
+			get_node("%TilemapBackdrop").scale = vector2_scale
 
 var vector2_scale: Vector2
 var vector2_scale_relative_to_tilemap_size: Vector2: 

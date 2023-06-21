@@ -21,11 +21,12 @@ var pause_menu_gui: GUI
 @onready var app_bar: AppBar
 @onready var gui_debugger: GUIDebugger = get_node("GUIDebugger")
 @onready var scoreboard: Scoreboard
+@onready var atom_counter_effect: GUI = in_game.get_node("AtomCounterEffect")
 
 func _ready() -> void:
 	deactivate_in_game_children()
 	GameManager.current_state_changed.connect(
-		func(new_game_state, old_game_state): 
+		func(new_game_state, _old_game_state): 
 			if new_game_state == GameManager.State.IN_GAME || new_game_state == GameManager.State.PAUSED: 
 				layer = 4 
 			else: 
@@ -59,8 +60,12 @@ func _input(_event: InputEvent) -> void:
 		if GameManager.pausable == true: 
 			GameManager.current_state = GameManager.State.PAUSED
 			UIManager.set_gui_active(UIManager.pause_menu, true)
-
-
+	if Input.is_action_just_pressed("toggle_player_screen_visiblity"): 
+		toggle_gui_active(player_screen)
+		toggle_gui_active(atom_counter_effect)
+		toggle_gui_disabled(atom_counter_effect) 
+		
+		
 func deactivate_in_game_children() -> void:
 	for child in in_game.get_children():
 		if child.name == "PlayerScreen": 
@@ -68,7 +73,16 @@ func deactivate_in_game_children() -> void:
 		child.set_active(false)
 	
 	
-func toggle_gui(gui: GUI) -> void:
+func toggle_gui_disabled(gui: GUI) -> void:
+	set_gui_disabled(gui, !gui.visible)
+	
+	
+func set_gui_disabled(gui: GUI, active: bool) -> void: 
+	print("UIManager: %s is set disabled: %s" % [gui.name, active])
+	gui.set_disabled(active)
+	
+	
+func toggle_gui_active(gui: GUI) -> void:
 	set_gui_active(gui, !gui.visible)
 	
 	

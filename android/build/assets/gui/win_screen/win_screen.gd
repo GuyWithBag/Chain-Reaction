@@ -27,5 +27,5 @@ func close() -> void:
 	UIManager.remove_gui(self)
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	GameManager.pause_game(true)

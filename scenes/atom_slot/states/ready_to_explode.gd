@@ -14,7 +14,8 @@ func enter() -> void:
 func exit() -> void: 
 	atom_stack.atoms_overloaded.disconnect(_on_atoms_overloaded)
 	atoms_sprites.stop_shaking_atoms()
-	flash_tween.stop()
+	if flash_tween: 
+		flash_tween.stop()
 	rotate_tween.stop()
 	
 	

@@ -18,6 +18,7 @@ config={
 "size": "BANNER",
 "unit_ids": {
 "Android": {
+"Main Menu Banner": "ca-app-pub-9490685140858860/9077892909",
 "standard": "ca-app-pub-3940256099942544/6300978111"
 },
 "iOS": {
@@ -26,7 +27,7 @@ config={
 }
 },
 "debug": {
-"is_debug_on_release": false,
+"is_debug_on_release": true,
 "is_real": true,
 "is_test_europe_user_consent": false
 },
@@ -38,6 +39,7 @@ config={
 "interstitial": {
 "unit_ids": {
 "Android": {
+"Start Game": "ca-app-pub-9490685140858860/1729832023",
 "standard": "ca-app-pub-3940256099942544/1033173712"
 },
 "iOS": {
@@ -69,7 +71,7 @@ config={
 
 [application]
 
-config/name="Chain Reaction ATOM SUPREME"
+config/name="Chain Reaction ATOM REVAMPED SUPREME"
 run/main_scene="res://gui/main_menu/main_menu.tscn"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
@@ -82,6 +84,7 @@ AtomPlayersManager="*res://scripts/globals/atom_players_manager.gd"
 AtomSlotsManager="*res://scripts/globals/atom_slots_manager.gd"
 ChainReactionSequenceManager="*res://scripts/globals/chain_reaction_sequence_manager.gd"
 AtomPlayerTurnsManager="*res://scripts/globals/atom_player_turns_manager.gd"
+ParticleEffectsLoader="*res://scripts/globals/particle_effects_loader.gd"
 UIManager="*res://gui/ui_manager/ui_manager.tscn"
 PlatformManager="*res://scripts/globals/platform_manager.gd"
 GameplayManager="*res://scripts/globals/gameplay_manager.gd"
@@ -91,6 +94,8 @@ CameraManager="*res://scripts/globals/camera_manager.gd"
 UndoHistoryManager="*res://scripts/globals/undo_history_manager.gd"
 AudioEffectsLoader="*res://scripts/globals/audio_effects_loader.gd"
 BackgroundAudioManager="*res://scripts/globals/background_sounds_manager/background_audio_manager.tscn"
+LocalDatabase="*res://scripts/globals/local_database.gd"
+MobileAds="*res://addons/admob/src/singletons/MobileAds.gd"
 
 [display]
 
@@ -103,6 +108,10 @@ window/handheld/orientation=1
 [editor]
 
 export/convert_text_resources_to_binary=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/admob/plugin.cfg")
 
 [input]
 
@@ -123,6 +132,11 @@ undo={
 screenshot={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+toggle_player_screen_visiblity={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194336,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

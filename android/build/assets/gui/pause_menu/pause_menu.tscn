@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6lw0o3geo6cm"]
+
+[ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4sixj"]
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_im5av"]
+[ext_resource type="PackedScene" uid="uid://bgbielsopeojq" path="res://gui/pause_menu/pages/main/main.tscn" id="2_hyrrx"]
+[ext_resource type="Shader" path="res://shaders/gaussian_blur/gaussian_blur.gdshader" id="3_e8clx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcqot"]
+shader = ExtResource("3_e8clx")
+shader_parameter/lod = 1.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lms2w"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_im5av")
+script = ExtResource("1_4sixj")
+
+[node name="DarkPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"DarkPanel"
+
+[node name="BlurFilter" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_qcqot")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lms2w")
+clip_tabs = false
+tabs_visible = false
+
+[node name="Main" parent="CenterContainer/TabContainer" instance=ExtResource("2_hyrrx")]
+custom_minimum_size = Vector2(700, 1000)
+layout_mode = 2
+
+[node name="VBoxContainer" parent="CenterContainer/TabContainer/Main/CenterContainer" index="0"]
+custom_minimum_size = Vector2(570, 900)
+
+[node name="ExitToDesktop" parent="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer" index="3"]
+visible = false
+
+[editable path="CenterContainer/TabContainer/Main"]

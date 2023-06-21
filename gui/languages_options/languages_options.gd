@@ -26,4 +26,6 @@ func _on_button_pressed(button: LanguagesButton) -> void:
 
 func _on_accept_pressed() -> void:
 	TranslationServer.set_locale(selected_button.locale) 
+	LocalDatabase.save_settings() 
+	LocalDatabase.save_settings_to_file() 
 

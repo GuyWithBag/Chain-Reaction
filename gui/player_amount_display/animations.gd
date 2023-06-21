@@ -6,12 +6,7 @@ enum Directions {
 	RIGHT = 1
 }
 
-var _shaking: bool = false
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
-
-
-
 
 #func stop_shaking_atoms() -> void: 
 #	_shaking = false

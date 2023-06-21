@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj0ctwbm83d0w"]
+
+[ext_resource type="Script" path="res://gui/touch_screen_gui/touch_screen_controls/touch_screen_controls.gd" id="1_8blat"]
+[ext_resource type="PackedScene" uid="uid://cfc3rhc8eqxf6" path="res://gui/app_bar/app_bar.tscn" id="2_yo4ph"]
+[ext_resource type="PackedScene" uid="uid://b2x18ons405t" path="res://gui/in_game_bottom_app_bar/in_game_bottom_app_bar.tscn" id="3_4u38b"]
+
+[node name="TouchScreenControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8blat")
+
+[node name="AppBar" parent="." instance=ExtResource("2_yo4ph")]
+layout_mode = 1
+
+[node name="InGameBottomAppBar" parent="." instance=ExtResource("3_4u38b")]
+layout_mode = 1

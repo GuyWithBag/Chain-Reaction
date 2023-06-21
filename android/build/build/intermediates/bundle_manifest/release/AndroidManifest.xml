@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.BagGamesCo.ChainReactionAtomRevampedSupreme"
+    package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
     android:installLocation="auto"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="4"
+    android:versionName="1.0.2" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -58,7 +58,7 @@
             android:value="4.0.3.stable" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy" /> <!-- Records the version of the Godot library -->
+            android:value="ca-app-pub-9490685140858860~5560469663" /> <!-- Records the version of the Godot library -->
         <meta-data
             android:name="org.godotengine.library.version"
             android:value="4.0.3.stable" />
@@ -73,7 +73,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="org.BagGamesCo.ChainReactionAtomRevampedSupreme.fileprovider"
+            android:authorities="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data

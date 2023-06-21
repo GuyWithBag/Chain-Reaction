@@ -35,7 +35,9 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var tween_animations: TweenAnimations = get_node("TweenAnimations")
 @onready var pad_animations: PlayerAmountDisplayAnimations = get_node("PlayerAmountDisplayAnimations")
 
+
 func _ready(): 
+	atom_count = 2
 	init() 
 	visibility_changed.connect(_on_visibility_changed)
 
@@ -49,13 +51,12 @@ func init() -> void:
 		positions = get_node("Positions")
 		sprites = get_node("Sprites")
 		pad_animations = get_node("PlayerAmountDisplayAnimations")
-	atom_count = 2
 	arrange_atoms()
 	set_all_atom_colors()
 	pad_animations.animate_atoms_from_atom_count()
 
 
-func _process(delta): 
+func _process(_delta) -> void: 
 	if Engine.is_editor_hint(): 
 		positions = get_node("Positions")
 		sprites = get_node("Sprites")
@@ -86,7 +87,7 @@ func arrange_atoms_to_position_group(count: int, position_group: int) -> void:
 		sprites_children[index].global_position = positions_children[position_group].get_children()[index].global_position
 
 
-func _on_player_amount_player_amount_changed(previous_amount: int, new_amount: int):
+func _on_player_amount_player_amount_changed(_previous_amount: int, new_amount: int):
 	atom_count = new_amount
 
 
@@ -101,6 +102,6 @@ func change_atom_color_to_player(player_num: int) -> void:
 	if player_num > AtomPlayersManager.atom_player_colors.size() - 1: 
 		sprites_children[player_num].modulate = AtomPlayersManager.get_random_color() 
 		return
-	sprites_children[player_num].modulate = AtomPlayersManager.atom_player_colors[player_num + 1]
+	sprites_children[player_num].modulate = AtomPlayersManager.atom_player_colors[str(player_num + 1)]
 	
 	

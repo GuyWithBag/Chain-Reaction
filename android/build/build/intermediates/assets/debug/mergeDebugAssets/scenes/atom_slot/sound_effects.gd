@@ -37,13 +37,13 @@ func _on_explode_started_exploding() -> void:
 	play_random_sound(started_exploding)
 
 
-func _on_atom_stack_atoms_added(atom_amount_added) -> void:
+func _on_atom_stack_atoms_added(_atom_amount_added) -> void:
 	play_random_sound(atoms_added) 
 
 
-func play_random_sound(range: Array[AudioStream]) -> void: 
+func play_random_sound(rand_range: Array[AudioStream]) -> void: 
 	rng.randomize()
-	var rand: int = randi_range(0, range.size() - 1)
-	BackgroundAudioManager.play_temporary_sound(range[rand])
+	var rand: int = randi_range(0, rand_range.size() - 1)
+	BackgroundAudioManager.play_temporary_sound(rand_range[rand])
 	
 	

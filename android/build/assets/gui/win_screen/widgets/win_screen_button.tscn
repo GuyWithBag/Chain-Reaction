@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgpu7y8qeyhjm"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_lcrin"]
+[ext_resource type="PackedScene" uid="uid://duidbl4hiu1wc" path="res://scenes/button_sfx_component/button_sfx_component.tscn" id="2_3hojw"]
+[ext_resource type="AudioStream" uid="uid://pekcktg2nfev" path="res://audio/pressed2.wav" id="3_x6ypc"]
+[ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="4_lch65"]
+
+[node name="WinScreenButton" type="Button"]
+theme = ExtResource("1_lcrin")
+text = "Play Again"
+
+[node name="ButtonSFXComponent" parent="." instance=ExtResource("2_3hojw")]
+sound_effect = ExtResource("3_x6ypc")
+
+[node name="IconContainers" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IconContainers"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="IconContainers/HBoxContainer"]
+material = ExtResource("4_lch65")
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2

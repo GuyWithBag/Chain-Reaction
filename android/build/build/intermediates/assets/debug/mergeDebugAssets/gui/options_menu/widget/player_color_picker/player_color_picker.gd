@@ -26,10 +26,11 @@ func _on_color_picker_button_color_changed(color: Color) -> void:
 	if Engine.is_editor_hint(): 
 		color_picker_button = get_node("ColorPickerButton") 
 	set_player_color(color)
-	if color != AtomPlayersManager.default_atom_player_colors[player_number]: 
-		reset_color.show()
-	else: 
-		reset_color.hide() 
+	if AtomPlayersManager.default_atom_player_colors.has(player_number): 
+		if color != AtomPlayersManager.default_atom_player_colors[player_number]: 
+			reset_color.show()
+		else: 
+			reset_color.hide() 
 
 
 func _on_reset_color_pressed() -> void:
@@ -38,10 +39,11 @@ func _on_reset_color_pressed() -> void:
 
 
 func set_player_color(color: Color) -> void: 
-	AtomPlayersManager.atom_player_colors[player_number] = color 
+	AtomPlayersManager.atom_player_colors[str(player_number)] = color 
 	
 	
+# Sets the player color to the default color
 func set_player_default_color() -> void: 
-	set_player_color(AtomPlayersManager.default_atom_player_colors[player_number])
-	color_picker_button.color = AtomPlayersManager.default_atom_player_colors[player_number]
+	set_player_color(AtomPlayersManager.default_atom_player_colors[str(player_number)])
+	color_picker_button.color = AtomPlayersManager.default_atom_player_colors[str(player_number)]
 	

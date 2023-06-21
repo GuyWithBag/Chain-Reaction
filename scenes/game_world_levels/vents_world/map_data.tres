@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3 uid="uid://d0wdl0mmb8hiw"]
+
+[ext_resource type="Texture2D" uid="uid://cbwqa8ye6fvqc" path="res://scenes/game_world_levels/vents_world/images/map_preview.png" id="1_tk30k"]
+[ext_resource type="Script" path="res://scripts/classes/map_data.gd" id="1_wjkex"]
+
+[resource]
+script = ExtResource("1_wjkex")
+map_name = "Vents World"
+map_url = "res://scenes/game_world_levels/vents_world/vents_world.tscn"
+extended_map_url = ""
+map_preview = ExtResource("1_tk30k")

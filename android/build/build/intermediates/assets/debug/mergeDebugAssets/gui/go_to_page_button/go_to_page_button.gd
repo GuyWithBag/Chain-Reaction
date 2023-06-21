@@ -18,3 +18,5 @@ func _notification(what: int) -> void:
 	if what == Node.NOTIFICATION_WM_GO_BACK_REQUEST: 
 		if press_on_go_back_request: 
 			_on_pressed()
+
+

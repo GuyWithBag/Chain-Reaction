@@ -1,9 +1,9 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="org.BagGamesCo.ChainReactionAtomRevampedSupreme"
+3    package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
 4    android:installLocation="auto"
-5    android:versionCode="1"
-6    android:versionName="1.0" >
+5    android:versionCode="4"
+6    android:versionName="1.0.2" >
 7
 8    <uses-sdk
 9        android:minSdkVersion="24"
@@ -98,7 +98,7 @@
 59-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:9-54:69
 60            android:name="com.google.android.gms.ads.APPLICATION_ID"
 60-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:53:13-69
-61            android:value="ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy" /> <!-- Records the version of the Godot library -->
+61            android:value="ca-app-pub-9490685140858860~5560469663" /> <!-- Records the version of the Godot library -->
 61-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:54:13-67
 62        <meta-data
 62-->[godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\26ddfa9ba96d0aeeedc347785a3efe4b\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:14:9-16:44
@@ -126,7 +126,7 @@
 74-->[godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\26ddfa9ba96d0aeeedc347785a3efe4b\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:26:9-34:20
 75            android:name="androidx.core.content.FileProvider"
 75-->[godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\26ddfa9ba96d0aeeedc347785a3efe4b\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:27:13-62
-76            android:authorities="org.BagGamesCo.ChainReactionAtomRevampedSupreme.fileprovider"
+76            android:authorities="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme.fileprovider"
 76-->[godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\26ddfa9ba96d0aeeedc347785a3efe4b\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:28:13-64
 77            android:exported="false"
 77-->[godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\26ddfa9ba96d0aeeedc347785a3efe4b\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:29:13-37

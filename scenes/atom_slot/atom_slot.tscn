@@ -57,6 +57,7 @@ texture_filter = 1
 texture = ExtResource("2_dxlg5")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 monitoring = false
@@ -211,7 +212,13 @@ player_has_been_eliminated = ExtResource("28_40e6u")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundEffects"]
 process_mode = 3
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
 [connection signal="atom_placed" from="." to="SoundEffects" method="_on_atom_slot_atom_placed"]
 [connection signal="player_interacted_wrong_team" from="." to="SoundEffects" method="_on_atom_slot_player_interacted_wrong_team"]
 [connection signal="started_exploding" from="StateMachine/Explode" to="SoundEffects" method="_on_explode_started_exploding"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

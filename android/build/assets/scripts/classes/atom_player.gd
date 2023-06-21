@@ -18,7 +18,6 @@ var current_total_atoms: int = 0:
 		current_total_atoms = value
 		if first_atom_has_been_placed == false && current_total_atoms == 1: 
 			first_atom_has_been_placed = true 
-			return
 		current_total_atoms_changed.emit(prev_value, current_total_atoms)
 		
 var total_atoms_added: int = 0
