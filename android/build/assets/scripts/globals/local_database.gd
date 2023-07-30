@@ -13,7 +13,7 @@ var settings: Dictionary = {}
 var data: Dictionary = {} 
 
 
-func _ready() -> void: 
+func init() -> void: 
 	load_settings_from_file()  
 
 

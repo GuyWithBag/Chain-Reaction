@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://gui/ui_manager/debugger/debugger.gd" id="6_3xqmo"]
 [ext_resource type="Script" path="res://gui/ui_manager/debugger/gui_highlighter.gd" id="7_86fn6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6anu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33611"]
 resource_local_to_scene = true
 shader = ExtResource("5_aw5v2")
 shader_parameter/strength = 0.5
@@ -40,7 +40,7 @@ layout_mode = 1
 
 [node name="AtomCounterEffect" parent="InGame" instance=ExtResource("4_2c6n2")]
 visible = false
-material = SubResource("ShaderMaterial_y6anu")
+material = SubResource("ShaderMaterial_33611")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.01749

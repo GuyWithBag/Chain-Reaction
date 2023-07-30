@@ -52,6 +52,16 @@ Retro Explosion Effects by: [color=SKY_BLUE][url=https://www.youtube.com/@PlayWi
 Music by [color=SKY_BLUE][url=https://pixabay.com/users/lightyeartraxx-26697863/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=110226]Lightyeartraxx[/url][/color] from [color=SKY_BLUE][url=https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=110226]Pixabay[/url][/color]
 Music by [color=SKY_BLUE][url=https://pixabay.com/users/dream-protocol-9556087/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=116826]Dream-Protocol[/url][/color] from [color=SKY_BLUE][url=https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=116826]Pixabay[/url][/color]
 [/font_size] 
+
+[center][font_size=90]Play Testers: [/font_size][/center]
+[font_size=60]
+[indent]- Nianne Toshi 
+- Justin Kurt 
+- Yolmer 
+- Cedrick Van Esteen
+- Shebuel
+[/indent]
+[/font_size] 
 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]

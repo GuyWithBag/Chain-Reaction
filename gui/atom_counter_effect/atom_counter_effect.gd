@@ -36,13 +36,12 @@ func _on_atom_slot_exploded(atom_slot: AtomSlot) -> void:
 	elif count > 0: 
 		new_color = atom_slot.atom_player.team_color
 	var tween: Tween = create_tween()
-	var shake_animation: ShakeAnimation = ShakeAnimation.new(self, true, 3) 
 	var orig_position: Vector2 = global_position
+	var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(self, 1, self, ShakeAnimation.PositionType.GLOBAL, orig_position, 0.1, 3, 15)
 	grow_to_size(tween, self, 0.3, 0.1)
 	tween.tween_property(self, "scale", Vector2(1, 1), 0.2)
 	tween.tween_property(counter, "theme_override_colors/font_color", new_color, 0.2)
 	tween.play()
-	shake_animation.shake_object_randomly(self, ShakeAnimation.PositionType.GLOBAL, orig_position, 0.1, 3, 15)
 
 
 func _on_chain_reaction_sequence_finished() -> void: 

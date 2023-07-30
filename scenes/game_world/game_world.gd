@@ -5,7 +5,7 @@ class_name GameWorld
 # Have it count the total number of atoms present in each team and total of all of them
 
 @onready var tilemaps: Node2D = get_node("%TileMaps")
-@onready var atom_sprites: Node2D = %AtomSprites
+@onready var atom_sprites: Node = %AtomSprites
 @onready var atom_particles: Node2D = %AtomParticles
 @onready var cameras: Node2D = $Cameras
 

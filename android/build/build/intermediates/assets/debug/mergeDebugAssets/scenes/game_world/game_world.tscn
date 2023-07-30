@@ -1,12 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdjqifk4ujlnb"]
+[gd_scene load_steps=6 format=3 uid="uid://cdjqifk4ujlnb"]
 
 [ext_resource type="Script" path="res://scenes/game_world/game_world.gd" id="1_68tt8"]
+[ext_resource type="Shader" path="res://shaders/vignette/vignette.gdshader" id="2_m2jct"]
 [ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="3_eiys1"]
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="3_y5ikq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksg2i"]
+resource_local_to_scene = true
+shader = ExtResource("2_m2jct")
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.555
+shader_parameter/vignette_rgb = Color(0, 0.568627, 1, 1)
 
 [node name="GameWorld" type="CanvasLayer"]
 layer = 3
 script = ExtResource("1_68tt8")
+
+[node name="Vignette" type="ColorRect" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_ksg2i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Root" type="CenterContainer" parent="."]
 unique_name_in_owner = true
@@ -22,7 +39,7 @@ layout_mode = 2
 [node name="TileMaps" type="Node2D" parent="Root/Arena"]
 unique_name_in_owner = true
 
-[node name="AtomSprites" type="Node2D" parent="Root/Arena"]
+[node name="AtomSprites" type="Node" parent="Root/Arena"]
 unique_name_in_owner = true
 
 [node name="AtomParticles" type="Node2D" parent="Root/Arena"]

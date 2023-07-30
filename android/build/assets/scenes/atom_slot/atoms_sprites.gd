@@ -37,7 +37,7 @@ func init() -> void:
 	var group: Node2D = Node2D.new()
 	atom_sprites_group = group
 	get_tree().current_scene.get_node("%AtomSprites").add_child(atom_sprites_group) 
-	atom_sprites_group.global_position = atom_positions.original_positions["center_global_position"]
+	atom_sprites_group.global_position = atom_positions.center_position.global_position
 	
 	_add_atom_sprite("up_atom")
 	_add_atom_sprite("left_atom")
@@ -55,11 +55,10 @@ func init() -> void:
 	
 	
 func _add_atom_sprite(variable_to_initialize: String) -> void: 
-	var sprite: Sprite2D = Sprite2D.new()
+	var sprite: Sprite2D = AtomSlotsManager.atom_packed_scene.instantiate()
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
-	sprite.texture = load("res://scenes/atom_slot/atom.png")
-	var scale_size: float = 0.17
+	var scale_size: float = 0.2
 	sprite.scale = Vector2(scale_size, scale_size)
 	
 #func hide_and_show_atoms_logic(new_atom_count: int, previous_atom_count: int) -> void: 
@@ -79,20 +78,20 @@ func arrange_atoms() -> void:
 		1: 
 			up_atom.global_position = atom_positions.single.get_child(0).global_position
 			up_atom.show()
-			left_atom.global_position = atom_positions.original_positions["center_global_position"]
+			left_atom.global_position = atom_positions.center_position.global_position
 			left_atom.hide()
-			down_atom.global_position = atom_positions.original_positions["center_global_position"]
+			down_atom.global_position = atom_positions.center_position.global_position
 			down_atom.hide()
-			right_atom.global_position = atom_positions.original_positions["center_global_position"]
+			right_atom.global_position = atom_positions.center_position.global_position
 			right_atom.hide()
 		2: 
 			up_atom.global_position = atom_positions.double.get_child(0).global_position
 			up_atom.show()
 			left_atom.global_position = atom_positions.double.get_child(1).global_position
 			left_atom.show()
-			down_atom.global_position = atom_positions.original_positions["center_global_position"]
+			down_atom.global_position = atom_positions.center_position.global_position
 			down_atom.hide()
-			right_atom.global_position = atom_positions.original_positions["center_global_position"]
+			right_atom.global_position = atom_positions.center_position.global_position
 			right_atom.hide()
 		3: 
 			up_atom.global_position = atom_positions.triple.get_child(0).global_position
@@ -101,7 +100,7 @@ func arrange_atoms() -> void:
 			left_atom.show()
 			down_atom.global_position = atom_positions.triple.get_child(2).global_position
 			down_atom.show()
-			right_atom.global_position = atom_positions.original_positions["center_global_position"]
+			right_atom.global_position = atom_positions.center_position.global_position
 			right_atom.hide()
 		4: 
 			up_atom.global_position = atom_positions.triple.get_child(0).global_position
@@ -110,7 +109,7 @@ func arrange_atoms() -> void:
 			left_atom.show()
 			down_atom.global_position = atom_positions.triple.get_child(2).global_position
 			down_atom.show()
-			right_atom.global_position = atom_positions.original_positions["center_global_position"]
+			right_atom.global_position = atom_positions.center_position.global_position
 			right_atom.hide()
 	
 	
@@ -135,8 +134,8 @@ func shake_atoms() -> void:
 		var y_rand_pos: int = rng.randi_range(min_range, max_range) * y_rand_dir
 		
 		var new_position: Vector2 = Vector2(x_rand_pos, y_rand_pos)
-		tween.tween_property(atom_sprites_group, "global_position", atom_positions.original_positions["center_global_position"] + new_position, shaking_speed)
-		tween.tween_property(atom_sprites_group, "global_position", atom_positions.original_positions["center_global_position"], shaking_speed)
+		tween.tween_property(atom_sprites_group, "global_position", atom_positions.center_position.global_position + new_position, shaking_speed)
+		tween.tween_property(atom_sprites_group, "global_position", atom_positions.center_position.global_position, shaking_speed)
 		tween.play()
 		await tween.finished
 		tween.stop()
@@ -144,7 +143,7 @@ func shake_atoms() -> void:
 	
 func stop_shaking_atoms() -> void: 
 	_shaking = false
-	global_position = atom_positions.original_positions["center_global_position"]
+	global_position = atom_positions.center_position.global_position
 	
 	
 func rotate_atoms(full_rotation_duration: float = 9, override_rotation_direction: int = 0) -> Tween: 
@@ -173,7 +172,7 @@ func explode_animation() -> void:
 	tween.tween_property(atom_sprites_group, "visible", true, 0.01)
 	tween.chain()
 	for atom_sprite in atom_sprites_group.get_children(): 
-		tween.tween_property(atom_sprite, "global_position", atom_positions.original_positions["center_global_position"], 0.1)
+		tween.tween_property(atom_sprite, "global_position", atom_positions.center_position.global_position, 0.1)
 	tween.chain()
 	for dir_index in available_directions: 
 		var direction: String = all_directions[dir_index]
@@ -203,7 +202,7 @@ func explode_animation() -> void:
 #	await tween.finished
 #
 	for atom_sprite in atom_sprites_group.get_children(): 
-		atom_sprite.global_position = atom_positions.original_positions["center_global_position"]
+		atom_sprite.global_position = atom_positions.center_position.global_position
 	arrange_atoms()
 	
 	

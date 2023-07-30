@@ -16,7 +16,7 @@ var all_atom_slots: Array[Node] = []:
 		return get_tree().get_nodes_in_group("AtomSlot")
 # AtomSlotName : AtomSlot
 var atom_slots_saved_data: Dictionary = {}
-
+var atom_packed_scene: PackedScene = load("res://scenes/atom/atom.tscn")
 
 #func get_total_max_atom_stack() -> int: 
 #	var total_max_atom_stack: int = 0 

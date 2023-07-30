@@ -57,20 +57,18 @@ func animate_atoms_from_atom_count() -> void:
 			
 func _stop_shake_animations() -> void: 
 	for animation in shake_animations: 
-		animation.playing = false
-		shake_animations.erase(animation)
-		animation.queue_free()
+		animation.stop()
+	shake_animations.clear()
 	
 	
 func _stop_rotate_animations() -> void: 
 	for animation in rotate_animations: 
 		animation.stop()
+	rotate_animations.clear()
 	
 	
 func shake_all_atoms(shake_duration: float, min_range: int, max_range: int) -> ShakeAnimation: 
-	var shake_animation: ShakeAnimation = ShakeAnimation.new(self) 
-	add_child(shake_animation)
-	shake_animation.shake_object_randomly(sprites, ShakeAnimation.PositionType.LOCAL, sprites.position, shake_duration, min_range, max_range) 
+	var shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(self, 0, sprites, ShakeAnimation.PositionType.LOCAL, sprites.position, shake_duration, min_range, max_range) 
 	return shake_animation
 	
 	
@@ -80,9 +78,7 @@ func shake_all_atoms_individually(shake_duration: float, min_range: int, max_ran
 		if owner.atom_count >= owner.max_atoms_can_display:
 			i = 10
 		var sprite: Control = sprites_children[i]
-		var shake_animation: ShakeAnimation = ShakeAnimation.new(self) 
-		add_child(shake_animation)
-		shake_animation.shake_object_randomly(sprite, shake_animation.PositionType.LOCAL, sprite.position, shake_duration, min_range, max_range) 
+		var shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(self, 0, sprite, ShakeAnimation.PositionType.LOCAL, sprite.position, shake_duration, min_range, max_range) 
 		_shake_animations.append(shake_animation)
 	return _shake_animations
 	

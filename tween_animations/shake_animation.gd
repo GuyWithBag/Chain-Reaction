@@ -9,22 +9,23 @@ enum PositionType {
 	LOCAL
 }
 
-var playing: bool = false
-var bind: Node
+var playing: bool = true
 var loops: int
-var queue_free_after_shake_count: int = 0
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-
-func _init(_bind: Node, _playing: bool = true, _queue_free_after_shake_count: int = 1, _loops: int = 0) -> void: 
-	playing = _playing
-	bind = _bind
+func _init(_loops: int = 0) -> void: 
 	loops = _loops
-	queue_free_after_shake_count = _queue_free_after_shake_count
 	
 	
-func shake_object_randomly(object: Object, position_type: PositionType, center_position: Vector2, shaking_duration: float, min_range: int, max_range: int) -> void: 
+static func shake_object_randomly(parent: Node, _loops: int, object: Object, position_type: PositionType, center_position: Vector2, shaking_duration: float, min_range: int, max_range: int) -> ShakeAnimation: 
+	var shake_anim: ShakeAnimation = ShakeAnimation.new(_loops) 
+	parent.add_child(shake_anim)
+	shake_anim._shake_object_randomly(object, position_type, center_position, shaking_duration, min_range, max_range)
+	return shake_anim
+	
+	
+func _shake_object_randomly(object: Object, position_type: PositionType, center_position: Vector2, shaking_duration: float, min_range: int, max_range: int) -> void: 
 	var property: String
 	match position_type: 
 		PositionType.GLOBAL: 
@@ -33,11 +34,8 @@ func shake_object_randomly(object: Object, position_type: PositionType, center_p
 			property = "position"
 	var loop_count: int = 0
 	animation_started.emit()
+	var tween: Tween = create_tween().bind_node(self)
 	while playing == true: 
-		if loops > 0: 
-			if loop_count > loops: 
-				break
-		var tween: Tween = bind.create_tween().bind_node(self)
 		rng.randomize()
 		var x_rand_dir: int = [-1, 1][rng.randi_range(0, 1)]
 		var x_rand_pos: int = rng.randi_range(min_range, max_range) * x_rand_dir
@@ -52,13 +50,24 @@ func shake_object_randomly(object: Object, position_type: PositionType, center_p
 		await tween.finished
 		tween.stop()
 		loop_count += 1
+		# If loops are 0, then it will run infinitly until it is stopped. 
+		if loops > 0: 
+			if loop_count >= loops: 
+				break
+	tween.tween_property(object, property, center_position, shaking_duration)
+	tween.play()
 	animation_finished.emit()
-	queue_free_after_shake_count -= 1 
-	if queue_free_after_shake_count == 0: 
-		queue_free()
+	queue_free() 
 	
 	
-func shake_object_from_two_points(object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float) -> void: 
+static func shake_object_from_two_points(parent: Node2D, _loops: int, object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float) -> ShakeAnimation: 
+	var shake_anim: ShakeAnimation = ShakeAnimation.new(_loops)
+	parent.add_child(shake_anim)
+	shake_anim._shake_object_from_two_points(object, position_type, center_position, from, to, shaking_duration)
+	return shake_anim
+	
+	
+func _shake_object_from_two_points(object: Object, position_type: PositionType, center_position: Vector2, from: Vector2, to: Vector2, shaking_duration: float) -> void: 
 	var property: String
 	match position_type: 
 		PositionType.GLOBAL: 
@@ -67,13 +76,8 @@ func shake_object_from_two_points(object: Object, position_type: PositionType, c
 			property = "position"
 			
 	var loop_count: int = 0
+	var tween: Tween = create_tween().bind_node(self)
 	while playing == true: 
-		var tween: Tween = bind.create_tween().bind_node(self)
-		if loops > 0: 
-			if loop_count > loops: 
-				tween.tween_property(object, property, center_position, shaking_duration)
-				break
-		
 		tween.tween_property(object, property, center_position + from, shaking_duration)
 		tween.chain()
 		tween.tween_property(object, property, center_position + to, shaking_duration)
@@ -82,11 +86,16 @@ func shake_object_from_two_points(object: Object, position_type: PositionType, c
 		await tween.finished
 		tween.stop()
 		loop_count += 1
-	var tween: Tween = bind.create_tween().bind_node(self)
-	tween.tween_property(object, property, center_position, shaking_duration)
-	tween.play()
-	await tween.finished
-	queue_free_after_shake_count -= 1 
-	if queue_free_after_shake_count == 0: 
-		queue_free()
+		if loops > 0: 
+			if loop_count >= loops: 
+				tween.tween_property(object, property, center_position, shaking_duration)
+				tween.play()
+				await tween.finished
+				break
+	queue_free()
 
+
+func stop() -> void: 
+	playing = false
+	
+	

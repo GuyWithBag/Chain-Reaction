@@ -13,16 +13,15 @@ func enter() -> void:
 	state_machine.change_state(empty_state)
 
 
-func shake_camera() -> void: 
+func shake_grid() -> void: 
 	var root: Control = get_tree().current_scene.get_node("%Root")
-	var cam_shake: ShakeAnimation = ShakeAnimation.new(self, true, 1, 1)
+	var cam_shake: ShakeAnimation = ShakeAnimation.shake_object_randomly(get_tree().current_scene, 1, root, ShakeAnimation.PositionType.GLOBAL, root.global_position, 0.08, 1, 7)
 	cam_shake.animation_finished.connect(
 		func(): 
 			root.global_position = Vector2.ZERO
 	, CONNECT_ONE_SHOT
 	)
-	root.add_child(cam_shake)
-	cam_shake.shake_object_randomly(root, cam_shake.PositionType.GLOBAL, root.global_position, 0.08, 1, 7)
+
 
 func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void: 
 	for neighbor_atom_slot in neighbor_atom_slots: 
@@ -30,7 +29,7 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 	started_exploding.emit()
 	
 	if get_tree().current_scene.has_node("%Root"): 
-		shake_camera()
+		shake_grid()
 		
 	await atoms_sprites.explode_animation() 
 	for neighbor_atom_slot in neighbor_atom_slots: 
@@ -39,12 +38,8 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 		_affect_rotation_direction(neighbor_atom_slot)
 #		atom_stack.reset_atom_count()
 		neighbor_atom_stack.add_atom(1, AtomPlayerTurnsManager.current_atom_player_in_turn)
-		
-		var shake_animation: ShakeAnimation = ShakeAnimation.new(neighbor_atom_slot, true, 1, 1) 
 		var atom_sprites_group: Node2D = neighbor_atom_slot.atoms_sprites.atom_sprites_group
-		neighbor_atom_slot.atoms_sprites.add_child(shake_animation)
-		shake_animation.shake_object_randomly(atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atom_sprites_group.global_position, 0.05, 3, 15)
-#		AtomSlotsManager.data[state_machine_owner.name] = atom_stack.atom_count
+		var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(neighbor_atom_slot, 1, atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atom_sprites_group.global_position, 0.05, 3, 15)
 #		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()
 #	print(AtomSlotsManager.data)

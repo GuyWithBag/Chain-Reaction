@@ -13,6 +13,7 @@ var extend_map: bool = false
 
 
 func _ready(): 
+	LocalDatabase.init() 
 	MobileAds.load_banner("Main Menu Banner")
 	MobileAds.show_banner() 
 	GameManager.current_state = GameManager.State.MENU

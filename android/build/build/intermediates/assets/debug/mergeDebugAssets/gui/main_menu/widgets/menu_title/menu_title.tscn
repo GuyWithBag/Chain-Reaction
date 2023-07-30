@@ -1,45 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdfkti70lo56a"]
+[gd_scene load_steps=3 format=3 uid="uid://cdfkti70lo56a"]
 
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_1oeyv"]
-[ext_resource type="PackedScene" uid="uid://7bmyvtc4nti6" path="res://gui/atom_texture_rect/atom_texture_rect.tscn" id="2_0ndip"]
-
-[sub_resource type="Animation" id="Animation_8dx5i"]
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_mtrhc"]
-resource_name = "atoms_spinning"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -3.14159, -6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7y4ru"]
-_data = {
-"RESET": SubResource("Animation_8dx5i"),
-"atoms_spinning": SubResource("Animation_mtrhc")
-}
+[ext_resource type="PackedScene" uid="uid://b8vy5hmju7bgr" path="res://gui/atoms_spinning_graphic/atoms_spinning_graphic.tscn" id="2_lffce"]
 
 [node name="MenuTitle" type="Control"]
 custom_minimum_size = Vector2(700, 500)
@@ -260,54 +222,14 @@ theme_override_font_sizes/font_size = 45
 text = "SUPREME"
 metadata/_edit_use_anchors_ = true
 
-[node name="AtomsSpinning" type="Control" parent="."]
+[node name="AtomsSpinning" parent="." instance=ExtResource("2_lffce")]
 layout_mode = 1
-anchor_left = 0.0385715
-anchor_top = 0.01
-anchor_right = 0.0385715
-anchor_bottom = 0.01
-offset_left = 558.0
-offset_top = 180.0
-offset_right = 558.0
-offset_bottom = 180.0
-rotation = -1.74447
+anchor_left = 0.0185715
+anchor_top = 0.00400003
+anchor_right = 0.0185715
+anchor_bottom = 0.00400003
+offset_left = 599.0
+offset_top = 187.0
+offset_right = 599.0
+offset_bottom = 187.0
 metadata/_edit_use_anchors_ = true
-
-[node name="AtomTextureRect" parent="AtomsSpinning" instance=ExtResource("2_0ndip")]
-modulate = Color(1, 1, 0, 1)
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -51.0
-offset_top = 2.0
-offset_right = 49.0
-offset_bottom = 102.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="AtomTextureRect2" parent="AtomsSpinning" instance=ExtResource("2_0ndip")]
-modulate = Color(1, 0.301961, 0, 1)
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -51.0
-offset_top = -103.0
-offset_right = 49.0
-offset_bottom = -3.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AtomsSpinning"]
-autoplay = "atoms_spinning"
-reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_7y4ru")
-}

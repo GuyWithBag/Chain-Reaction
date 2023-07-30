@@ -8,13 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://material_icons/undo.svg" id="4_r4npt"]
 [ext_resource type="Script" path="res://scripts/classes/android_notification_component.gd" id="6_yk8bb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ounxr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oak4g"]
 resource_local_to_scene = true
 shader = ExtResource("4_70jup")
 shader_parameter/flash_color = Color(0.388235, 0.388235, 0.388235, 1)
 shader_parameter/flash_modifier = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj2kw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ck3ue"]
 resource_local_to_scene = true
 shader = ExtResource("4_70jup")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -63,7 +63,7 @@ vertical_alignment = 1
 
 [node name="Undo" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
 visible = false
-material = SubResource("ShaderMaterial_ounxr")
+material = SubResource("ShaderMaterial_oak4g")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 4
@@ -76,7 +76,7 @@ material_icon = "undo"
 event_action = "undo"
 
 [node name="Menu" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_t8d8p")]
-material = SubResource("ShaderMaterial_jj2kw")
+material = SubResource("ShaderMaterial_ck3ue")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 4

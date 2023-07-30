@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnb5iedr00q5r"]
+[gd_scene load_steps=6 format=3 uid="uid://cnb5iedr00q5r"]
 
 [ext_resource type="PackedScene" uid="uid://cdjqifk4ujlnb" path="res://scenes/game_world/game_world.tscn" id="1_i5d5x"]
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="2_4rout"]
+[ext_resource type="Shader" path="res://shaders/vignette/vignette.gdshader" id="2_h3dp3"]
 [ext_resource type="Texture2D" uid="uid://m2f4thdfjkeo" path="res://scenes/game_world_levels/standard_world/images/gradient_background_texture.tres" id="3_xx2s6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gklpy"]
+resource_local_to_scene = true
+shader = ExtResource("2_h3dp3")
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.555
+shader_parameter/vignette_rgb = Color(0, 0.568627, 1, 1)
+
 [node name="StandardWorldExtended" instance=ExtResource("1_i5d5x")]
+
+[node name="Vignette" parent="." index="0"]
+material = SubResource("ShaderMaterial_gklpy")
 
 [node name="TileMaps" parent="Root/Arena" index="0"]
 scale = Vector2(1.5, 1.5)
@@ -12,9 +23,6 @@ scale = Vector2(1.5, 1.5)
 [node name="AtomSlotsTileMap" parent="Root/Arena/TileMaps" index="0" instance=ExtResource("2_4rout")]
 position = Vector2(0, -3.05176e-05)
 layer_0/tile_data = PackedInt32Array(-327684, 1, 65536, -262148, 1, 65536, -196612, 1, 65536, -131076, 1, 65536, -65540, 1, 65536, -4, 1, 65536, 65532, 1, 65536, 131068, 1, 65536, 196604, 1, 65536, 262140, 1, 65536, 327676, 1, 65536, 393212, 1, 65536, -327683, 1, 65536, -262147, 1, 65536, -196611, 1, 65536, -131075, 1, 65536, -65539, 1, 65536, -3, 1, 65536, 65533, 1, 65536, 131069, 1, 65536, 196605, 1, 65536, 262141, 1, 65536, 327677, 1, 65536, 393213, 1, 65536, -327682, 1, 65536, -262146, 1, 65536, -196610, 1, 65536, -131074, 1, 65536, -65538, 1, 65536, -2, 1, 65536, 65534, 1, 65536, 131070, 1, 65536, 196606, 1, 65536, 262142, 1, 65536, 327678, 1, 65536, 393214, 1, 65536, -327681, 1, 65536, -262145, 1, 65536, -196609, 1, 65536, -131073, 1, 65536, -65537, 1, 65536, -1, 1, 65536, 65535, 1, 65536, 131071, 1, 65536, 196607, 1, 65536, 262143, 1, 65536, 327679, 1, 65536, 393215, 1, 65536, -393216, 1, 65536, -327680, 1, 65536, -262144, 1, 65536, -196608, 1, 65536, -131072, 1, 65536, -65536, 1, 65536, 0, 1, 65536, 65536, 1, 65536, 131072, 1, 65536, 196608, 1, 65536, 262144, 1, 65536, 327680, 1, 65536, -393215, 1, 65536, -327679, 1, 65536, -262143, 1, 65536, -196607, 1, 65536, -131071, 1, 65536, -65535, 1, 65536, 1, 1, 65536, 65537, 1, 65536, 131073, 1, 65536, 196609, 1, 65536, 262145, 1, 65536, 327681, 1, 65536, -393214, 1, 65536, -327678, 1, 65536, -262142, 1, 65536, -196606, 1, 65536, -131070, 1, 65536, -65534, 1, 65536, 2, 1, 65536, 65538, 1, 65536, 131074, 1, 65536, 196610, 1, 65536, 262146, 1, 65536, 327682, 1, 65536, -393213, 1, 65536, -327677, 1, 65536, -262141, 1, 65536, -196605, 1, 65536, -131069, 1, 65536, -65533, 1, 65536, 3, 1, 65536, 65539, 1, 65536, 131075, 1, 65536, 196611, 1, 65536, 262147, 1, 65536, 327683, 1, 65536, 458748, 1, 65536, 458749, 1, 65536, 458750, 1, 65536, 458751, 1, 65536, 393216, 1, 65536, 393217, 1, 65536, 393218, 1, 65536, 393219, 1, 65536)
-
-[node name="AtomSprites" parent="Root/Arena" index="1"]
-scale = Vector2(1.5, 1.5)
 
 [node name="AtomParticles" parent="Root/Arena" index="2"]
 scale = Vector2(1.5, 1.5)
@@ -28,6 +36,6 @@ layer_0/tile_data = PackedInt32Array(393219, 131074, 2, 327683, 131074, 1, 26214
 [node name="TextureRect" parent="Background" index="1"]
 texture = ExtResource("3_xx2s6")
 
-[node name="MapScaler" parent="." index="3"]
+[node name="MapScaler" parent="." index="4"]
 scale_by_size = 1
 scale = 1.5

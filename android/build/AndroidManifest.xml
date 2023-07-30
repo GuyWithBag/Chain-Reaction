@@ -35,7 +35,7 @@
             android:name=".GodotApp"
             android:label="@string/godot_project_name_string"
             android:theme="@style/GodotAppSplashTheme"
-            android:launchMode="singleTask"
+            android:launchMode="singleInstance"
             android:excludeFromRecents="false"
             android:exported="true"
             android:screenOrientation="landscape"
@@ -48,10 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data
-            tools:replace="android:value"
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9490685140858860~5560469663"/>
+
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7bmyvtc4nti6"]
 
-[ext_resource type="Texture2D" uid="uid://sa552rbcuqg5" path="res://scenes/atom_slot/atom.png" id="1_krsov"]
+[ext_resource type="Texture2D" uid="uid://sa552rbcuqg5" path="res://scenes/atom/atom.png" id="1_krsov"]
 
 [node name="AtomTextureRect" type="Control"]
 layout_mode = 3

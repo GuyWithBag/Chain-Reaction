@@ -1,3 +1,4 @@
+@icon("res://resources/tilesets/grid_slot.png")
 extends Node2D
 class_name AtomSlot
 
@@ -15,8 +16,9 @@ var atom_player: AtomPlayer:
 		atom_player = value
 		atoms_sprites.change_team_color_to(atom_player)
 		if atom_player != null: 
-			if !get_groups().is_empty(): 
-				remove_from_group(get_groups()[0])
+			if previous_atom_player != null:
+				if !get_groups().is_empty(): 
+					remove_from_group(previous_atom_player.group_name)
 			add_to_group(atom_player.group_name)
 			
 			atom_slot_group_label.text = str(atom_player.team_number)
@@ -41,13 +43,23 @@ var _initialized: bool = false
 
 
 func _ready() -> void: 
+	atoms_positions.center_position.global_position = self.global_position
 	state_machine.init(self)
 	atom_detector.init(self)
+	
+	# When this condition is fulfilled, all atom_slots will be initialized. 
 
 
 func _physics_process(_delta): 
 	if _initialized == false: 
-		init()
+		# If all the slots have their physics initialized, do this. 
+		var parent: TileMap = get_parent()
+		var children: Array[Node] = parent.get_children()
+		var index: int = children.find(self) + 1
+		var size: int = children.size()
+		if index >= size: 
+			for child in children: 
+				child.init()
 
 
 func init() -> void: 
@@ -70,14 +82,12 @@ func _on_touch_screen_button_pressed() -> void:
 func shake_grid() -> void: 
 	if get_tree().current_scene.has_node("%Root"): 
 		var root: Control = get_tree().current_scene.get_node("%Root")
-		var cam_shake: ShakeAnimation = ShakeAnimation.new(self, true, 1, 2) 
+		var cam_shake: ShakeAnimation = ShakeAnimation.shake_object_randomly(self, 2, root, ShakeAnimation.PositionType.GLOBAL, root.global_position, 0.07, 3, 25)
 		cam_shake.animation_finished.connect(
 			func(): 
 				root.global_position = Vector2.ZERO
 		, CONNECT_ONE_SHOT
 		)
-		root.add_child(cam_shake)
-		cam_shake.shake_object_randomly(root, cam_shake.PositionType.GLOBAL, root.global_position, 0.07, 3, 25)
 
 
 func player_interact() -> void: 
@@ -101,13 +111,11 @@ func player_interact() -> void:
 		print("AtomSlot (%s): Is indeed empty" % name)
 	elif atom_player != current_atom_player: 
 		print("AtomSlot (%s): WRONG TEAM" % name)
-		var shake_animation: ShakeAnimation = ShakeAnimation.new(self, true, 1, 1) 
 		var map_scale: Vector2 = GameManager.map_scaler.vector2_scale_relative_to_tilemap_size - Vector2(120, 120) 
 		var center_global_position: Vector2 = atoms_positions.center_position.global_position
 		var from: Vector2 = Vector2(map_scale.x, 0) 
 		var to: Vector2 = Vector2(-map_scale.x, 0) 
-		add_child(shake_animation)
-		shake_animation.shake_object_from_two_points(atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, center_global_position, from, to, 0.03)
+		var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_from_two_points(self, 1, atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, center_global_position, from, to, 0.03)
 		player_interacted_wrong_team.emit()
 		return
 	print("AtomSlot (%s): Placed atom here" % name)

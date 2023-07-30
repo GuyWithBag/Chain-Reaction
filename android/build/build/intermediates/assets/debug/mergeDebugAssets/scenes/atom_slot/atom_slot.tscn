@@ -89,34 +89,33 @@ target_position = Vector2(-64, 0)
 collision_mask = 3
 collide_with_areas = true
 
-[node name="AtomPositions" type="Node2D" parent="."]
-visible = false
+[node name="AtomPositions" type="Node" parent="."]
 script = ExtResource("12_4er3p")
 
-[node name="Single" type="Node2D" parent="AtomPositions"]
+[node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
 
-[node name="Marker2D" type="Marker2D" parent="AtomPositions/Single"]
+[node name="Single" type="Node2D" parent="AtomPositions/CenterPosition"]
 
-[node name="Double" type="Node2D" parent="AtomPositions"]
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/CenterPosition/Single"]
 
-[node name="Marker2D" type="Marker2D" parent="AtomPositions/Double"]
+[node name="Double" type="Node2D" parent="AtomPositions/CenterPosition"]
+
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/CenterPosition/Double"]
 position = Vector2(0, 9)
 
-[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Double"]
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/CenterPosition/Double"]
 position = Vector2(0, -10)
 
-[node name="Triple" type="Node2D" parent="AtomPositions"]
+[node name="Triple" type="Node2D" parent="AtomPositions/CenterPosition"]
 
-[node name="Marker2D" type="Marker2D" parent="AtomPositions/Triple"]
-position = Vector2(13, 8)
+[node name="Marker2D" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
+position = Vector2(15, 10)
 
-[node name="Marker2D2" type="Marker2D" parent="AtomPositions/Triple"]
-position = Vector2(-12, 8)
+[node name="Marker2D2" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
+position = Vector2(-14, 10)
 
-[node name="Marker2D3" type="Marker2D" parent="AtomPositions/Triple"]
+[node name="Marker2D3" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
 position = Vector2(0, -10)
-
-[node name="CenterPosition" type="Marker2D" parent="AtomPositions"]
 
 [node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
 script = ExtResource("6_jfsh5")
@@ -130,10 +129,9 @@ script = ExtResource("5_3ujwk")
 [node name="AtomsParticles" type="Node2D" parent="."]
 script = ExtResource("7_0ecf5")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state_label")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("5_c3o2o")
 starting_state = NodePath("Empty")
-current_state_label = NodePath("")
 
 [node name="Empty" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("6_g5cua")

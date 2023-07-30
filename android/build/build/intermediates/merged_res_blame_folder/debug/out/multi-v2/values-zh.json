@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.godot.game-mergeDebugResources-18:/values-zh/values-zh.xml",
+            "outputFile": "com.godot.game-mergeDebugResources-9:/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "D:\\Github Repositories\\Chain-Reaction\\android\\build\\res\\values-zh\\godot_project_name_string.xml",
