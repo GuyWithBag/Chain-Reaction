@@ -1,3 +1,4 @@
+@icon("res://scenes/atom/atom.png")
 extends Node
 class_name AtomStack
 
@@ -38,8 +39,8 @@ signal atoms_overloaded
 		
 @export_range(1, 4) var max_atom_stack: int = 3: 
 	set(value): 
-		if value <= 0: 
-			printerr("AtomStack (%s): max_atom_stack is set to 0. There is something wrong in the code. " % owner.name)
+#		if value <= 0: 
+#			printerr("AtomStack (%s): max_atom_stack is set to 0. There is something wrong in the code. " % owner.name)
 		max_atom_stack = clamp(value, 1, 4)
 
 @export var stack_label: Label

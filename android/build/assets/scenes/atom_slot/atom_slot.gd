@@ -1,3 +1,4 @@
+@icon("res://resources/tilesets/grid_slot.png")
 extends Node2D
 class_name AtomSlot
 
@@ -45,11 +46,20 @@ func _ready() -> void:
 	atoms_positions.center_position.global_position = self.global_position
 	state_machine.init(self)
 	atom_detector.init(self)
+	
+	# When this condition is fulfilled, all atom_slots will be initialized. 
 
 
 func _physics_process(_delta): 
 	if _initialized == false: 
-		init()
+		# If all the slots have their physics initialized, do this. 
+		var parent: TileMap = get_parent()
+		var children: Array[Node] = parent.get_children()
+		var index: int = children.find(self) + 1
+		var size: int = children.size()
+		if index >= size: 
+			for child in children: 
+				child.init()
 
 
 func init() -> void: 

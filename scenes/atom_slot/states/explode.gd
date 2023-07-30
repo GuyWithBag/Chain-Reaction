@@ -44,7 +44,7 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 		ChainReactionSequenceManager.pop_back_sequences()
 #	print(AtomSlotsManager.data)
 	
-	Input.vibrate_handheld(500)
+	Input.vibrate_handheld(100)
 	finished_exploding.emit() 
 	
 	

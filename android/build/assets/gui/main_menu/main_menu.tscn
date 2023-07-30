@@ -460,13 +460,16 @@ page_container = NodePath("../../../../../..")
 go_to_page = NodePath("../../../../../../MainPage")
 
 [node name="DEBUG" type="Label" parent="CanvasLayer/Control/CenterContainer/MainBody"]
-visible = false
 light_mask = 0
-layout_mode = 2
-offset_left = 600.0
-offset_top = -193.0
-offset_right = 826.0
-offset_bottom = -83.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.13
+anchor_top = -0.136154
+anchor_right = 1.13
+anchor_bottom = -0.136154
+offset_left = -226.0
+offset_bottom = 110.0
+grow_horizontal = 0
 theme = ExtResource("2_btats")
 text = "DEBUG"
 script = ExtResource("28_jquku")
