@@ -2,8 +2,8 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
 4    android:installLocation="auto"
-5    android:versionCode="6"
-6    android:versionName="1.0.4" >
+5    android:versionCode="8"
+6    android:versionName="1.0.6" >
 7
 8    <uses-sdk
 9        android:minSdkVersion="24"

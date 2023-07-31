@@ -74,7 +74,7 @@ func start_game() -> void:
 		if display_screen_size.y > original_screen_size.y: 
 			if !game_start_data.map_data.extended_map_url.is_empty(): 
 				map_url = game_start_data.map_data.extended_map_url
-	get_tree().change_scene_to_file(map_url)
+	SceneManager.change_scene_to_file(map_url)
 	game_started.emit()
 	game_start_data = null
 
@@ -107,7 +107,7 @@ func retry_game() -> void:
 
 func quit_to_main_menu() -> void: 
 	retry_game()
-	get_tree().change_scene_to_file("res://gui/main_menu/main_menu.tscn")
+	SceneManager.change_scene_to_file("res://gui/main_menu/main_menu.tscn")
 	quitted_to_main_menu.emit()
 	
 	

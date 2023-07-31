@@ -224,10 +224,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AtomsSpinning" parent="." instance=ExtResource("2_lffce")]
 layout_mode = 1
-anchor_left = 0.0185715
-anchor_top = 0.00400003
-anchor_right = 0.0185715
-anchor_bottom = 0.00400003
+anchor_left = -0.0171429
+anchor_top = -0.00800006
+anchor_right = -0.0171429
+anchor_bottom = -0.00800006
 offset_left = 599.0
 offset_top = 187.0
 offset_right = 599.0

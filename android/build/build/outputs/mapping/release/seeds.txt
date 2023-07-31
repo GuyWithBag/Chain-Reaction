@@ -1,0 +1,217 @@
+androidx.lifecycle.SavedStateHandleController
+androidx.core.graphics.drawable.IconCompatParcelizer
+androidx.lifecycle.ReflectiveGenericLifecycleObserver
+androidx.activity.ImmLeaksCleaner
+androidx.core.content.FileProvider
+org.godotengine.godot.Godot
+androidx.lifecycle.FullLifecycleObserverAdapter
+org.godotengine.godot.utils.ProcessPhoenix
+org.godotengine.godot.tts.GodotTTS
+androidx.lifecycle.LiveData$LifecycleBoundObserver
+androidx.activity.ComponentActivity$3
+androidx.activity.ComponentActivity$4
+androidx.core.app.RemoteActionCompat
+androidx.activity.result.ActivityResultRegistry$1
+org.godotengine.godot.GodotVulkanRenderView
+androidx.lifecycle.SingleGeneratedAdapterObserver
+org.godotengine.godot.GodotGLRenderView
+android.support.v4.app.RemoteActionCompatParcelizer
+androidx.lifecycle.CompositeGeneratedAdaptersObserver
+org.godotengine.godot.plugin.GodotPlugin
+com.android.vending.licensing.ILicensingService
+androidx.core.app.RemoteActionCompatParcelizer
+androidx.activity.ComponentActivity$5
+androidx.core.graphics.drawable.IconCompat
+androidx.core.app.CoreComponentFactory
+com.godot.game.GodotApp
+org.godotengine.godot.GodotLib
+androidx.versionedparcelable.ParcelImpl
+android.support.v4.graphics.drawable.IconCompatParcelizer
+androidx.fragment.app.Fragment$5
+androidx.fragment.app.FragmentManager$6
+androidx.lifecycle.SavedStateHandleController$1
+androidx.versionedparcelable.CustomVersionedParcelable
+org.godotengine.godot.GodotDownloaderService
+androidx.savedstate.Recreator
+androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable
+androidx.lifecycle.Lifecycling$1
+androidx.annotation.Keep
+androidx.savedstate.SavedStateRegistry$1
+org.godotengine.godot.tts.GodotTTS: java.lang.Object lock
+org.godotengine.godot.tts.GodotTTS: org.godotengine.godot.tts.GodotUtterance lastUtterance
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_ANY
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_PAUSE
+org.godotengine.godot.tts.GodotTTS: boolean speaking
+org.godotengine.godot.tts.GodotTTS: int EVENT_START
+org.godotengine.godot.tts.GodotTTS: int EVENT_CANCEL
+org.godotengine.godot.tts.GodotTTS: boolean paused
+androidx.activity.result.ActivityResult: android.os.Parcelable$Creator CREATOR
+androidx.versionedparcelable.ParcelImpl: android.os.Parcelable$Creator CREATOR
+androidx.fragment.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+org.godotengine.godot.tts.GodotTTS: java.util.LinkedList queue
+org.godotengine.godot.tts.GodotTTS: android.speech.tts.TextToSpeech synth
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP
+org.godotengine.godot.tts.GodotTTS: int EVENT_BOUNDARY
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE
+androidx.fragment.app.FragmentState: android.os.Parcelable$Creator CREATOR
+com.google.android.vending.expansion.downloader.DownloadProgressInfo: android.os.Parcelable$Creator CREATOR
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] $VALUES
+androidx.fragment.app.FragmentManager$LaunchedFragmentInfo: android.os.Parcelable$Creator CREATOR
+org.godotengine.godot.tts.GodotTTS: android.app.Activity activity
+androidx.fragment.app.BackStackState: android.os.Parcelable$Creator CREATOR
+org.godotengine.godot.tts.GodotTTS: int EVENT_END
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_RESUME
+android.support.v4.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.tts.GodotTTS: void onStart(java.lang.String)
+org.godotengine.godot.tts.GodotTTS: boolean isSpeaking()
+androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State valueOf(java.lang.String)
+com.google.android.vending.expansion.downloader.impl.DownloaderService: DownloaderService()
+androidx.core.app.CoreComponentFactory: CoreComponentFactory()
+org.godotengine.godot.GodotLib: void onRendererResumed()
+org.godotengine.godot.gl.GLSurfaceView: void setEGLContextFactory(org.godotengine.godot.gl.GLSurfaceView$EGLContextFactory)
+org.godotengine.godot.tts.GodotTTS: void updateTTS()
+org.godotengine.godot.Godot: boolean onVideoInit()
+org.godotengine.godot.GodotLib: boolean setup(java.lang.String[],org.godotengine.godot.tts.GodotTTS)
+com.godot.game.GodotApp: GodotApp()
+org.godotengine.godot.GodotVulkanRenderView: org.godotengine.godot.input.GodotInputHandler getInputHandler()
+org.godotengine.godot.io.StorageScope: org.godotengine.godot.io.StorageScope[] values()
+org.godotengine.godot.plugin.GodotPlugin: void nativeRegisterSignal(java.lang.String,java.lang.String,java.lang.String[])
+org.godotengine.godot.GodotVulkanRenderView: void configurePointerIcon(int,java.lang.String,float,float)
+android.support.v4.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+androidx.fragment.app.SpecialEffectsController$Operation$State: androidx.fragment.app.SpecialEffectsController$Operation$State valueOf(java.lang.String)
+org.godotengine.godot.gl.GLSurfaceView: void setDebugFlags(int)
+org.godotengine.godot.gl.GLSurfaceView: void setPreserveEGLContextOnPause(boolean)
+androidx.core.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
+org.godotengine.godot.Godot: java.lang.String getInputFallbackMapping()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostStarted(android.app.Activity)
+org.godotengine.godot.GodotGLRenderView: android.view.SurfaceView getView()
+org.godotengine.godot.GodotLib: void ttsCallback(int,int,int)
+org.godotengine.godot.GodotLib: void gravity(float,float,float)
+org.godotengine.godot.input.GodotEditText: org.godotengine.godot.input.GodotEditText$VirtualKeyboardType getKeyboardType()
+org.godotengine.godot.GodotGLRenderView: org.godotengine.godot.input.GodotInputHandler getInputHandler()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPaused(android.app.Activity)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreDestroyed(android.app.Activity)
+org.godotengine.godot.vulkan.VkSurfaceView: org.godotengine.godot.vulkan.VkThread getVkThread()
+org.godotengine.godot.Godot: Godot()
+org.godotengine.godot.GodotLib: void ondestroy()
+org.godotengine.godot.tts.GodotTTS: void onError(java.lang.String)
+org.godotengine.godot.input.GodotEditText$VirtualKeyboardType: org.godotengine.godot.input.GodotEditText$VirtualKeyboardType valueOf(java.lang.String)
+android.support.v4.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.io.file.FileAccessFlags: org.godotengine.godot.io.file.FileAccessFlags valueOf(java.lang.String)
+androidx.fragment.app.SpecialEffectsController$Operation$LifecycleImpact: androidx.fragment.app.SpecialEffectsController$Operation$LifecycleImpact[] values()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: ReportFragment$LifecycleCallbacks()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityCreated(android.app.Activity,android.os.Bundle)
+org.godotengine.godot.plugin.GodotPlugin: void nativeRegisterSingleton(java.lang.String,java.lang.Object)
+org.godotengine.godot.GodotLib: void back()
+org.godotengine.godot.xr.XRMode: org.godotengine.godot.xr.XRMode valueOf(java.lang.String)
+org.godotengine.godot.GodotLib: boolean step()
+org.godotengine.godot.utils.ProcessPhoenix: ProcessPhoenix()
+org.godotengine.godot.GodotLib: void pan(float,float,float,float)
+org.godotengine.godot.GodotVulkanRenderView: android.view.SurfaceView getView()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityResumed(android.app.Activity)
+org.godotengine.godot.GodotLib: void joybutton(int,int,boolean)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityDestroyed(android.app.Activity)
+android.support.v4.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+androidx.loader.app.LoaderManagerImpl$LoaderViewModel: LoaderManagerImpl$LoaderViewModel()
+androidx.fragment.app.SpecialEffectsController$Operation$State: androidx.fragment.app.SpecialEffectsController$Operation$State[] values()
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] values()
+org.godotengine.godot.Godot: android.view.Surface getSurface()
+androidx.versionedparcelable.CustomVersionedParcelable: CustomVersionedParcelable()
+androidx.core.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.GodotLib: void focusin()
+org.godotengine.godot.io.StorageScope: org.godotengine.godot.io.StorageScope valueOf(java.lang.String)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreStopped(android.app.Activity)
+androidx.core.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+org.godotengine.godot.Godot: int createNewGodotInstance(java.lang.String[])
+org.godotengine.godot.tts.GodotTTS: void init()
+org.godotengine.godot.xr.XRMode: org.godotengine.godot.xr.XRMode[] values()
+org.godotengine.godot.GodotLib: boolean initialize(android.app.Activity,org.godotengine.godot.Godot,android.content.res.AssetManager,org.godotengine.godot.GodotIO,org.godotengine.godot.utils.GodotNetUtils,org.godotengine.godot.io.directory.DirectoryAccessHandler,org.godotengine.godot.io.file.FileAccessHandler,boolean)
+org.godotengine.godot.tts.GodotTTS: void onRangeStart(java.lang.String,int,int,int)
+org.godotengine.godot.input.GodotEditText: void setView(org.godotengine.godot.GodotRenderView)
+org.godotengine.godot.GodotGLRenderView: void setPointerIcon(int)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostResumed(android.app.Activity)
+androidx.fragment.app.FragmentActivity: FragmentActivity()
+org.godotengine.godot.tts.GodotTTS: boolean isPaused()
+androidx.core.app.RemoteActionCompat: RemoteActionCompat()
+org.godotengine.godot.GodotLib: void gyroscope(float,float,float)
+org.godotengine.godot.GodotLib: void focusout()
+org.godotengine.godot.gl.GLSurfaceView: void setGLWrapper(org.godotengine.godot.gl.GLSurfaceView$GLWrapper)
+android.support.v4.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
+org.godotengine.godot.GodotDownloaderService: GodotDownloaderService()
+org.godotengine.godot.gl.GLSurfaceView: void setEGLWindowSurfaceFactory(org.godotengine.godot.gl.GLSurfaceView$EGLWindowSurfaceFactory)
+androidx.core.content.FileProvider: FileProvider()
+org.godotengine.godot.GodotLib: void joyhat(int,int,int)
+org.godotengine.godot.Godot: org.godotengine.godot.io.file.FileAccessHandler getFileAccessHandler()
+org.godotengine.godot.GodotGLRenderView: void configurePointerIcon(int,java.lang.String,float,float)
+org.godotengine.godot.Godot: boolean forceQuit(int)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStopped(android.app.Activity)
+org.godotengine.godot.input.GodotEditText$VirtualKeyboardType: org.godotengine.godot.input.GodotEditText$VirtualKeyboardType[] values()
+org.godotengine.godot.tts.GodotTTS: void pauseSpeaking()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStarted(android.app.Activity)
+androidx.fragment.app.FragmentContainerView: void setOnApplyWindowInsetsListener(android.view.View$OnApplyWindowInsetsListener)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPrePaused(android.app.Activity)
+androidx.fragment.app.SpecialEffectsController$Operation$LifecycleImpact: androidx.fragment.app.SpecialEffectsController$Operation$LifecycleImpact valueOf(java.lang.String)
+androidx.lifecycle.ViewModel: ViewModel()
+androidx.activity.ComponentActivity: ComponentActivity()
+org.godotengine.godot.gl.GLSurfaceView: boolean getPreserveEGLContextOnPause()
+androidx.core.graphics.drawable.IconCompat: IconCompat()
+org.godotengine.godot.gl.GLSurfaceView: void setEGLConfigChooser(boolean)
+org.godotengine.godot.plugin.GodotPlugin: void nativeRegisterGDExtensionLibraries(java.lang.String[])
+org.godotengine.godot.tts.GodotTTS: void onStop(java.lang.String,boolean)
+org.godotengine.godot.Godot: org.godotengine.godot.GodotRenderView getRenderView()
+org.godotengine.godot.gl.GLSurfaceView: void setRenderMode(int)
+org.godotengine.godot.Godot: void dumpBenchmark(java.lang.String)
+androidx.core.app.ComponentActivity: ComponentActivity()
+org.godotengine.godot.Godot: java.lang.String getCACertificates()
+org.godotengine.godot.gl.GLSurfaceView: void setEGLConfigChooser(org.godotengine.godot.gl.GLSurfaceView$EGLConfigChooser)
+org.godotengine.godot.io.file.FileAccessFlags: org.godotengine.godot.io.file.FileAccessFlags[] values()
+org.godotengine.godot.GodotLib: void setVirtualKeyboardHeight(int)
+org.godotengine.godot.GodotLib: void joyconnectionchanged(int,boolean,java.lang.String)
+org.godotengine.godot.Godot: boolean isActivityResumed()
+org.godotengine.godot.tts.GodotTTS: void speak(java.lang.String,java.lang.String,int,float,float,int,boolean)
+org.godotengine.godot.tts.GodotTTS: void resumeSpeaking()
+org.godotengine.godot.FullScreenGodotApp: FullScreenGodotApp()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostCreated(android.app.Activity,android.os.Bundle)
+org.godotengine.godot.Godot: void vibrate(int)
+android.support.v4.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.GodotLib: void onRendererPaused()
+org.godotengine.godot.GodotVulkanRenderView: void setPointerIcon(int)
+org.godotengine.godot.Godot: void beginBenchmarkMeasure(java.lang.String)
+androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State[] values()
+androidx.fragment.app.FragmentContainerView: void setDrawDisappearingViewsLast(boolean)
+androidx.fragment.app.FragmentContainerView: void setLayoutTransition(android.animation.LayoutTransition)
+androidx.fragment.app.Fragment: Fragment()
+org.godotengine.godot.GodotLib: void joyaxis(int,int,float)
+org.godotengine.godot.tts.GodotTTS: void stopSpeaking()
+androidx.core.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivitySaveInstanceState(android.app.Activity,android.os.Bundle)
+org.godotengine.godot.tts.GodotTTS: void onError(java.lang.String,int)
+org.godotengine.godot.GodotLib: void accelerometer(float,float,float)
+org.godotengine.godot.GodotLib: void magnetometer(float,float,float)
+androidx.activity.ComponentActivity: void setContentView(android.view.View)
+org.godotengine.godot.tts.GodotTTS: java.lang.String[] getVoices()
+org.godotengine.godot.GodotLib: void magnify(float,float,float)
+org.godotengine.godot.Godot: org.godotengine.godot.io.directory.DirectoryAccessHandler getDirectoryAccessHandler()
+org.godotengine.godot.GodotLib: void dispatchTouchEvent(int,int,int,float[],boolean)
+org.godotengine.godot.gl.GLSurfaceView: int getDebugFlags()
+org.godotengine.godot.GodotLib: void key(int,int,int,boolean)
+org.godotengine.godot.GodotLib: void resize(android.view.Surface,int,int)
+androidx.core.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.GodotLib: void requestPermissionResult(java.lang.String,boolean)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void registerIn(android.app.Activity)
+org.godotengine.godot.tts.GodotTTS: GodotTTS(android.app.Activity)
+org.godotengine.godot.GodotLib: void dispatchMouseEvent(int,int,float,float,float,float,boolean,boolean)
+org.godotengine.godot.gl.GLSurfaceView: void setEGLContextClientVersion(int)
+org.godotengine.godot.gl.GLSurfaceView: void setRenderer(org.godotengine.godot.gl.GLSurfaceView$Renderer)
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event valueOf(java.lang.String)
+org.godotengine.godot.GodotLib: void newcontext(android.view.Surface)
+org.godotengine.godot.Godot: void endBenchmarkMeasure(java.lang.String)
+org.godotengine.godot.input.GodotEditText: void setMaxInputLength(android.widget.EditText)
+org.godotengine.godot.gl.GLSurfaceView: int getRenderMode()
+org.godotengine.godot.tts.GodotTTS: void onDone(java.lang.String)
+org.godotengine.godot.GodotLib: java.lang.String getGlobal(java.lang.String)
+androidx.lifecycle.SavedStateHandleController$OnRecreation: SavedStateHandleController$OnRecreation()
+androidx.core.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+org.godotengine.godot.plugin.GodotPlugin: void nativeRegisterMethod(java.lang.String,java.lang.String,java.lang.String,java.lang.String[])

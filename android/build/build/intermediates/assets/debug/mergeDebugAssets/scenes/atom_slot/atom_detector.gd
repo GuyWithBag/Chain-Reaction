@@ -42,3 +42,8 @@ func get_available_directions() -> Array[int]:
 			var direction: String = raycast.name.to_upper()
 			directions.append(Directions.get(direction))
 	return directions
+
+
+func queue_free_all_raycasts() -> void: 
+	for child in get_children(): 
+		child.queue_free() 

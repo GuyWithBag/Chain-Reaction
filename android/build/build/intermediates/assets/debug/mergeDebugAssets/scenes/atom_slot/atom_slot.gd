@@ -29,13 +29,15 @@ var previous_atom_player: AtomPlayer
 var available_directions: Array[String] = [] 
 
 var _initialized: bool = false
+var neighbor_atom_slots: Array[AtomSlot]
+var available_directions_to_neighbors: Array[int]
 
 @onready var atoms_sprites: AtomsSprites = get_node("AtomsSprites")
 @onready var atom_stack: AtomStack = get_node("AtomStack")
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer") 
 @onready var hitbox: Area2D = get_node("Hitbox")
 @onready var grid: Sprite2D = get_node("Grid")
-@onready var atom_detector: Node2D = get_node("AtomsDetector") 
+@onready var atom_detector: AtomsDetector = get_node("AtomsDetector") 
 @onready var state_machine: StateMachine = get_node("StateMachine")
 @onready var sequence: ChainReactionSequence = ChainReactionSequence.new(self)
 @onready var atoms_positions: AtomPositions = get_node("AtomPositions")
@@ -69,6 +71,9 @@ func init() -> void:
 		func(): 
 			AtomSlotsManager.atom_slot_exploded.emit(self)
 	)
+	neighbor_atom_slots = atom_detector.get_slot_in_all_directions()
+	available_directions_to_neighbors = atom_detector.get_available_directions()
+	atom_detector.queue_free_all_raycasts() 
 	_initialized = true
 	initialized.emit()
 

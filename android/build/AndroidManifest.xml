@@ -30,7 +30,10 @@
         <meta-data
             android:name="org.godotengine.editor.version"
             android:value="${godotEditorVersion}" />
-
+        <meta-data
+            tools:replace="android:value"
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9490685140858860~5560469663"/>
         <activity
             android:name=".GodotApp"
             android:label="@string/godot_project_name_string"

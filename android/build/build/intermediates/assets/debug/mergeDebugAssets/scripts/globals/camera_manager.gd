@@ -8,6 +8,8 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var current_camera: Camera2D: 
 	set(value): 
 		current_camera = value 
+		if current_camera == null: 
+			return
 		original_position = current_camera.global_position
 		
 var original_position: Vector2

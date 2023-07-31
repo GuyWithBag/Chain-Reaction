@@ -101,21 +101,21 @@ script = ExtResource("12_4er3p")
 [node name="Double" type="Node2D" parent="AtomPositions/CenterPosition"]
 
 [node name="Marker2D" type="Marker2D" parent="AtomPositions/CenterPosition/Double"]
-position = Vector2(0, 9)
+position = Vector2(0, 11)
 
 [node name="Marker2D2" type="Marker2D" parent="AtomPositions/CenterPosition/Double"]
-position = Vector2(0, -10)
+position = Vector2(0, -12)
 
 [node name="Triple" type="Node2D" parent="AtomPositions/CenterPosition"]
 
 [node name="Marker2D" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
-position = Vector2(15, 10)
+position = Vector2(16, 11)
 
 [node name="Marker2D2" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
-position = Vector2(-14, 10)
+position = Vector2(-15, 11)
 
 [node name="Marker2D3" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
-position = Vector2(0, -10)
+position = Vector2(0, -12)
 
 [node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
 script = ExtResource("6_jfsh5")

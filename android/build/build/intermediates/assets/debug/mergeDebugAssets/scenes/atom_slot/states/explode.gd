@@ -5,11 +5,10 @@ signal finished_exploding
 
 func enter() -> void: 
 	super.enter()
-	var neighbor_atom_slots: Array[AtomSlot] = atoms_detector.get_slot_in_all_directions()
 #	if AtomSlotsManager.is_tilemap_full_of_cells(): 
 #		printerr("full")
 #		return
-	_explode(neighbor_atom_slots)
+	_explode(owner.neighbor_atom_slots)
 	state_machine.change_state(empty_state)
 
 
@@ -42,9 +41,9 @@ func _explode(neighbor_atom_slots: Array[AtomSlot]) -> void:
 		var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(neighbor_atom_slot, 1, atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atom_sprites_group.global_position, 0.05, 3, 15)
 #		AtomSlotsManager.data[neighbor_atom_slot.name] = _atom_stack.atom_count
 		ChainReactionSequenceManager.pop_back_sequences()
-#	print(AtomSlotsManager.data)
+#	print(AtomSlotsManager.data) 
 	
-	Input.vibrate_handheld(500)
+	Input.vibrate_handheld(100)
 	finished_exploding.emit() 
 	
 	

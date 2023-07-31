@@ -2,4 +2,4 @@ extends Control
 
 
 func _ready() -> void: 
-	LoadingScreen.load_scene("res://gui/main_menu/main_menu.tscn")
+	SceneManager.change_scene_to_file("res://gui/main_menu/main_menu.tscn")

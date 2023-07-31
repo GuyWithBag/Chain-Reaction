@@ -97,7 +97,7 @@ AudioEffectsLoader="*res://scripts/globals/audio_effects_loader.gd"
 BackgroundAudioManager="*res://scripts/globals/background_sounds_manager/background_audio_manager.tscn"
 LocalDatabase="*res://scripts/globals/local_database.gd"
 MobileAds="*res://addons/admob/src/singletons/MobileAds.gd"
-LoadingScreen="*res://scripts/globals/loading_screen.gd"
+SceneManager="*res://scripts/globals/scene_manager.gd"
 
 [display]
 

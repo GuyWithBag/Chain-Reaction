@@ -17,7 +17,7 @@ func _ready():
 	MobileAds.load_banner("Main Menu Banner")
 	MobileAds.show_banner() 
 	GameManager.current_state = GameManager.State.MENU
-	CameraManager.current_camera = get_tree().current_scene.get_node("%Cameras/Camera2D")
+	CameraManager.current_camera = get_node("%Cameras/Camera2D")
 	UIManager.set_gui_active(UIManager.player_screen, false)
 	simulate_game_world_in_background() 
 	GameManager.pause_game(false)

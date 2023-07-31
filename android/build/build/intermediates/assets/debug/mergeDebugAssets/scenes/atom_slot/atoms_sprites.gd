@@ -58,7 +58,7 @@ func _add_atom_sprite(variable_to_initialize: String) -> void:
 	var sprite: Sprite2D = AtomSlotsManager.atom_packed_scene.instantiate()
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
-	var scale_size: float = 0.2
+	var scale_size: float = 0.23
 	sprite.scale = Vector2(scale_size, scale_size)
 	
 #func hide_and_show_atoms_logic(new_atom_count: int, previous_atom_count: int) -> void: 
@@ -160,7 +160,7 @@ func rotate_atoms(full_rotation_duration: float = 9, override_rotation_direction
 func explode_animation() -> void: 
 	set_atoms_visible(false)
 	rotation_degrees = 0
-	var available_directions: Array[int] = atoms_detector.get_available_directions() 
+	var available_directions: Array[int] = owner.available_directions_to_neighbors
 	var all_directions: Array = atoms_detector.Directions.keys()
 	var distance: float = 64 * GameManager.map_scaler.vector2_scale.x
 	var tween: Tween = create_tween().set_parallel(true)

@@ -9,8 +9,6 @@ func enter() -> void:
 	rotate_tween = atoms_sprites.rotate_atoms()
 	flash_tween = atoms_sprites.flash_tween(0.3, true)
 	shake_animation = ShakeAnimation.shake_object_randomly(owner, 120, atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, atom_positions.center_position.global_position, 0.1, 1, 7) 
-	printerr(owner)
-	printerr(shake_animation.playing)
 	atom_stack.atoms_overloaded.connect(_on_atoms_overloaded)
 	
 	
