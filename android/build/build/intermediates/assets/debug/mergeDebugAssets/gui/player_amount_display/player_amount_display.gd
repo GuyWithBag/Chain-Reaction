@@ -16,6 +16,8 @@ extends Control
 			pass
 		set_all_atom_colors()
 		arrange_atoms()
+		if Engine.is_editor_hint(): 
+			return
 		pad_animations.animate_atoms_from_atom_count()
 		
 var max_atoms_can_display: int = 11
@@ -51,6 +53,7 @@ func init() -> void:
 		positions = get_node("Positions")
 		sprites = get_node("Sprites")
 		pad_animations = get_node("PlayerAmountDisplayAnimations")
+		return
 	arrange_atoms()
 	set_all_atom_colors()
 	pad_animations.animate_atoms_from_atom_count()

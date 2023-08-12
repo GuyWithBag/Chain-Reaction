@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmd0rbj0y1irq"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_8w008"]
+[ext_resource type="PackedScene" uid="uid://duidbl4hiu1wc" path="res://scenes/button_sfx_component/button_sfx_component.tscn" id="2_l6hd6"]
+[ext_resource type="AudioStream" uid="uid://pekcktg2nfev" path="res://audio/pressed2.wav" id="3_gpjwo"]
+[ext_resource type="Material" uid="uid://b8ynehchliom" path="res://shaders/flash/flash.tres" id="4_bl7ym"]
+
+[node name="MenuButton" type="Button"]
+custom_minimum_size = Vector2(0, 100)
+theme = ExtResource("1_8w008")
+text = "Play Game"
+
+[node name="ButtonSFXComponent" parent="." instance=ExtResource("2_l6hd6")]
+sound_effect = ExtResource("3_gpjwo")
+
+[node name="IconContainers" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IconContainers"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="IconContainers/HBoxContainer"]
+material = ExtResource("4_bl7ym")
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2

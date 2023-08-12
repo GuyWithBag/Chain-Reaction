@@ -1,0 +1,25 @@
+Godot Engine v4.1.1.stable.official (c) 2007-present Juan Linietsky, Ariel Manzur & Godot Contributors.
+  modules/gltf/register_types.cpp:73 - Blend file import is enabled in the project settings, but no Blender path is configured in the editor settings. Blend files will not be imported.
+--- Debug adapter server started ---
+--- GDScript language server started ---
+--- Debugging process started ---
+Add Autoload
+  Node not found: "%TileMaps" (relative to "Node").
+  res://scripts/classes/map_scaler.gd:30 - Invalid set index 'scale' (on base: 'null instance') with value of type 'Vector2'.
+  Node not found: "%TileMaps" (relative to "Node").
+  res://scripts/classes/map_scaler.gd:30 - Invalid set index 'scale' (on base: 'null instance') with value of type 'Vector2'.
+  res://gui/player_amount_display/player_amount_display.gd:19 - Invalid call. Nonexistent function 'animate_atoms_from_atom_count' in base 'Node (PlayerAmountDisplayAnimations)'.
+  res://gui/player_amount_display/player_amount_display.gd:56 - Invalid call. Nonexistent function 'animate_atoms_from_atom_count' in base 'Node (PlayerAmountDisplayAnimations)'.
+  res://gui/options_menu/widget/player_color_picker/player_color_picker.gd:47 - Invalid get index 'default_atom_player_colors' (on base: 'Node (atom_players_manager.gd)').
+  res://gui/options_menu/widget/player_color_picker/player_color_picker.gd:47 - Invalid get index 'default_atom_player_colors' (on base: 'Node (atom_players_manager.gd)').
+  res://gui/options_menu/widget/player_color_picker/player_color_picker.gd:47 - Invalid get index 'default_atom_player_colors' (on base: 'Node (atom_players_manager.gd)').
+  res://gui/options_menu/widget/player_color_picker/player_color_picker.gd:47 - Invalid get index 'default_atom_player_colors' (on base: 'Node (atom_players_manager.gd)').
+  res://gui/options_menu/widget/player_color_picker/player_color_picker.gd:47 - Invalid get index 'default_atom_player_colors' (on base: 'Node (atom_players_manager.gd)').
+  res://scripts/classes/map_scaler.gd:46 - Invalid set index 'map_scaler' (on base: 'Node (game_manager.gd)') with value of type 'Node (MapScaler)'.
+  Node not found: "%TileMaps" (relative to "Node").
+  res://scripts/classes/map_scaler.gd:30 - Invalid set index 'scale' (on base: 'null instance') with value of type 'Vector2'.
+  res://scripts/classes/map_scaler.gd:31 - Invalid set index 'scale' (on base: 'Node') with value of type 'Vector2'.
+  res://scripts/classes/map_scaler.gd:31 - Invalid set index 'scale' (on base: 'Node') with value of type 'Vector2'.
+  res://scripts/classes/map_scaler.gd:46 - Invalid set index 'map_scaler' (on base: 'Node (game_manager.gd)') with value of type 'Node (MapScaler)'.
+  res://addons/admob/src/core/VersionSupportedHTTPRequest.gd:17 - Invalid get index 'v1.0.0' (on base: 'Dictionary').
+  res://addons/admob/src/core/VersionSupportedHTTPRequest.gd:17 - Invalid get index 'v1.0.0' (on base: 'Dictionary').

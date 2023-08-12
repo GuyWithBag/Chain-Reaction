@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd3hs4krtp20g"]
-
-[ext_resource type="Script" path="res://gui/h_grid_container/h_grid_container.gd" id="1_7twri"]
-
-[node name="HGridContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_7twri")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://xy20rdk405ka"]
+
+[ext_resource type="Texture2D" uid="uid://bg0mvtu3a31mx" path="res://gui/material_icons/undo.svg" id="1_5mbgg"]
+[ext_resource type="Script" path="res://scripts/classes/touch_screen_button_component.gd" id="2_3eo80"]
+
+[node name="TouchScreenButtonControl" type="Button"]
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+icon = ExtResource("1_5mbgg")
+
+[node name="TouchScreenButtonComponent" type="Node" parent="."]
+script = ExtResource("2_3eo80")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

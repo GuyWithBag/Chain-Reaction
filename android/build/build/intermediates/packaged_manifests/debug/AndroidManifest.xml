@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
     android:installLocation="auto"
-    android:versionCode="8"
-    android:versionName="1.0.6" >
+    android:versionCode="11"
+    android:versionName="1.0.7" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -22,6 +22,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <uses-feature
         android:name="android.hardware.vulkan.level"
@@ -62,7 +63,10 @@
         <!-- Records the version of the Godot editor used for building -->
         <meta-data
             android:name="org.godotengine.editor.version"
-            android:value="4.1.1.stable" /> <!-- Records the version of the Godot library -->
+            android:value="4.1.1.stable" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9490685140858860~5560469663" /> <!-- Records the version of the Godot library -->
         <meta-data
             android:name="org.godotengine.library.version"
             android:value="4.1.1.stable" />

@@ -26,11 +26,14 @@ enum Size {
 	set(value): 
 		scale = value
 		vector2_scale = Vector2(scale, scale)
-		if Engine.is_editor_hint(): 
-			get_node("%TileMaps").scale = vector2_scale
-			get_node("%AtomSprites").scale = vector2_scale
-			get_node("%AtomParticles").scale = vector2_scale
-			get_node("%TilemapBackdrop").scale = vector2_scale
+		if has_node("../%TileMaps"): 
+			get_node("../%TileMaps").scale = vector2_scale
+#		if has_node("../%AtomSprites"): 
+#			get_node("../%AtomSprites").scale = vector2_scale
+		if has_node("../%AtomParticles"): 
+			get_node("../%AtomParticles").scale = vector2_scale
+		if has_node("../%TileMapBackdrop"): 
+			get_node("../%TilemapBackdrop").scale = vector2_scale
 
 var vector2_scale: Vector2
 var vector2_scale_relative_to_tilemap_size: Vector2: 
@@ -43,9 +46,10 @@ var maps: Node2D
 
 
 func _ready() -> void: 
+	if Engine.is_editor_hint(): 
+		return
 	GameManager.map_scaler = self
 
-	
-	
-	
 
+func _enter_tree() -> void: 
+	scale = scale 

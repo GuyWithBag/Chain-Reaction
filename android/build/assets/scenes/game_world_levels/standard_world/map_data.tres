@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3 uid="uid://2nfh602158rp"]
+
+[ext_resource type="Script" path="res://scripts/classes/map_data.gd" id="1_4eps8"]
+[ext_resource type="Texture2D" uid="uid://c5bgaweyea36m" path="res://scenes/game_world_levels/standard_world/images/map_preview.png" id="1_xk8cc"]
+
+[resource]
+script = ExtResource("1_4eps8")
+map_name = "Standard World"
+map_url = "res://scenes/game_world_levels/standard_world/standard_world.tscn"
+extended_map_url = "res://scenes/game_world_levels/standard_world/standard_world_extended.tscn"
+map_preview = ExtResource("1_xk8cc")

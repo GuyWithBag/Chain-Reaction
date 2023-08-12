@@ -45,6 +45,8 @@ func init() -> void:
 	_add_atom_sprite("right_atom")
 	
 	for atom_sprite in atom_sprites_group.get_children(): 
+		# This is set here instead of setting it from the AtomSprites group node because it messes up the rotation 
+		# AtomSprites group node needs to be set to Node and not Node2D
 		atom_sprite.scale *= get_tree().current_scene.get_node("%MapScaler").vector2_scale
 		var orig_values: Dictionary = {
 			"scale" : atom_sprite.scale, 
@@ -150,9 +152,9 @@ func rotate_atoms(full_rotation_duration: float = 9, override_rotation_direction
 	rng.randomize()
 	var tween: Tween = create_tween().set_loops()
 	if override_rotation_direction != 0: 
-		tween.tween_property(atom_sprites_group, "rotation", TAU * override_rotation_direction, full_rotation_duration).as_relative()
+		tween.tween_property(atom_sprites_group, "global_rotation", TAU * override_rotation_direction, full_rotation_duration).as_relative()
 	else: 
-		tween.tween_property(atom_sprites_group, "rotation", TAU * rotation_direction, full_rotation_duration).as_relative()
+		tween.tween_property(atom_sprites_group, "global_rotation", TAU * rotation_direction, full_rotation_duration).as_relative()
 	tween.play()
 	return tween
 

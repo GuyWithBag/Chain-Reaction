@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckqv3conn5rkn"]
-
-[ext_resource type="Script" path="res://gui/maps_option_button/maps_option_button.gd" id="1_8tofb"]
-
-[node name="MapsOptionButton" type="OptionButton"]
-custom_minimum_size = Vector2(0, 70)
-script = ExtResource("1_8tofb")
