@@ -14,7 +14,7 @@ var extend_map: bool = false
 
 func _ready(): 
 	LocalDatabase.init() 
-	MobileAds.load_banner("standard")
+	MobileAds.load_banner("Main Menu Banner")
 	MobileAds.show_banner() 
 	GameManager.current_state = GameManager.State.MENU
 	CameraManager.current_camera = get_node("%Cameras/Camera2D")
