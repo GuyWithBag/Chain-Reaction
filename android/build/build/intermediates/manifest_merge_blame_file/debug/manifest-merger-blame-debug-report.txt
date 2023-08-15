@@ -2,7 +2,7 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
 4    android:installLocation="auto"
-5    android:versionCode="11"
+5    android:versionCode="13"
 6    android:versionName="1.0.7" >
 7
 8    <uses-sdk
@@ -30,133 +30,136 @@
 22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 22-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:11:5-79
 22-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:11:22-76
-23    <uses-permission android:name="android.permission.INTERNET" />
-23-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:12:5-67
-23-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:12:22-64
-24    <uses-permission android:name="android.permission.VIBRATE" />
-24-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:13:5-66
-24-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:13:22-63
-25    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-25-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:14:5-79
-25-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:14:22-76
-26
-27    <uses-feature
-27-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:5-132
-28        android:name="android.hardware.vulkan.level"
-28-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:40-84
-29        android:required="false"
-29-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:85-109
-30        android:version="1" />
-30-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:110-129
-31    <uses-feature
-31-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:5-140
-32        android:name="android.hardware.vulkan.version"
-32-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:40-86
-33        android:required="true"
-33-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:87-110
-34        android:version="0x400003" />
-34-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:111-137
-35
-36    <application
-36-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-55:19
-37        android:allowBackup="false"
-37-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:21:9-36
-38        android:appCategory="game"
-38-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:23:9-35
-39        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-39-->[androidx.core:core:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9bcb1a65f5938aad264f4d73e9a06f28\transformed\core-1.2.0\AndroidManifest.xml:24:18-86
-40        android:debuggable="true"
-41        android:extractNativeLibs="false"
-42        android:hasFragileUserData="false"
-42-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:25:9-43
-43        android:icon="@mipmap/icon"
-43-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:22:9-36
-44        android:isGame="true"
-44-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:24:9-30
-45        android:label="@string/godot_project_name_string"
-45-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:20:9-58
-46        android:requestLegacyExternalStorage="false" >
-46-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:26:9-53
-47        <activity
-47-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:37:9-53:20
-48            android:name="com.godot.game.GodotApp"
-48-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:38:13-37
-49            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
-49-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-141
-50            android:excludeFromRecents="false"
-50-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-47
-51            android:exported="true"
-51-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-36
-52            android:label="@string/godot_project_name_string"
-52-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:13-62
-53            android:launchMode="singleInstance"
-53-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-48
-54            android:resizeableActivity="true"
-54-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-47
-55            android:screenOrientation="portrait"
-55-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-50
-56            android:theme="@style/GodotAppSplashTheme" >
-56-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:40:13-55
-57            <intent-filter>
-57-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:49:13-52:29
-58                <action android:name="android.intent.action.MAIN" />
-58-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:17-69
-58-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:25-66
-59
-60                <category android:name="android.intent.category.LAUNCHER" />
-60-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:17-77
-60-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:27-74
-61            </intent-filter>
-62        </activity>
-63        <!-- Records the version of the Godot editor used for building -->
-64        <meta-data
-65            android:name="org.godotengine.editor.version"
-66            android:value="4.1.1.stable" />
-67        <meta-data
-67-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:33:9-36:69
-68            android:name="com.google.android.gms.ads.APPLICATION_ID"
-68-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:35:13-69
-69            android:value="ca-app-pub-9490685140858860~5560469663" /> <!-- Records the version of the Godot library -->
-69-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:36:13-67
-70        <meta-data
-70-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:9-16:44
-71            android:name="org.godotengine.library.version"
-71-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:15:13-59
-72            android:value="4.1.1.stable" />
-72-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:13-41
-73
-74        <service android:name="org.godotengine.godot.GodotDownloaderService" />
-74-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-80
-74-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:18-77
-75
-76        <activity
-76-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:9-24:75
-77            android:name="org.godotengine.godot.utils.ProcessPhoenix"
-77-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-70
-78            android:exported="false"
-78-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-37
-79            android:process=":phoenix"
-79-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-39
-80            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-80-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-72
-81
-82        <provider
-82-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:9-34:20
-83            android:name="androidx.core.content.FileProvider"
-83-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-62
-84            android:authorities="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme.fileprovider"
-84-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-64
-85            android:exported="false"
-85-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-37
-86            android:grantUriPermissions="true" >
-86-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:13-47
-87            <meta-data
-87-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:13-33:64
-88                android:name="android.support.FILE_PROVIDER_PATHS"
-88-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:32:17-67
-89                android:resource="@xml/godot_provider_paths" />
-89-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:33:17-61
-90        </provider>
-91    </application>
-92
-93</manifest>
+23    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+23-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:12:5-76
+23-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:12:22-73
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:13:5-67
+24-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:13:22-64
+25    <uses-permission android:name="android.permission.VIBRATE" />
+25-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:14:5-66
+25-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:14:22-63
+26    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+26-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:5-79
+26-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:15:22-76
+27
+28    <uses-feature
+28-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:5-132
+29        android:name="android.hardware.vulkan.level"
+29-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:40-84
+30        android:required="false"
+30-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:85-109
+31        android:version="1" />
+31-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:16:110-129
+32    <uses-feature
+32-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:17:5-140
+33        android:name="android.hardware.vulkan.version"
+33-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:17:40-86
+34        android:required="true"
+34-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:17:87-110
+35        android:version="0x400003" />
+35-->D:\Github Repositories\Chain-Reaction\android\build\src\debug\AndroidManifest.xml:17:111-137
+36
+37    <application
+37-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-55:19
+38        android:allowBackup="false"
+38-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:21:9-36
+39        android:appCategory="game"
+39-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:23:9-35
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9bcb1a65f5938aad264f4d73e9a06f28\transformed\core-1.2.0\AndroidManifest.xml:24:18-86
+41        android:debuggable="true"
+42        android:extractNativeLibs="false"
+43        android:hasFragileUserData="false"
+43-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:25:9-43
+44        android:icon="@mipmap/icon"
+44-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:22:9-36
+45        android:isGame="true"
+45-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:24:9-30
+46        android:label="@string/godot_project_name_string"
+46-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:20:9-58
+47        android:requestLegacyExternalStorage="false" >
+47-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:26:9-53
+48        <activity
+48-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:37:9-53:20
+49            android:name="com.godot.game.GodotApp"
+49-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:38:13-37
+50            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+50-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-141
+51            android:excludeFromRecents="false"
+51-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-47
+52            android:exported="true"
+52-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-36
+53            android:label="@string/godot_project_name_string"
+53-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:13-62
+54            android:launchMode="singleInstance"
+54-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-48
+55            android:resizeableActivity="true"
+55-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-47
+56            android:screenOrientation="portrait"
+56-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-50
+57            android:theme="@style/GodotAppSplashTheme" >
+57-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:40:13-55
+58            <intent-filter>
+58-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:49:13-52:29
+59                <action android:name="android.intent.action.MAIN" />
+59-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:17-69
+59-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:25-66
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:17-77
+61-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:27-74
+62            </intent-filter>
+63        </activity>
+64        <!-- Records the version of the Godot editor used for building -->
+65        <meta-data
+66            android:name="org.godotengine.editor.version"
+67            android:value="4.1.1.stable" />
+68        <meta-data
+68-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:33:9-36:69
+69            android:name="com.google.android.gms.ads.APPLICATION_ID"
+69-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:35:13-69
+70            android:value="ca-app-pub-9490685140858860~5560469663" /> <!-- Records the version of the Godot library -->
+70-->D:\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:36:13-67
+71        <meta-data
+71-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:14:9-16:44
+72            android:name="org.godotengine.library.version"
+72-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:15:13-59
+73            android:value="4.1.1.stable" />
+73-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:16:13-41
+74
+75        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+75-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:9-80
+75-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:18:18-77
+76
+77        <activity
+77-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:20:9-24:75
+78            android:name="org.godotengine.godot.utils.ProcessPhoenix"
+78-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:21:13-70
+79            android:exported="false"
+79-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:22:13-37
+80            android:process=":phoenix"
+80-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:23:13-39
+81            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+81-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:24:13-72
+82
+83        <provider
+83-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:26:9-34:20
+84            android:name="androidx.core.content.FileProvider"
+84-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:27:13-62
+85            android:authorities="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme.fileprovider"
+85-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:28:13-64
+86            android:exported="false"
+86-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:29:13-37
+87            android:grantUriPermissions="true" >
+87-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:30:13-47
+88            <meta-data
+88-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:31:13-33:64
+89                android:name="android.support.FILE_PROVIDER_PATHS"
+89-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:32:17-67
+90                android:resource="@xml/godot_provider_paths" />
+90-->[godot-lib.template_debug.aar] C:\Users\Administrator\.gradle\caches\transforms-3\9c5a10b9f0de0fbc7e522ed48f82044b\transformed\jetified-godot-lib.template_debug\AndroidManifest.xml:33:17-61
+91        </provider>
+92    </application>
+93
+94</manifest>

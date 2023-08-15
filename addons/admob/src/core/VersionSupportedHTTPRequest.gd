@@ -13,6 +13,11 @@ func _on_VersionSupportedHTTPRequest_request_completed(result, response_code, he
 	var test_json_conv = JSON.new()
 	test_json_conv.parse(body.get_string_from_utf8())
 	var json = test_json_conv.get_data()
+#	printerr(test_json_conv.get_data())
+#	printerr(AdMobGlobals.get_plugin_version())
+	
+	if !json.has(AdMobGlobals.get_plugin_version()): 
+		return
 	
 	var version_support : Dictionary = json[AdMobGlobals.get_plugin_version()]
 	emit_signal("supported_version_changed", version_support)
