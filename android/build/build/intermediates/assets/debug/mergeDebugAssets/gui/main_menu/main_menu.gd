@@ -14,8 +14,7 @@ var extend_map: bool = false
 
 func _ready(): 
 	LocalDatabase.init() 
-	MobileAds.load_banner("standard")
-	MobileAds.show_banner() 
+	show_ad_banner() 
 	GameManager.current_state = GameManager.State.MENU
 	CameraManager.current_camera = get_node("%Cameras/Camera2D")
 	UIManager.set_gui_active(UIManager.player_screen, false)
@@ -23,6 +22,11 @@ func _ready():
 	GameManager.pause_game(false)
 	BackgroundAudioManager.play_music(AudioEffectsLoader.get_music("Angel Eyes")) 
 	extend_map = extend_map_toggle.get_node("CheckBox").button_pressed
+
+
+func show_ad_banner() -> void: 
+	MobileAds.load_banner("Main Menu Banner")
+	MobileAds.show_banner() 
 
 
 func simulate_game_world_in_background() -> void: 
