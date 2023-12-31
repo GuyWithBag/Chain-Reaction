@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://duidbl4hiu1wc"]
-
-[ext_resource type="Script" path="res://scenes/button_sfx_component/button_sfx_component.gd" id="1_svxqu"]
-
-[node name="ButtonSFXComponent" type="Node"]
-script = ExtResource("1_svxqu")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

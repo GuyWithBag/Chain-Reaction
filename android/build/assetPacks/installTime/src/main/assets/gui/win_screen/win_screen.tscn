@@ -159,6 +159,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 972.0
+offset_bottom = 1728.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_k65ge")
@@ -187,6 +189,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 972.0
+offset_bottom = 1728.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -269,10 +273,10 @@ material = SubResource("ShaderMaterial_q5mw1")
 texture = ExtResource("8_pi008")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "come_up"
 libraries = {
 "": SubResource("AnimationLibrary_lc6gs")
 }
+autoplay = "come_up"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

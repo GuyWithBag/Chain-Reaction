@@ -4,7 +4,8 @@ extends ReferenceRect
 
 
 func _on_resume_pressed() -> void:
-	close()
+	#close()
+	pass
 
 
 func _on_exit_game_pressed() -> void:
@@ -20,5 +21,7 @@ func _on_restart_game_pressed():
 
 
 func close() -> void: 
-	UIManager.set_gui_active(pause_menu, false)
-	GameManager.pause_game(false)
+	#UIManager.set_gui_active(pause_menu, false)
+	#GameManager.pause_game(false)
+	pass
+	

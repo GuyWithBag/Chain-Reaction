@@ -5,7 +5,7 @@ class_name ButtonSFXComponent
 @export var sound_effect: AudioStream
 @export var is_autoload_effect: bool = false
 
-@onready var audio_stream_player = get_node("AudioStreamPlayer") 
+@export var audio_stream_player: AudioStreamPlayer
 
 
 func _ready() -> void: 

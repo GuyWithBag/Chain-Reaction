@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6lw0o3geo6cm"]
+[gd_scene load_steps=8 format=3 uid="uid://b6lw0o3geo6cm"]
 
 [ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4sixj"]
 [ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_im5av"]
 [ext_resource type="PackedScene" uid="uid://bgbielsopeojq" path="res://gui/pause_menu/pages/main/main.tscn" id="2_hyrrx"]
 [ext_resource type="Shader" path="res://shaders/gaussian_blur/gaussian_blur.gdshader" id="3_e8clx"]
+[ext_resource type="Script" path="res://scripts/classes/touch_screen_button_component.gd" id="5_60voh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qcqot"]
 shader = ExtResource("3_e8clx")
@@ -59,7 +60,19 @@ layout_mode = 2
 [node name="VBoxContainer" parent="CenterContainer/TabContainer/Main/CenterContainer" index="0"]
 custom_minimum_size = Vector2(570, 900)
 
+[node name="TouchScreenButtonComponent" type="Node" parent="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Resume" index="1"]
+script = ExtResource("5_60voh")
+event_action = "ui_cancel"
+
+[node name="TouchScreenButtonComponent" type="Node" parent="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/ExitGame" index="0"]
+script = ExtResource("5_60voh")
+event_action = "ui_cancel"
+
 [node name="ExitToDesktop" parent="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer" index="3"]
 visible = false
 
+[connection signal="pressed" from="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Resume" to="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/Resume/TouchScreenButtonComponent" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/ExitGame" to="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/ExitGame/TouchScreenButtonComponent" method="_on_pressed"]
+
 [editable path="CenterContainer/TabContainer/Main"]
+[editable path="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/ExitGame"]

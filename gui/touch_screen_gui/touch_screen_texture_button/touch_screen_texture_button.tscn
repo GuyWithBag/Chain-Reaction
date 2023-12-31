@@ -17,3 +17,5 @@ script = ExtResource("1_8ghnu")
 
 [node name="ButtonSFXComponent" parent="." instance=ExtResource("2_gii7k")]
 sound_effect = ExtResource("2_dt3jw")
+
+[connection signal="pressed" from="." to="TouchScreenButtonComponent" method="_on_pressed"]

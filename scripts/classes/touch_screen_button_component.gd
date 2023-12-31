@@ -20,27 +20,25 @@ class_name TouchScreenButtonComponent
 @export var event_action: String
 
 
+
 var material_icons_url: Dictionary = {
 	"menu" : "res://material_icons/menu.svg", 
 	"undo" : "res://material_icons/undo.svg"
 }
-
-func _ready() -> void: 
-	(owner as BaseButton).pressed.connect(_on_pressed)
 
 
 # In order for this to work, you must add an InputEvenActionKey "nothing" in the input map
 func _on_pressed() -> void:
 	if event_action != "": 
 		print("TouchScreenButton: event_action: ", event_action)
-		var input_event_action: InputEventAction = InputEventAction.new()
-		input_event_action.action = "nothing"
-		input_event_action.pressed = true
-		Input.parse_input_event(input_event_action)
-#		var pause_event_action: InputEventAction = InputEventAction.new()
-#		pause_event_action.action = event_action
-#		pause_event_action.pressed = true
-#		Input.parse_input_event(pause_event_action)
-		Input.action_press(event_action, 1)
-
+		#var input_event_action: InputEventAction = InputEventAction.new()
+		#input_event_action.action = "nothing"
+		#input_event_action.pressed = true
+		#Input.action_press(event_action, 1)
+		#Input.action_release(event_action)
+		#Input.parse_input_event(input_event_action)
+		var _event_action: InputEventAction = InputEventAction.new()
+		_event_action.action = event_action
+		_event_action.pressed = true
+		Input.parse_input_event(_event_action)
 

@@ -63,3 +63,4 @@ custom_minimum_size = Vector2(570, 900)
 visible = false
 
 [editable path="CenterContainer/TabContainer/Main"]
+[editable path="CenterContainer/TabContainer/Main/CenterContainer/VBoxContainer/ExitGame"]

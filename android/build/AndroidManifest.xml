@@ -4,7 +4,7 @@
     package="com.godot.game"
     android:versionCode="1"
     android:versionName="1.0"
-    android:installLocation="auto" >
+    android:installLocation="auto">
 
     <supports-screens
         android:smallScreens="true"
@@ -24,16 +24,17 @@
         android:isGame="true"
         android:hasFragileUserData="false"
         android:requestLegacyExternalStorage="false"
-        tools:ignore="GoogleAppIndexingWarning" >
+        tools:ignore="GoogleAppIndexingWarning">
 
         <!-- Records the version of the Godot editor used for building -->
         <meta-data
             android:name="org.godotengine.editor.version"
             android:value="${godotEditorVersion}" />
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
-            tools:replace="android:value"
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9490685140858860~5560469663"/>
+            android:value="ca-app-pub-9490685140858860~5560469663" />
+
         <activity
             android:name=".GodotApp"
             android:label="@string/godot_project_name_string"
@@ -44,7 +45,7 @@
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
             android:resizeableActivity="false"
-            tools:ignore="UnusedAttribute" >
+            tools:ignore="UnusedAttribute">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

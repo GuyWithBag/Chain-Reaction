@@ -191,10 +191,10 @@ visible_characters = 7
 visible_ratio = 0.538462
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_sukuj")
 }
+speed_scale = 0.3
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 libraries = {

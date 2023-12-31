@@ -36,7 +36,7 @@ func _on_changed_current_atom_player_in_turn(_previous_atom_player: AtomPlayer, 
 func animate_change_grid_modulate_to_current_team_in_turn() -> void: 
 	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
 		return
-	var tween: Tween = create_tween() 
+	var tween: Tween = get_tree().create_tween().bind_node(self)
 	tween.tween_property(tilemaps, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.3)
 	
 	

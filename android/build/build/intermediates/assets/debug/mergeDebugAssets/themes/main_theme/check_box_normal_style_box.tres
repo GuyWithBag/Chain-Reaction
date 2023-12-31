@@ -1,6 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://4e0kk4d3dih1"]
-
-[ext_resource type="Texture2D" uid="uid://b22r5cp5b3g8h" path="res://gui/material_icons/check_box_unchecked.svg" id="1_r04wn"]
-
-[resource]
-texture = ExtResource("1_r04wn")

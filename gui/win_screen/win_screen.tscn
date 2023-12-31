@@ -269,10 +269,10 @@ material = SubResource("ShaderMaterial_q5mw1")
 texture = ExtResource("8_pi008")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "come_up"
 libraries = {
 "": SubResource("AnimationLibrary_lc6gs")
 }
+autoplay = "come_up"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

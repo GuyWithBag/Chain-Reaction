@@ -52,6 +52,7 @@ layout_mode = 2
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(-486, -864)
+rendering_quadrant_size = 64
 
 [node name="Cameras" type="Node2D" parent="."]
 

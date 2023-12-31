@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/button_sfx_component/button_sfx_component.gd" id="1_svxqu"]
 
-[node name="ButtonSFXComponent" type="Node"]
+[node name="ButtonSFXComponent" type="Node" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("1_svxqu")
+audio_stream_player = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

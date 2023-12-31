@@ -1,7 +1,6 @@
 extends Node
 
-@export var interstitial_ad_id: String = "standard"
-@export var destroy_banner: bool = false
+@export var id: AdID
 
 
 func _ready() -> void: 
@@ -9,8 +8,14 @@ func _ready() -> void:
 	
 	
 func _on_button_pressed() -> void: 
-	if destroy_banner: 
-		MobileAds.destroy_banner()
-	MobileAds.load_interstitial(interstitial_ad_id)
-	MobileAds.show_interstitial() 
+	if AdsManager.interstitial_ad: 
+		AdsManager.interstitial_ad.show()
+		return
+	AdsManager.ad_loaded.connect(
+		func(ad: InterstitialAd): 
+			ad.show()
+	, CONNECT_ONE_SHOT
+	)
+	AdsManager.load_ad(id)
+	pass
 

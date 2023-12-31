@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.godot.game-mergeReleaseResources-9:/values-en/values-en.xml",
+            "outputFile": "com.godot.game-mergeReleaseResources-20:/values-en/values-en.xml",
             "map": [
                 {
-                    "source": "D:\\Github Repositories\\Chain-Reaction\\android\\build\\res\\values-en\\godot_project_name_string.xml",
+                    "source": "D:\\Others\\Github Repositories\\Chain-Reaction\\android\\build\\res\\values-en\\godot_project_name_string.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "1",

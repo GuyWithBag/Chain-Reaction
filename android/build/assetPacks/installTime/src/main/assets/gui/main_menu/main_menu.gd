@@ -22,11 +22,12 @@ func _ready():
 	GameManager.pause_game(false)
 	BackgroundAudioManager.play_music(AudioEffectsLoader.get_music("Angel Eyes")) 
 	extend_map = extend_map_toggle.get_node("CheckBox").button_pressed
+	AdsManager.load_ad(AdID.new().set_android_id("ca-app-pub-3940256099942544/1033173712"))
 
 
 func show_ad_banner() -> void: 
-	MobileAds.load_banner("Main Menu Banner")
-	MobileAds.show_banner() 
+	AdsManager.load_show_banner(AdID.new().set_android_id("ca-app-pub-3940256099942544/6300978111"), AdSize.BANNER, AdPosition.Values.TOP)
+	pass
 
 
 func simulate_game_world_in_background() -> void: 
@@ -71,6 +72,7 @@ func _on_start_game_pressed() -> void:
 
 	GameManager.game_start_data.map_data = map_data
 	GameManager.start_game() 
+	AdsManager.banner.destroy()
 
 
 func _on_extend_map_check_box_toggled(button_pressed: bool) -> void:

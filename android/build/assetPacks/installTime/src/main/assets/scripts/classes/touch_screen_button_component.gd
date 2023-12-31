@@ -36,11 +36,11 @@ func _on_pressed() -> void:
 		var input_event_action: InputEventAction = InputEventAction.new()
 		input_event_action.action = "nothing"
 		input_event_action.pressed = true
+		Input.action_press(event_action, 1)
 		Input.parse_input_event(input_event_action)
 #		var pause_event_action: InputEventAction = InputEventAction.new()
 #		pause_event_action.action = event_action
 #		pause_event_action.pressed = true
 #		Input.parse_input_event(pause_event_action)
-		Input.action_press(event_action, 1)
 
 
