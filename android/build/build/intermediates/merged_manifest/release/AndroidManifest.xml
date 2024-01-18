@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme"
     android:installLocation="auto"
-    android:versionCode="19"
-    android:versionName="1.0.9" >
+    android:versionCode="26"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="24"
@@ -24,16 +24,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-
-    <uses-feature
-        android:name="android.hardware.vulkan.level"
-        android:required="false"
-        android:version="1" />
-    <uses-feature
-        android:name="android.hardware.vulkan.version"
-        android:required="true"
-        android:version="0x400003" />
-
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" /> <!-- Android package visibility setting -->
@@ -74,7 +64,7 @@
             android:excludeFromRecents="false"
             android:exported="true"
             android:label="@string/godot_project_name_string"
-            android:launchMode="singleInstancePerTask"
+            android:launchMode="singleInstance"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
             android:theme="@style/GodotAppSplashTheme" >
@@ -91,7 +81,7 @@
             android:value="4.2.1.stable" /> <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-9490685140858860~5560469663" />
         <meta-data
             android:name="org.godotengine.plugin.v1.PoingGodotAdMob"
             android:value="com.poingstudios.godot.admob.ads.PoingGodotAdMob" />

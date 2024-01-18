@@ -4,11 +4,11 @@ INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\Android
 	android:value
 		INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml
 manifest
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-60:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-60:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-60:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-60:12
-MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-60:12
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-58:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-58:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-58:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-58:12
+MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:2:1-58:12
 MERGED from [poing-godot-admob-ads-v1.0.0-release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\1ae50cd6607723ccb0c9af6203985572\transformed\jetified-poing-godot-admob-ads-v1.0.0-release\AndroidManifest.xml:2:1-38:12
 MERGED from [poing-godot-admob-core-v1.0.1-release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\76100dcec29b3d83ca69b1d10eae3505\transformed\jetified-poing-godot-admob-core-v1.0.1-release\AndroidManifest.xml:2:1-9:12
 MERGED from [godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\bce0b6f33e6a5d0c9706dbd1003ff54d\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:2:1-37:12
@@ -50,9 +50,9 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Administrator\.g
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\cf063aa3a9bfc151897d1c91da92c782\transformed\sqlite-framework-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.sqlite:sqlite:2.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\001b051027f90d0f5d6b4813be697359\transformed\sqlite-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\c2e7a6f7c18e58aee699d724727cbaf5\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-36:12
-INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-36:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-34:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-34:12
+INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:2:1-34:12
 	package
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:4:5-29
 		INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml
@@ -97,9 +97,9 @@ MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidMa
 	android:required
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:17:9-32
 application
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-58:19
-MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-58:19
-MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-58:19
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-56:19
+MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-56:19
+MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:19:5-56:19
 MERGED from [poing-godot-admob-ads-v1.0.0-release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\1ae50cd6607723ccb0c9af6203985572\transformed\jetified-poing-godot-admob-ads-v1.0.0-release\AndroidManifest.xml:11:5-36:19
 MERGED from [poing-godot-admob-ads-v1.0.0-release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\1ae50cd6607723ccb0c9af6203985572\transformed\jetified-poing-godot-admob-ads-v1.0.0-release\AndroidManifest.xml:11:5-36:19
 MERGED from [godot-lib.template_release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\bce0b6f33e6a5d0c9706dbd1003ff54d\transformed\jetified-godot-lib.template_release\AndroidManifest.xml:11:5-35:19
@@ -150,7 +150,7 @@ MERGED from [androidx.room:room-runtime:2.2.5] C:\Users\Administrator\.gradle\ca
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:21:9-36
 		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:21:9-36
 	tools:replace
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:25:9-143
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:23:9-143
 	android:isGame
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:24:9-30
 		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:24:9-30
@@ -158,63 +158,59 @@ MERGED from [androidx.room:room-runtime:2.2.5] C:\Users\Administrator\.gradle\ca
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:25:9-43
 		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:25:9-43
 meta-data#com.google.android.gms.ads.APPLICATION_ID
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:35:9-37:70
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:34:9-36:70
 	android:value
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:37:13-67
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:36:13-67
 	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:36:13-69
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:35:13-69
 activity#com.godot.game.GodotApp
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:9-56:20
-MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:9-56:20
-MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:9-56:20
-REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:13-55:29
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:38:9-54:20
+MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:38:9-54:20
+MERGED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:38:9-54:20
+REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:13-53:29
 	tools:node
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:28:154-186
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:26:154-186
 	android:screenOrientation
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-50
-		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-50
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-50
+		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-50
 	android:label
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-62
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-62
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:40:13-62
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:40:13-62
 	android:excludeFromRecents
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-47
-		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-47
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-47
+		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-47
 	android:launchMode
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-55
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:43:13-55
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-48
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-48
 	android:exported
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-36
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:45:13-36
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-36
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:44:13-36
 	android:resizeableActivity
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:48:13-47
-		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:48:13-47
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:47:13-47
+		REJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:47:13-47
 	tools:ignore
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:49:13-43
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:49:13-43
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:48:13-43
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:48:13-43
 	android:configChanges
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:47:13-141
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:47:13-141
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-141
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:46:13-141
 	android:theme
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-55
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:42:13-55
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-55
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:41:13-55
 	tools:replace
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:28:58-153
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:26:58-153
 	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:40:13-37
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:13-55:29
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:39:13-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:50:13-53:29
 action#android.intent.action.MAIN
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:52:17-69
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:17-69
 	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:52:25-66
-category#android.intent.category.DEFAULT
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:53:17-76
-	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:53:27-73
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:51:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:54:17-77
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:52:17-77
 	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:54:27-74
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml:52:27-74
 uses-sdk
 INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Others\Github Repositories\Chain-Reaction\android\build\AndroidManifest.xml
@@ -349,26 +345,12 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\Administrator\.gradle\caches\transforms-3\d1f39487b729f43a8fda6c534358ac1a\transformed\jetified-play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:26:5-79
 	android:name
 		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:15:22-76
-uses-feature#android.hardware.vulkan.level
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:16:5-132
-	android:version
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:16:110-129
-	tools:node
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:16:19-39
-	android:required
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:16:85-109
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:27:13-31:29
+category#android.intent.category.DEFAULT
+ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:29:17-76
 	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:16:40-84
-uses-feature#android.hardware.vulkan.version
-ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:17:5-140
-	android:version
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:17:111-137
-	tools:node
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:17:19-39
-	android:required
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:17:87-110
-	android:name
-		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:17:40-86
+		ADDED from D:\Others\Github Repositories\Chain-Reaction\android\build\src\release\AndroidManifest.xml:29:27-73
 meta-data#org.godotengine.plugin.v1.PoingGodotAdMob
 ADDED from [poing-godot-admob-ads-v1.0.0-release.aar] C:\Users\Administrator\.gradle\caches\transforms-3\1ae50cd6607723ccb0c9af6203985572\transformed\jetified-poing-godot-admob-ads-v1.0.0-release\AndroidManifest.xml:12:9-14:80
 	android:value

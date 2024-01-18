@@ -98,7 +98,8 @@ func shake_grid() -> void:
 func player_interact() -> void: 
 	player_interacted.emit()
 	if AtomPlayerTurnsManager.is_chain_reacting(): 
-		print("AtomSlot (%s): NOT YET" % name)
+		if GameManager.debug: 
+			print("AtomSlot (%s): NOT YET" % name)
 		return
 	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
 	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && atom_player == current_atom_player: 
@@ -113,9 +114,11 @@ func player_interact() -> void:
 		atoms_sprites.flash_tween(0.1, false, 1)
 	elif state_machine.current_state == state_machine.get_state("Empty"): 
 		atom_player = current_atom_player
-		print("AtomSlot (%s): Is indeed empty" % name)
+		if GameManager.debug: 
+			print("AtomSlot (%s): Is indeed empty" % name)
 	elif atom_player != current_atom_player: 
-		print("AtomSlot (%s): WRONG TEAM" % name)
+		if GameManager.debug: 
+			print("AtomSlot (%s): WRONG TEAM" % name)
 		var map_scale: Vector2 = GameManager.map_scaler.vector2_scale_relative_to_tilemap_size - Vector2(120, 120) 
 		var center_global_position: Vector2 = atoms_positions.center_position.global_position
 		var from: Vector2 = Vector2(map_scale.x, 0) 
@@ -123,7 +126,8 @@ func player_interact() -> void:
 		var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_from_two_points(self, 1, atoms_sprites.atom_sprites_group, ShakeAnimation.PositionType.GLOBAL, center_global_position, from, to, 0.03)
 		player_interacted_wrong_team.emit()
 		return
-	print("AtomSlot (%s): Placed atom here" % name)
+	if GameManager.debug: 
+		print("AtomSlot (%s): Placed atom here" % name)
 	atom_stack.add_atom(1, atom_player) 
 	atom_placed.emit()
 	if AtomPlayerTurnsManager.is_awaiting_turn(): 

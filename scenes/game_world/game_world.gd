@@ -4,6 +4,8 @@ class_name GameWorld
 # TODO: Have it so that it will stop being able to add when map is already full
 # Have it count the total number of atoms present in each team and total of all of them
 
+@export var managers: InGameManagers
+
 @onready var tilemaps: Node2D = get_node("%TileMaps")
 @onready var atom_sprites: Node = %AtomSprites
 @onready var atom_particles: Node2D = %AtomParticles
@@ -14,7 +16,7 @@ class_name GameWorld
 func _ready() -> void: 
 	GameManager.game_world = self
 	change_grid_modulate_to_current_team_in_turn()
-	AtomPlayerTurnsManager.changed_current_atom_player_in_turn.connect(_on_changed_current_atom_player_in_turn)
+	managers.atom_player_turns.changed_current_atom_player_in_turn.connect(_on_changed_current_atom_player_in_turn)
 	GameManager.current_state = GameManager.State.IN_GAME
 	UIManager.set_gui_active(UIManager.player_screen, true)
 	CameraManager.current_camera = cameras.get_child(0)
@@ -28,22 +30,22 @@ func _ready() -> void:
 	
 	
 func _on_changed_current_atom_player_in_turn(_previous_atom_player: AtomPlayer, _current_atom_player: AtomPlayer) -> void: 
-	if AtomPlayerTurnsManager.is_chain_reacting(): 
-		await ChainReactionSequenceManager.chain_reaction_sequence_finished
+	if managers.atom_player_turns.is_chain_reacting(): 
+		await managers.chain_reaction_sequences.chain_reaction_sequence_finished
 	animate_change_grid_modulate_to_current_team_in_turn() 
 	
 	
 func animate_change_grid_modulate_to_current_team_in_turn() -> void: 
-	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
+	if managers.atom_player_turns.current_atom_player_in_turn == null: 
 		return
 	var tween: Tween = get_tree().create_tween().bind_node(self)
-	tween.tween_property(tilemaps, "modulate", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color, 0.3)
+	tween.tween_property(tilemaps, "modulate", managers.atom_player_turns.current_atom_player_in_turn.team_color, 0.3)
 	
 	
 func change_grid_modulate_to_current_team_in_turn() -> void: 
-	if AtomPlayerTurnsManager.current_atom_player_in_turn == null: 
+	if managers.atom_player_turns.current_atom_player_in_turn == null: 
 		return
-	tilemaps.modulate = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color
+	tilemaps.modulate = managers.atom_player_turns.current_atom_player_in_turn.team_color
 	
 	
 #func get_all_neighboring_cells(atom_slot_group: AtomSlotGroup, coords: Vector2) -> void: 

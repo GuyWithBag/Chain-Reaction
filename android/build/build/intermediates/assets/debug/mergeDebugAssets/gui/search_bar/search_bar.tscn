@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4o5skm1x546j"]
+
+[ext_resource type="Script" path="res://gui/search_bar/search_bar.gd" id="1_65bk5"]
+
+[node name="SearchBar" type="TextEdit"]
+custom_minimum_size = Vector2(0, 100)
+size_flags_horizontal = 3
+placeholder_text = "Search here"
+script = ExtResource("1_65bk5")
+
+[connection signal="text_changed" from="." to="." method="_on_text_changed"]

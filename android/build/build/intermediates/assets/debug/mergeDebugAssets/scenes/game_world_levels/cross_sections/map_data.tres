@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3 uid="uid://d3khjfm00bouw"]
+
+[ext_resource type="Script" path="res://scripts/classes/map_data.gd" id="1_ipojl"]
+[ext_resource type="Texture2D" uid="uid://brpuc0ny877ih" path="res://scenes/game_world_levels/cross_sections/images/map_preview.png" id="1_k3cto"]
+
+[resource]
+script = ExtResource("1_ipojl")
+map_name = "Cross Sections"
+map_url = "res://scenes/game_world_levels/cross_sections/cross_sections.tscn"
+extended_map_url = ""
+map_preview = ExtResource("1_k3cto")

@@ -22,11 +22,11 @@ func _ready():
 	GameManager.pause_game(false)
 	BackgroundAudioManager.play_music(AudioEffectsLoader.get_music("Angel Eyes")) 
 	extend_map = extend_map_toggle.get_node("CheckBox").button_pressed
-	AdsManager.load_ad(AdID.new().set_android_id("ca-app-pub-3940256099942544/1033173712"))
+	AdsManager.load_interstitial_ad(AdID.new().set_android_id("ca-app-pub-9490685140858860/1729832023"))
 
 
 func show_ad_banner() -> void: 
-	AdsManager.load_show_banner(AdID.new().set_android_id("ca-app-pub-3940256099942544/6300978111"), AdSize.BANNER, AdPosition.Values.TOP)
+	AdsManager.load_show_banner(AdID.new().set_android_id("ca-app-pub-9490685140858860/9077892909"), AdSize.BANNER, AdPosition.Values.TOP)
 	pass
 
 
@@ -84,5 +84,5 @@ func _on_rate_us_pressed() -> void:
 	if OS.get_name() == "iOS":
 		OS.shell_open("https://itunes.apple.com/app/idYOUR_APP_ID?action=write-review")
 	else:
-		OS.shell_open("https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME")
+		OS.shell_open("https://play.google.com/store/apps/details?id=org.MacchiMatchaProductions.ChainReactionAtomRevampedSupreme&hl=en&gl=US")
 

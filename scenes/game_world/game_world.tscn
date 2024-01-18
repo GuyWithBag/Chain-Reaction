@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdjqifk4ujlnb"]
+[gd_scene load_steps=12 format=3 uid="uid://cdjqifk4ujlnb"]
 
 [ext_resource type="Script" path="res://scenes/game_world/game_world.gd" id="1_68tt8"]
 [ext_resource type="Shader" path="res://shaders/vignette/vignette.gdshader" id="2_m2jct"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/in_game_managers.gd" id="2_ml4mu"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/atom_players_manager.gd" id="2_yo5bu"]
 [ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="3_eiys1"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/atom_player_turns_manager.gd" id="3_h4qdh"]
 [ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="3_y5ikq"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/atom_slots_manager.gd" id="4_sx73i"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/chain_reaction_sequence_manager.gd" id="5_n1nq5"]
+[ext_resource type="Script" path="res://scripts/in_game_managers/undo_history_manager.gd" id="6_2nb7a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksg2i"]
 resource_local_to_scene = true
@@ -12,9 +18,38 @@ shader_parameter/vignette_intensity = 0.2
 shader_parameter/vignette_opacity = 0.555
 shader_parameter/vignette_rgb = Color(0, 0.568627, 1, 1)
 
-[node name="GameWorld" type="CanvasLayer"]
+[node name="GameWorld" type="CanvasLayer" node_paths=PackedStringArray("managers")]
 layer = 3
 script = ExtResource("1_68tt8")
+managers = NodePath("Managers")
+
+[node name="Managers" type="Node" parent="." node_paths=PackedStringArray("atom_players", "atom_player_turns", "atom_slots", "chain_reaction_sequences", "undo_hisotry")]
+script = ExtResource("2_ml4mu")
+atom_players = NodePath("AtomPlayersManager")
+atom_player_turns = NodePath("AtomPlayersTurnsManager")
+atom_slots = NodePath("AtomSlotsManager")
+chain_reaction_sequences = NodePath("ChainReactionSequenceManager")
+undo_hisotry = NodePath("UndoHistoryManager")
+
+[node name="AtomPlayersManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("2_yo5bu")
+managers = NodePath("..")
+
+[node name="AtomPlayersTurnsManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("3_h4qdh")
+managers = NodePath("..")
+
+[node name="AtomSlotsManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("4_sx73i")
+managers = NodePath("..")
+
+[node name="ChainReactionSequenceManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("5_n1nq5")
+managers = NodePath("..")
+
+[node name="UndoHistoryManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("6_2nb7a")
+managers = NodePath("..")
 
 [node name="Vignette" type="ColorRect" parent="."]
 z_index = 2

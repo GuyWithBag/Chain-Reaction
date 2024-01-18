@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3 uid="uid://q26hmwbhosn5"]
+
+[ext_resource type="Texture2D" uid="uid://bfnqp0dvual2r" path="res://scenes/game_world_levels/twin_towers/images/map_preview.png" id="1_bm3cd"]
+[ext_resource type="Script" path="res://scripts/classes/map_data.gd" id="1_ekco3"]
+
+[resource]
+script = ExtResource("1_ekco3")
+map_name = "Twin Towers"
+map_url = "res://scenes/game_world_levels/twin_towers/twin_towers.tscn"
+extended_map_url = ""
+map_preview = ExtResource("1_bm3cd")
+disabled = true

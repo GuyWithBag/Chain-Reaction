@@ -54,9 +54,8 @@ func init() -> void:
 	gui_debugger.init(self)
 
 
-# But OpenInventory is handled in the player state machine
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"): 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"): 
 		if GameManager.pausable == true: 
 			GameManager.current_state = GameManager.State.PAUSED
 			UIManager.set_gui_active(UIManager.pause_menu, true)
@@ -78,7 +77,8 @@ func toggle_gui_disabled(gui: GUI) -> void:
 	
 	
 func set_gui_disabled(gui: GUI, active: bool) -> void: 
-	print("UIManager: %s is set disabled: %s" % [gui.name, active])
+	if debug: 
+		print("UIManager: %s is set disabled: %s" % [gui.name, active])
 	gui.set_disabled(active)
 	
 	
@@ -87,7 +87,8 @@ func toggle_gui_active(gui: GUI) -> void:
 	
 	
 func set_gui_active(gui: GUI, active: bool) -> void: 
-	print("UIManager: %s is set active: %s" % [gui.name, active])
+	if debug: 
+		print("UIManager: %s is set active: %s" % [gui.name, active])
 	if active:
 		if !_can_be_activated(gui): 
 			return

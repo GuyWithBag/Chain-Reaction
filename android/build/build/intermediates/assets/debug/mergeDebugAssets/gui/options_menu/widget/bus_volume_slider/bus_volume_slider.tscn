@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2sdjsple422e"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_g7oh8"]
+[ext_resource type="Script" path="res://gui/options_menu/widget/bus_volume_slider/bus_volume_slider.gd" id="2_v12mo"]
+
+[node name="BusVolumeSlider" type="VBoxContainer" groups=["BusVolumeSlider"]]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+theme = ExtResource("1_g7oh8")
+script = ExtResource("2_v12mo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BusName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "BusName"
+vertical_alignment = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Volume" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 2
+min_value = -100.0
+
+[connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]

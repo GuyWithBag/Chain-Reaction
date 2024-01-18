@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkgqdj2e2erdk"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_f0ndw"]
+[ext_resource type="Texture2D" uid="uid://b22r5cp5b3g8h" path="res://gui/material_icons/check_box_unchecked.svg" id="2_1ep17"]
+[ext_resource type="Texture2D" uid="uid://ds678w4n37uxt" path="res://gui/material_icons/check_box_checked.svg" id="3_r7wi5"]
+
+[node name="CheckBoxOption" type="HBoxContainer"]
+mouse_filter = 2
+theme = ExtResource("1_f0ndw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Test"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CheckBox" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_1ep17")
+texture_pressed = ExtResource("3_r7wi5")
+stretch_mode = 0

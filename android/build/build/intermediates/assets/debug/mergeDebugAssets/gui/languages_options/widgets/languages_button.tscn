@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0uekpy0js75s"]
+
+[ext_resource type="Theme" uid="uid://xl1ilkogtjb1" path="res://themes/main_theme/main_theme.tres" id="1_sqjtf"]
+[ext_resource type="Script" path="res://gui/languages_options/widgets/languages_button.gd" id="2_iqjyg"]
+
+[node name="LanguagesButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_sqjtf")
+toggle_mode = true
+text = "English"
+script = ExtResource("2_iqjyg")

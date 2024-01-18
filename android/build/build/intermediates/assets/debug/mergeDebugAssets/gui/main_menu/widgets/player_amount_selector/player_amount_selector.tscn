@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://dywfhsj105pmo"]
+
+[ext_resource type="Script" path="res://gui/main_menu/widgets/player_amount/player_amount.gd" id="1_aip2f"]
+
+[node name="PlayerAmountSelector" type="CenterContainer"]
+custom_minimum_size = Vector2(350, 150)
+script = ExtResource("1_aip2f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Players" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 57
+text = "Players: "
+
+[node name="PlayersAmount" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 57
+text = "2"
+
+[node name="Less" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "  <  "
+
+[node name="More" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "  >  "
+
+[connection signal="pressed" from="HBoxContainer/Less" to="." method="_on_less_pressed"]
+[connection signal="pressed" from="HBoxContainer/More" to="." method="_on_more_pressed"]
