@@ -3,7 +3,7 @@ class_name AtomsParticles
 
 
 func play_particle(particle_name: String, to_global_position: Vector2, lifetime_duration: float = 0.6) -> void: 
-#	var game_world: GameWorld = GameManager.game_world 
+#	var world: GameWorld = GameManager.world 
 #	var particle_id: String = particle_name.to_snake_case() 
 	var particle: GPUParticles2D = ParticleEffectsLoader.get_particle(particle_name).instantiate() 
 	particle.process_material.lifetime_randomness = lifetime_duration

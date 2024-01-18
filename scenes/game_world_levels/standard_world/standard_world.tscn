@@ -14,7 +14,7 @@ shader_parameter/vignette_rgb = Color(0, 0.568627, 1, 1)
 
 [node name="StandardWorld" instance=ExtResource("1_axk71")]
 
-[node name="Vignette" parent="." index="0"]
+[node name="Vignette" parent="." index="1"]
 material = SubResource("ShaderMaterial_1b5wt")
 
 [node name="TileMaps" parent="Root/Arena" index="0"]
@@ -37,6 +37,6 @@ layer_0/tile_data = PackedInt32Array(327683, 131074, 2, 262147, 131074, 1, 19661
 [node name="TextureRect" parent="Background" index="1"]
 texture = ExtResource("3_vlrl8")
 
-[node name="MapScaler" parent="." index="4"]
+[node name="MapScaler" parent="." index="5"]
 scale_by_size = 1
 scale = 1.5

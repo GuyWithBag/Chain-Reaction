@@ -1,17 +1,18 @@
 extends GUI
 class_name AppBar
 
+@onready var atom_player_turns_manager = GameManager.world.managers.atom_player_turns_manager
 @onready var player_turn_label: Label = get_node("PanelContainer/MarginContainer/HBoxContainer/PlayerTurn")
 
 var player_turn_text: String = "Player %s Turn"
 
 
 func _ready() -> void:
-	AtomPlayerTurnsManager.turn_started.connect(_on_turn_start)
+	atom_player_turns_manager.turn_started.connect(_on_turn_start)
 	
 	
 func _on_turn_start() -> void: 
-	var current_atom_player_in_turn: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+	var current_atom_player_in_turn: AtomPlayer = atom_player_turns_manager.current_atom_player_in_turn
 	player_turn_label.text = player_turn_text % str(current_atom_player_in_turn.team_number)
 	animate_font_color(current_atom_player_in_turn.team_color)
 

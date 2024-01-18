@@ -29,7 +29,7 @@ var current_atoms: int = 0:
 		current_atoms = value
 		current_atoms_set.emit(current_atoms)
 
-var game_world: GameWorld
+var world: GameWorld
 
 var game_start_data: GameStartData
 

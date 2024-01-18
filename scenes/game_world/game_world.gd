@@ -14,7 +14,7 @@ class_name GameWorld
 #var atom_slot_groups: Array[AtomSlotGroup] = []
 
 func _ready() -> void: 
-	GameManager.game_world = self
+	GameManager.world = self
 	change_grid_modulate_to_current_team_in_turn()
 	managers.atom_player_turns.changed_current_atom_player_in_turn.connect(_on_changed_current_atom_player_in_turn)
 	GameManager.current_state = GameManager.State.IN_GAME
