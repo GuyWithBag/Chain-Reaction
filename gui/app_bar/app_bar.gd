@@ -1,20 +1,31 @@
 extends GUI
 class_name AppBar
 
-@onready var atom_player_turns_manager = GameManager.world.managers.atom_player_turns_manager
-@onready var player_turn_label: Label = get_node("PanelContainer/MarginContainer/HBoxContainer/PlayerTurn")
+@export var player_turn_label: Label
+@export var player_turn_text: String = "Player %s Turn"
 
-var player_turn_text: String = "Player %s Turn"
+var player_turns_manager: PlayersTurnsManager
 
 
-func _ready() -> void:
-	atom_player_turns_manager.turn_started.connect(_on_turn_start)
-	
-	
+func _ready() -> void: 
+	GameManager.world_ready.connect(
+		func(world: GameWorld): 
+			if !is_instance_valid(world): 
+				return
+			init()
+	, CONNECT_ONE_SHOT
+	)
+
+
+func init() -> void: 
+	player_turns_manager = GameManager.world.managers.player_turns_manager
+	player_turns_manager.turn_started.connect(_on_turn_start)
+
+
 func _on_turn_start() -> void: 
-	var current_atom_player_in_turn: AtomPlayer = atom_player_turns_manager.current_atom_player_in_turn
-	player_turn_label.text = player_turn_text % str(current_atom_player_in_turn.team_number)
-	animate_font_color(current_atom_player_in_turn.team_color)
+	var current_player_in_turn: Player = player_turns_manager.current_player_in_turn
+	player_turn_label.text = player_turn_text % str(current_player_in_turn.team_number)
+	animate_font_color(current_player_in_turn.team_color)
 
 
 func animate_font_color(new_color: Color) -> void: 

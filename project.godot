@@ -82,17 +82,18 @@ config/icon="res://icon.png"
 [autoload]
 
 ParticleEffectsLoader="*res://scripts/loaders/particle_effects_loader.gd"
+GameManager="*res://scripts/global_managers/game_manager/game_manager.tscn"
 UIManager="*res://gui/ui_manager/ui_manager.tscn"
 PlatformManager="*res://scripts/global_managers/platform_manager.gd"
-GameplayManager="*res://scripts/global_managers/gameplay_manager.gd"
 MapsLoader="*res://scripts/loaders/maps_loader.gd"
-GameManager="*res://scripts/global_managers/game_manager.gd"
 CameraManager="*res://scripts/global_managers/camera_manager.gd"
 AudioEffectsLoader="*res://scripts/loaders/audio_effects_loader.gd"
 BackgroundAudioManager="*res://scripts/global_managers/background_sounds_manager/background_audio_manager.tscn"
 LocalDatabase="*res://scripts/global_managers/local_database.gd"
 SceneManager="*res://scripts/global_managers/scene_manager.gd"
 AdsManager="*res://scripts/global_managers/ads_manager.gd"
+GlobalConstants="*res://scripts/global_constants.gd"
+GamePrepper="*res://scripts/game_prepper.gd"
 
 [display]
 
@@ -112,7 +113,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg")
+enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [filesystem]
 

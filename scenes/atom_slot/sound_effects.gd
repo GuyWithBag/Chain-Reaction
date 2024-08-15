@@ -13,11 +13,11 @@ var is_player_interacted: bool = false
 
 
 func _ready() -> void: 
-	AtomPlayersManager.player_has_been_eliminated.connect(_on_player_has_been_eliminated)
+	PlayersManager.player_has_been_eliminated.connect(_on_player_has_been_eliminated)
 	
 	
-func _on_player_has_been_eliminated(_atom_player: AtomPlayer, _atom_players_in_turn: Array[AtomPlayer]) -> void: 
-	if (owner.atom_player in AtomPlayersManager.atom_players) == false: 
+func _on_player_has_been_eliminated(_player: Player, _players_in_turn: Array[Player]) -> void: 
+	if (owner.player in PlayersManager.players) == false: 
 		return
 	BackgroundAudioManager.play_temporary_sound(player_has_been_eliminated)
 

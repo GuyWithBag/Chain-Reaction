@@ -20,7 +20,7 @@ shader = ExtResource("4_70jup")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 1.0
 
-[node name="AppBar" type="Control"]
+[node name="AppBar" type="Control" node_paths=PackedStringArray("player_turn_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_tpnk2")
+player_turn_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/PlayerTurn")
 gui_type = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

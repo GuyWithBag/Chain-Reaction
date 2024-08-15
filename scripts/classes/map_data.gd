@@ -7,5 +7,3 @@ class_name MapData
 @export var map_preview: Texture
 @export var disabled: bool = false 
 
-
-

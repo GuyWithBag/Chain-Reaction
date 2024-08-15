@@ -8,12 +8,27 @@ var count: int = 0:
 			return
 		counter.text = str(count)
 		
+var world: GameWorld
+var managers: LocalManagers
+		
+		
 @onready var counter: Label = get_node("Counter") 
 
 
 func _ready() -> void: 
-	AtomSlotsManager.atom_slot_exploded.connect(_on_atom_slot_exploded)
-	ChainReactionSequenceManager.chain_reaction_sequence_finished.connect(_on_chain_reaction_sequence_finished)
+	GameManager.world_ready.connect(
+		func(_world: GameWorld): 
+			if !is_instance_valid(_world): 
+				return
+			init()
+	)
+	
+	
+func init() -> void: 
+	world = GameManager.world
+	managers = world.managers
+	managers.atom_slots.atom_slot_exploded.connect(_on_atom_slot_exploded)
+	managers.chain_reaction_sequences.chain_reaction_sequence_finished.connect(_on_chain_reaction_sequence_finished)
 	
 	
 func _on_atom_slot_exploded(atom_slot: AtomSlot) -> void: 
@@ -34,7 +49,7 @@ func _on_atom_slot_exploded(atom_slot: AtomSlot) -> void:
 	elif count > 4: 
 		new_color = Color.YELLOW_GREEN
 	elif count > 0: 
-		new_color = atom_slot.atom_player.team_color
+		new_color = atom_slot.player.team_color
 	var tween: Tween = create_tween()
 	var orig_position: Vector2 = global_position
 	var _shake_animation: ShakeAnimation = ShakeAnimation.shake_object_randomly(self, 1, self, ShakeAnimation.PositionType.GLOBAL, orig_position, 0.1, 3, 15)

@@ -33,8 +33,8 @@ func save_settings_to_file() -> void:
 
 func save_settings() -> void: 
 	settings = {
-		"AtomPlayersManager" : AtomPlayersManager.save_settings(), 
-		"UndoHistoryManager" : UndoHistoryManager.save_settings(), 
+		"PlayersManager" : PlayersManager.save_settings(), 
+		#"UndoHistoryManager" : UndoHistoryManager.save_settings(), 
 		"AudioServer" : audio_server_save_settings(), 
 		"TranslationServer" : TranslationServer.get_locale()
 	}
@@ -60,8 +60,8 @@ func load_settings(load_data: Dictionary) -> void:
 	if load_data.is_empty(): 
 		print("localDatabase: data is empty") 
 		return
-	AtomPlayersManager.load_settings(load_data["AtomPlayersManager"]) 
-	UndoHistoryManager.load_settings(load_data["UndoHistoryManager"]) 
+	PlayersManager.load_settings(load_data["PlayersManager"]) 
+	#UndoHistoryManager.load_settings(load_data["UndoHistoryManager"]) 
 	var option_list_tile_game_rules: OptionListTile = get_tree().get_first_node_in_group("OptionListTileGameRules") 
 	TranslationServer.set_locale(load_data["TranslationServer"]) 
 	option_list_tile_game_rules.init()

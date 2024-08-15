@@ -1,7 +1,7 @@
 extends Control
 class_name PlayerDisplay
 
-var atom_player: AtomPlayer 
+var player: Player 
 var display_text: String = "Player %s atoms left: %s |"
 
 @onready var panel: PanelContainer =  get_node("Panel")
@@ -26,7 +26,7 @@ func player_eliminated_animation(style_box: StyleBoxFlat) -> void:
 	var to_border_width: int = 9
 	var to_duration: float = 0.5 
 	var to_back_duration: float = 0.1
-	var dimmed_team_color: Color = atom_player.team_color
+	var dimmed_team_color: Color = player.team_color
 	dimmed_team_color.s = 0.3
 	dimmed_team_color.v = 0.3
 	tween.tween_property(style_box, "border_width_top", to_border_width, to_duration)

@@ -9,8 +9,14 @@ enum Size {
 	_160
 }
 
+@export var tilemap: Node2D
+@export var atom_particles: Node2D
+@export var tilemap_backdrop: TileMap
+
 @export var scale_by_size: Size: 
 	set(value): 
+		if !Engine.is_editor_hint(): 
+			return
 		scale_by_size = value 
 		match scale_by_size: 
 			Size._64: 
@@ -24,16 +30,15 @@ enum Size {
 
 @export_range(1, 5, 0.1, "or_greater", "or_lesser") var scale: float = 0: 
 	set(value): 
+		if !Engine.is_editor_hint(): 
+			return
 		scale = value
 		vector2_scale = Vector2(scale, scale)
-		if has_node("../%TileMaps"): 
-			get_node("../%TileMaps").scale = vector2_scale
+		tilemap.scale = vector2_scale
+		atom_particles.scale = vector2_scale
+		tilemap_backdrop.scale = vector2_scale
 #		if has_node("../%AtomSprites"): 
 #			get_node("../%AtomSprites").scale = vector2_scale
-		if has_node("../%AtomParticles"): 
-			get_node("../%AtomParticles").scale = vector2_scale
-		if has_node("../%TileMapBackdrop"): 
-			get_node("../%TilemapBackdrop").scale = vector2_scale
 
 var vector2_scale: Vector2
 var vector2_scale_relative_to_tilemap_size: Vector2: 
@@ -41,9 +46,6 @@ var vector2_scale_relative_to_tilemap_size: Vector2:
 		return 64 * vector2_scale
 
 var maps: Node2D
-#@onready var atom_sprites: Node2D = get_node("%AtomSprites")
-#@onready var atom_particles: Node2D = get_node("%AtomParticles")
-
 
 func _ready() -> void: 
 	if Engine.is_editor_hint(): 

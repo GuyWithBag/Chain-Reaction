@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwvoq7kfuei0e"]
+
+[ext_resource type="PackedScene" uid="uid://cypx4bavgo4dv" path="res://scenes/atom_slots_tile_map/atom_slots_tile_map.tscn" id="1_bjvq6"]
+[ext_resource type="Script" path="res://scenes/game_board/game_board.gd" id="1_pkeok"]
+[ext_resource type="Script" path="res://scripts/classes/map_scaler.gd" id="2_7ebjq"]
+
+[node name="GameBoard" type="CenterContainer" node_paths=PackedStringArray("tilemaps")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pkeok")
+tilemaps = NodePath("Arena/TileMaps")
+
+[node name="MapScaler" type="Node" parent="." node_paths=PackedStringArray("tilemap", "atom_particles", "tilemap_backdrop")]
+script = ExtResource("2_7ebjq")
+tilemap = NodePath("../Arena/TileMaps")
+atom_particles = NodePath("../Arena/AtomParticles")
+tilemap_backdrop = NodePath("../Background/TilemapBackdrop")
+scale = 1.0
+
+[node name="Arena" type="Control" parent="."]
+layout_mode = 2
+
+[node name="TileMaps" type="Node2D" parent="Arena"]
+
+[node name="AtomSprites" type="Node" parent="Arena"]
+
+[node name="AtomParticles" type="Node2D" parent="Arena"]
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 2
+
+[node name="TilemapBackdrop" parent="Background" instance=ExtResource("1_bjvq6")]
+z_index = -1
+position = Vector2(-486, -864)
+rendering_quadrant_size = 64

@@ -1,6 +1,7 @@
-@tool
+#@tool
 extends Control
 
+@export var managers: LocalManagers
 @export var atom_count: int = 2: 
 	set(value): 
 		atom_count = value
@@ -102,9 +103,9 @@ func set_all_atom_colors() -> void:
 func change_atom_color_to_player(player_num: int) -> void: 
 	if Engine.is_editor_hint(): 
 		return
-	if player_num > AtomPlayersManager.atom_player_colors.size() - 1: 
-		sprites_children[player_num].modulate = AtomPlayersManager.get_random_color() 
+	if player_num > PlayersManager.player_colors.size() - 1: 
+		sprites_children[player_num].modulate = PlayersManager.get_random_color() 
 		return
-	sprites_children[player_num].modulate = AtomPlayersManager.atom_player_colors[str(player_num + 1)]
+	sprites_children[player_num].modulate = PlayersManager.player_colors[str(player_num + 1)]
 	
 	

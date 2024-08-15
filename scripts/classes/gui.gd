@@ -17,24 +17,63 @@ enum GUIType {
 	WIDGET 
 } 
 
-var active: bool = false: set = set_active
+var _initialized: bool = false
 
+@export var active: bool = false: set = set_active
+
+@export var inactive_on_ready = true
 @export var disabled: bool = false
 @export var gui_type: GUIType
 
 
+#func _ready() -> void: 
+	#if inactive_on_ready: 
+		#set_active(false)
+
+## Activateds and makes the gui visible. Never use this method, only use UIManager.set_gui_active. 
 func set_active(value: bool) -> void: 
 	if disabled: 
 		return
-	visible = value 
-	active = visible
-	if value == true: 
+	if value && _activate_condition(): 
+		active = true
+		_activated()
 		activated.emit()
-	else: 
-		deactivated.emit()
+		_initialized = true
+	elif !value && _deactivate_condition(): 
+		if _initialized: 
+			active = false
+			_deactivated()
+			deactivated.emit()
+		if inactive_on_ready && !_initialized: 
+			visible = false
+			active = false
+			_initialized = true
 	
 	
-func set_disabled(value: bool) -> void: 
-	disabled = value
+#func activate() -> void: 
+	#active = true
+	#_activated()
+	#activated.emit()
+	#
+	#
+#func deactivate() -> void: 
+	#active = false
+	#_deactivated()
+	#deactivated.emit()
 	
+	
+func _activated() -> void: 
+	visible = true
+	
+	
+func _deactivated() -> void: 
+	visible = false
+	
+	
+func _activate_condition() -> bool: 
+	return true
+	
+	
+func _deactivate_condition() -> bool: 
+	return true
 	

@@ -10,27 +10,30 @@ signal atom_placed
 
 @export var atom_slot_group_label: Label 
 
-var atom_player: AtomPlayer: 
+var player: Player: 
 	set(value): 
-		previous_atom_player = atom_player
-		atom_player = value
-		atoms_sprites.change_team_color_to(atom_player)
-		if atom_player != null: 
-			if previous_atom_player != null:
+		previous_player = player
+		player = value
+		atoms_sprites.change_team_color_to(player)
+		if player != null: 
+			if previous_player != null:
 				if !get_groups().is_empty(): 
-					remove_from_group(previous_atom_player.group_name)
-			add_to_group(atom_player.group_name)
+					remove_from_group(previous_player.group_name)
+			add_to_group(player.group_name)
 			
-			atom_slot_group_label.text = str(atom_player.team_number)
+			atom_slot_group_label.text = str(player.team_number)
 
 
-var previous_atom_player: AtomPlayer
+var previous_player: Player
 
 var available_directions: Array[String] = [] 
 
 var _initialized: bool = false
 var neighbor_atom_slots: Array[AtomSlot]
 var available_directions_to_neighbors: Array[int]
+
+var world: GameWorld
+var managers: LocalManagers
 
 @onready var atoms_sprites: AtomsSprites = get_node("AtomsSprites")
 @onready var atom_stack: AtomStack = get_node("AtomStack")
@@ -45,9 +48,8 @@ var available_directions_to_neighbors: Array[int]
 
 
 func _ready() -> void: 
-	atoms_positions.center_position.global_position = self.global_position
+	atoms_positions.center_position.global_position = global_position
 	state_machine.init(self)
-	atom_detector.init(self)
 	
 	# When this condition is fulfilled, all atom_slots will be initialized. 
 
@@ -65,11 +67,13 @@ func _physics_process(_delta):
 
 
 func init() -> void: 
+	world = GameManager.world
+	managers = world.managers
 	atom_stack.init()
 	atoms_sprites.init()
 	state_machine.get_state("Explode").finished_exploding.connect(
 		func(): 
-			AtomSlotsManager.atom_slot_exploded.emit(self)
+			managers.atom_slots.atom_slot_exploded.emit(self)
 	)
 	neighbor_atom_slots = atom_detector.get_slot_in_all_directions()
 	available_directions_to_neighbors = atom_detector.get_available_directions()
@@ -79,7 +83,7 @@ func init() -> void:
 
 
 func _on_touch_screen_button_pressed() -> void:
-#	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
+#	var current_player: Player = managers.player_turns.current_player_in_turn
 	#shake_grid()
 	player_interact()
 
@@ -97,26 +101,26 @@ func shake_grid() -> void:
 
 func player_interact() -> void: 
 	player_interacted.emit()
-	if AtomPlayerTurnsManager.is_chain_reacting(): 
+	if managers.player_turns.is_chain_reacting(): 
 		if GameManager.debug: 
 			print("AtomSlot (%s): NOT YET" % name)
 		return
-	var current_atom_player: AtomPlayer = AtomPlayerTurnsManager.current_atom_player_in_turn
-	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && atom_player == current_atom_player: 
+	var current_player: Player = managers.player_turns.current_player_in_turn
+	if state_machine.current_state == state_machine.get_state("ReadyToExplode") && player == current_player: 
 		shake_grid()
 	# This is for when it is empty, it will do the placed atom animation
-	if atom_player == current_atom_player || state_machine.current_state == state_machine.get_state("Empty"): 
-		atom_player = current_atom_player
+	if player == current_player || state_machine.current_state == state_machine.get_state("Empty"): 
+		player = current_player
 		var tween: Tween = create_tween() 
 		var orig_scale: Vector2 = atoms_sprites.atom_sprites_group.scale
 		atoms_sprites.atom_sprites_group.scale = orig_scale + Vector2(0.5, 0.5)
 		tween.tween_property(atoms_sprites.atom_sprites_group, "scale", orig_scale, 0.1)
 		atoms_sprites.flash_tween(0.1, false, 1)
 	elif state_machine.current_state == state_machine.get_state("Empty"): 
-		atom_player = current_atom_player
+		player = current_player
 		if GameManager.debug: 
 			print("AtomSlot (%s): Is indeed empty" % name)
-	elif atom_player != current_atom_player: 
+	elif player != current_player: 
 		if GameManager.debug: 
 			print("AtomSlot (%s): WRONG TEAM" % name)
 		var map_scale: Vector2 = GameManager.map_scaler.vector2_scale_relative_to_tilemap_size - Vector2(120, 120) 
@@ -128,29 +132,29 @@ func player_interact() -> void:
 		return
 	if GameManager.debug: 
 		print("AtomSlot (%s): Placed atom here" % name)
-	atom_stack.add_atom(1, atom_player) 
+	atom_stack.add_atom(1, player) 
 	atom_placed.emit()
-	if AtomPlayerTurnsManager.is_awaiting_turn(): 
-		AtomPlayerTurnsManager.next_turn()
-	atom_player.total_atoms_added += 1
+	if managers.player_turns.is_awaiting_turn(): 
+		managers.player_turns.next_turn()
+	player.total_atoms_added += 1
 	
 	
 #func flash_tween() -> void: 
 #	var tween: Tween = create_tween() 
 #	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
-#	tween.tween_property(self, "modulate", atom_player.team_color, 0.1)
+#	tween.tween_property(self, "modulate", player.team_color, 0.1)
 #	tween.play()
 
 
 func apply_undo_changes(atom_slot_data: AtomSlotData) -> void: 
 	if atom_slot_data == null: 
 		atom_stack.atom_count = 0
-		atom_player = null
+		player = null
 		state_machine.change_state(state_machine.get_state("Empty"))
 		return
 #	print(atom_slot.atom_stack.atom_count)
 	atom_stack.atom_count = atom_slot_data.atom_count 
-	atom_player = atom_slot_data.atom_player
+	player = atom_slot_data.player
 	state_machine.change_state(atom_slot_data.current_state) 
 
 

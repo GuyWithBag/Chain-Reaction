@@ -17,9 +17,9 @@ func set_active(value: bool):
 	super.set_active(value)
 	GameManager.pause_game(value) 
 	if value: 
-		GameManager.current_state = GameManager.State.PAUSED
+		GameManager.state_chart.send_event("pause")
 	else: 
-		GameManager.current_state = GameManager.State.IN_GAME
+		GameManager.state_chart.send_event("play")
 
 
 func _input(event: InputEvent) -> void: 

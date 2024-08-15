@@ -11,23 +11,25 @@ var alert: PackedScene = load("res://gui/alert_gui/alert_screen/alert_screen.tsc
 var player_gui_focused: GUI 
 var pause_menu_gui: GUI 
 
-@onready var in_game: Control = get_node("InGame")
-@onready var instanced_uis: Control = get_node("InstancedUIs")
-@onready var transitions_manager: Control = get_node("TransitionsManager")
-@onready var player_screen: CrossPlatformGUIManager = in_game.get_node("PlayerScreen")
+@export var gui_debugger: GUIDebugger
+@export var playing: Control
+@export var instanced_uis: Control
+@export var transitions_manager: Control
+@export var player_screen: CrossPlatformGUIManager
 
-@onready var pause_menu: GUI = in_game.get_node("PauseMenu")
+@export var pause_menu: GUI
+@export var atom_counter_effect: GUI
+
 @onready var touch_screen_controls: GUI
 @onready var app_bar: AppBar
-@onready var gui_debugger: GUIDebugger = get_node("GUIDebugger")
 @onready var scoreboard: Scoreboard
-@onready var atom_counter_effect: GUI = in_game.get_node("AtomCounterEffect")
+
 
 func _ready() -> void:
-	deactivate_in_game_children()
-	GameManager.current_state_changed.connect(
-		func(new_game_state, _old_game_state): 
-			if new_game_state == GameManager.State.IN_GAME || new_game_state == GameManager.State.PAUSED: 
+	deactivate_playing_children()
+	GameManager.current_state.child_state_entered.connect(
+		func(): 
+			if GameManager.is_playing() || GameManager.is_paused(): 
 				layer = 4 
 			else: 
 				layer = 2
@@ -65,8 +67,8 @@ func _input(event: InputEvent) -> void:
 		toggle_gui_disabled(atom_counter_effect) 
 		
 		
-func deactivate_in_game_children() -> void:
-	for child in in_game.get_children():
+func deactivate_playing_children() -> void:
+	for child in playing.get_children():
 		if child.name == "PlayerScreen": 
 			continue
 		child.set_active(false)

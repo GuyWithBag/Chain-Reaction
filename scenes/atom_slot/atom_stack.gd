@@ -28,7 +28,7 @@ signal atoms_overloaded
 			atoms_back_to_zero.emit()
 		if atom_count > 0: 
 			atoms_added.emit(atom_count - previous_count)
-			AtomSlotsManager.atom_added.emit(atom_count - previous_count)
+			GameManager.world.managers.atom_slots.atom_added.emit(atom_count - previous_count)
 		if atom_count > max_atom_stack: 
 			atom_count = 0
 			atoms_overloaded.emit()
@@ -46,6 +46,9 @@ signal atoms_overloaded
 @export var stack_label: Label
 @export var max_stack_label: Label
 @export var name_label: Label
+
+var world: GameWorld
+var managers: LocalManagers
 
 @onready var atoms_sprites: Node2D = $"../AtomsSprites"
 @onready var atoms_detector: AtomsDetector = get_node("../AtomsDetector")
@@ -67,6 +70,8 @@ func init() -> void:
 	if max_stack_label: 
 		max_stack_label.text = str(max_atom_stack)
 	initialized.emit()
+	world = GameManager.world
+	managers = world.managers
 	_initialized = true
 
 
@@ -74,17 +79,17 @@ func init() -> void:
 #	pass
 	
 
-func add_atom(added_atoms: int, new_player: AtomPlayer) -> void: 
+func add_atom(added_atoms: int, new_player: Player) -> void: 
 	var _previous_count: int = atom_count
 	atom_count += added_atoms
-	var _prev_player: AtomPlayer = owner.atom_player
+	var _prev_player: Player = owner.player
 
-#	new_player.current_total_atoms = AtomPlayersManager.get_current_total_atoms_count(new_player)
+#	new_player.current_total_atoms = PlayersManager.get_current_total_atoms_count(new_player)
 	# The colonizer will then receive their new atom amount
-	owner.atom_player = new_player 
-	for atom_player in AtomPlayersManager.atom_players_in_play: 
-		var _atom_count: int = AtomPlayersManager.get_current_total_atoms_count(atom_player)
-		atom_player.current_total_atoms = _atom_count
+	owner.player = new_player 
+	for player in GameManager.world.managers.players.players_in_play: 
+		var _atom_count: int = GameManager.world.managers.players.get_current_total_atoms_count(player)
+		player.current_total_atoms = _atom_count
 	# If the count becomes 0, it means that the current/previous atom player of this will lose some atoms
 #	if prev_player != new_player && prev_player != null: 
 #		prev_player.current_total_atoms -= previous_count
@@ -104,13 +109,13 @@ func save_atom_slot_data() -> void:
 	var save_slot_data: Callable = func():
 		var atom_slot_data: AtomSlotData = AtomSlotData.new(
 			atom_count, 
-			owner.atom_player, 
+			owner.player, 
 			state_machine.current_state
 		)
-		AtomSlotsManager.atom_slots_saved_data[owner.name] = atom_slot_data
+		managers.atom_slots.atom_slots_saved_data[owner.name] = atom_slot_data
 
-	if ChainReactionSequenceManager.is_chain_reacting: 
-		ChainReactionSequenceManager.chain_reaction_sequence_finished.connect(
+	if managers.player_turns.is_chain_reacting(): 
+		managers.chain_reaction_sequences.chain_reaction_sequence_finished.connect(
 			func(): 
 				save_slot_data.call()
 				
@@ -127,7 +132,7 @@ func remove_atoms(atoms_amout_to_remove: int) -> void:
 	
 	
 func reset_atom_count() -> void: 
-	owner.atom_player.current_total_atoms -= atom_count
+	owner.player.current_total_atoms -= atom_count
 	var prev_count: int = atom_count
 	atom_count = 0
 	atom_count_resetted.emit(prev_count)

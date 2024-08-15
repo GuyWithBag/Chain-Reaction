@@ -1,4 +1,5 @@
 extends CenterContainer
+class_name PlayerAmountSelector
 
 signal player_amount_changed(previous_amount: int, new_amount: int)
 

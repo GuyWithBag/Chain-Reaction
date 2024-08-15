@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://b338snejdtk8k"]
+
+[ext_resource type="Script" path="res://scenes/game_starter/game_starter.gd" id="1_q5li4"]
+[ext_resource type="Script" path="res://scripts/local_managers/local_managers.gd" id="2_sb758"]
+[ext_resource type="Script" path="res://scripts/global_managers/gameplay_manager.gd" id="3_3d5g2"]
+[ext_resource type="PackedScene" uid="uid://d1ttylo8e3jps" path="res://scripts/local_managers/atom_player_turns_manager/atom_player_turns_manager.tscn" id="5_h6e0w"]
+[ext_resource type="Script" path="res://scripts/local_managers/atom_slots_manager.gd" id="6_enjgp"]
+[ext_resource type="Script" path="res://scripts/local_managers/chain_reaction_sequence_manager.gd" id="7_yofhb"]
+[ext_resource type="Script" path="res://scripts/local_managers/atom_players_manager.gd" id="8_spile"]
+[ext_resource type="Script" path="res://scripts/local_managers/undo_history_manager.gd" id="8_um1td"]
+
+[node name="GameStarter" type="Node" node_paths=PackedStringArray("managers")]
+script = ExtResource("1_q5li4")
+managers = NodePath("Managers")
+
+[node name="Managers" type="Node" parent="." node_paths=PackedStringArray("atom_players", "atom_player_turns", "atom_slots", "chain_reaction_sequences", "undo_hisotry", "gameplay")]
+script = ExtResource("2_sb758")
+atom_players = NodePath("AtomPlayersManager")
+atom_player_turns = NodePath("AtomPlayerTurnsManager")
+atom_slots = NodePath("AtomSlotsManager")
+chain_reaction_sequences = NodePath("ChainReactionSequenceManager")
+undo_hisotry = NodePath("UndoHistoryManager")
+gameplay = NodePath("GameplayManager")
+
+[node name="AtomPlayersManager" type="Node" parent="Managers"]
+script = ExtResource("8_spile")
+
+[node name="GameplayManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("3_3d5g2")
+managers = NodePath("..")
+
+[node name="AtomPlayerTurnsManager" parent="Managers" node_paths=PackedStringArray("managers") instance=ExtResource("5_h6e0w")]
+managers = NodePath("..")
+
+[node name="AtomSlotsManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("6_enjgp")
+managers = NodePath("..")
+
+[node name="ChainReactionSequenceManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("7_yofhb")
+managers = NodePath("..")
+
+[node name="UndoHistoryManager" type="Node" parent="Managers" node_paths=PackedStringArray("managers")]
+script = ExtResource("8_um1td")
+managers = NodePath("..")

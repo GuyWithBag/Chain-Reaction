@@ -16,8 +16,6 @@ var explode_state: AtomSlotBaseState
 
 var sequence: ChainReactionSequence
 
-@onready var chain_reaction_sequences: Array[ChainReactionSequence] = ChainReactionSequenceManager.chain_reaction_sequences
-
 func init(_state_machine_owner: Node2D) -> void: 
 	super.init(_state_machine_owner)
 	atom_stack = _state_machine_owner.get_node("AtomStack")

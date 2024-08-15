@@ -4,12 +4,15 @@ extends GUI
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer") 
 
 var player_label_text: String = "Player: %s"
-
+var world: GameWorld
+var managers: LocalManagers
 
 # called from GameplayManager
 func _ready() -> void: 
-	player_label.text = player_label_text % GameplayManager.winning_atom_player.team_number
-	player_label.add_theme_color_override("font_color", AtomPlayerTurnsManager.current_atom_player_in_turn.team_color)
+	world = GameManager.world
+	managers = world.managers
+	player_label.text = player_label_text % managers.gameplay.winning_player.team_number
+	player_label.add_theme_color_override("font_color", managers.player_turns.current_player_in_turn.team_color)
 	UIManager.set_gui_active(self, false)
 	BackgroundAudioManager.play_temporary_sound(AudioEffectsLoader.get_sfx("Victory"))
 	animation_player.play("come_up")

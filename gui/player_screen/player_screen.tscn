@@ -12,11 +12,14 @@ gui_type = 1
 
 [node name="Mode" parent="." index="0"]
 mouse_filter = 2
+current_tab = 1
 
 [node name="PC" parent="Mode" index="1"]
+visible = false
 mouse_filter = 2
 
 [node name="MOBILE" parent="Mode" index="2"]
+visible = true
 mouse_filter = 2
 
 [node name="Scoreboard" parent="Mode/MOBILE" index="0" instance=ExtResource("3_6n3fi")]

@@ -8,12 +8,13 @@ enum Directions {
 	RIGHT
 }
 
+@export var hitbox: Area2D
+
 @onready var raycasts: Array[Node] = get_children()
 
-func init(parent: Node2D) -> void: 
+func _ready() -> void: 
 	for raycast in raycasts: 
-		var exception: Area2D = parent.get_node("Hitbox")
-		raycast.add_exception(exception)
+		raycast.add_exception(hitbox)
 
 
 func get_slot_in_all_directions() -> Array[AtomSlot]: 

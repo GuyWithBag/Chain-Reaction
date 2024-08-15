@@ -4,6 +4,10 @@ class_name AtomsSprites
 
 @export var explode_travel_time: float = 0.1 
 @export var shaking_speed: float = 0.1
+@export var atoms_detector: AtomsDetector
+@export var atom_positions: AtomPositions
+@export var atom_stack: AtomStack
+@export var atoms_particles: AtomsParticles
 
 var _shaking: bool = false
 
@@ -21,10 +25,9 @@ var shaders: Dictionary = {
 	"flash" : "res://shaders/flash/flash.tres"
 }
 
-@onready var atoms_detector: AtomsDetector = get_node("../AtomsDetector")
-@onready var atom_positions: AtomPositions = get_node("../AtomPositions")
-@onready var atom_stack: AtomStack = get_node("../AtomStack")
-@onready var atoms_particles: AtomsParticles = get_node("../AtomsParticles")
+var world: GameWorld
+var managers: LocalManagers
+
 
 func _ready() -> void: 
 	rng.randomize()
@@ -34,6 +37,8 @@ func _ready() -> void:
 # This is initialzied after the first physics process frame of the atom slot
 # Adds it outside of the AtomSlot so that the modulate of it is seperate. 
 func init() -> void: 
+	world = GameManager.world
+	managers = world.managers
 	var group: Node2D = Node2D.new()
 	atom_sprites_group = group
 	get_tree().current_scene.get_node("%AtomSprites").add_child(atom_sprites_group) 
@@ -57,7 +62,7 @@ func init() -> void:
 	
 	
 func _add_atom_sprite(variable_to_initialize: String) -> void: 
-	var sprite: Sprite2D = AtomSlotsManager.atom_packed_scene.instantiate()
+	var sprite: Sprite2D = managers.atom_slots.atom_packed_scene.instantiate()
 	set(variable_to_initialize, sprite)
 	atom_sprites_group.add_child(sprite)
 	var scale_size: float = 0.23
@@ -197,7 +202,7 @@ func explode_animation() -> void:
 	set_atoms_visible(false)
 #	for index in atom_sprites_group_children.size(): 
 #		atom_sprites_group_children[index].scale = atom_sprites_orig_values[index]["scale"]
-#		atom_sprites_group_children[index].modulate = owner.atom_player.team_color
+#		atom_sprites_group_children[index].modulate = owner.player.team_color
 #	atom_sprites_group.material = null
 	
 #	tween.play()
@@ -225,7 +230,7 @@ func atom_transfer_tween(tween: Tween, atom: Sprite2D, to: Vector2) -> void:
 	tween.tween_property(atom, "global_position", to, explode_travel_time)
 
 
-func change_team_color_to(new_team: AtomPlayer) -> void: 
+func change_team_color_to(new_team: Player) -> void: 
 	var team_color: Color 
 	if new_team == null: 
 		team_color = Color.DIM_GRAY
@@ -237,14 +242,14 @@ func change_team_color_to(new_team: AtomPlayer) -> void:
 	right_atom.modulate = team_color
 
 
-func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0, from_color: Color = AtomPlayerTurnsManager.current_atom_player_in_turn.team_color) -> Tween: 
-	if !get_parent().atom_player: 
+func flash_tween(flash_duration: float, loop: bool = false, loops: int = 0, from_color: Color = managers.player_turns.current_player_in_turn.team_color) -> Tween: 
+	if !get_parent().player: 
 		return null
 	var _flash_tween: Tween = create_tween()
 	if loop: 
 		_flash_tween.set_loops(loops)
 	_flash_tween.set_parallel(true).set_ease(Tween.EASE_IN).bind_node(self)
-#	var orig_modulate: Color = get_parent().atom_player.team_color
+#	var orig_modulate: Color = get_parent().player.team_color
 	for atom_sprite in atom_sprites_group.get_children(): 
 		_flash_tween.tween_property(atom_sprite, "modulate", Color(1, 1, 1), flash_duration)
 	_flash_tween.chain()

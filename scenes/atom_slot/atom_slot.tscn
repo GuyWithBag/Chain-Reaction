@@ -47,10 +47,9 @@ _data = {
 "rest": SubResource("Animation_1c2ow")
 }
 
-[node name="AtomSlot" type="Node2D" node_paths=PackedStringArray("atom_slot_group_label") groups=["AtomSlot"]]
+[node name="AtomSlot" type="Node2D" groups=["AtomSlot"]]
 material = ExtResource("1_3tif2")
 script = ExtResource("1_iyo6a")
-atom_slot_group_label = NodePath("Layer/AtomSlotGroupLabel")
 
 [node name="Grid" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -66,8 +65,9 @@ monitoring = false
 visible = false
 shape = SubResource("RectangleShape2D_mjcr6")
 
-[node name="AtomsDetector" type="Node2D" parent="."]
+[node name="AtomsDetector" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("3_xclkg")
+hitbox = NodePath("../Hitbox")
 
 [node name="Down" type="RayCast2D" parent="AtomsDetector"]
 target_position = Vector2(0, 64)
@@ -117,14 +117,15 @@ position = Vector2(-15, 11)
 [node name="Marker2D3" type="Marker2D" parent="AtomPositions/CenterPosition/Triple"]
 position = Vector2(0, -12)
 
-[node name="AtomStack" type="Node" parent="." node_paths=PackedStringArray("stack_label", "max_stack_label", "name_label")]
+[node name="AtomStack" type="Node" parent="."]
 script = ExtResource("6_jfsh5")
-stack_label = NodePath("../Layer/StackLabel")
-max_stack_label = NodePath("../Layer/MaxStackLabel")
-name_label = NodePath("../Layer/NameLabel")
 
-[node name="AtomsSprites" type="Node2D" parent="."]
+[node name="AtomsSprites" type="Node2D" parent="." node_paths=PackedStringArray("atoms_detector", "atom_positions", "atom_stack", "atoms_particles")]
 script = ExtResource("5_3ujwk")
+atoms_detector = NodePath("../AtomsDetector")
+atom_positions = NodePath("../AtomPositions")
+atom_stack = NodePath("../AtomStack")
+atoms_particles = NodePath("../AtomsParticles")
 
 [node name="AtomsParticles" type="Node2D" parent="."]
 script = ExtResource("7_0ecf5")
@@ -133,23 +134,19 @@ script = ExtResource("7_0ecf5")
 script = ExtResource("5_c3o2o")
 starting_state = NodePath("Empty")
 
-[node name="Empty" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+[node name="Empty" type="Node" parent="StateMachine"]
 script = ExtResource("6_g5cua")
-audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="Stacked" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+[node name="Stacked" type="Node" parent="StateMachine"]
 script = ExtResource("8_6idha")
-audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="ReadyToExplode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+[node name="ReadyToExplode" type="Node" parent="StateMachine"]
 script = ExtResource("8_b32i3")
-audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
-[node name="Explode" type="Node" parent="StateMachine" node_paths=PackedStringArray("audio_stream_player")]
+[node name="Explode" type="Node" parent="StateMachine"]
 script = ExtResource("9_r3vf0")
 play_particle = "Retro Explosion"
 sound_effect = ExtResource("14_feniu")
-audio_stream_player = NodePath("../../SoundEffects/AudioStreamPlayer")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource("RectangleShape2D_lchgv")
@@ -214,9 +211,6 @@ process_mode = 3
 position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(3.2, 3.2)
 
-[connection signal="atom_placed" from="." to="SoundEffects" method="_on_atom_slot_atom_placed"]
-[connection signal="player_interacted_wrong_team" from="." to="SoundEffects" method="_on_atom_slot_player_interacted_wrong_team"]
-[connection signal="started_exploding" from="StateMachine/Explode" to="SoundEffects" method="_on_explode_started_exploding"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
